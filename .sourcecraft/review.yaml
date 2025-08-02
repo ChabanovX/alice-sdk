@@ -18,6 +18,15 @@ codereview:
         ignore_self_ship: true
 
     - patterns:
+        - 'tests/*'
+      reviewers:
+        usernames: 
+          - zonovga
+        assign: 1 
+        need_ships: 1
+        ignore_self_ship: false
+
+    - patterns:
         - 'analytics/*'
       reviewers:
         usernames:
