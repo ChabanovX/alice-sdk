@@ -1,0 +1,51 @@
+codereview: 
+  need_ships: 1 # Глобальное требование одобрений (можно переопределить в правилах)
+  ignore_self_ship: true # Игнорировать одобрения от автора пул-реквеста
+  ignore_non_reviewers_block: false # Учитывать блокировки от не-ревьюеров
+  auto_assign: true # Автоматически назначать ревьюеров
+  rules:
+    - patterns:
+        - 'mobile/*'
+      reviewers:
+        usernames: 
+          - chabanovx
+          - gilmutdinoff-rinat2016
+          - kto-vyzival-doctora
+          - sergeitetov
+        assign: 1 
+        need_ships: 1
+        ignore_self_ship: true
+
+    - patterns:
+        - 'analytics/*'
+      reviewers:
+        usernames:
+          - attackonthinking
+          - awesome-erytw
+        assign: 1 # Назначить 1 ревьюера из группы аналитиков
+        need_ships: 1
+        ignore_self_ship: true
+
+    # Правило для бэкенда
+    - patterns:
+        - 'backend/*'
+      reviewers:
+        usernames: 
+          - ofline96
+          - maksimal4ik
+          - shutovmik
+          - bappyvlad
+        assign: 2 # Назначить 2 ревьюера из группы бэкенда
+        need_ships: 1 
+        ignore_self_ship: true
+
+      # Правило для DevOps
+    - patterns:
+        - 'infra/*'
+        - '.sourcecraft/*'
+      reviewers:
+        usernames:
+          - g3rlch
+        assign: 1 # Назначить 1 ревьюера из группы DevOps
+        need_ships: 1
+        ignore_self_ship: false
