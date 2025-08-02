@@ -12,6 +12,7 @@ codereview:
           - gilmutdinoff-rinat2016
           - kto-vyzival-doctora
           - sergeitetov
+          - thedevlord
         assign: 1 
         need_ships: 1
         ignore_self_ship: true
