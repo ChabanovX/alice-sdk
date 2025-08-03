@@ -1,0 +1,52 @@
+on:
+  pull_request: 
+    - workflows: [backend-tests]
+      filter:
+        paths: "backend/**"
+    # - workflows: [flutter-tests]
+    #   filter:
+    #     paths: "flutter/**"
+
+workflows:
+  backend-tests:
+    tasks:
+      - name: backend-tests-task
+        runs_on: serverless
+        cubes:
+          - name: build-and-test
+            image: 
+              name: ghcr.io/userver-framework/ubuntu-22.04-userver:latest
+              script:
+                - cd $SOURCECRAFT_WORKSPACE
+                - git checkout $SOURCECRAFT_COMMIT_SHA
+                - groupadd -g 1000 myuser
+                - useradd -u 1000 -g 1000 -m myuser
+                - chown 1000:1000 ./**
+                - cd backend
+                - su myuser
+                - make test-release
+  
+  # flutter-tests:
+  #   tasks:
+  #     - name: flutter-tests-task
+  #       cubes:
+  #         - name: install-flutter
+  #           script:
+  #             - cd "$SOURCECRAFT_WORKSPACE"
+  #             - sudo apt-get update
+  #             - sudo apt-get install -y --no-install-recommends git wget unzip xz-utils libglu1-mesa ca-certificates
+  #             - git checkout $SOURCECRAFT_COMMIT_SHA
+  #             - FLUTTER_VERSION="3.22.0"  # Фиксируем версию для стабильности
+  #             - FLUTTER_SDK_TAR="flutter_linux_${FLUTTER_VERSION}-stable.tar.xz"
+  #             - wget "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/$FLUTTER_SDK_TAR"
+  #             - tar xf "$FLUTTER_SDK_TAR" -C "$SOURCECRAFT_WORKSPACE"
+  #             - export PATH="$SOURCECRAFT_WORKSPACE/flutter/bin:$PATH"
+  #         - name: run-tests
+  #           script:
+  #             - cd mobile
+  #             - flutter --version
+  #             - flutter doctor
+  #             - flutter pub get
+  #             - cd tests
+  #             - flutter test
+  #             - flutter test --coverage
