@@ -1,14 +1,19 @@
 name: voice_assistant
-description: "A new Flutter project."
+description: "Voice assistant module for driver's app with Yandex Alice integration"
 publish_to: 'none'
 version: 0.1.0
 
 environment:
   sdk: ^3.8.1
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_tts: ^4.2.3
+  just_audio: ^0.10.4
+  path_provider: ^2.1.5
+  rxdart: ^0.28.0
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +22,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
+  assets:
+    - assets/audio/
+    - assets/images/alice.png
