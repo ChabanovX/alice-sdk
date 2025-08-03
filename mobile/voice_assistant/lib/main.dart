@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:voice_assistant/alice_voice.dart';
 
@@ -45,15 +47,61 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (context, snapshot) {
                   final amplitude = snapshot.data?.amplitude ?? 0;
                   final scale = 1.0 + (amplitude * amplitude) * 0.15;
-                  return AnimatedScale(
-                    scale: scale,
-                    duration: const Duration(milliseconds: 50),
-                    curve: Curves.easeInOut,
-                    child: Image.asset(
-                      'assets/images/alice.png',
-                      width: 200,
-                      height: 200,
+                  final progress = (amplitude * 2).clamp(0.0, 1.0);
+                  final shadowColors = [      
+                    const Color(0xFF9B71F5),
+                  ];
+                  
+                  final colorIndex = (progress * (shadowColors.length - 1)).floor();
+                  final colorProgress = (progress * (shadowColors.length - 1)) - colorIndex;
+                  final currentColor = Color.lerp(
+                    shadowColors[colorIndex],
+                    shadowColors[math.min(colorIndex + 1, shadowColors.length - 1)],
+                    colorProgress,
+                  )!;
+
+                  final shadowOpacity = 0.2 + (amplitude * 0.4);
+                  
+                  return TweenAnimationBuilder<Color?>(
+                    tween: ColorTween(
+                      begin: shadowColors[0],
+                      end: currentColor,
                     ),
+                    duration: const Duration(milliseconds: 200),
+                    builder: (context, color, child) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: color!.withOpacity(shadowOpacity * 0.7),
+                              blurRadius: 30 * amplitude,
+                              spreadRadius: 15 * amplitude,
+                            ),
+                            BoxShadow(
+                              color: color.withOpacity(shadowOpacity * 0.5),
+                              blurRadius: 60 * amplitude,
+                              spreadRadius: 30 * amplitude,
+                            ),
+                            BoxShadow(
+                              color: color.withOpacity(shadowOpacity * 0.3),
+                              blurRadius: 90 * amplitude,
+                              spreadRadius: 45 * amplitude,
+                            ),
+                          ],
+                        ),
+                        child: AnimatedScale(
+                          scale: scale,
+                          duration: const Duration(milliseconds: 50),
+                          curve: Curves.easeInOut,
+                          child: Image.asset(
+                            'assets/images/alice.png',
+                            width: 200,
+                            height: 200,
+                          ),
+                        ),
+                      );
+                    },
                   );
                 },
               ),
