@@ -14,17 +14,16 @@ workflows:
         runs_on: serverless
         cubes:
           - name: build-and-test
-            image: 
-              name: ghcr.io/userver-framework/ubuntu-22.04-userver:latest
-              script:
-                - cd $SOURCECRAFT_WORKSPACE
-                - git checkout $SOURCECRAFT_COMMIT_SHA
-                - groupadd -g 1000 myuser
-                - useradd -u 1000 -g 1000 -m myuser
-                - chown 1000:1000 ./**
-                - cd backend
-                - su myuser
-                - make test-release
+            image: ghcr.io/userver-framework/ubuntu-22.04-userver:latest
+            script:
+              - cd $SOURCECRAFT_WORKSPACE
+              - git checkout $SOURCECRAFT_COMMIT_SHA
+              - groupadd -g 1000 myuser
+              - useradd -u 1000 -g 1000 -m myuser
+              - chown 1000:1000 ./**
+              - cd backend
+              - su myuser
+              - make test-release
   
   # flutter-tests:
   #   tasks:
