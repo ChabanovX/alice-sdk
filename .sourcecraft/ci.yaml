@@ -11,7 +11,6 @@ workflows:
   backend-tests:
     tasks:
       - name: backend-tests-task
-        runs_on: serverless
         cubes:
           - name: build-and-test
             image: ghcr.io/userver-framework/ubuntu-22.04-userver:latest
