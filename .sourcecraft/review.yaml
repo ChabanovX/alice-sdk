@@ -5,20 +5,20 @@ codereview:
   auto_assign: true # Автоматически назначать ревьюеров
   rules:
     - patterns:
-        - 'mobile/*'
+        - 'mobile/**'
       reviewers:
         usernames: 
           - chabanovx
-          - gilmutdinoff-rinat2016
-          - kto-vyzival-doctora
-          - sergeitetov
-          - thedevlord
+          # - gilmutdinoff-rinat2016
+          # - kto-vyzival-doctora
+          # - sergeitetov
+          # - thedevlord
         assign: 1 
         need_ships: 1
         ignore_self_ship: true
 
     - patterns:
-        - 'tests/*'
+        - 'tests/**'
       reviewers:
         usernames: 
           - zonovga
@@ -27,7 +27,7 @@ codereview:
         ignore_self_ship: false
 
     - patterns:
-        - 'analytics/*'
+        - 'analytics/**'
       reviewers:
         usernames:
           - attackonthinking
@@ -38,21 +38,21 @@ codereview:
 
     # Правило для бэкенда
     - patterns:
-        - 'backend/*'
+        - 'backend/**'
       reviewers:
         usernames: 
           - ofline96
           - maksimal4ik
           - shutovmik
           - bappyvlad
-        assign: 2 # Назначить 2 ревьюера из группы бэкенда
+        assign: 1 # Назначить 2 ревьюера из группы бэкенда
         need_ships: 1 
         ignore_self_ship: true
 
       # Правило для DevOps
     - patterns:
-        - 'infra/*'
-        - '.sourcecraft/*'
+        - 'infra/**'
+        - '.sourcecraft/**'
       reviewers:
         usernames:
           - g3rlch
