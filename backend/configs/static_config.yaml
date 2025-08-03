@@ -54,7 +54,7 @@ components_manager:
             throttling_enabled: false
             url_trailing_slash: strict-match
 
-        handler-v1-get-raw-message:       # Finally! Our handler.
-            path: /get-raw-message        # Registering handler by URL '/get-raw-message'.
+        handler-v1-classify-message:      # Finally! Our handler.
+            path: /classify-message       # Registering handler by URL '/get-raw-message'.
             method: GET,POST              # It will only reply to GET (HEAD) and POST requests.
             task_processor: main-task-processor  # Run it on CPU bound task processor

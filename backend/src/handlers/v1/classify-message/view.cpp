@@ -9,9 +9,9 @@ namespace classifier {
 
 namespace {
 
-class GetRawMessage final : public userver::server::handlers::HttpHandlerBase {
+class СlassifyMessage final : public userver::server::handlers::HttpHandlerBase {
 public:
-    static constexpr std::string_view kName = "handler-v1-get-raw-message";
+    static constexpr std::string_view kName = "handler-v1-classify-message";
 
     using HttpHandlerBase::HttpHandlerBase;
 
@@ -22,7 +22,7 @@ public:
         const auto body = request.RequestBody();
 
         const auto json = userver::formats::json::FromString(body);
-        const std::string text = json["text"].As<std::string>();
+        const std::string text = json["text"].As<std::string>() + "\n";
 
         return text;
     }
@@ -30,8 +30,8 @@ public:
 
 }  // namespace
 
-void AppendGetRawMessage(userver::components::ComponentList& component_list) {
-    component_list.Append<GetRawMessage>();
+void AppendСlassifyMessage(userver::components::ComponentList& component_list) {
+    component_list.Append<СlassifyMessage>();
 }
 
 }  // namespace classifier

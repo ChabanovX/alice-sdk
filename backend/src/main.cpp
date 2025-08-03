@@ -11,7 +11,7 @@
 
 #include <userver/utils/daemon_run.hpp>
 
-#include <handlers/v1/get-raw-message/view.hpp>
+#include "handlers/v1/classify-message/view.hpp"
 
 int main(int argc, char* argv[]) {
     auto component_list = userver::components::MinimalServerComponentList()
@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
                               .Append<userver::congestion_control::Component>()
         ;
 
-    classifier::AppendGetRawMessage(component_list);
+    classifier::AppendСlassifyMessage(component_list);
 
     return userver::utils::DaemonMain(argc, argv, component_list);
 }
