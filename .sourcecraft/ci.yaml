@@ -3,9 +3,9 @@ on:
     - workflows: [backend-tests]
       filter:
         paths: "backend/**"
-    # - workflows: [flutter-tests]
-    #   filter:
-    #     paths: "flutter/**"
+    - workflows: [flutter-tests]
+      filter:
+        paths: "flutter/**"
 
 workflows:
   backend-tests:
@@ -22,28 +22,23 @@ workflows:
               - chown 1000:1000 ./**
               - cd backend
               - sudo -u myuser make test-release
+              - make dist-clean
+              - apt update
+              - apt install -y clang-tidy
+              - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
+              - sed -i 's/-static-libasan//g' compile_commands.json
+              - clang-tidy src/*.cpp -checks=google-*,clang-analyzer-*
   
-  # flutter-tests:
-  #   tasks:
-  #     - name: flutter-tests-task
-  #       cubes:
-  #         - name: install-flutter
-  #           script:
-  #             - cd "$SOURCECRAFT_WORKSPACE"
-  #             - sudo apt-get update
-  #             - sudo apt-get install -y --no-install-recommends git wget unzip xz-utils libglu1-mesa ca-certificates
-  #             - git checkout $SOURCECRAFT_COMMIT_SHA
-  #             - FLUTTER_VERSION="3.22.0"  # Фиксируем версию для стабильности
-  #             - FLUTTER_SDK_TAR="flutter_linux_${FLUTTER_VERSION}-stable.tar.xz"
-  #             - wget "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/$FLUTTER_SDK_TAR"
-  #             - tar xf "$FLUTTER_SDK_TAR" -C "$SOURCECRAFT_WORKSPACE"
-  #             - export PATH="$SOURCECRAFT_WORKSPACE/flutter/bin:$PATH"
-  #         - name: run-tests
-  #           script:
-  #             - cd mobile
-  #             - flutter --version
-  #             - flutter doctor
-  #             - flutter pub get
-  #             - cd tests
-  #             - flutter test
-  #             - flutter test --coverage
+  flutter-tests:
+    tasks:
+      - name: flutter-tests-task
+        cubes:
+          - name: install-and-test
+            image: ghcr.io/cirruslabs/flutter:3.32.7
+            script:
+              - cd $SOURCECRAFT_WORKSPACE
+              - cd mobile
+              - flutter --version
+              - flutter pub get
+              - flutter test
+              - flutter analyze
