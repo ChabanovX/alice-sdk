@@ -23,6 +23,9 @@ add_library(
     ${PROJECT_NAME}_objs OBJECT
     src/handlers/v1/classify-message/view.cpp
     src/handlers/v1/classify-message/view.hpp
+    src/utils.cpp
+    src/utils.hpp
+    src/bridge_ai_python.cpp
 )
 target_link_libraries(
     ${PROJECT_NAME}_objs
