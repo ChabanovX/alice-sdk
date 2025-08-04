@@ -21,8 +21,7 @@ workflows:
               - useradd -u 1000 -g 1000 -m myuser
               - chown 1000:1000 ./**
               - cd backend
-              - su myuser
-              - make test-release
+              - sudo -u myuser make test-release
   
   # flutter-tests:
   #   tasks:

@@ -45,7 +45,7 @@ codereview:
           - maksimal4ik
           - shutovmik
           - bappyvlad
-        assign: 1 # Назначить 2 ревьюера из группы бэкенда
+        assign: 2 # Назначить 2 ревьюера из группы бэкенда
         need_ships: 1 
         ignore_self_ship: true
 
