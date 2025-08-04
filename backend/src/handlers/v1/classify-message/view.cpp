@@ -24,6 +24,9 @@ public:
         const auto json = userver::formats::json::FromString(body);
         const std::string text = json["text"].As<std::string>() + "\n";
 
+        auto& response = request.GetHttpResponse();
+        response.SetStatus(userver::server::http::HttpStatus::kOk);
+
         return text;
     }
 };
