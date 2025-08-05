@@ -105,15 +105,16 @@ class AliceVoiceAssistant {
     await _audioPlayer.playAudio('assets/audio/11-address.mp3');
   }
 
-  /// Plays the "home mode limit" warning
-  Future<void> playAnswerHomeModeLimit() async {
-    await _audioPlayer.playAudio('assets/audio/12-work_mode_unavailable.mp3');
-  }
-
   /// Plays the "home address missing" message
   Future<void> playAnswerHomeAddressMissing() async {
-    await _audioPlayer.playAudio('assets/audio/13-address-unavailable.mp3');
+    await _audioPlayer.playAudio('assets/audio/12-address-unavailable.mp3');
   }
+
+  /// Plays the "home mode limit" warning
+  Future<void> playAnswerHomeModeLimit() async {
+    await _audioPlayer.playAudio('assets/audio/13-work_mode_unavailable.mp3');
+  }
+
 
   /// Plays the "POI found" message
   Future<void> playAnswerPOIFound(String poi, String distance, String direction) async {
