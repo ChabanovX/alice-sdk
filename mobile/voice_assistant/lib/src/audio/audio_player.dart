@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'package:just_audio/just_audio.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../models/playback_state.dart';
@@ -12,6 +13,7 @@ class AliceAudioPlayer {
     _init();
   }
 
+  final _player = AudioPlayer();
   final _playbackStateController = BehaviorSubject<PlaybackState>.seeded(PlaybackState.initial);
   final _amplitudeController = BehaviorSubject<double>.seeded(0.0);
   Timer? _amplitudeTimer;
@@ -25,7 +27,20 @@ class AliceAudioPlayer {
       );
 
   void _init() {
- 
+    // Listen to player state changes for amplitude simulation
+    _player.playerStateStream.listen((state) {
+      if (state.processingState == ProcessingState.completed) {
+        _isSpeaking = false;
+        _amplitudeTimer?.cancel();
+        _amplitudeController.add(0.0);
+        _playbackStateController.add(
+          PlaybackState(
+            isPlaying: false,
+            amplitude: 0.0,
+          ),
+        );
+      }
+    });
   }
 
   void _startAmplitudeSimulation() {
@@ -54,6 +69,41 @@ class AliceAudioPlayer {
     );
   }
 
+  /// Plays an audio file from assets
+  Future<void> playAudio(String assetPath) async {
+    try {
+      _isSpeaking = true;
+      _playbackStateController.add(
+        PlaybackState(
+          isPlaying: true,
+          amplitude: _amplitudeController.value,
+        ),
+      );
+      
+      _startAmplitudeSimulation();
+      
+      await _player.setAsset(assetPath);
+      await _player.play();
+      
+      // Wait for completion
+      await _player.playerStateStream.firstWhere(
+        (state) => state.processingState == ProcessingState.completed
+      );
+      
+    } catch (e) {
+      _isSpeaking = false;
+      _amplitudeTimer?.cancel();
+      _amplitudeController.add(0.0);
+      _playbackStateController.add(
+        PlaybackState(
+          isPlaying: false,
+          amplitude: 0.0,
+          error: 'Audio playback error: $e',
+        ),
+      );
+    }
+  }
+
   void setTTSSpeaking(bool isSpeaking) {
     _isSpeaking = isSpeaking;
     _playbackStateController.add(
@@ -71,6 +121,7 @@ class AliceAudioPlayer {
   /// Releases resources
   Future<void> dispose() async {
     _amplitudeTimer?.cancel();
+    await _player.dispose();
     await _playbackStateController.close();
     await _amplitudeController.close();
   }

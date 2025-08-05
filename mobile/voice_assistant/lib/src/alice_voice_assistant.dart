@@ -52,88 +52,103 @@ class AliceVoiceAssistant {
 
   /// Plays the "increased demand" message
   Future<void> playAnswerIncreasedDemand(double coefficient) async {
-    await _tts.speak('Повышенный спрос, стоимость заказа увеличена в $coefficient раз');
+    await _audioPlayer.playAudio('assets/audio/1-high_demand.mp3');
   }
 
   /// Plays the "passenger message" with the given text
   Future<void> playAnswerPassengerMessage(String message) async {
-    await _tts.speak('Пассажир написал: $message');
+    await _audioPlayer.playAudio('assets/audio/2-passanger_message.mp3');
   }
 
   /// Plays the "ride wishes" message
   Future<void> playAnswerRideWishes(String wishes) async {
-    await _tts.speak('Пожелания к поездке: $wishes');
+    await _audioPlayer.playAudio('assets/audio/3-wish.mp3');
   }
 
   /// Plays the "no parking" warning message
   Future<void> playAnswerNoParkingWarning() async {
-    await _tts.speak('Внимание, остановка запрещена. Камера. У вас 10 секунд, чтобы покинуть зону');
+    await _audioPlayer.playAudio('assets/audio/4-warning.mp3');
   }
 
   /// Plays the "message sent" confirmation
   Future<void> playAnswerMessageSent() async {
-    await _tts.speak('Сообщение отправлено');
+    await _audioPlayer.playAudio('assets/audio/5-message_sent.mp3');
   }
 
   /// Plays the "connecting to passenger" message
   Future<void> playAnswerConnectingToPassenger() async {
-    await _tts.speak('Соединяю с пассажиром');
+    await _audioPlayer.playAudio('assets/audio/6-connect.mp3');
   }
 
   /// Plays the "route built" message with time and distance
   Future<void> playAnswerRouteBuilt(String time, String distance) async {
-    await _tts.speak('Маршрут построен. Время в пути $time, расстояние $distance');
+    await _audioPlayer.playAudio('assets/audio/7-path_made.mp3');
   }
 
   /// Plays the "route rejected" message
   Future<void> playAnswerRouteRejected() async {
-    await _tts.speak('Маршрут отклонён. Выберите другой вариант или постройте новый');
+    await _audioPlayer.playAudio('assets/audio/8-path_declined .mp3');
   }
 
   /// Plays the "business mode activated" message with commission
   Future<void> playAnswerBusinessModeActivated(String commission) async {
-    await _tts.speak('Режим "По делам" включён. Дополнительная комиссия $commission рублей за заказ');
+    await _audioPlayer.playAudio('assets/audio/9-work_mode.mp3');
   }
 
   /// Plays the "searching orders" message with destination
   Future<void> playAnswerSearchingOrders(String destination) async {
-    await _tts.speak('Ищу попутные заказы по пути на $destination');
+    await _audioPlayer.playAudio('assets/audio/10-available_paths.mp3');
   }
 
   /// Plays the "going home" message with address
   Future<void> playAnswerGoingHome(String address) async {
-    await _tts.speak('Едем домой: $address. Буду подбирать заказы по пути');
+    await _audioPlayer.playAudio('assets/audio/11-address.mp3');
   }
 
   /// Plays the "home mode limit" warning
   Future<void> playAnswerHomeModeLimit() async {
-    await _tts.speak('Вы уже активировали режим "Домой" дважды сегодня. Повторное использование недоступно');
+    await _audioPlayer.playAudio('assets/audio/12-work_mode_unavailable.mp3');
   }
 
   /// Plays the "home address missing" message
   Future<void> playAnswerHomeAddressMissing() async {
-    await _tts.speak('Адрес дома не указан. Назовите адрес, чтобы сохранить его');
+    await _audioPlayer.playAudio('assets/audio/13-address-unavailable.mp3');
   }
 
   /// Plays the "POI found" message
   Future<void> playAnswerPOIFound(String poi, String distance, String direction) async {
-    await _tts.speak('$poi через $distance по $direction. Добавляю в маршрут?');
+    await _audioPlayer.playAudio('assets/audio/14-fuel-station.mp3');
   }
 
   /// Plays the "tariff changed" message
   Future<void> playAnswerTariffChanged(String tariff, bool isEnabled, List<String> availableTariffs) async {
-    final status = isEnabled ? 'включён' : 'отключён';
-    await _tts.speak('Тариф "$tariff" $status. Доступные тарифы: ${availableTariffs.join(", ")}');
+    await _audioPlayer.playAudio('assets/audio/15-available_tariffs.mp3');
   }
 
   /// Plays the "command not recognized" message
   Future<void> playAnswerCommandNotRecognized() async {
-    await _tts.speak('Извините, не расслышала. Повторите команду');
+    await _audioPlayer.playAudio('assets/audio/16-error.mp3');
+  }
+
+  /// Plays the "order cancelled" message
+  Future<void> playAnswerOrderCancelled() async {
+    await _audioPlayer.playAudio('assets/audio/17-order_declined.mp3');
+  }
+
+  /// Plays the "order completed" message
+  Future<void> playAnswerOrderCompleted() async {
+    await _audioPlayer.playAudio('assets/audio/18-order_finished.mp3');
+  }
+
+  /// Plays the "new order" message
+  Future<void> playAnswerNewOrder() async {
+    await _audioPlayer.playAudio('assets/audio/19-new_order.mp3');
   }
 
   /// Stops all playback
   Future<void> stop() async {
     await _tts.stop();
+    await _audioPlayer.dispose();
   }
 
   /// Releases resources
