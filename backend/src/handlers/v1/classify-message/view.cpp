@@ -21,11 +21,21 @@ public:
     ) const override {
         const auto body = request.RequestBody();
 
-        const auto json = userver::formats::json::FromString(body);
-        const std::string text = json["text"].As<std::string>() + "\n";
+        if (request.RequestBody().empty()) {
+            auto& response = request.GetHttpResponse();
+            response.SetStatus(userver::server::http::HttpStatus::kBadRequest);
+            return "Request body is empty!";
+        }
 
-        auto& response = request.GetHttpResponse();
-        response.SetStatus(userver::server::http::HttpStatus::kOk);
+        const auto json = userver::formats::json::FromString(body);
+
+        if (!json.HasMember("text")) {
+            auto& response = request.GetHttpResponse();
+            response.SetStatus(userver::server::http::HttpStatus::kBadRequest);
+            return "No member text in json!";
+        }
+
+        const std::string text = json["text"].As<std::string>();
 
         return text;
     }

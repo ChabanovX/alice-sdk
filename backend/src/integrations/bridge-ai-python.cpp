@@ -1,8 +1,5 @@
-#include "utils.hpp"
-
-#include <userver/components/component_context.hpp>
-
-#include <string>
+#include "utils/send-request.hpp"
+#include "bridge-ai-python.hpp"
 
 std::string СlassifyMessageWithAI(const userver::components::ComponentContext& component_context,const std::string& raw_text){
     const std::string env_name_api = "CLASSIFIER_AI_API_URL";

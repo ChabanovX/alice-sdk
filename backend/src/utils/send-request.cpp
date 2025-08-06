@@ -1,10 +1,8 @@
-#include "utils.hpp"
+#include "utils/send-request.hpp"
 
-#include <userver/components/component_context.hpp>
 #include <userver/clients/http/component.hpp>
 #include <userver/clients/http/client.hpp>
 
-#include <string>
 #include <cstdlib>
 #include <stdexcept>
 
