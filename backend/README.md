@@ -1,37 +1,64 @@
 # classifier_service
 
-Template of a C++ service that uses [userver framework](https://github.com/userver-framework/userver).
+## Описание приложения
 
+На данный момент сервис имеет одну единственную ручку `/classify-message` в которую дается текст из голосового сообщения, а на выход выдается обработанный текст.
 
-## Download and Build
+Пример команды:
 
-To create your own userver-based service follow the following steps:
+```bash
+curl -i \
+-X POST "http://localhost:8080/classify-message" \
+-d '{"text": "О здарова братик, ты что тоже здесь"}'
+```
 
-1. Press the "Use this template button" at the top right of this GitHub page
-2. Clone the service `git clone your-service-repo && cd your-service-repo && git submodule update --init`
-3. Give a proper name to your service and replace all the occurrences of "classifier_service" string with that name
-4. Feel free to tweak, adjust or fully rewrite the source code of your service.
+## Работа с приложением
 
+### Требования
 
-## Makefile
+Необходимо, чтобы были установлены следующие компоненты: 
 
-`PRESET` is either `debug`, `release`, or if you've added custom presets in `CMakeUserPresets.json`, it
-can also be `debug-custom`, `release-custom`.
+- **Docker**
+- VSCode Dev Containers Extension (если собираетесь работать с дев. контейнерами)
 
-* `make cmake-PRESET` - run cmake configure, update cmake options and source file lists
-* `make build-PRESET` - build the service
-* `make test-PRESET` - build the service and run all tests
-* `make start-PRESET` - build the service, start it in testsuite environment and leave it running
-* `make install-PRESET` - build the service and install it in directory set in environment `PREFIX`
-* `make` or `make all` - build and run all tests in `debug` and `release` modes
-* `make format` - reformat all C++ and Python sources
-* `make dist-clean` - clean build files and cmake cache
-* `make docker-COMMAND` - run `make COMMAND` in docker environment
-* `make docker-clean-data` - stop docker containers
+### Сборка
 
+Запуск сборки из дев. контейнера(рекомендуется):
 
-## License
+```bash
+make build-release
+```
 
-The original template is distributed under the [Apache-2.0 License](https://github.com/userver-framework/userver/blob/develop/LICENSE)
-and [CLA](https://github.com/userver-framework/userver/blob/develop/CONTRIBUTING.md). Services based on the template may change
-the license and CLA.
+Запуск сборки via Docker:
+
+```bash
+make docker-build-release
+```
+
+### Запуск сервиса
+
+Запуск сервиса из дев. контейнера(рекомендуется):
+
+```bash
+make start-release
+```
+
+Запуск сервиса via Docker:
+
+```bash
+make docker-start-release
+```
+
+### Тестирование
+
+Запуск тестов из дев. контейнера(рекомендуется):
+
+```bash
+make test-release
+```
+
+Запуск тестов via Docker:
+
+```bash
+make docker-test-release
+```
