@@ -2,10 +2,12 @@ on:
   pull_request: 
     - workflows: [backend-tests]
       filter:
+        target_branches: "main"
         paths: "backend/**"
     - workflows: [flutter-tests]
       filter:
         paths: "mobile/**"
+        target_branches: "main"
 
 workflows:
   backend-tests:
