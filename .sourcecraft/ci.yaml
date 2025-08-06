@@ -5,7 +5,7 @@ on:
         paths: "backend/**"
     - workflows: [flutter-tests]
       filter:
-        paths: "flutter/**"
+        paths: "mobile/**"
 
 workflows:
   backend-tests:
@@ -15,19 +15,25 @@ workflows:
           - name: build-and-test
             image: ghcr.io/userver-framework/ubuntu-22.04-userver:latest
             script:
-              - cd $SOURCECRAFT_WORKSPACE
-              - git checkout $SOURCECRAFT_COMMIT_SHA
-              - groupadd -g 1000 myuser
-              - useradd -u 1000 -g 1000 -m myuser
-              - chown 1000:1000 ./**
-              - cd backend
-              - sudo -u myuser make test-release
-              - make dist-clean
-              - apt update
-              - apt install -y clang-tidy
-              - cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
-              - sed -i 's/-static-libasan//g' compile_commands.json
-              - clang-tidy src/*.cpp -checks=google-*,clang-analyzer-*
+              - |
+                apt update && apt install -y clang-tidy gcovr
+                groupadd -g 1000 myuser && useradd -u 1000 -g 1000 -m myuser && chown 1000:1000 ./**
+                cd backend
+                sed -i 's/^CMAKE_OPTS ?=\(.*\)/CMAKE_OPTS ?=\1 -DCMAKE_CXX_FLAGS="--coverage"/' ./Makefile
+                sed -i 's/^CMAKE_OPTS ?=\(.*\)/CMAKE_OPTS ?=\1 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON/' ./Makefile
+                echo "---------------START TESTS-----------------"
+                sudo -u myuser make test-release
+                mkdir coverage && cd coverage
+                echo "---------------START COVERAGE-----------------"
+                gcovr -r .. --html-details --filter ".*/src/.*" -o coverage.html
+                cd .. && tar -czvf coverage.tar.gz coverage
+                cp build-release/compile_commands.json .
+                sed -i 's/-static-libasan//g' compile_commands.json
+                echo "---------------START CLANG-TIDY-----------------"
+                clang-tidy src/*.cpp -checks=google-*,clang-analyzer-*
+            artifacts:
+              paths:
+                - ./backend/coverage.tar.gz
   
   flutter-tests:
     tasks:
@@ -36,9 +42,13 @@ workflows:
           - name: install-and-test
             image: ghcr.io/cirruslabs/flutter:3.32.7
             script:
-              - cd $SOURCECRAFT_WORKSPACE
-              - cd mobile
-              - flutter --version
-              - flutter pub get
-              - flutter test
-              - flutter analyze
+              - |
+                cd mobile
+                flutter pub get
+                flutter test --coverage
+                flutter analyze
+                genhtml coverage/lcov.info -o coverage/html
+                tar -czvf coverage.tar.gz coverage
+            artifacts:
+              paths:
+                - ./mobile/coverage.tar.gz
