@@ -10,15 +10,13 @@ namespace classifier {
 namespace {
 
 class СlassifyMessage final : public userver::server::handlers::HttpHandlerBase {
-public:
+   public:
     static constexpr std::string_view kName = "handler-v1-classify-message";
 
     using HttpHandlerBase::HttpHandlerBase;
 
-    std::string HandleRequestThrow(
-        const userver::server::http::HttpRequest& request,
-        userver::server::request::RequestContext&
-    ) const override {
+    std::string HandleRequestThrow(const userver::server::http::HttpRequest& request,
+                                   userver::server::request::RequestContext&) const override {
         const auto body = request.RequestBody();
 
         if (request.RequestBody().empty()) {

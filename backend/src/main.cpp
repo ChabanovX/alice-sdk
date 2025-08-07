@@ -8,7 +8,6 @@
 #include <userver/server/handlers/tests_control.hpp>
 #include <userver/testsuite/testsuite_support.hpp>
 
-
 #include <userver/utils/daemon_run.hpp>
 
 #include "handlers/v1/classify-message/view.hpp"
@@ -20,8 +19,7 @@ int main(int argc, char* argv[]) {
                               .Append<userver::components::HttpClient>()
                               .Append<userver::clients::dns::Component>()
                               .Append<userver::server::handlers::TestsControl>()
-                              .Append<userver::congestion_control::Component>()
-        ;
+                              .Append<userver::congestion_control::Component>();
 
     classifier::AppendСlassifyMessage(component_list);
 
