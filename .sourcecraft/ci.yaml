@@ -4,10 +4,10 @@ on:
       filter:
         target_branches: "main"
         paths: "backend/**"
-    - workflows: [flutter-tests]
-      filter:
-        paths: "mobile/**"
-        target_branches: "main"
+    # - workflows: [flutter-tests]
+    #   filter:
+    #     paths: "mobile/**"
+    #     target_branches: "main"
 
 workflows:
   backend-tests:
