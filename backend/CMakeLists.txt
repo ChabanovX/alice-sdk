@@ -21,10 +21,15 @@ include_directories(src)
 
 add_library(
     ${PROJECT_NAME}_objs OBJECT
+
     src/handlers/v1/classify-message/view.cpp
     src/handlers/v1/classify-message/view.hpp
+
     src/utils/send-request.hpp
     src/utils/send-request.cpp
+    src/utils/getenv.hpp
+    src/utils/getenv.cpp
+
     src/integrations/bridge-ai-python.hpp
     src/integrations/bridge-ai-python.cpp
 )

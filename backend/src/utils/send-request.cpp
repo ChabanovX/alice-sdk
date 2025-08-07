@@ -23,10 +23,3 @@ std::string SendHttpRequest(const userver::components::ComponentContext& compone
 
     return std::move(*response).body();
 }
-
-const char* getenvWithError(const char* key) noexcept(false) {
-    const char* value = std::getenv(key);
-    if (value == nullptr)
-        throw std::runtime_error(std::string(std::string("Environmental variable ") + key + " is not set."));
-    return value;
-}

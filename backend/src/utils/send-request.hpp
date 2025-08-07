@@ -6,5 +6,3 @@
 std::string SendHttpRequest(const userver::components::ComponentContext& component_context,
                             const char* url,
                             const std::string& body);
-
-const char* getenvWithError(const char* key) noexcept(false);
