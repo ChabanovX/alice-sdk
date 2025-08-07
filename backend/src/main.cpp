@@ -13,6 +13,8 @@
 #include "handlers/v1/classify-message/view.hpp"
 
 int main(int argc, char* argv[]) {
+    using namespace voice_assistant;
+
     auto component_list = userver::components::MinimalServerComponentList()
                               .Append<userver::server::handlers::Ping>()
                               .Append<userver::components::TestsuiteSupport>()

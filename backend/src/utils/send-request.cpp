@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <stdexcept>
 
+namespace voice_assistant::utils {
+
 std::string SendHttpRequest(const userver::components::ComponentContext& component_context,
                             const char* url,
                             const std::string& body) {
@@ -23,3 +25,5 @@ std::string SendHttpRequest(const userver::components::ComponentContext& compone
 
     return std::move(*response).body();
 }
+
+}  // namespace voice_assistant::utils
