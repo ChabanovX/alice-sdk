@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:alice_voice_assistant/alice_voice_assistant.dart';
+import 'package:alice_voice_assistant/alice_voice_player.dart';
 
 import 'widgets/alice_animated_logo_test.dart' as widget_tests;
 

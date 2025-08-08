@@ -6,7 +6,7 @@
 ```yaml
 dependencies:
   alice_voice_assistant:
-    path: path/to/alice_voice_assistant
+    path: path/to/alice_voice_player
 ```
 
 ### 2. Добавьте аудио файлы
@@ -22,7 +22,7 @@ flutter:
 ### 3. Базовое использование
 
 ```dart
-import 'package:alice_voice_assistant/alice_voice_assistant.dart';
+import 'package:alice_voice_player/alice_voice_player.dart';
 
 // Воспроизведение аудио
 final alice = AliceVoiceAssistant();
@@ -33,7 +33,7 @@ await alice.playAudio('assets/audio/message.mp3');
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:alice_voice_assistant/alice_voice_assistant.dart';
+import 'package:alice_voice_assistant/alice_voice_player.dart';
 
 class MyApp extends StatelessWidget {
   @override

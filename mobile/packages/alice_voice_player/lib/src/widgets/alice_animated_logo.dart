@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../alice_voice_assistant.dart';
+import '../alice_voice_player.dart';
 import '../models/playback_state.dart';
 
 /// An animated logo widget that responds to Alice Voice Assistant playback state

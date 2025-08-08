@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:alice_voice_assistant/alice_voice_assistant.dart';
+import 'package:alice_voice_assistant/alice_voice_player.dart';
 
 void main() {
   group('AliceAnimatedLogo Widget Tests', () {
