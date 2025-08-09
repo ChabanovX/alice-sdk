@@ -4,6 +4,6 @@
 
 namespace voice_assistant::classifier {
 
-void AppendСlassifyMessage(userver::components::ComponentList& component_list);
+void AppendClassifyMessage(userver::components::ComponentList& component_list);
 
 }  // namespace voice_assistant::classifier

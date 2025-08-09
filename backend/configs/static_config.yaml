@@ -1,3 +1,5 @@
+config_vars: /home/user/classifier_service/configs/config_vars.yaml
+
 components_manager:
     task_processors:                  # Task processor is an executor for coroutine tasks
 
@@ -32,11 +34,15 @@ components_manager:
 
         testsuite-support: {}
 
-        congestion-control:
-
         http-client:
-            load-enabled: $is_testing
+            pool-statistics-disable: false
+            thread-name-prefix: http-client
+            threads: 2
             fs-task-processor: fs-task-processor
+            destination-metrics-auto-max-size: 100
+            user-agent: common_component_list sample
+            testsuite-enabled: true
+            testsuite-timeout: 5s
 
         dns-client:
             fs-task-processor: fs-task-processor
@@ -46,6 +52,9 @@ components_manager:
             path: /tests/{action}
             method: POST
             task_processor: main-task-processor
+
+        analytics-client:
+            analytics-url: $analytics-url
 
         handler-ping:
             path: /ping
