@@ -22,9 +22,13 @@ class MainApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
         body: Center(
-          child: Transform.scale(
-            scale: 3.0,
-            child: const PassengerStopWidget1(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Transform.scale(scale: 2.0, child: const PassengerStopWidget1()),
+              const SizedBox(height: 100),
+              Transform.scale(scale: 2.0, child: const PassengerStopWidget2()),
+            ],
           ),
         ),
       ),
