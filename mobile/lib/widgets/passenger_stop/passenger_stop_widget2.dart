@@ -4,7 +4,17 @@ import '../../theme.dart';
 
 /// Виджет остановки пассажира с желтым фоном и информацией об остановке
 class PassengerStopWidget2 extends StatelessWidget {
-  const PassengerStopWidget2({super.key});
+  const PassengerStopWidget2({
+    super.key,
+    required this.pointAdress,
+    required this.timeOfSubmission,
+  });
+
+  /// Адрес остановки
+  final String pointAdress;
+
+  /// Время подачи транспорта
+  final String timeOfSubmission;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +64,7 @@ class PassengerStopWidget2 extends StatelessWidget {
                       children: [
                         // Адрес жирным шрифтом
                         Text(
-                          'Льва Толстого, 16',
+                          pointAdress,
                           style: theme.textTheme.bodySmall?.copyWith(
                             fontWeight: FontWeight.w700,
                             color: theme.colorScheme.onSurface,
@@ -62,7 +72,7 @@ class PassengerStopWidget2 extends StatelessWidget {
                         ),
                         // Время подачи обычным шрифтом
                         Text(
-                          'Подача от 7 мин',
+                          "Подача от $timeOfSubmission",
                           style: theme.textTheme.bodySmall?.copyWith(
                             color: theme.colorScheme.onSurface,
                           ),

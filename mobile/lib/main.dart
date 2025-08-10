@@ -27,7 +27,13 @@ class MainApp extends StatelessWidget {
             children: [
               Transform.scale(scale: 2.0, child: const PassengerStopWidget1()),
               const SizedBox(height: 100),
-              Transform.scale(scale: 2.0, child: const PassengerStopWidget2()),
+              Transform.scale(
+                scale: 2.0,
+                child: const PassengerStopWidget2(
+                  pointAdress: 'Льва Толстого, 16',
+                  timeOfSubmission: '7 мин',
+                ),
+              ),
             ],
           ),
         ),
