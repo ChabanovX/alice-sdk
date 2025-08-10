@@ -1,7 +1,7 @@
 #pragma once
 
 enum class TypeRequest{
-    ACCESS_ORDER,
+    ACCEPT_ORDER,
     CANCEL_ORDER,
     VOICE_MESSAGE,
     VOICE_WISH,

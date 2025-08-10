@@ -43,12 +43,8 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
             auto cluster_body = analytics_client_.SendHttpRequest(body);
 
             const auto out_json = userver::formats::json::FromString(cluster_body);
-            if (!out_json.HasMember("text")) {
-                response.SetStatus(userver::server::http::HttpStatus::kBadGateway);
-                return "Cluster response missing 'text'";
-            }
 
-            return out_json["text"].As<std::string>();
+            return cluster_body;
         } catch (const std::exception& e) {
             response.SetStatus(userver::server::http::HttpStatus::kBadGateway);
             return std::string("Cluster service error: ") + e.what();
