@@ -1,4 +1,4 @@
-config_vars: /home/user/classifier_service/configs/config_vars.yaml
+config_vars: configs/config_vars.yaml
 
 components_manager:
     task_processors:                  # Task processor is an executor for coroutine tasks

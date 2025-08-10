@@ -62,3 +62,10 @@ make test-release
 ```bash
 make docker-test-release
 ```
+
+#### Продакшн
+
+```bash
+docker build -t classifier_service_dev -f Dockerfile .
+docker run -p 8080:8080 -it classifier_service_dev
+```
