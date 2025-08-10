@@ -39,6 +39,11 @@ class PassengerStopWidget3 extends StatelessWidget {
                   offset: Offset.zero,
                   blurRadius: 10,
                 ),
+                BoxShadow(
+                  color: theme.colorScheme.shadow,
+                  offset: Offset(0, 8),
+                  blurRadius: 20,
+                ),
               ],
             ),
             child: Container(
