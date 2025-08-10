@@ -16,6 +16,13 @@ class ControlOfflineWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: colorScheme.surface,
         shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: theme.colorScheme.shadow,
+            offset: Offset(0, 8),
+            blurRadius: 20,
+          ),
+        ],
       ),
       child: Center(
         child: Container(

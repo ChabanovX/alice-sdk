@@ -25,7 +25,10 @@ class MainApp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Transform.scale(scale: 4.0, child: const ControlOnlineWidget()),
+              Transform.scale(
+                scale: 4.0,
+                child: const ControlOnlineWidget(employment: 52),
+              ),
             ],
           ),
         ),
