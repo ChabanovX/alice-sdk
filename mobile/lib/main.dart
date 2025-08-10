@@ -25,7 +25,7 @@ class MainApp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Transform.scale(scale: 5.0, child: const ControlOfflineWidget()),
+              Transform.scale(scale: 4.0, child: const ControlOnlineWidget()),
             ],
           ),
         ),
