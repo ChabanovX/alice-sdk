@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../theme.dart';
 
 /// Виджет остановки пассажира с желтым фоном и иконкой человека
 class PassengerStopWidget1 extends StatelessWidget {
@@ -7,6 +8,9 @@ class PassengerStopWidget1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
+    final theme = Theme.of(context);
+
     return Container(
       width: 48,
       height: 72,
@@ -20,7 +24,7 @@ class PassengerStopWidget1 extends StatelessWidget {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.15),
+                  color: theme.colorScheme.shadow,
                   offset: Offset.zero,
                   blurRadius: 10,
                 ),
@@ -28,13 +32,13 @@ class PassengerStopWidget1 extends StatelessWidget {
             ),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: theme.colorScheme.surface,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Container(
                 margin: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFCE000),
+                  color: colors.controlMain,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Center(
@@ -55,7 +59,7 @@ class PassengerStopWidget1 extends StatelessWidget {
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.2),
+                    color: theme.colorScheme.shadow,
                     offset: const Offset(0, 8),
                     blurRadius: 10,
                   ),
@@ -63,7 +67,7 @@ class PassengerStopWidget1 extends StatelessWidget {
               ),
               child: CustomPaint(
                 size: const Size(24, 8),
-                painter: _TailPainter(),
+                painter: _TailPainter(color: theme.colorScheme.surface),
               ),
             ),
           ),
@@ -75,13 +79,13 @@ class PassengerStopWidget1 extends StatelessWidget {
               width: 14,
               height: 14,
               decoration: BoxDecoration(
-                color: const Color(0xFF21201F),
+                color: colors.text,
                 shape: BoxShape.circle,
               ),
               child: Container(
                 margin: const EdgeInsets.all(3),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface,
                   shape: BoxShape.circle,
                 ),
               ),
@@ -95,10 +99,14 @@ class PassengerStopWidget1 extends StatelessWidget {
 
 /// Painter для создания треугольного хвоста указателя с вогнутыми сторонами
 class _TailPainter extends CustomPainter {
+  const _TailPainter({required this.color});
+
+  final Color color;
+
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()
-      ..color = Colors.white
+      ..color = color
       ..style = PaintingStyle.fill;
     final Path path = Path();
     path.moveTo(0, 0);

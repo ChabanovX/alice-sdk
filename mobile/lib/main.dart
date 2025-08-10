@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widgets/widgets.dart';
+import 'theme.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,6 +12,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: lightTheme,
+      themeMode: ThemeMode.system,
       home: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
