@@ -17,7 +17,7 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
-          title: const Text('Passenger Stop Widget Demo'),
+          title: const Text('Widgets Demo'),
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
         ),
@@ -25,23 +25,7 @@ class MainApp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Transform.scale(scale: 1.0, child: const PassengerStopWidget1()),
-              const SizedBox(height: 50),
-              Transform.scale(
-                scale: 1.0,
-                child: const PassengerStopWidget2(
-                  pointAdress: 'Льва Толстого, 16',
-                  timeOfSubmission: '7 мин',
-                ),
-              ),
-              const SizedBox(height: 100),
-              Transform.scale(
-                scale: 2.0,
-                child: const PassengerStopWidget3(
-                  pointDistance: '1,2 км',
-                  timeOnWay: '5 мин',
-                ),
-              ),
+              Transform.scale(scale: 5.0, child: const ControlOfflineWidget()),
             ],
           ),
         ),
