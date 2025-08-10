@@ -26,11 +26,8 @@ class MainApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Transform.scale(
-                scale: 4.0,
-                child: const CurrentSpeedLimitWidget(
-                  currentSpeedLimit: 60,
-                  isShown: true, // Можно изменить на false для скрытия
-                ),
+                scale: 2.0,
+                child: const TurnWithDistanceWidget(turnDistance: 100),
               ),
             ],
           ),
