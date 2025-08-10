@@ -44,8 +44,8 @@ class PassengerStopWidget1 extends StatelessWidget {
                 child: Center(
                   child: SvgPicture.asset(
                     'assets/icons/passenger_stop_yellow_back.svg',
-                    width: 32,
-                    height: 32,
+                    width: 40,
+                    height: 40,
                   ),
                 ),
               ),
@@ -112,12 +112,12 @@ class _TailPainter extends CustomPainter {
     path.moveTo(0, 0);
     path.lineTo(size.width, 0);
     path.quadraticBezierTo(
-      size.width * 0.75,
-      size.height * 0.3,
+      size.width * 0.6,
+      size.height * 0.1,
       size.width / 2,
       size.height,
     );
-    path.quadraticBezierTo(size.width * 0.25, size.height * 0.3, 0, 0);
+    path.quadraticBezierTo(size.width * 0.4, size.height * 0.1, 0, 0);
     path.close();
     canvas.drawPath(path, paint);
   }
