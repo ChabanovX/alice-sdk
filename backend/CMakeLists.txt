@@ -25,13 +25,8 @@ add_library(
     src/handlers/v1/classify-message/view.cpp
     src/handlers/v1/classify-message/view.hpp
 
-    src/utils/send-request.hpp
-    src/utils/send-request.cpp
-    src/utils/getenv.hpp
-    src/utils/getenv.cpp
-
-    src/integrations/bridge-ai-python.hpp
-    src/integrations/bridge-ai-python.cpp
+    src/integrations/analytics-service/analytics-client.hpp
+    src/integrations/analytics-service/analytics-client.cpp
 )
 target_link_libraries(
     ${PROJECT_NAME}_objs
@@ -49,7 +44,18 @@ target_link_libraries(${PROJECT_NAME}_unittest PRIVATE ${PROJECT_NAME}_objs user
 add_google_tests(${PROJECT_NAME}_unittest)
 
 # Functional testing
-userver_testsuite_add_simple()
+userver_testsuite_add(
+    SERVICE_TARGET
+    ${PROJECT_NAME}
+    WORKING_DIRECTORY
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests
+    PYTHON_BINARY
+    ${TESTSUITE_PYTHON_BINARY}
+    PYTEST_ARGS
+    --service-config=${CMAKE_CURRENT_SOURCE_DIR}/configs/static_config.yaml
+    --service-binary=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}
+    --service-config-vars=${CMAKE_CURRENT_SOURCE_DIR}/configs/config_vars.testing.yaml
+)
 
 # Install
 include(GNUInstallDirs)
