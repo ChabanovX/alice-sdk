@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
             children: [
               Transform.scale(
                 scale: 4.0,
-                child: const ControlOnlineWidget(employment: 52),
+                child: const CurrentSpeedWidget(currentSpeed: 56),
               ),
             ],
           ),
