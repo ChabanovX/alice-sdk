@@ -27,7 +27,10 @@ class MainApp extends StatelessWidget {
             children: [
               Transform.scale(
                 scale: 4.0,
-                child: const CurrentSpeedWidget(currentSpeed: 56),
+                child: const CurrentSpeedLimitWidget(
+                  currentSpeedLimit: 60,
+                  isShown: true, // Можно изменить на false для скрытия
+                ),
               ),
             ],
           ),

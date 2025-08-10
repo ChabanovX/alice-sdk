@@ -5,3 +5,4 @@ export 'passenger_stop/passenger_stop_widget3.dart';
 export 'control/control_offline_widget.dart';
 export 'control/control_online_widget.dart';
 export 'speed/current_speed_widget.dart';
+export 'speed/current_speed_limit_widget.dart';
