@@ -20,12 +20,25 @@ class SlideActionButton extends StatefulWidget {
   /// Callback вызывается при завершении слайда
   final VoidCallback? onSlideComplete;
 
+  /// Сбрасывает виджет в дефолтное состояние
+  static void reset(GlobalKey key) {
+    final state = key.currentState;
+    if (state is _SlideActionButtonState) {
+      state.reset();
+    }
+  }
+
   @override
   State<SlideActionButton> createState() => _SlideActionButtonState();
 }
 
+/// Mixin для добавления функциональности сброса
+mixin ResetMixin<T extends StatefulWidget> on State<T> {
+  void reset();
+}
+
 class _SlideActionButtonState extends State<SlideActionButton>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, ResetMixin {
   SlideActionState _currentState = SlideActionState.defaultState;
   late AnimationController _animationController;
   late AnimationController _stretchController;
@@ -73,7 +86,21 @@ class _SlideActionButtonState extends State<SlideActionButton>
     super.dispose();
   }
 
+  /// Сбрасывает виджет в дефолтное состояние
+  void reset() {
+    setState(() {
+      _currentState = SlideActionState.defaultState;
+      _dragDistance = 0.0;
+      _isDragging = false;
+    });
+    _animationController.reset();
+    _stretchController.reset();
+  }
+
   void _handleTapDown(TapDownDetails details) {
+    // Если виджет заблокирован в состоянии 3, ничего не делаем
+    if (_currentState == SlideActionState.stretchedState) return;
+
     setState(() {
       _currentState = SlideActionState.pressedState;
     });
@@ -81,6 +108,9 @@ class _SlideActionButtonState extends State<SlideActionButton>
   }
 
   void _handleTapUp(TapUpDetails details) {
+    // Если виджет заблокирован в состоянии 3, ничего не делаем
+    if (_currentState == SlideActionState.stretchedState) return;
+
     if (_currentState == SlideActionState.pressedState) {
       setState(() {
         _currentState = SlideActionState.defaultState;
@@ -90,6 +120,9 @@ class _SlideActionButtonState extends State<SlideActionButton>
   }
 
   void _handleTapCancel() {
+    // Если виджет заблокирован в состоянии 3, ничего не делаем
+    if (_currentState == SlideActionState.stretchedState) return;
+
     if (_currentState == SlideActionState.pressedState) {
       setState(() {
         _currentState = SlideActionState.defaultState;
@@ -99,6 +132,9 @@ class _SlideActionButtonState extends State<SlideActionButton>
   }
 
   void _handlePanStart(DragStartDetails details) {
+    // Если виджет заблокирован в состоянии 3, ничего не делаем
+    if (_currentState == SlideActionState.stretchedState) return;
+
     setState(() {
       _isDragging = true;
       _currentState = SlideActionState.pressedState;
@@ -109,6 +145,8 @@ class _SlideActionButtonState extends State<SlideActionButton>
   }
 
   void _handlePanUpdate(DragUpdateDetails details) {
+    // Если виджет заблокирован в состоянии 3, ничего не делаем
+    if (_currentState == SlideActionState.stretchedState) return;
     if (!_isDragging) return;
 
     // Вычисляем расстояние только по горизонтали от начальной позиции
@@ -135,6 +173,8 @@ class _SlideActionButtonState extends State<SlideActionButton>
   }
 
   void _handlePanEnd(DragEndDetails details) {
+    // Если виджет заблокирован в состоянии 3, ничего не делаем
+    if (_currentState == SlideActionState.stretchedState) return;
     if (!_isDragging) return;
 
     setState(() {
@@ -142,10 +182,10 @@ class _SlideActionButtonState extends State<SlideActionButton>
     });
 
     if (_currentState == SlideActionState.stretchedState) {
-      // Остаемся в растянутом состоянии
+      // Остаемся в растянутом состоянии - виджет заблокирован
       widget.onSlideComplete?.call();
     } else {
-      // Возвращаемся в дефолтное состояние
+      // Возвращаемся в дефолтное состояние только если не достигли состояния 3
       setState(() {
         _currentState = SlideActionState.defaultState;
         _dragDistance = 0.0;
@@ -200,14 +240,9 @@ class _SlideActionButtonState extends State<SlideActionButton>
                 borderRadius: BorderRadius.circular(_defaultSize / 2),
                 boxShadow: [
                   BoxShadow(
-                    color: colors.shadow.withOpacity(0.2),
-                    offset: const Offset(0, 4),
-                    blurRadius: 8,
-                  ),
-                  BoxShadow(
-                    color: colors.shadow.withOpacity(0.1),
-                    offset: const Offset(0, 2),
-                    blurRadius: 4,
+                    color: colors.shadow,
+                    offset: const Offset(0, 8),
+                    blurRadius: 20,
                   ),
                 ],
               ),
