@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voice_assistant/widgets/orders/order_button.dart';
 import 'widgets/action_buttons/slide_action_button.dart';
 import 'widgets/orders/order_badge.dart';
 import 'theme.dart';
@@ -54,8 +55,11 @@ class _MainScreenState extends State<MainScreen> {
             // OrderBadge с масштабом 5
             Center(
               child: Transform.scale(
-                scale: 7.0,
-                child: const OrderBadge(count: 1),
+                scale: 3.0,
+                child: const OrderButton(
+                  state: OrderButtonState.withBadge,
+                  countBadge: 1,
+                ),
               ),
             ),
 
