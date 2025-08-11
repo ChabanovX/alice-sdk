@@ -200,56 +200,62 @@ class _SlideActionButtonState extends State<SlideActionButton>
     final theme = Theme.of(context);
     final colors = theme.colorScheme;
 
-    return GestureDetector(
-      onTapDown: _handleTapDown,
-      onTapUp: _handleTapUp,
-      onTapCancel: _handleTapCancel,
-      onPanStart: _handlePanStart,
-      onPanUpdate: _handlePanUpdate,
-      onPanEnd: _handlePanEnd,
-      child: AnimatedBuilder(
-        animation: Listenable.merge([_animationController, _stretchController]),
-        builder: (context, child) {
-          final currentWidth = _stretchAnimation.value;
-          final isPrimaryColor = _colorAnimation.value;
+    return SizedBox(
+      width: 347,
+      child: GestureDetector(
+        onTapDown: _handleTapDown,
+        onTapUp: _handleTapUp,
+        onTapCancel: _handleTapCancel,
+        onPanStart: _handlePanStart,
+        onPanUpdate: _handlePanUpdate,
+        onPanEnd: _handlePanEnd,
+        child: AnimatedBuilder(
+          animation: Listenable.merge([
+            _animationController,
+            _stretchController,
+          ]),
+          builder: (context, child) {
+            final currentWidth = _stretchAnimation.value;
+            final isPrimaryColor = _colorAnimation.value;
 
-          Color buttonColor;
-          switch (_currentState) {
-            case SlideActionState.defaultState:
-              buttonColor = colors.surface;
-              break;
-            case SlideActionState.pressedState:
-              buttonColor = Color.lerp(
-                colors.surface,
-                colors.primary,
-                isPrimaryColor,
-              )!;
-              break;
-            case SlideActionState.stretchedState:
-              buttonColor = colors.primary;
-              break;
-          }
+            Color buttonColor;
+            switch (_currentState) {
+              case SlideActionState.defaultState:
+                buttonColor = colors.surface;
+                break;
+              case SlideActionState.pressedState:
+                buttonColor = Color.lerp(
+                  colors.surface,
+                  colors.primary,
+                  isPrimaryColor,
+                )!;
+                break;
+              case SlideActionState.stretchedState:
+                buttonColor = colors.primary;
+                break;
+            }
 
-          return Align(
-            alignment: Alignment.centerLeft, // Выравниваем по левому краю
-            child: Container(
-              width: currentWidth,
-              height: _defaultSize,
-              decoration: BoxDecoration(
-                color: buttonColor,
-                borderRadius: BorderRadius.circular(_defaultSize / 2),
-                boxShadow: [
-                  BoxShadow(
-                    color: colors.shadow,
-                    offset: const Offset(0, 8),
-                    blurRadius: 20,
-                  ),
-                ],
+            return Align(
+              alignment: Alignment.centerLeft, // Выравниваем по левому краю
+              child: Container(
+                width: currentWidth,
+                height: _defaultSize,
+                decoration: BoxDecoration(
+                  color: buttonColor,
+                  borderRadius: BorderRadius.circular(_defaultSize / 2),
+                  boxShadow: [
+                    BoxShadow(
+                      color: colors.shadow,
+                      offset: const Offset(0, 8),
+                      blurRadius: 20,
+                    ),
+                  ],
+                ),
+                child: Stack(children: [_buildIcon(colors)]),
               ),
-              child: Stack(children: [_buildIcon(colors)]),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

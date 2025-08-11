@@ -46,6 +46,7 @@ class _MainScreenState extends State<MainScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
               'Slide Action Button - Все состояния',
@@ -60,7 +61,7 @@ class _MainScreenState extends State<MainScreen> {
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
-            SlideActionButton(key: _slideButtonKey),
+            SlideActionButton(),
             const SizedBox(height: 40),
 
             // Кнопка Reset
