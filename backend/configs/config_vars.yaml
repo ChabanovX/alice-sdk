@@ -6,4 +6,4 @@ is-testing: false
 
 server-port: 8080
 
-analytics-url: http://host.docker.internal:8000/cluster
+analytics-url: http://analytics-service:8000/cluster

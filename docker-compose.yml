@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  userver-service:
+    build: ./backend
+    ports:
+      - "8080:8080"
+
+  analytics-service:
+    build: ./analytics

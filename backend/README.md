@@ -9,6 +9,7 @@
 ```bash
 curl -i \
 -X POST "http://localhost:8080/classify-message" \
+-H "Content-Type: application/json" \
 -d '{"text": "Прими заказ"}'
 ```
 
@@ -65,7 +66,19 @@ make docker-test-release
 
 #### Продакшн
 
+Из общей монорепы запустите:
+
 ```bash
-docker build -t classifier_service_dev -f Dockerfile .
-docker run -p 8080:8080 -it classifier_service_dev
+docker compose up
 ```
+
+И попробуйте постучаться в сервер:
+
+```bash
+curl -i \
+-X POST "http://localhost:8080/classify-message" \
+-H "Content-Type: application/json" \
+-d '{"text": "Прими заказ"}'
+```
+
+В ответ придет `json`
