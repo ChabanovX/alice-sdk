@@ -12,7 +12,7 @@ on:
 workflows:
   backend-tests:
     settings:
-      max-cube-duration: 20m
+      max_cube_duration: 20m
     tasks:
       - name: backend-tests-task
         cubes:
@@ -41,7 +41,7 @@ workflows:
   
   flutter-tests:
     settings:
-      max-cube-duration: 20m
+      max_cube_duration: 20m
     tasks:
       - name: flutter-tests-task
         cubes:
