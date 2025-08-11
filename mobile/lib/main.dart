@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'widgets/widgets.dart';
+import 'widgets/action_buttons/slide_action_button.dart';
 import 'theme.dart';
 
 void main() {
@@ -17,13 +17,25 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
-          title: const Text('Widgets Demo'),
+          title: const Text('Slide Action Button Demo'),
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
         ),
-        body: Center(
-          child: Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 16),child: AliceWidget(messageText: 'Коэффицент выше, чем обычно',),)
-          
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Slide Action Button - Все состояния',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              const SlideActionButton(),
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );

@@ -9,3 +9,4 @@ export 'speed/current_speed_limit_widget.dart';
 export 'turn/turn_with_distance_widget.dart';
 export 'alice/alice_widget.dart';
 export 'alice/alice_message_widget.dart';
+export 'action_buttons/slide_action_button.dart';
