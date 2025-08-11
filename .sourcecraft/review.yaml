@@ -51,8 +51,11 @@ codereview:
 
       # Правило для DevOps
     - patterns:
-        - 'infra/**'
-        - '.sourcecraft/**'
+        - '*'
+        - '!backend/**'
+        - '!mobile/**'
+        - '!tests/**'
+        - '!analytics/**'
       reviewers:
         usernames:
           - g3rlch
