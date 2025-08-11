@@ -22,15 +22,8 @@ class MainApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Transform.scale(
-                scale: 2.0,
-                child: const TurnWithDistanceWidget(turnDistance: 100),
-              ),
-            ],
-          ),
+          child: Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 16),child: AliceWidget(messageText: 'Коэффицент выше, чем обычно',),)
+          
         ),
       ),
     );
