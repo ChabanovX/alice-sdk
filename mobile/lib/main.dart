@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widgets/action_buttons/slide_action_button.dart';
+import 'widgets/orders/order_badge.dart';
 import 'theme.dart';
 
 void main() {
@@ -48,41 +49,17 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              'Slide Action Button - Все состояния',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 40),
-
-            // Состояние 1: Дефолтное
-            const Text(
-              'Состояние 1: Дефолтное (круг)',
-              style: TextStyle(fontSize: 16),
-            ),
             const SizedBox(height: 16),
-            SlideActionButton(),
-            const SizedBox(height: 40),
 
-            // Кнопка Reset
-            ElevatedButton(
-              onPressed: _resetSlideButton,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 32,
-                  vertical: 16,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              child: const Text(
-                'Reset Slide Button',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            // OrderBadge с масштабом 5
+            Center(
+              child: Transform.scale(
+                scale: 7.0,
+                child: const OrderBadge(count: 1),
               ),
             ),
+
+            const SizedBox(height: 16),
           ],
         ),
       ),

@@ -10,3 +10,4 @@ export 'turn/turn_with_distance_widget.dart';
 export 'alice/alice_widget.dart';
 export 'alice/alice_message_widget.dart';
 export 'action_buttons/slide_action_button.dart';
+export 'orders/order_badge.dart';
