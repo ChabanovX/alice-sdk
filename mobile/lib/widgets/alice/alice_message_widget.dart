@@ -1,14 +1,128 @@
-import 'package:flutter/material.dart';
+import 'dart:typed_data';
 
-class AliceMessageWidget extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:alice_voice_player/alice_voice_player.dart';
+
+class AliceMessageWidget extends StatefulWidget {
   const AliceMessageWidget({
     super.key,
     required this.text,
     this.maxWidth = 320,
+    this.autoSpeak = true,
+    // TTS settings
+    this.ttsApiKey,
+    this.ttsOauthToken,
+    this.ttsFolderId,
+    this.ttsVoice = 'alena',
+    this.ttsFormat = 'mp3',
+    this.ttsSampleRateHz = 48000,
+    this.ttsTimeout = const Duration(seconds: 10),
   });
 
   final String text;
   final double maxWidth;
+  final bool autoSpeak;
+  
+  // TTS Configuration
+  final String? ttsApiKey;
+  final String? ttsOauthToken;
+  final String? ttsFolderId;
+  final String ttsVoice;
+  final String ttsFormat;
+  final int ttsSampleRateHz;
+  final Duration ttsTimeout;
+
+  @override
+  State<AliceMessageWidget> createState() => _AliceMessageWidgetState();
+}
+
+class _AliceMessageWidgetState extends State<AliceMessageWidget> {
+  String? _previousText;
+  bool _isTtsInitialized = false;
+  late final YandexSpeechKitTts _ttsService;
+  AudioPlayer? _audioPlayer;
+
+  @override
+  void initState() {
+    super.initState();
+    _previousText = widget.text;
+    
+    // Initialize built-in TTS service
+    _ttsService = YandexSpeechKitTts();
+    _audioPlayer = AudioPlayer();
+    _initializeTtsIfPossible();
+  }
+
+  @override
+  void didUpdateWidget(AliceMessageWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    
+    if (widget.autoSpeak && 
+        widget.text != _previousText && 
+        widget.text.isNotEmpty) {
+      _previousText = widget.text;
+      _speakText();
+    }
+  }
+
+  Future<void> _initializeTtsIfPossible() async {
+    if (widget.ttsApiKey != null || widget.ttsOauthToken != null) {
+      try {
+        await _ttsService.init(
+          apiKey: widget.ttsApiKey ?? '',
+          oauthToken: widget.ttsOauthToken,
+          folderId: widget.ttsFolderId,
+          voice: widget.ttsVoice,
+          format: widget.ttsFormat,
+          sampleRateHz: widget.ttsSampleRateHz,
+          timeout: widget.ttsTimeout,
+        );
+        
+        setState(() {
+          _isTtsInitialized = true;
+        });
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('TTS initialization error: $e'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    }
+  }
+
+  Future<void> _speakText() async {
+    if (!_isTtsInitialized) return;
+    
+    try {
+      final audioBytes = await _ttsService.synthesizeBytes(widget.text);
+      if (_audioPlayer != null) {
+        final audioSource = BytesAudioSource(audioBytes);
+        await _audioPlayer!.setAudioSource(audioSource);
+        await _audioPlayer!.play();
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Speech synthesis error: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _ttsService.dispose();
+    _audioPlayer?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +139,7 @@ class AliceMessageWidget extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: ConstrainedBox(
         constraints: BoxConstraints(
-          maxWidth: maxWidth,
+          maxWidth: widget.maxWidth,
         ),
         child: DecoratedBox(
           decoration: BoxDecoration(
@@ -51,7 +165,7 @@ class AliceMessageWidget extends StatelessWidget {
               horizontal: 18,
             ),
             child: Text(
-              text,
+              widget.text,
               style: textStyle,
               softWrap: false,
               overflow: TextOverflow.ellipsis,
@@ -61,6 +175,26 @@ class AliceMessageWidget extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class BytesAudioSource extends StreamAudioSource {
+  BytesAudioSource(this._audioBytes);
+
+  final Uint8List _audioBytes;
+
+  @override
+  Future<StreamAudioResponse> request([int? start, int? end]) async {
+    start ??= 0;
+    end ??= _audioBytes.length;
+    
+    return StreamAudioResponse(
+      sourceLength: _audioBytes.length,
+      contentLength: end - start,
+      offset: start,
+      stream: Stream.value(_audioBytes.sublist(start, end)),
+      contentType: 'audio/mpeg',
     );
   }
 }

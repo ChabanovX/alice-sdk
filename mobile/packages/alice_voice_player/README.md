@@ -1,147 +1,216 @@
-## 🚀 Быстрый старт
+# Alice Voice Player
 
-### 1. Установка
+A pure Dart library for text-to-speech synthesis using Yandex SpeechKit. Provides headless TTS capabilities without UI dependencies.
 
-Добавьте в `pubspec.yaml`:
+## Features
+
+- **Pure Dart**: No Flutter dependencies, works in any Dart environment
+- **Yandex SpeechKit Integration**: Direct integration with Yandex Cloud TTS API
+- **Multiple Output Formats**: Support for MP3, WAV, and other formats
+- **Streaming Support**: Process long texts efficiently with streaming API
+- **Error Handling**: Comprehensive error handling with retry logic
+- **Configurable**: Customizable voice, format, and audio parameters
+
+## Installation
+
+Add to your `pubspec.yaml`:
+
 ```yaml
 dependencies:
-  alice_voice_assistant:
-    path: path/to/alice_voice_player
+  alice_voice_player:
+    path: packages/alice_voice_player
 ```
 
-### 2. Добавьте аудио файлы
+## Quick Start
 
-В `pubspec.yaml`:
-```yaml
-flutter:
-  assets:
-    - assets/audio/
-    - assets/images/
-```
-
-### 3. Базовое использование
+### Basic Usage
 
 ```dart
-import 'package:alice_voice_player/alice_voice_player.dart';
+import 'dart:io';
+import 'package:alice_voice_player/alice_tts.dart';
 
-// Воспроизведение аудио
-final alice = AliceVoiceAssistant();
-await alice.playAudio('assets/audio/message.mp3');
+Future<void> main() async {
+  final tts = YandexSpeechKitTts();
+  
+  await tts.init(
+    apiKey: Platform.environment['YANDEX_API_KEY']!,
+    folderId: Platform.environment['YANDEX_FOLDER_ID'],
+    voice: 'alena',
+    format: 'mp3',
+    sampleRateHz: 48000,
+  );
+  
+  final bytes = await tts.synthesizeBytes('Привет! Это проверка голоса.');
+  await File('result.mp3').writeAsBytes(bytes);
+  print('Готово: result.mp3, размер: ${bytes.length} байт');
+}
 ```
 
-### 4. Использование анимированного виджета
+### Streaming Usage
 
 ```dart
-import 'package:flutter/material.dart';
-import 'package:alice_voice_assistant/alice_voice_player.dart';
+final audioStream = tts.synthesizeStream('Длинный текст для стриминга...');
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            // Анимированный логотип - автоматически реагирует на аудио
-            AliceAnimatedLogo(
-              logoPath: 'assets/images/alice.png',
-              size: 100,
-              glowColor: Colors.blue,
-            ),
-            
-            ElevatedButton(
-              onPressed: () {
-                AliceVoiceAssistant().playAudio('assets/audio/hello.mp3');
-              },
-              child: Text('Воспроизвести'),
-            ),
-          ],
-        ),
-      ),
-    );
+await for (final chunk in audioStream) {
+  // Process audio chunk
+  print('Получен чанк: ${chunk.length} байт');
+}
+```
+
+### Echo Service
+
+```dart
+final echoService = AliceEchoService(tts);
+final audioBytes = await echoService.echo('Текст для озвучивания');
+```
+
+## Configuration
+
+### Authentication
+
+You can authenticate using either:
+
+1. **API Key** (recommended):
+```dart
+await tts.init(apiKey: 'your-api-key');
+```
+
+2. **OAuth Token + Folder ID**:
+```dart
+await tts.init(
+  apiKey: 'your-api-key',
+  oauthToken: 'your-oauth-token',
+  folderId: 'your-folder-id',
+);
+```
+
+### Voice Settings
+
+```dart
+await tts.init(
+  apiKey: 'your-api-key',
+  voice: 'alena',        // Available: alena, filipp, jane, omazh, oksana
+  format: 'mp3',         // Available: mp3, wav, oggopus
+  sampleRateHz: 48000,   // Sample rate in Hz
+  timeout: Duration(seconds: 10),
+);
+```
+
+## Error Handling
+
+The library provides detailed error information:
+
+```dart
+try {
+  final bytes = await tts.synthesizeBytes('Hello world');
+} on AliceTtsException catch (e) {
+  switch (e.type) {
+    case AliceTtsExceptionType.auth:
+      print('Authentication error: ${e.message}');
+      break;
+    case AliceTtsExceptionType.network:
+      print('Network error: ${e.message}');
+      break;
+    case AliceTtsExceptionType.rateLimit:
+      print('Rate limit exceeded: ${e.message}');
+      break;
+    default:
+      print('Other error: ${e.message}');
   }
 }
 ```
 
-## 🎨 Виджеты
+## Examples
 
-### AliceAnimatedLogo
-Базовый анимированный логотип с эффектами свечения и пульсации.
+### CLI Example
 
-```dart
-AliceAnimatedLogo(
-  logoPath: 'assets/images/alice.png',
-  size: 100,
-  glowColor: Colors.blue,
-  pulseIntensity: 0.3,
-  showGlow: true,
-  showRipple: true,
-)
+```bash
+# Basic usage
+dart run examples/echo_cli.dart --text "Hello world" --out "result.mp3"
+
+# With custom voice
+dart run examples/echo_cli.dart --text "Привет мир" --voice "alena" --out "hello.mp3"
+
+# Using environment variables
+export YANDEX_API_KEY="your-api-key"
+export YANDEX_FOLDER_ID="your-folder-id"
+dart run examples/echo_cli.dart --text "Test" --out "test.mp3"
 ```
 
-### AliceAnimatedLogoAdvanced
-Продвинутый виджет с анимированными звуковыми волнами.
+### Stream Example
 
-```dart
-AliceAnimatedLogoAdvanced(
-  logoPath: 'assets/images/alice.png',
-  size: 150,
-  waveColor: Colors.teal,
-  showSoundWaves: true,
-  waveCount: 4,
-)
+```bash
+dart run examples/echo_stream.dart your-api-key result.mp3
 ```
 
-## 🔧 Конфигурация
+## API Reference
+
+### AliceTts
+
+Main interface for TTS operations:
 
 ```dart
-final config = AliceConfiguration(
-  maxQueueSize: 10,
-  interruptOnHighPriority: true,
-  defaultVolume: 0.8,
-);
-
-final alice = AliceVoiceAssistant(config);
+abstract class AliceTts {
+  Future<void> init({...});
+  Future<Uint8List> synthesizeBytes(String text);
+  Stream<List<int>> synthesizeStream(String text);
+  Future<Uint8List> onTextInput(String text);
+  Future<Uint8List> onVoiceInput(String recognizedText);
+  Future<void> dispose();
+}
 ```
 
-## 📋 Примеры использования
+### YandexSpeechKitTts
 
-### Воспроизведение с приоритетом
-```dart
-// Обычное сообщение
-await alice.playAudio('assets/audio/info.mp3');
-
-// Срочное сообщение (прерывает текущее)
-await alice.playAudio(
-  'assets/audio/urgent.mp3',
-  priority: MessagePriority.high,
-  immediate: true,
-);
-```
-
-### Управление очередью
-```dart
-// Проверить длину очереди
-print('Сообщений в очереди: ${alice.queueLength}');
-
-// Очистить очередь
-alice.clearQueue();
-
-// Остановить воспроизведение
-await alice.stop();
-```
-
-### Управление громкостью
-```dart
-// Установить громкость (0.0 - 1.0)
-await alice.setVolume(0.5);
-```
-
-## 🎯 Готовые методы для такси-приложений
+Implementation for Yandex SpeechKit:
 
 ```dart
-await alice.playAnswerNewOrder();              // Новый заказ
-await alice.playAnswerPassengerMessage(text);  // Сообщение пассажира
-await alice.playAnswerRouteBuilt(time, dist);  // Маршрут построен
-await alice.playAnswerOrderCompleted();        // Заказ завершен
+class YandexSpeechKitTts implements AliceTts {
+  // Implementation details
+}
 ```
+
+### AliceEchoService
+
+Helper service for echo functionality:
+
+```dart
+class AliceEchoService {
+  Future<Uint8List> echo(String text);
+  Stream<List<int>> echoStream(String text);
+}
+```
+
+## Setup
+
+1. **Yandex Cloud Account**: Create an account at [cloud.yandex.ru](https://cloud.yandex.ru)
+2. **SpeechKit Service**: Enable SpeechKit in your Yandex Cloud project
+3. **API Key**: Generate an API key in the Yandex Cloud console
+4. **Folder ID**: Note your folder ID (optional, but recommended)
+
+## Environment Variables
+
+Set these environment variables for authentication:
+
+```bash
+export YANDEX_API_KEY="your-api-key"
+export YANDEX_FOLDER_ID="your-folder-id"
+```
+
+## Limitations
+
+- **No STT**: This library only provides TTS (text-to-speech), not STT (speech-to-text)
+- **Yandex Only**: Currently only supports Yandex SpeechKit
+- **No UI**: This is a headless library, no UI components included
+
+## Testing
+
+Run the test suite:
+
+```bash
+dart test
+```
+
+## License
+
+This project is licensed under the MIT License.

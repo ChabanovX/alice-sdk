@@ -11,6 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.2.0
+  just_audio: ^0.10.4
+  provider: ^6.1.5
+  alice_voice_player:
+    path: packages/alice_voice_player
 
 dev_dependencies:
   flutter_test:
@@ -21,6 +25,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/
+    - assets/audio/
   fonts:
     - family: YandexSansText
       fonts:

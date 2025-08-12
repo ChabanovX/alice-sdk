@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:just_audio/just_audio.dart';
 
 import 'alice_message_widget.dart';
+import 'package:alice_voice_player/alice_voice_player.dart';
 
 class AliceWidget extends StatefulWidget {
   const AliceWidget({
@@ -12,10 +15,20 @@ class AliceWidget extends StatefulWidget {
     this.iconDefaultAssetPath = 'assets/icons/alice_default.svg',
     this.iconHoverAssetPath = 'assets/icons/alice_hover.svg',
     this.fadeDuration = const Duration(milliseconds: 250),
-  required this.messageText,
+    required this.messageText,
     this.messageDelay = const Duration(seconds: 2),
     this.messageGap = 12,
     this.onPressed,
+    // TTS settings
+    this.ttsApiKey,
+    this.ttsOauthToken,
+    this.ttsFolderId,
+    this.ttsVoice = 'alena',
+    this.ttsFormat = 'mp3',
+    this.ttsSampleRateHz = 48000,
+    this.ttsTimeout = const Duration(seconds: 10),
+    this.autoSpeak = true,
+    this.showPlaybackIndicator = true,
   });
 
   /// Diameter of the round icon in logical pixels.
@@ -42,12 +55,43 @@ class AliceWidget extends StatefulWidget {
   /// Optional callback invoked when icon is tapped.
   final VoidCallback? onPressed;
 
+  // TTS Configuration
+  /// Yandex SpeechKit API Key
+  final String? ttsApiKey;
+  
+  /// Yandex SpeechKit OAuth Token
+  final String? ttsOauthToken;
+  
+  /// Yandex Cloud Folder ID
+  final String? ttsFolderId;
+  
+  /// Voice for TTS synthesis (default: 'alena')
+  final String ttsVoice;
+  
+  /// Audio format (default: 'mp3')
+  final String ttsFormat;
+  
+  /// Sample rate in Hz (default: 48000)
+  final int ttsSampleRateHz;
+  
+  /// API timeout (default: 10 seconds)
+  final Duration ttsTimeout;
+  
+  /// Auto-speak message when tapped (default: true)
+  final bool autoSpeak;
+  
+  /// Show playback indicator (default: true)
+  final bool showPlaybackIndicator;
+
   @override
   State<AliceWidget> createState() => _AliceWidgetState();
 }
 
 class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin {
   bool _isHover = false;
+  bool _isPlaying = false;
+  bool _isTtsInitialized = false;
+  
   late final AnimationController _messageController;
   late final AnimationController _scaleController;
   late final Animation<double> _messageFade;
@@ -55,10 +99,21 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
   late final Animation<double> _scaleAnimation;
   Timer? _messageTimer;
   bool _messageShouldShow = false;
+  
+  YandexSpeechKitTts? _ttsService;
+  AudioPlayer? _audioPlayer;
+  
+  AudioPlayer? _soundPlayer;
 
   @override
   void initState() {
     super.initState();
+
+    _ttsService = YandexSpeechKitTts();
+    _audioPlayer = AudioPlayer();
+    _soundPlayer = AudioPlayer();
+    
+    _initializeTtsIfPossible();
 
     _messageController = AnimationController(
       vsync: this,
@@ -97,10 +152,81 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
     _messageTimer?.cancel();
     _messageController.dispose();
     _scaleController.dispose();
+    _ttsService?.dispose();
+    _audioPlayer?.dispose();
+    _soundPlayer?.dispose();
     super.dispose();
   }
 
-  void _handleTap() {
+  Future<void> _initializeTtsIfPossible() async {
+    if ((widget.ttsApiKey != null && widget.ttsApiKey!.isNotEmpty) || 
+        (widget.ttsOauthToken != null && widget.ttsOauthToken!.isNotEmpty)) {
+      try {
+        final apiKey = widget.ttsApiKey ?? '';
+        if (apiKey.isEmpty || apiKey == 'api' || apiKey == 'speech-kit-apik-key') {
+          return;
+        }
+        
+        await _ttsService?.init(
+          apiKey: apiKey,
+          oauthToken: widget.ttsOauthToken,
+          folderId: widget.ttsFolderId,
+          voice: widget.ttsVoice,
+          format: widget.ttsFormat,
+          sampleRateHz: widget.ttsSampleRateHz,
+          timeout: widget.ttsTimeout,
+        );
+        
+        setState(() {
+          _isTtsInitialized = true;
+        });
+        
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Alice TTS initialized'),
+              backgroundColor: Colors.green,
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('TTS initialization error: $e'),
+              backgroundColor: Colors.red,
+              duration: Duration(seconds: 3),
+            ),
+          );
+        }
+      }
+    }
+  }
+
+  Future<void> _playActivationSound() async {
+    try {
+      await _soundPlayer?.setAsset('assets/audio/alice_on.mp3');
+      await _soundPlayer?.play();
+    } catch (e) {
+      if (kDebugMode) {
+        print('Failed to play activation sound: $e');
+      }
+    }
+  }
+
+  Future<void> _playDeactivationSound() async {
+    try {
+      await _soundPlayer?.setAsset('assets/audio/alice_off.mp3');
+      await _soundPlayer?.play();
+    } catch (e) {
+      if (kDebugMode) {
+        print('Failed to play deactivation sound: $e');
+      }
+    }
+  }
+
+  void _handleTap() async {
     if (!_isHover) {
       setState(() => _isHover = true);
       _scaleController.repeat(reverse: true);
@@ -113,7 +239,40 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
           _messageController.forward();
         }
       });
+
+      await _playActivationSound();
+      if (widget.autoSpeak && _isTtsInitialized && widget.messageText.isNotEmpty) {
+        try {
+          setState(() => _isPlaying = true);
+          
+          final audioBytes = await _ttsService?.synthesizeBytes(widget.messageText);
+          if (audioBytes != null && _audioPlayer != null) {
+            final audioSource = BytesAudioSource(audioBytes);
+            await _audioPlayer!.setAudioSource(audioSource);
+            await _audioPlayer!.play();
+            
+            _audioPlayer!.playerStateStream.listen((state) {
+              if (state.processingState == ProcessingState.completed) {
+                if (mounted) {
+                  setState(() => _isPlaying = false);
+                }
+              }
+            });
+          }
+        } catch (e) {
+          setState(() => _isPlaying = false);
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Playback error: $e'),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+        }
+      }
     } else {
+      // Stop recording/playback
       setState(() => _isHover = false);
       _scaleController.stop();
       _scaleController.reset();   
@@ -125,6 +284,24 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
           });
         }
       });
+
+      await _playDeactivationSound();
+
+      if (_isTtsInitialized) {
+        try {
+          await _audioPlayer?.stop();
+          setState(() => _isPlaying = false);
+        } catch (e) {
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Stop error: $e'),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+        }
+      }
     }
 
     widget.onPressed?.call();
@@ -181,13 +358,36 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
                     builder: (context, child) {
                       return Transform.scale(
                         scale: _scaleAnimation.value,
-                        child: AnimatedCrossFade(
-                          duration: widget.fadeDuration,
-                          crossFadeState: _isHover
-                              ? CrossFadeState.showSecond
-                              : CrossFadeState.showFirst,
-                          firstChild: _buildIcon(widget.iconDefaultAssetPath),
-                          secondChild: _buildIcon(widget.iconHoverAssetPath),
+                        child: Stack(
+                          children: [
+                            AnimatedCrossFade(
+                              duration: widget.fadeDuration,
+                              crossFadeState: _isHover
+                                  ? CrossFadeState.showSecond
+                                  : CrossFadeState.showFirst,
+                              firstChild: _buildIcon(widget.iconDefaultAssetPath),
+                              secondChild: _buildIcon(widget.iconHoverAssetPath),
+                            ),
+                            // Playback indicator
+                            if (_isPlaying && widget.showPlaybackIndicator)
+                              Positioned(
+                                top: 4,
+                                right: 4,
+                                child: Container(
+                                  width: 12,
+                                  height: 12,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.green,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.volume_up,
+                                    size: 8,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                          ],
                         ),
                       );
                     },
@@ -213,6 +413,26 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
           fit: BoxFit.contain,
         ),
       ),
+    );
+  }
+}
+
+class BytesAudioSource extends StreamAudioSource {
+  BytesAudioSource(this._audioBytes);
+
+  final Uint8List _audioBytes;
+
+  @override
+  Future<StreamAudioResponse> request([int? start, int? end]) async {
+    start ??= 0;
+    end ??= _audioBytes.length;
+    
+    return StreamAudioResponse(
+      sourceLength: _audioBytes.length,
+      contentLength: end - start,
+      offset: start,
+      stream: Stream.value(_audioBytes.sublist(start, end)),
+      contentType: 'audio/mpeg',
     );
   }
 }
