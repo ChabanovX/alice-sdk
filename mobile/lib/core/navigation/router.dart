@@ -23,15 +23,6 @@ class AppRouter {
     const isCupertinoPageRoute = true;
 
     switch (settings.name) {
-      case Routes.orders:
-        widget = const OrdersPage();
-        break;
-      case Routes.money:
-        widget = const MoneyPage();
-        break;
-      case Routes.chat:
-        widget = const ChatPage();
-        break;
       case Routes.main:
         widget = const MainScreen();
         break;
@@ -68,7 +59,6 @@ class AppRouter {
         pageBuilder: (context, animation, secondaryAnimation) {
           return widget;
         },
-        transitionDuration: const Duration(milliseconds: 300),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           const physic = isVerticalDirectionOpeningPage
               ? DirectionOpeningPage.vertically

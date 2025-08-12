@@ -16,19 +16,6 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  Widget _buildCurrentScreen() {
-    switch (_selectedItem) {
-      case BottomNavigationItem.orders:
-        return const OrdersPage();
-      case BottomNavigationItem.money:
-        return const MoneyPage();
-      case BottomNavigationItem.chat:
-        return const ChatPage();
-      case BottomNavigationItem.profile:
-        return const _ProfileTabNavigator();
-    }
-  }
-
   @override
   void initState() {
     super.initState();
@@ -39,7 +26,15 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: _buildCurrentScreen(),
+      body: IndexedStack(
+        index: _selectedItem.index,
+        children: const [
+          OrdersPage(),
+          MoneyPage(),
+          ChatPage(),
+          _ProfileTabNavigator(),
+        ],
+      ),
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedItem: _selectedItem,
         onItemSelected: _onItemSelected,
@@ -53,9 +48,12 @@ class _ProfileTabNavigator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SubNavigator(
-      navigatorKey: NavigationManager.navigatorKeyProfilePage,
-      initialRoute: Routes.profile,
+    return Navigator(
+      key: NavigationManager.navigatorKeyProfilePage,
+      onGenerateInitialRoutes: (navigator, initialRouteName) => [
+        AppRouter.onGenerateRoute(const RouteSettings(name: Routes.profile)),
+      ],
+      onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
 }
