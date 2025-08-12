@@ -8,13 +8,10 @@ class SheetOffline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PanelContainer(
-      collapsedFraction: 0.22,
-      expandedFraction: 0.86,
       overlay: _CenterRightOverlay(
         center: _FloatingPillButton(
           label: 'На линию',
           onPressed: () {
-            print('object');
             bloc.add(GoOnlinePressed());
           },
         ),
@@ -29,16 +26,16 @@ class SheetOffline extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           height: 64,
           child: SvgPicture.asset(
             'assets/random/r_prioritet_orders.svg',
             fit: BoxFit.fill,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           height: 64,
           child: SvgPicture.asset(
             'assets/random/r_good_to_know.svg',
@@ -52,7 +49,6 @@ class SheetOffline extends StatelessWidget {
 
 class _FloatingPillButton extends StatelessWidget {
   const _FloatingPillButton({
-    super.key,
     required this.label,
     required this.onPressed,
     this.height = 52,
@@ -91,7 +87,7 @@ class _FloatingPillButton extends StatelessWidget {
             ),
             shadows: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.18),
+                color: Colors.black.withValues(alpha: 0.18),
                 blurRadius: 16,
                 offset: const Offset(0, 6),
               ),
@@ -101,9 +97,9 @@ class _FloatingPillButton extends StatelessWidget {
             child: Text(
               label,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: textColor,
-                fontWeight: FontWeight.w700,
-              ),
+                    color: textColor,
+                    fontWeight: FontWeight.w700,
+                  ),
             ),
           ),
         ),
@@ -114,28 +110,23 @@ class _FloatingPillButton extends StatelessWidget {
 
 class _CenterRightOverlay extends StatelessWidget {
   const _CenterRightOverlay({
-    super.key,
     required this.center,
     required this.right,
-    this.height = 52,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16),
   });
 
-  final Widget center; // большая кнопка
-  final Widget right; // круглая кнопка справа
-  final double height;
-  final EdgeInsets padding;
+  final Widget center;
+  final Widget right;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height,
+      height: 52,
       child: Padding(
-        padding: padding,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Stack(
           fit: StackFit.expand,
           children: [
-            Align(alignment: Alignment.center, child: center),
+            Align(child: center),
             Align(alignment: Alignment.centerRight, child: right),
           ],
         ),

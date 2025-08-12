@@ -27,11 +27,11 @@ class MapOnline extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset('assets/images/52_busy.png'),
-                        Spacer(),
+                        const Spacer(),
                         Image.asset('assets/images/speed_60.png'),
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Align(alignment: Alignment.bottomRight ,child: Image.asset('assets/images/map_controllers.png')),
                   ],
                 ),

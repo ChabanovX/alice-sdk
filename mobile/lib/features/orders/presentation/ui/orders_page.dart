@@ -11,7 +11,7 @@ class OrdersPage extends StatelessWidget {
         BlocProvider(create: (context) => OrdersBloc()),
       ],
       child: Scaffold(
-        bottomNavigationBar: _AppBottomNavBar(),
+        bottomNavigationBar: const _AppBottomNavBar(),
         body: Stack(
           children: [
             BlocBuilder<OrdersBloc, OrdersState>(
@@ -30,8 +30,6 @@ class OrdersPage extends StatelessWidget {
               child: BlocBuilder<OrdersBloc, OrdersState>(
                 builder: (context, state) {
                   final bloc = context.read<OrdersBloc>();
-                  print(state);
-
                   final sheet = switch (state) {
                     Offline() => SheetOffline(bloc: bloc),
                     OnlineIdle() => const SheetOnlineIdle(),
@@ -53,7 +51,7 @@ class OrdersPage extends StatelessWidget {
 }
 
 class _AppBottomNavBar extends StatelessWidget {
-  const _AppBottomNavBar({super.key});
+  const _AppBottomNavBar();
 
   static const _orders = 'assets/images/icon.png';
   static const _money = 'assets/images/icon2.png';
@@ -64,7 +62,6 @@ class _AppBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      currentIndex: 0, // ← first item looks selected
       onTap: (_) {}, // no real navigation
       backgroundColor: context.colors.semanticBackground,
       showUnselectedLabels: true,
