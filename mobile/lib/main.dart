@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc_observer.dart';
 import 'core/navigation/manager.dart';
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProfileBloc(const ProfileInitialState()),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.onGenerateRoute,
         navigatorKey: NavigationManager.navigatorKey,
         initialRoute: Routes.main,

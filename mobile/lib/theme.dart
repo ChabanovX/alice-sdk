@@ -351,7 +351,7 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       backgroundColor: scheme.primary,
       foregroundColor: _onColorFor(scheme.primary),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      extendedPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      extendedPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
@@ -438,7 +438,7 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: scheme.error, width: 2),
       ),
-      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     ),
     menuTheme: MenuThemeData(
       style: MenuStyle(

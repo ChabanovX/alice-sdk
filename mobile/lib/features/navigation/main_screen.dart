@@ -29,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
       body: IndexedStack(
         index: _selectedItem.index,
         children: const [
-          OrdersPage(),
+          UiComponentsDemo(),
           MoneyPage(),
           ChatPage(),
           _ProfileTabNavigator(),
@@ -54,6 +54,47 @@ class _ProfileTabNavigator extends StatelessWidget {
         AppRouter.onGenerateRoute(const RouteSettings(name: Routes.profile)),
       ],
       onGenerateRoute: AppRouter.onGenerateRoute,
+    );
+  }
+}
+
+/// Для демонстрации компонентов
+class UiComponentsDemo extends StatelessWidget {
+  const UiComponentsDemo();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      body: SafeArea(
+        child: Column(
+          children: [
+            MessageNotification(
+                message: 'Message Notification pressed', onTap: () {}),
+            EndTaxiRideButton(
+              onSlideComplete: () {
+                print('SlideAnim completed');
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            EndTaxiRideButtonWithoutAnim(
+              onSlideComplete: () {
+                print('SlideNoAnim completed');
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            RoadTracker(
+              timeWhenEnd: '17:12',
+              timeRemain: '12 мин',
+              roadLength: '1,5 км',
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
