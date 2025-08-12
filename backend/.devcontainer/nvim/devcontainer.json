@@ -1,0 +1,17 @@
+{
+    "image": "userver_nvim",
+    "dockerComposeFile": [
+        "compose.yml",
+        "compose.nvim.yml"
+    ],
+    "service": "backend",
+    "mounts": [
+        "source=/home/max/.config/nvim/init.lua,target=/root/.config/nvim/myinit.lua,type=bind,ro",
+        "source=/home/max/.config/nvim/vimrc.vim,target=/root/.config/nvim/vimrc.vim,type=bind,ro",
+        "source=/home/max/.config/nvim/lazy-lock.json,target=/root/.config/nvim/lazy-lock.json,type=bind,ro",
+        "source=/home/max/.config/nvim/lua/chadrc.lua,target=/root/.config/nvim/lua/chadrc.lua,type=bind,ro",
+        "source=/home/max/.config/nvim/lua/themes/,target=/root/.config/nvim/lua/themes/,type=bind,ro",
+        "source=/home/max/.config/nvim/lua/custom/,target=/root/.config/nvim/lua/custom/,type=bind,ro",
+        "source=/usr/share/nvchad/init.lua,target=/root/.config/nvim/nvchad.lua,type=bind,ro"
+    ]
+}

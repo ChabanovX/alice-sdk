@@ -1,0 +1,40 @@
+services:
+    # your service name
+    backend:
+        image: userver_nvim
+        environment:
+            SHELL: /bin/zsh
+        volumes:
+          - source: /home/max/.config/nvim/init.lua
+            target: /root/.config/nvim/myinit.lua
+            type: bind
+            read_only: true
+          - source: /home/max/.config/nvim/vimrc.vim
+            target: /root/.config/nvim/vimrc.vim
+            type: bind
+            read_only: true
+          - source: /home/max/.config/nvim/lazy-lock.json
+            target: /root/.config/nvim/lazy-lock.json
+            type: bind
+            read_only: true
+          - source: /home/max/.config/nvim/lua/chadrc.lua
+            target: /root/.config/nvim/lua/chadrc.lua
+            type: bind
+            read_only: true
+          - source: /home/max/.config/nvim/lua/themes/
+            target: /root/.config/nvim/lua/themes/
+            type: bind
+            read_only: true
+          - source: /home/max/.config/nvim/lua/custom/
+            target: /root/.config/nvim/lua/custom/
+            type: bind
+            read_only: true
+          - source: /usr/share/nvchad/init.lua
+            target: /root/.config/nvim/nvchad.lua
+            type: bind
+            read_only: true
+        entrypoint:
+          - .devcontainer/nvim/run_as_user.sh
+          - bash
+          - -c
+          - 'while true; do sleep inf; done'
