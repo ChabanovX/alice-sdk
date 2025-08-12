@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:test/test.dart';
 
-import 'package:alice_voice_player/alice_tts.dart';
+import 'package:alice_voice_player/alice_voice_player.dart';
 
 void main() {
   group('AliceTts', () {
@@ -254,7 +254,7 @@ void main() {
       expect(copied.apiKey, 'test-key');
       expect(copied.voice, 'filipp');
       expect(copied.format, 'wav');
-      expect(copied.sampleRateHz, 48000); // unchanged
+      expect(copied.sampleRateHz, 48000);
     });
   });
 
@@ -305,7 +305,7 @@ void main() {
       expect(copied.apiKey, 'test-key');
       expect(copied.language, 'en-US');
       expect(copied.model, 'general');
-      expect(copied.sampleRateHz, 48000); // unchanged
+      expect(copied.sampleRateHz, 48000);
     });
   });
 }

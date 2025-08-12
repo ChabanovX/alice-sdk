@@ -5,7 +5,7 @@ import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
 
-import 'package:alice_voice_player/src/alice_tts.dart';
+import 'package:alice_voice_player/src/alice_core.dart';
 import 'package:alice_voice_player/src/models/tts_config.dart';
 import 'package:alice_voice_player/src/models/tts_exception.dart';
 
