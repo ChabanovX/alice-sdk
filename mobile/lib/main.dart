@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:voice_assistant/widgets/orders/order_button.dart';
 import 'widgets/action_buttons/slide_action_button_stateless.dart';
 import 'widgets/orders/order_badge.dart';
+import 'widgets/priority and orders/priority_widget.dart';
 import 'theme.dart';
 
 void main() {
@@ -34,7 +35,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text('Slide Action Button States Demo'),
+        title: const Text('Демонстрация виджетов'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
@@ -44,26 +45,13 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Заголовок для состояний слайд-кнопки
             const Text(
-              'Состояния слайд-кнопки:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              'Демонстрация PriorityWidget',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-
-            const SizedBox(height: 16),
-
-            // DefaultStateButton - дефолтное состояние
-            const SlideButtonDefaultState(),
-
-            const SizedBox(height: 16),
-
-            // PressedStateButton - состояние при зажатии
-            const SlideButtonPressedState(),
-
-            const SizedBox(height: 16),
-
-            // StretchedStateButton - растянутое состояние
-            Center(child: const SlideButtonStretchedState()),
+            const SizedBox(height: 40),
+            // Демонстрация с дефолтным значением (52)
+            Transform.scale(scale: 2, child: const PriorityWidget()),
           ],
         ),
       ),
