@@ -50,7 +50,10 @@ class _MainScreenState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-              child: Transform.scale(scale: 5, child: BookmarkIconWidget()),
+              child: Transform.scale(
+                scale: 2,
+                child: SkipActivityWidget(activityValue: 6),
+              ),
             ),
           ],
         ),
