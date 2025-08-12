@@ -17,3 +17,5 @@ export 'orders/order_button_example.dart';
 export 'priority and orders/priority_widget.dart';
 export 'priority and orders/priority_and_orders_widget.dart';
 export 'priority and orders/orders_widget.dart';
+export 'icons/turn_right_icon_widget.dart';
+export 'icons/bookmark_icon_widget.dart';

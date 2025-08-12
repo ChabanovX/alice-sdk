@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:voice_assistant/widgets/icons/turn_right_icon_widget.dart';
 import 'package:voice_assistant/widgets/orders/order_button.dart';
 import 'package:voice_assistant/widgets/priority%20and%20orders/orders_widget.dart';
+import 'package:voice_assistant/widgets/widgets.dart';
 import 'widgets/action_buttons/slide_action_button_stateless.dart';
 import 'widgets/orders/order_badge.dart';
 import 'widgets/priority and orders/priority_widget.dart';
@@ -35,7 +37,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Демонстрация виджетов'),
         backgroundColor: Colors.blue,
@@ -47,19 +49,8 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              'Демонстрация PriorityAndOrdersWidget',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            // Демонстрация объединенного виджета с дефолтными значениями
-            const PriorityAndOrdersWidget(),
-            const SizedBox(height: 20),
-            // Демонстрация с кастомными значениями
-            const PriorityAndOrdersWidget(
-              priorityValue: 85,
-              ordersValue: 12,
-              ordersAmount: 2500,
+            Center(
+              child: Transform.scale(scale: 5, child: BookmarkIconWidget()),
             ),
           ],
         ),
