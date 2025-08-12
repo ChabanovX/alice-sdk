@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-/// Виджет для отображения приоритета с иконкой и значением
-class PriorityWidget extends StatelessWidget {
-  /// Значение приоритета (по умолчанию 52)
-  final int priorityValue;
+/// Виджет для отображения количества и суммы заказов с иконкой и значением
+class OrdersWidget extends StatelessWidget {
+  final int ordersValue;
+  final int ordersAmount;
 
-  const PriorityWidget({super.key, this.priorityValue = 52});
+  const OrdersWidget({super.key, this.ordersValue = 0, this.ordersAmount = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +17,13 @@ class PriorityWidget extends StatelessWidget {
       height: 56,
       child: Row(
         children: [
-          // Левый SizedBox с иконкой приоритета
+          // Левый SizedBox с иконкой кошелька
           SizedBox(
             width: 56,
             height: 56,
             child: Center(
               child: SvgPicture.asset(
-                'assets/icons/priority.svg',
+                'assets/icons/wallet_filled.svg',
                 width: 32,
                 height: 32,
               ),
@@ -38,11 +38,11 @@ class PriorityWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Верхний Row с текстом "Приоритет" и иконкой
+                // Верхний Row с текстом "заказов" и иконкой
                 Row(
                   children: [
                     Text(
-                      'Приоритет',
+                      '$ordersValue заказов',
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.onSurface,
                         fontSize: 13,
@@ -62,14 +62,15 @@ class PriorityWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                // Нижний Text с значением приоритета
+                // Нижний Text с значением суммы заказов
                 Text(
-                  '$priorityValue/100',
+                  '$ordersAmount ₽',
                   style: theme.textTheme.bodyLarge?.copyWith(
                     color: theme.colorScheme.onSurface,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'YandexSansText',
+                    letterSpacing: -1,
                   ),
                 ),
               ],

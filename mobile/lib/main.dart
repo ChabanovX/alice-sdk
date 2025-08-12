@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voice_assistant/widgets/orders/order_button.dart';
+import 'package:voice_assistant/widgets/priority%20and%20orders/orders_widget.dart';
 import 'widgets/action_buttons/slide_action_button_stateless.dart';
 import 'widgets/orders/order_badge.dart';
 import 'widgets/priority and orders/priority_widget.dart';
@@ -52,6 +53,11 @@ class _MainScreenState extends State<MainScreen> {
             const SizedBox(height: 40),
             // Демонстрация с дефолтным значением (52)
             Transform.scale(scale: 2, child: const PriorityWidget()),
+            const SizedBox(height: 40),
+            Transform.scale(
+              scale: 2,
+              child: const OrdersWidget(ordersValue: 2, ordersAmount: 150),
+            ),
           ],
         ),
       ),
