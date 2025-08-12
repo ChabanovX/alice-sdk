@@ -66,7 +66,7 @@ make docker-test-release
 
 #### Продакшн
 
-Из общей монорепы запустите:
+Из папки `backend` запустите:
 
 ```bash
 docker compose up
