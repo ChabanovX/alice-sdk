@@ -40,7 +40,7 @@ class AcceptButton extends StatelessWidget {
 
     final box = Container(
       height: 80,
-      margin: margin ?? EdgeInsets.symmetric(horizontal: 16),
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: borderRadius,
@@ -55,18 +55,18 @@ class AcceptButton extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                     SvgPicture.asset(
                       'assets/icons/new_order_icon.svg',
                       colorFilter: ColorFilter.mode(textColor, BlendMode.srcIn),
                     ),
-                    SizedBox(width: 3.5),
-                    Text('+1'),
+                    const SizedBox(width: 3.5),
+                    const Text('+1'),
                   ],
                 ),
               ),
             ),
-            Expanded(child: Center(child: Text('Принять'))),
+            const Expanded(child: Center(child: Text('Принять'))),
             Expanded(
               child: Align(
                 alignment: Alignment.centerRight,
@@ -74,12 +74,12 @@ class AcceptButton extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(rate, style: textStyle),
-                    SizedBox(width: 3.5),
+                    const SizedBox(width: 3.5),
                     SvgPicture.asset(
                       'assets/icons/coefficient_icon.svg',
                       colorFilter: ColorFilter.mode(textColor, BlendMode.srcIn),
                     ),
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                   ],
                 ),
               ),

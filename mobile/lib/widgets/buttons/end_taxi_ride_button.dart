@@ -1,10 +1,7 @@
 part of 'buttons.dart';
 
 class EndTaxiRideButton extends StatelessWidget {
-  const EndTaxiRideButton({
-    super.key,
-    required this.onSlideComplete}
-  );
+  const EndTaxiRideButton({super.key, required this.onSlideComplete});
 
   final VoidCallback? onSlideComplete;
 
@@ -12,7 +9,7 @@ class EndTaxiRideButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsetsGeometry.all(0),
+        padding: const EdgeInsetsGeometry.all(0),
         backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(34),
@@ -24,17 +21,21 @@ class EndTaxiRideButton extends StatelessWidget {
           Positioned.fill(
             child: Center(
               child: Text(
-                  'На месте',
-                  style: context.textStyles.title.copyWith(
-                    color: context.colors.controlMain,
-                    fontWeight: FontWeight.w500,
-                  )
+                'На месте',
+                style: context.textStyles.title.copyWith(
+                  color: context.colors.controlMain,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ),
           Padding(
-            padding: EdgeInsetsGeometry.all(6),
-            child: SlideActionButton(onSlideComplete: () {onSlideComplete?.call();},),
+            padding: const EdgeInsetsGeometry.all(6),
+            child: SlideActionButton(
+              onSlideComplete: () {
+                onSlideComplete?.call();
+              },
+            ),
           ),
         ],
       ),
@@ -45,23 +46,23 @@ class EndTaxiRideButton extends StatelessWidget {
 class EndTaxiRideButtonWithoutAnim extends StatefulWidget {
   final VoidCallback? onSlideComplete;
 
-  const EndTaxiRideButtonWithoutAnim({
-    super.key,
-    required this.onSlideComplete
-  });
+  const EndTaxiRideButtonWithoutAnim(
+      {super.key, required this.onSlideComplete});
 
   @override
-  State<EndTaxiRideButtonWithoutAnim> createState() => _EndTaxiRideButtonWithoutAnimState();
+  State<EndTaxiRideButtonWithoutAnim> createState() =>
+      _EndTaxiRideButtonWithoutAnimState();
 }
 
-class _EndTaxiRideButtonWithoutAnimState extends State<EndTaxiRideButtonWithoutAnim> {
-  bool isComplite = false;
+class _EndTaxiRideButtonWithoutAnimState
+    extends State<EndTaxiRideButtonWithoutAnim> {
+  bool isComplete = false;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsetsGeometry.all(0),
+        padding: const EdgeInsetsGeometry.all(0),
         backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(34),
@@ -69,30 +70,28 @@ class _EndTaxiRideButtonWithoutAnimState extends State<EndTaxiRideButtonWithoutA
       ),
       onPressed: () {
         setState(() {
-          isComplite = !isComplite;
-          if (isComplite){
+          isComplete = !isComplete;
+          if (isComplete) {
             widget.onSlideComplete?.call();
           }
         });
-        },
+      },
       child: Stack(
         children: [
           Positioned.fill(
             child: Center(
-              child: Text(
-                  'На месте',
+              child: Text('На месте',
                   style: context.textStyles.title.copyWith(
                     color: context.colors.controlMain,
                     fontWeight: FontWeight.w500,
-                  )
-              ),
+                  )),
             ),
           ),
           Padding(
-            padding: EdgeInsetsGeometry.all(6),
-            child: (isComplite)
-                ? SlideButtonStretchedState()
-                : SlideButtonPressedState(),
+            padding: const EdgeInsetsGeometry.all(6),
+            child: (isComplete)
+                ? const SlideButtonStretchedState()
+                : const SlideButtonPressedState(),
           ),
         ],
       ),

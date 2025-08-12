@@ -27,7 +27,7 @@ class GoOnlineButton extends StatelessWidget {
 
     final box = Container(
       height: 80,
-      margin: margin ?? EdgeInsets.symmetric(horizontal: 16),
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: borderRadius,
@@ -39,12 +39,13 @@ class GoOnlineButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Оффлайн', style: textStyle1.copyWith(color: textColor)),
-                Text('Выйти на линию', style: textStyle2.copyWith(color: textColor)),
+                Text('Выйти на линию',
+                    style: textStyle2.copyWith(color: textColor)),
               ],
             ),
           ),
           if (isActive)
-            Positioned(
+            const Positioned(
               left: 6,
               top: 0,
               bottom: 0,

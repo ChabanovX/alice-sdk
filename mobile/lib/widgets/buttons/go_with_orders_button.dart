@@ -27,7 +27,7 @@ class GoWithOrdersButton extends StatelessWidget {
         borderRadius: borderRadius,
       ),
       height: 56,
-      margin: margin ?? EdgeInsets.symmetric(horizontal: 16),
+      margin: margin ?? const EdgeInsets.symmetric(horizontal: 16),
       child: Center(
         child: Text(
           'Поехать с заказами по пути',

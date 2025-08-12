@@ -42,16 +42,6 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
-      body: Column(
-        children: [
-          MessageNotification(message: 'Message Notification pressed', onTap: () {}),
-          EndTaxiRideButton(onSlideComplete: () {print('SlideAnim completed');},),
-          SizedBox(height: 20,),
-          EndTaxiRideButtonWithoutAnim(onSlideComplete: (){print('SlideNoAnim completed');},),
-          SizedBox(height: 20,),
-          RoadTracker(timeWhenEnd: '17:12', timeRemain: '12 мин', roadLength: '1,5 км',),
-        ],
-      ),
     );
   }
 }
