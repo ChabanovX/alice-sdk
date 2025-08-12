@@ -22,46 +22,40 @@ class OrderButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        width: 94,
         height: 48,
         child: Stack(
           children: [
             // Основной контент
             Center(
-              child: SizedBox(
-                width: 39,
-                height: 37,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/location_fill.svg',
-                      width: 24,
-                      height: 24,
-                      colorFilter: ColorFilter.mode(
-                        _getIconColor(context),
-                        BlendMode.srcIn,
-                      ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/location_fill.svg',
+                    width: 24,
+                    height: 24,
+                    colorFilter: ColorFilter.mode(
+                      _getIconColor(context),
+                      BlendMode.srcIn,
                     ),
-                    Text(
-                      'Заказы',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: _getTextColor(context),
-                        fontSize: 9.5,
-                        fontWeight: FontWeight.w500,
-                      ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Заказы',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: _getTextColor(context),
+                      fontSize: 9.5,
+                      fontWeight: FontWeight.w500,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             // Badge (если нужно)
             if (state == OrderButtonState.withBadge)
               Positioned(
-                left: 53,
+                right: 8,
                 top: 4,
-                right: 25,
-                bottom: 28,
                 child: OrderBadge(count: countBadge),
               ),
           ],

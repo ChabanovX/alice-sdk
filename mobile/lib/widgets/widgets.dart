@@ -21,3 +21,4 @@ export 'icons/turn_right_icon_widget.dart';
 export 'icons/bookmark_icon_widget.dart';
 export 'skip/skip_widget.dart';
 export 'skip/skip_widget_activity.dart';
+export 'navigation/bottom_navigation_bar.dart';

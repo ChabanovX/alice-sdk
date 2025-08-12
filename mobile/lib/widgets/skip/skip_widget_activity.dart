@@ -26,7 +26,6 @@ class SkipActivityWidget extends StatelessWidget {
       ),
       child: Center(
         child: Column(
-          spacing: -2,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(

@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voice_assistant/widgets/icons/turn_right_icon_widget.dart';
-import 'package:voice_assistant/widgets/orders/order_button.dart';
-import 'package:voice_assistant/widgets/priority%20and%20orders/orders_widget.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:voice_assistant/widgets/widgets.dart';
-import 'widgets/action_buttons/slide_action_button_stateless.dart';
-import 'widgets/orders/order_badge.dart';
-import 'widgets/priority and orders/priority_widget.dart';
-import 'widgets/priority and orders/priority_and_orders_widget.dart';
 import 'theme.dart';
 
 void main() {
@@ -34,30 +28,115 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  BottomNavigationItem _selectedItem = BottomNavigationItem.orders;
+
+  void _onItemSelected(BottomNavigationItem item) {
+    setState(() {
+      _selectedItem = item;
+    });
+  }
+
+  Widget _buildCurrentScreen() {
+    switch (_selectedItem) {
+      case BottomNavigationItem.orders:
+        return Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Экран Заказы',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 50),
+              Center(
+                child: Image.asset(
+                  'assets/icons/user_avatar.png',
+                  width: 24,
+                  height: 24,
+                ),
+              ),
+            ],
+          ),
+        );
+      case BottomNavigationItem.money:
+        return Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Экран Деньги',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              const Icon(
+                Icons.account_balance_wallet,
+                size: 64,
+                color: Colors.green,
+              ),
+            ],
+          ),
+        );
+      case BottomNavigationItem.chat:
+        return Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Экран Общение',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              const Icon(Icons.chat_bubble, size: 64, color: Colors.blue),
+            ],
+          ),
+        );
+      case BottomNavigationItem.profile:
+        return Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'Экран Профиль',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              const Icon(Icons.person, size: 64, color: Colors.orange),
+            ],
+          ),
+        );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Демонстрация виджетов'),
+        title: Text(_getAppBarTitle()),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: Transform.scale(
-                scale: 2,
-                child: SkipActivityWidget(activityValue: 6),
-              ),
-            ),
-          ],
-        ),
+        child: _buildCurrentScreen(),
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        selectedItem: _selectedItem,
+        onItemSelected: _onItemSelected,
       ),
     );
+  }
+
+  String _getAppBarTitle() {
+    switch (_selectedItem) {
+      case BottomNavigationItem.orders:
+        return 'Заказы';
+      case BottomNavigationItem.money:
+        return 'Деньги';
+      case BottomNavigationItem.chat:
+        return 'Общение';
+      case BottomNavigationItem.profile:
+        return 'Профиль';
+    }
   }
 }
