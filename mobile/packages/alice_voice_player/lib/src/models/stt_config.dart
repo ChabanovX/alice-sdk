@@ -1,6 +1,4 @@
-/// Configuration for STT (Speech-to-Text) operations
 class AliceSttConfig {
-  /// Creates a new STT configuration
   const AliceSttConfig({
     required this.apiKey,
     this.oauthToken,
@@ -85,9 +83,7 @@ class AliceSttConfig {
   String toString() => 'AliceSttConfig(language: $language, model: $model, audioFormat: $audioFormat)';
 }
 
-/// Configuration for audio recording
 class RecordConfig {
-  /// Creates a new recording configuration
   const RecordConfig({
     this.encoder = AudioEncoder.opus,
     this.bitRate = 128000,

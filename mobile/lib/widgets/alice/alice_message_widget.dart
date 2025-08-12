@@ -58,7 +58,6 @@ class _AliceMessageWidgetState extends State<AliceMessageWidget> {
   void didUpdateWidget(AliceMessageWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     
-    // If text changed and auto-speak is enabled, synthesize speech
     if (widget.autoSpeak && 
         widget.text != _previousText && 
         widget.text.isNotEmpty) {
@@ -68,7 +67,6 @@ class _AliceMessageWidgetState extends State<AliceMessageWidget> {
   }
 
   Future<void> _initializeTtsIfPossible() async {
-    // Check if we have data to initialize TTS
     if (widget.ttsApiKey != null || widget.ttsOauthToken != null) {
       try {
         await _ttsService.init(
@@ -101,10 +99,8 @@ class _AliceMessageWidgetState extends State<AliceMessageWidget> {
     if (!_isTtsInitialized) return;
     
     try {
-      // Synthesize speech
       final audioBytes = await _ttsService.synthesizeBytes(widget.text);
       if (_audioPlayer != null) {
-        // Play audio using just_audio
         final audioSource = BytesAudioSource(audioBytes);
         await _audioPlayer!.setAudioSource(audioSource);
         await _audioPlayer!.play();
@@ -183,7 +179,6 @@ class _AliceMessageWidgetState extends State<AliceMessageWidget> {
   }
 }
 
-/// Audio source from bytes for just_audio
 class BytesAudioSource extends StreamAudioSource {
   BytesAudioSource(this._audioBytes);
 

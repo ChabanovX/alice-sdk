@@ -9,9 +9,7 @@ import 'package:alice_voice_player/src/alice_core.dart';
 import 'package:alice_voice_player/src/models/tts_config.dart';
 import 'package:alice_voice_player/src/models/tts_exception.dart';
 
-/// Yandex SpeechKit TTS implementation
 class YandexSpeechKitTts implements AliceTts {
-  /// Creates a new Yandex SpeechKit TTS instance
   YandexSpeechKitTts();
 
   AliceTtsConfig? _config;
@@ -125,7 +123,6 @@ class YandexSpeechKitTts implements AliceTts {
     final uri = Uri.parse(_config!.apiUrl);
     final request = http.Request('POST', uri);
     
-    // Set headers
     request.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     request.headers['Authorization'] = 'Api-Key ${_config!.apiKey}';
     
@@ -133,7 +130,6 @@ class YandexSpeechKitTts implements AliceTts {
       request.headers['X-Folder-Id'] = _config!.folderId!;
     }
     
-    // Build form data
     final body = {
       'text': text,
       'voice': _config!.voice,

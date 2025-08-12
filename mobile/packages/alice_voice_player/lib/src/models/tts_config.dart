@@ -1,6 +1,4 @@
-/// Configuration for TTS operations
 class AliceTtsConfig {
-  /// Creates a new TTS configuration
   const AliceTtsConfig({
     required this.apiKey,
     this.oauthToken,

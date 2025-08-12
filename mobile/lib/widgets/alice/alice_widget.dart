@@ -100,11 +100,9 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
   Timer? _messageTimer;
   bool _messageShouldShow = false;
   
-  // Built-in TTS service
   YandexSpeechKitTts? _ttsService;
   AudioPlayer? _audioPlayer;
   
-  // Sound effects
   AudioPlayer? _soundPlayer;
 
   @override
@@ -206,26 +204,22 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
     }
   }
 
-  /// Play sound effect for Alice activation
   Future<void> _playActivationSound() async {
     try {
       await _soundPlayer?.setAsset('assets/audio/alice_on.mp3');
       await _soundPlayer?.play();
     } catch (e) {
-      // Silently ignore sound errors
       if (kDebugMode) {
         print('Failed to play activation sound: $e');
       }
     }
   }
 
-  /// Play sound effect for Alice deactivation
   Future<void> _playDeactivationSound() async {
     try {
       await _soundPlayer?.setAsset('assets/audio/alice_off.mp3');
       await _soundPlayer?.play();
     } catch (e) {
-      // Silently ignore sound errors
       if (kDebugMode) {
         print('Failed to play deactivation sound: $e');
       }
@@ -234,7 +228,6 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
 
   void _handleTap() async {
     if (!_isHover) {
-      // Start recording/playback
       setState(() => _isHover = true);
       _scaleController.repeat(reverse: true);
       _messageTimer?.cancel();
@@ -247,21 +240,17 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
         }
       });
 
-      // Play activation sound
       await _playActivationSound();
       if (widget.autoSpeak && _isTtsInitialized && widget.messageText.isNotEmpty) {
         try {
           setState(() => _isPlaying = true);
           
-          // Synthesize speech
           final audioBytes = await _ttsService?.synthesizeBytes(widget.messageText);
           if (audioBytes != null && _audioPlayer != null) {
-            // Play audio using just_audio
             final audioSource = BytesAudioSource(audioBytes);
             await _audioPlayer!.setAudioSource(audioSource);
             await _audioPlayer!.play();
             
-            // Listen for completion
             _audioPlayer!.playerStateStream.listen((state) {
               if (state.processingState == ProcessingState.completed) {
                 if (mounted) {
@@ -296,10 +285,8 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
         }
       });
 
-      // Play deactivation sound
       await _playDeactivationSound();
 
-      // Stop playback
       if (_isTtsInitialized) {
         try {
           await _audioPlayer?.stop();
@@ -430,7 +417,6 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
   }
 }
 
-/// Audio source from bytes for just_audio
 class BytesAudioSource extends StreamAudioSource {
   BytesAudioSource(this._audioBytes);
 

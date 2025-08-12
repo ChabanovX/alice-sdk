@@ -9,13 +9,7 @@ import 'package:alice_voice_player/src/alice_core.dart';
 import 'package:alice_voice_player/src/models/stt_config.dart';
 import 'package:alice_voice_player/src/models/tts_exception.dart';
 
-/// Yandex SpeechKit STT implementation
-/// 
-/// Provides speech-to-text recognition for audio data.
-/// Note: This implementation only handles recognition of provided audio bytes.
-/// For microphone recording, use platform-specific audio recording libraries.
 class YandexSpeechKitStt implements AliceStt {
-  /// Creates a new Yandex SpeechKit STT instance
   YandexSpeechKitStt();
 
   AliceSttConfig? _config;
@@ -23,7 +17,6 @@ class YandexSpeechKitStt implements AliceStt {
   bool _isInitialized = false;
 
   @override
-  /// Initializes the STT service with configuration
   Future<void> init({
     required String apiKey,
     String? oauthToken,
@@ -50,25 +43,21 @@ class YandexSpeechKitStt implements AliceStt {
   }
 
   @override
-  /// Recognizes speech from audio bytes
   Future<String> recognizeAudio(Uint8List audioBytes) async {
     _ensureInitialized();
     return _recognizeAudio(audioBytes);
   }
 
   @override
-  /// Recognizes speech from audio stream
   Stream<String> recognizeAudioStream(Stream<List<int>> audioStream) async* {
     _ensureInitialized();
     
     try {
-      // Collect audio chunks
       final chunks = <List<int>>[];
       await for (final chunk in audioStream) {
         chunks.add(chunk);
       }
       
-      // Combine chunks and recognize
       final audioBytes = Uint8List.fromList(
         chunks.expand((chunk) => chunk).toList(),
       );
@@ -81,7 +70,6 @@ class YandexSpeechKitStt implements AliceStt {
     }
   }
 
-  /// Recognizes speech from audio bytes (internal method)
   Future<String> _recognizeAudio(Uint8List audioBytes) async {
     for (int attempt = 0; attempt <= _config!.maxRetries; attempt++) {
       try {
@@ -112,12 +100,10 @@ class YandexSpeechKitStt implements AliceStt {
     );
   }
 
-  /// Makes STT request to Yandex SpeechKit
   Future<http.Response> _makeSttRequest(Uint8List audioBytes) async {
     final uri = Uri.parse(_config!.apiUrl);
     final request = http.Request('POST', uri);
     
-    // Set headers
     request.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     request.headers['Authorization'] = 'Api-Key ${_config!.apiKey}';
     
@@ -125,7 +111,6 @@ class YandexSpeechKitStt implements AliceStt {
       request.headers['X-Folder-Id'] = _config!.folderId!;
     }
     
-    // Build form data
     final body = {
       'audio': base64Encode(audioBytes),
       'lang': _config!.language,
@@ -144,7 +129,6 @@ class YandexSpeechKitStt implements AliceStt {
     );
   }
 
-  /// Handles STT error responses
   AliceTtsException _handleSttErrorResponse(http.Response response) {
     String message;
     AliceTtsExceptionType type;
@@ -179,7 +163,6 @@ class YandexSpeechKitStt implements AliceStt {
     );
   }
 
-  /// Ensures STT is initialized
   void _ensureInitialized() {
     if (!_isInitialized || _config == null) {
       throw const AliceTtsException(
@@ -190,7 +173,6 @@ class YandexSpeechKitStt implements AliceStt {
   }
 
   @override
-  /// Disposes resources
   Future<void> dispose() async {
     _client.close();
     _isInitialized = false;
