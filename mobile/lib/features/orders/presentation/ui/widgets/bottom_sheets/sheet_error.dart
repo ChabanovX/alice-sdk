@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../../ui.dart';
 
 class SheetError extends StatelessWidget {
   const SheetError({super.key});

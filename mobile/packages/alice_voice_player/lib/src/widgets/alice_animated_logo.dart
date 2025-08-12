@@ -4,17 +4,17 @@ import '../alice_voice_player.dart';
 import '../models/playback_state.dart';
 
 /// An animated logo widget that responds to Alice Voice Assistant playback state
-/// 
+///
 /// This widget automatically connects to the Alice Voice Assistant instance
 /// and animates based on the current playback state and amplitude.
-/// 
+///
 /// Features:
 /// - Automatic pulsing animation based on audio amplitude
 /// - Customizable logo image and colors
 /// - Smooth transitions between states
 /// - Optional glow effect during playback
 /// - Configurable size and animation parameters
-/// 
+///
 /// Example:
 /// ```dart
 /// AliceAnimatedLogo(
@@ -77,7 +77,7 @@ class _AliceAnimatedLogoState extends State<AliceAnimatedLogo>
   late AnimationController _rippleController;
   late Animation<double> _pulseAnimation;
   late Animation<double> _rippleAnimation;
-  
+
   PlaybackState _currentState = PlaybackState.initial;
   bool _isListening = false;
 
@@ -95,7 +95,7 @@ class _AliceAnimatedLogoState extends State<AliceAnimatedLogo>
       duration: widget.animationDuration,
       vsync: this,
     );
-    
+
     _pulseAnimation = Tween<double>(
       begin: 1.0,
       end: 1.0 + widget.pulseIntensity,
@@ -109,7 +109,7 @@ class _AliceAnimatedLogoState extends State<AliceAnimatedLogo>
       duration: const Duration(seconds: 2),
       vsync: this,
     );
-    
+
     _rippleAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
@@ -121,17 +121,17 @@ class _AliceAnimatedLogoState extends State<AliceAnimatedLogo>
 
   void _startListening() {
     if (_isListening) return;
-    
+
     _alice.playbackState.listen((state) {
       if (!mounted) return;
-      
+
       setState(() {
         _currentState = state;
       });
-      
+
       _updateAnimations(state);
     });
-    
+
     _isListening = true;
   }
 
@@ -141,7 +141,7 @@ class _AliceAnimatedLogoState extends State<AliceAnimatedLogo>
       if (widget.showRipple && !_rippleController.isAnimating) {
         _rippleController.repeat();
       }
-      
+
       // Update pulse based on amplitude
       final targetScale = 1.0 + (state.amplitude * widget.pulseIntensity);
       _pulseController.animateTo(
@@ -174,7 +174,7 @@ class _AliceAnimatedLogoState extends State<AliceAnimatedLogo>
           // Ripple effect
           if (widget.showRipple && _currentState.isPlaying)
             _buildRippleEffect(),
-          
+
           // Main logo with pulse and glow
           AnimatedBuilder(
             animation: _pulseAnimation,
@@ -190,12 +190,12 @@ class _AliceAnimatedLogoState extends State<AliceAnimatedLogo>
                     boxShadow: widget.showGlow && _currentState.isPlaying
                         ? [
                             BoxShadow(
-                              color: widget.glowColor.withOpacity(0.3),
+                              color: widget.glowColor.withValues(alpha: 0.3),
                               blurRadius: 20,
                               spreadRadius: 5,
                             ),
                             BoxShadow(
-                              color: widget.glowColor.withOpacity(0.1),
+                              color: widget.glowColor.withValues(alpha: 0.1),
                               blurRadius: 40,
                               spreadRadius: 10,
                             ),
@@ -229,7 +229,7 @@ class _AliceAnimatedLogoState extends State<AliceAnimatedLogo>
               );
             },
           ),
-          
+
           // Error indicator
           if (_currentState.error != null)
             Positioned(
@@ -264,8 +264,8 @@ class _AliceAnimatedLogoState extends State<AliceAnimatedLogo>
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(
-              color: widget.glowColor.withOpacity(
-                (1.0 - _rippleAnimation.value) * 0.3,
+              color: widget.glowColor.withValues(
+                alpha: (1.0 - _rippleAnimation.value) * 0.3,
               ),
               width: 2.0,
             ),
@@ -277,7 +277,7 @@ class _AliceAnimatedLogoState extends State<AliceAnimatedLogo>
 }
 
 /// A more advanced animated logo with customizable wave patterns
-/// 
+///
 /// This widget provides additional visual effects like sound waves
 /// and more sophisticated animations.
 class AliceAnimatedLogoAdvanced extends StatefulWidget {
@@ -315,7 +315,8 @@ class AliceAnimatedLogoAdvanced extends StatefulWidget {
   final AliceVoiceAssistant? alice;
 
   @override
-  State<AliceAnimatedLogoAdvanced> createState() => _AliceAnimatedLogoAdvancedState();
+  State<AliceAnimatedLogoAdvanced> createState() =>
+      _AliceAnimatedLogoAdvancedState();
 }
 
 class _AliceAnimatedLogoAdvancedState extends State<AliceAnimatedLogoAdvanced>
@@ -323,7 +324,7 @@ class _AliceAnimatedLogoAdvancedState extends State<AliceAnimatedLogoAdvanced>
   late AliceVoiceAssistant _alice;
   late AnimationController _waveController;
   late List<Animation<double>> _waveAnimations;
-  
+
   PlaybackState _currentState = PlaybackState.initial;
 
   @override
@@ -359,11 +360,11 @@ class _AliceAnimatedLogoAdvancedState extends State<AliceAnimatedLogoAdvanced>
   void _startListening() {
     _alice.playbackState.listen((state) {
       if (!mounted) return;
-      
+
       setState(() {
         _currentState = state;
       });
-      
+
       if (state.isPlaying && widget.showSoundWaves) {
         _waveController.repeat();
       } else {
@@ -390,7 +391,7 @@ class _AliceAnimatedLogoAdvancedState extends State<AliceAnimatedLogoAdvanced>
           // Sound waves
           if (widget.showSoundWaves && _currentState.isPlaying)
             ..._buildSoundWaves(),
-          
+
           // Main logo
           Container(
             width: widget.size * 0.6,
@@ -401,7 +402,7 @@ class _AliceAnimatedLogoAdvancedState extends State<AliceAnimatedLogoAdvanced>
               boxShadow: _currentState.isPlaying
                   ? [
                       BoxShadow(
-                        color: widget.waveColor.withOpacity(0.2),
+                        color: widget.waveColor.withValues(alpha: 0.2),
                         blurRadius: 15,
                         spreadRadius: 3,
                       ),
@@ -435,14 +436,13 @@ class _AliceAnimatedLogoAdvancedState extends State<AliceAnimatedLogoAdvanced>
 
   List<Widget> _buildSoundWaves() {
     return _waveAnimations.map((animation) {
-      
       return AnimatedBuilder(
         animation: animation,
         builder: (context, child) {
           final progress = animation.value;
           final opacity = (1.0 - progress) * 0.3;
           final scale = 0.6 + (progress * 0.4);
-          
+
           return Transform.scale(
             scale: scale,
             child: Container(
@@ -451,7 +451,7 @@ class _AliceAnimatedLogoAdvancedState extends State<AliceAnimatedLogoAdvanced>
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: widget.waveColor.withOpacity(opacity),
+                  color: widget.waveColor.withValues(alpha: opacity),
                   width: 2.0,
                 ),
               ),

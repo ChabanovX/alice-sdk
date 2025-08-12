@@ -1,12 +1,17 @@
 import 'package:bloc/bloc.dart';
-import 'package:voice_assistant/features/orders/domain/repos/orders_repository.dart';
-import 'package:voice_assistant/features/orders/presentation/bloc/orders_event.dart';
-import 'package:voice_assistant/features/orders/presentation/bloc/orders_state.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../domain/entities/order_offer.dart';
+import '../../domain/repos/orders_repository.dart';
+
+part 'orders_event.dart';
+part 'orders_state.dart';
 
 class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
-  final OrdersRepository repo;
+  // TODO: inject via DI
+  final OrdersRepository repo = OrdersRepository();
 
-  OrdersBloc(this.repo) : super(const Offline()) {
+  OrdersBloc() : super(const Offline()) {
     on<AppStarted>(_onAppStarted);
     on<GoOnlinePressed>(_onGoOnline);
     on<GoOfflinePressed>(_onGoOffline);

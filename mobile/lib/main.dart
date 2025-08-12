@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:voice_assistant/bloc_observer.dart';
-import 'package:voice_assistant/features/orders/presentation/ui/orders_page.dart';
+import 'bloc_observer.dart';
+import 'features/orders/presentation/ui/ui.dart';
 
 void main() {
   Bloc.observer = AppBlocObserver();
-  runApp(const MainApp());
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

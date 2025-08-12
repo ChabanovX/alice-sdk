@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // =====================
-// Main colors 
+// Main colors
 // =====================
 class MainColors {
   // Semantic/Text
@@ -53,14 +53,14 @@ Color _onColorFor(Color background) {
 // ColorSchemes
 // =====================
 ColorScheme _buildLightColorScheme() {
-  final primary = MainColors.controlMain; // taxi yellow
-  final secondary = MainColors.aliceMain;
-  final tertiary = MainColors.cash;
+  const primary = MainColors.controlMain; // taxi yellow
+  const secondary = MainColors.aliceMain;
+  const tertiary = MainColors.cash;
   return ColorScheme(
     brightness: Brightness.light,
     primary: primary,
     onPrimary: _onColorFor(primary),
-    primaryContainer: Color(0xFFFFF170),
+    primaryContainer: const Color(0xFFFFF170),
     onPrimaryContainer: Colors.black,
     secondary: secondary,
     onSecondary: _onColorFor(secondary),
@@ -101,25 +101,34 @@ ColorScheme _buildLightColorScheme() {
 // =====================
 TextTheme _textTheme(Brightness brightness) {
   final base = brightness == Brightness.dark
-      ? Typography.material2021(platform: TargetPlatform.android).white
-      : Typography.material2021(platform: TargetPlatform.android).black;
+      ? Typography.material2021().white
+      : Typography.material2021().black;
 
   // Apply YandexSansText family to all styles
   final applied = base.apply(fontFamily: 'YandexSansText');
 
   return applied.copyWith(
-    displayLarge: applied.displayLarge?.copyWith(letterSpacing: -0.25, fontWeight: FontWeight.w400),
-    displayMedium: applied.displayMedium?.copyWith(letterSpacing: -0.25, fontWeight: FontWeight.w400),
-    displaySmall: applied.displaySmall?.copyWith(letterSpacing: -0.15, fontWeight: FontWeight.w400),
-    headlineLarge: applied.headlineLarge?.copyWith(letterSpacing: -0.15, fontWeight: FontWeight.w400),
-    headlineMedium: applied.headlineMedium?.copyWith(letterSpacing: -0.15, fontWeight: FontWeight.w400),
-    headlineSmall: applied.headlineSmall?.copyWith(letterSpacing: -0.1, fontWeight: FontWeight.w400),
+    displayLarge: applied.displayLarge
+        ?.copyWith(letterSpacing: -0.25, fontWeight: FontWeight.w400),
+    displayMedium: applied.displayMedium
+        ?.copyWith(letterSpacing: -0.25, fontWeight: FontWeight.w400),
+    displaySmall: applied.displaySmall
+        ?.copyWith(letterSpacing: -0.15, fontWeight: FontWeight.w400),
+    headlineLarge: applied.headlineLarge
+        ?.copyWith(letterSpacing: -0.15, fontWeight: FontWeight.w400),
+    headlineMedium: applied.headlineMedium
+        ?.copyWith(letterSpacing: -0.15, fontWeight: FontWeight.w400),
+    headlineSmall: applied.headlineSmall
+        ?.copyWith(letterSpacing: -0.1, fontWeight: FontWeight.w400),
     titleLarge: applied.titleLarge?.copyWith(fontWeight: FontWeight.w400),
     titleMedium: applied.titleMedium?.copyWith(fontWeight: FontWeight.w400),
     titleSmall: applied.titleSmall?.copyWith(fontWeight: FontWeight.w400),
-    bodyLarge: applied.bodyLarge?.copyWith(height: 1.25, fontWeight: FontWeight.w400),
-    bodyMedium: applied.bodyMedium?.copyWith(height: 1.25, fontWeight: FontWeight.w400),
-    bodySmall: applied.bodySmall?.copyWith(height: 1.25, fontWeight: FontWeight.w400),
+    bodyLarge:
+        applied.bodyLarge?.copyWith(height: 1.25, fontWeight: FontWeight.w400),
+    bodyMedium:
+        applied.bodyMedium?.copyWith(height: 1.25, fontWeight: FontWeight.w400),
+    bodySmall:
+        applied.bodySmall?.copyWith(height: 1.25, fontWeight: FontWeight.w400),
     labelLarge: applied.labelLarge?.copyWith(fontWeight: FontWeight.w400),
     labelMedium: applied.labelMedium?.copyWith(fontWeight: FontWeight.w400),
     labelSmall: applied.labelSmall?.copyWith(fontWeight: FontWeight.w400),
@@ -159,7 +168,8 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       elevation: 0,
       centerTitle: false,
       surfaceTintColor: scheme.surfaceTint,
-      titleTextStyle: base.textTheme.titleLarge?.copyWith(color: scheme.onSurface),
+      titleTextStyle:
+          base.textTheme.titleLarge?.copyWith(color: scheme.onSurface),
     ),
     bottomAppBarTheme: BottomAppBarTheme(
       color: scheme.surface,
@@ -172,7 +182,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       labelTextStyle: WidgetStateProperty.resolveWith((states) {
         final selected = states.contains(WidgetState.selected);
         return base.textTheme.labelMedium?.copyWith(
-          color: selected ? scheme.onSurface : scheme.onSurface.withValues(alpha: 0.74),
+          color: selected
+              ? scheme.onSurface
+              : scheme.onSurface.withValues(alpha: 0.74),
         );
       }),
     ),
@@ -180,13 +192,15 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       backgroundColor: scheme.surface,
       indicatorColor: scheme.primary.withValues(alpha: 0.2),
       selectedIconTheme: IconThemeData(color: scheme.primary),
-      unselectedIconTheme: IconThemeData(color: scheme.onSurface.withValues(alpha: 0.74)),
+      unselectedIconTheme:
+          IconThemeData(color: scheme.onSurface.withValues(alpha: 0.74)),
     ),
     tabBarTheme: TabBarThemeData(
       indicatorSize: TabBarIndicatorSize.label,
       labelColor: scheme.onSurface,
       unselectedLabelColor: scheme.onSurface.withValues(alpha: 0.74),
-      overlayColor: WidgetStateProperty.all(scheme.onSurface.withValues(alpha: 0.04)),
+      overlayColor:
+          WidgetStateProperty.all(scheme.onSurface.withValues(alpha: 0.04)),
       indicator: UnderlineTabIndicator(
         borderSide: BorderSide(color: scheme.primary, width: 2),
       ),
@@ -221,7 +235,8 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
     ),
     cardTheme: CardThemeData(
       color: scheme.surface,
-      shadowColor: (isDark ? Colors.black : Colors.black).withValues(alpha: 0.12),
+      shadowColor:
+          (isDark ? Colors.black : Colors.black).withValues(alpha: 0.12),
       elevation: 1,
       surfaceTintColor: scheme.surfaceTint,
       shape: roundedShape,
@@ -231,18 +246,23 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       backgroundColor: scheme.surface,
       surfaceTintColor: scheme.surfaceTint,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      titleTextStyle: base.textTheme.titleLarge?.copyWith(color: scheme.onSurface),
-      contentTextStyle: base.textTheme.bodyMedium?.copyWith(color: scheme.onSurface),
+      titleTextStyle:
+          base.textTheme.titleLarge?.copyWith(color: scheme.onSurface),
+      contentTextStyle:
+          base.textTheme.bodyMedium?.copyWith(color: scheme.onSurface),
     ),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: scheme.inverseSurface,
-      contentTextStyle: base.textTheme.bodyMedium?.copyWith(color: scheme.onInverseSurface),
+      contentTextStyle:
+          base.textTheme.bodyMedium?.copyWith(color: scheme.onInverseSurface),
       actionTextColor: scheme.inversePrimary,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusS)),
+      shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusS)),
     ),
     tooltipTheme: TooltipThemeData(
-      textStyle: base.textTheme.labelMedium?.copyWith(color: scheme.onInverseSurface),
+      textStyle:
+          base.textTheme.labelMedium?.copyWith(color: scheme.onInverseSurface),
       decoration: ShapeDecoration(
         color: scheme.inverseSurface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
@@ -282,22 +302,26 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         return scheme.onSurfaceVariant;
       }),
     ),
-    sliderTheme: const SliderThemeData(showValueIndicator: ShowValueIndicator.onlyForDiscrete),
+    sliderTheme: const SliderThemeData(
+      showValueIndicator: ShowValueIndicator.onlyForDiscrete,
+    ),
     chipTheme: base.chipTheme.copyWith(
       backgroundColor: scheme.surfaceContainerLow,
       selectedColor: scheme.primary.withValues(alpha: 0.16),
       checkmarkColor: scheme.onPrimary,
       disabledColor: scheme.surfaceContainerLow.withValues(alpha: 0.5),
       labelStyle: base.textTheme.labelLarge,
-      shadowColor: (isDark ? Colors.black : Colors.black).withValues(alpha: 0.12),
+      shadowColor:
+          (isDark ? Colors.black : Colors.black).withValues(alpha: 0.12),
       side: BorderSide(color: scheme.outlineVariant),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusS)),
+      shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusS)),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: scheme.primary,
       foregroundColor: _onColorFor(scheme.primary),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      extendedPadding: EdgeInsets.symmetric(
+      extendedPadding: const EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 8,
       ),
@@ -306,10 +330,14 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       style: ButtonStyle(
         shape: WidgetStateProperty.all(roundedShape),
         elevation: WidgetStateProperty.all(1),
-        backgroundColor: WidgetStateProperty.all(scheme.surfaceContainerHighest),
+        backgroundColor:
+            WidgetStateProperty.all(scheme.surfaceContainerHighest),
         foregroundColor: WidgetStateProperty.all(scheme.onSurface),
-        overlayColor: WidgetStateProperty.all(scheme.onSurface.withValues(alpha: 0.08)),
-        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(horizontal: 16, vertical: 12)),
+        overlayColor:
+            WidgetStateProperty.all(scheme.onSurface.withValues(alpha: 0.08)),
+        padding: WidgetStateProperty.all(
+          const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        ),
       ),
     ),
     filledButtonTheme: FilledButtonThemeData(
@@ -317,8 +345,12 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         shape: WidgetStateProperty.all(roundedShape),
         backgroundColor: WidgetStateProperty.all(scheme.primary),
         foregroundColor: WidgetStateProperty.all(_onColorFor(scheme.primary)),
-        overlayColor: WidgetStateProperty.all(_onColorFor(scheme.primary).withValues(alpha: 0.08)),
-        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(horizontal: 16, vertical: 12)),
+        overlayColor: WidgetStateProperty.all(
+          _onColorFor(scheme.primary).withValues(alpha: 0.08),
+        ),
+        padding: WidgetStateProperty.all(
+          const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        ),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -326,32 +358,40 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         shape: WidgetStateProperty.all(roundedShape),
         side: WidgetStateProperty.all(BorderSide(color: scheme.outline)),
         foregroundColor: WidgetStateProperty.all(scheme.onSurface),
-        overlayColor: WidgetStateProperty.all(scheme.onSurface.withValues(alpha: 0.04)),
-        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(horizontal: 16, vertical: 12)),
+        overlayColor:
+            WidgetStateProperty.all(scheme.onSurface.withValues(alpha: 0.04)),
+        padding: WidgetStateProperty.all(
+          const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        ),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         foregroundColor: WidgetStateProperty.all(scheme.primary),
-        overlayColor: WidgetStateProperty.all(scheme.primary.withValues(alpha: 0.08)),
+        overlayColor:
+            WidgetStateProperty.all(scheme.primary.withValues(alpha: 0.08)),
         shape: WidgetStateProperty.all(roundedShape),
-        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(horizontal: 12, vertical: 8)),
+        padding: WidgetStateProperty.all(
+          const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        ),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: scheme.surfaceContainerHighest,
-      hintStyle: base.textTheme.bodyMedium?.copyWith(color: scheme.onSurface.withValues(alpha: 0.6)),
-      labelStyle: base.textTheme.bodyMedium?.copyWith(color: scheme.onSurface.withValues(alpha: 0.8)),
+      hintStyle: base.textTheme.bodyMedium
+          ?.copyWith(color: scheme.onSurface.withValues(alpha: 0.6)),
+      labelStyle: base.textTheme.bodyMedium
+          ?.copyWith(color: scheme.onSurface.withValues(alpha: 0.8)),
       prefixIconColor: scheme.onSurfaceVariant,
       suffixIconColor: scheme.onSurfaceVariant,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: scheme.outlineVariant, width: 1),
+        borderSide: BorderSide(color: scheme.outlineVariant),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: scheme.outlineVariant, width: 1),
+        borderSide: BorderSide(color: scheme.outlineVariant),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
@@ -359,13 +399,13 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: scheme.error, width: 1),
+        borderSide: BorderSide(color: scheme.error),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: scheme.error, width: 2),
       ),
-      contentPadding: EdgeInsets.symmetric(
+      contentPadding: const EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 12,
       ),
@@ -386,7 +426,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       textStyle: base.textTheme.bodyMedium?.copyWith(color: scheme.onSurface),
     ),
-    iconTheme: IconThemeData(color: isDark ? scheme.onSurface : MainColors.semanticText),
+    iconTheme: IconThemeData(
+      color: isDark ? scheme.onSurface : MainColors.semanticText,
+    ),
     badgeTheme: BadgeThemeData(
       backgroundColor: MainColors.badge,
       textColor: _onColorFor(MainColors.badge),
@@ -396,18 +438,26 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
     ),
     segmentedButtonTheme: SegmentedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: WidgetStateProperty.resolveWith((states) =>
-            states.contains(WidgetState.selected) ? scheme.primary : scheme.surfaceContainerLow),
-        foregroundColor: WidgetStateProperty.resolveWith((states) =>
-            states.contains(WidgetState.selected) ? _onColorFor(scheme.primary) : scheme.onSurface),
+        backgroundColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected)
+              ? scheme.primary
+              : scheme.surfaceContainerLow,
+        ),
+        foregroundColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected)
+              ? _onColorFor(scheme.primary)
+              : scheme.onSurface,
+        ),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
-        side: WidgetStateProperty.resolveWith((states) => BorderSide(
-              color: states.contains(WidgetState.selected)
-                  ? scheme.primary
-                  : scheme.outlineVariant,
-            )),
+        side: WidgetStateProperty.resolveWith(
+          (states) => BorderSide(
+            color: states.contains(WidgetState.selected)
+                ? scheme.primary
+                : scheme.outlineVariant,
+          ),
+        ),
       ),
     ),
     datePickerTheme: DatePickerThemeData(
@@ -416,7 +466,8 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       headerBackgroundColor: scheme.surface,
       headerForegroundColor: scheme.onSurface,
       dayForegroundColor: WidgetStateProperty.all(scheme.onSurface),
-      todayBackgroundColor: WidgetStateProperty.all(scheme.primary.withValues(alpha: 0.16)),
+      todayBackgroundColor:
+          WidgetStateProperty.all(scheme.primary.withValues(alpha: 0.16)),
       todayForegroundColor: WidgetStateProperty.all(scheme.onSurface),
       rangePickerHeaderForegroundColor: scheme.onSurface,
     ),
@@ -431,7 +482,8 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
 }
 
 /// Публичная фабрика светлой темы (если потребуется интеграция с ThemeData)
-ThemeData get lightTheme => _buildTheme(_buildLightColorScheme(), isDark: false);
+ThemeData get lightTheme =>
+    _buildTheme(_buildLightColorScheme(), isDark: false);
 
 // Расширение API для удобного доступа: context.colors / context.textStyles
 class AppColors {

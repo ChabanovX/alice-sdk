@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../../ui.dart';
 
 class SheetOffer extends StatelessWidget {
   const SheetOffer({super.key});

@@ -1,3 +1,6 @@
 **/.DS_Store
 
 .history/
+mobile/macos/Flutter/GeneratedPluginRegistrant.swift
+*.lock
+.vscode/launch.json

@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:voice_assistant/features/orders/presentation/bloc/orders_bloc.dart';
-import 'package:voice_assistant/features/orders/presentation/bloc/orders_event.dart';
-import 'package:voice_assistant/features/orders/presentation/ui/widgets/panel_container.dart';
-import 'package:voice_assistant/theme.dart';
+part of '../../ui.dart';
 
 class SheetOffline extends StatelessWidget {
   final OrdersBloc bloc;

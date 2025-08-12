@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of '../../ui.dart';
 
 class SheetAtPickup extends StatelessWidget {
   const SheetAtPickup({super.key});

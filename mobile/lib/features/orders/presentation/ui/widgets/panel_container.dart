@@ -1,7 +1,4 @@
-import 'dart:math' as math;
-
-import 'package:flutter/material.dart';
-import 'package:voice_assistant/theme.dart';
+part of '../ui.dart';
 
 // import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:voice_assistant/features/orders/presentation/ui/widgets/panel_container.dart';
+part of '../../ui.dart';
 
 class SheetOnlineIdle extends StatelessWidget {
   const SheetOnlineIdle({super.key});

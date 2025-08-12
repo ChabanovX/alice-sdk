@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'orders_bloc.dart';
 
 sealed class OrdersState extends Equatable {
   const OrdersState();

@@ -1,4 +1,4 @@
-import 'package:voice_assistant/features/orders/domain/entities/order_offer.dart';
+part of 'orders_bloc.dart';
 
 sealed class OrdersEvent {}
 

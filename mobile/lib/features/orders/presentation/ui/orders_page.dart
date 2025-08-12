@@ -1,32 +1,14 @@
-import 'package:flutter/material.dart';
+part of 'ui.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:voice_assistant/features/orders/domain/repos/orders_repository.dart';
-import 'package:voice_assistant/features/orders/presentation/bloc/orders_bloc.dart';
-import 'package:voice_assistant/features/orders/presentation/bloc/orders_event.dart';
-import 'package:voice_assistant/features/orders/presentation/bloc/orders_state.dart';
-import 'package:voice_assistant/features/orders/presentation/ui/widgets/bottom_sheets/sheet_at_pickup.dart';
-import 'package:voice_assistant/features/orders/presentation/ui/widgets/bottom_sheets/sheet_error.dart';
-import 'package:voice_assistant/features/orders/presentation/ui/widgets/bottom_sheets/sheet_offer.dart';
-import 'package:voice_assistant/features/orders/presentation/ui/widgets/bottom_sheets/sheet_offline.dart';
-import 'package:voice_assistant/features/orders/presentation/ui/widgets/bottom_sheets/sheet_online_idle.dart';
-import 'package:voice_assistant/features/orders/presentation/ui/widgets/bottom_sheets/sheet_to_pickup.dart';
-import 'package:voice_assistant/features/orders/presentation/ui/widgets/maps/map_offline.dart';
-import 'package:voice_assistant/features/orders/presentation/ui/widgets/maps/map_online_idle.dart';
-import 'package:voice_assistant/theme.dart';
 
 class OrdersPage extends StatelessWidget {
   const OrdersPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // TODO: inject via DI
-    final OrdersRepository repo = OrdersRepository();
-
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => OrdersBloc(repo)..add(AppStarted())),
+        BlocProvider(create: (context) => OrdersBloc()),
       ],
       child: Scaffold(
         bottomNavigationBar: _AppBottomNavBar(),
@@ -90,7 +72,7 @@ class _AppBottomNavBar extends StatelessWidget {
       selectedItemColor: context.colors.text,
       unselectedItemColor: Theme.of(
         context,
-      ).colorScheme.onSurface.withOpacity(.5),
+      ).colorScheme.onSurface.withValues(alpha: .5),
       items: [
         _item(label: 'Заказы', asset: _orders),
         _item(label: 'Деньги', asset: _money),
