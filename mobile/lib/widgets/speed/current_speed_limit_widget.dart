@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voice_assistant/theme.dart';
+
+import '../../theme.dart';
 
 /// Виджет отображения текущего лимита скорости
 class CurrentSpeedLimitWidget extends StatelessWidget {

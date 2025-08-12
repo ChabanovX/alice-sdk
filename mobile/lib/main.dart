@@ -1,12 +1,11 @@
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:voice_assistant/widgets/buttons/buttons.dart';
-import 'package:voice_assistant/widgets/message_notification/message_notification.dart';
-import 'package:voice_assistant/widgets/orders/order_button.dart';
-import 'package:voice_assistant/widgets/road_tracker/road_tracker.dart';
-import 'widgets/action_buttons/slide_action_button.dart';
-import 'package:voice_assistant/widgets/widgets.dart';
+
+import 'bloc_observer.dart';
 import 'theme.dart';
+import 'widgets/buttons/buttons.dart';
+import 'widgets/message_notification/message_notification.dart';
+import 'widgets/road_tracker/road_tracker.dart';
 
 void main() {
   Bloc.observer = AppBlocObserver();

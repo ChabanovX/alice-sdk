@@ -205,9 +205,6 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
           color: selected
               ? scheme.onSurface
               : scheme.onSurface.withValues(alpha: 0.74),
-          color: selected
-              ? scheme.onSurface
-              : scheme.onSurface.withValues(alpha: 0.74),
         );
       }),
     ),
@@ -336,9 +333,6 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
     sliderTheme: const SliderThemeData(
       showValueIndicator: ShowValueIndicator.onlyForDiscrete,
     ),
-    sliderTheme: const SliderThemeData(
-      showValueIndicator: ShowValueIndicator.onlyForDiscrete,
-    ),
     chipTheme: base.chipTheme.copyWith(
       backgroundColor: scheme.surfaceContainerLow,
       selectedColor: scheme.primary.withValues(alpha: 0.16),
@@ -386,12 +380,6 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         ),
-        overlayColor: WidgetStateProperty.all(
-          _onColorFor(scheme.primary).withValues(alpha: 0.08),
-        ),
-        padding: WidgetStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        ),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -414,9 +402,6 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
           scheme.primary.withValues(alpha: 0.08),
         ),
         shape: WidgetStateProperty.all(roundedShape),
-        padding: WidgetStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        ),
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         ),
@@ -474,9 +459,6 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
     iconTheme: IconThemeData(
       color: isDark ? scheme.onSurface : MainColors.semanticText,
     ),
-    iconTheme: IconThemeData(
-      color: isDark ? scheme.onSurface : MainColors.semanticText,
-    ),
     badgeTheme: BadgeThemeData(
       backgroundColor: MainColors.badge,
       textColor: _onColorFor(MainColors.badge),
@@ -496,25 +478,8 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
               ? _onColorFor(scheme.primary)
               : scheme.onSurface,
         ),
-        backgroundColor: WidgetStateProperty.resolveWith(
-          (states) => states.contains(WidgetState.selected)
-              ? scheme.primary
-              : scheme.surfaceContainerLow,
-        ),
-        foregroundColor: WidgetStateProperty.resolveWith(
-          (states) => states.contains(WidgetState.selected)
-              ? _onColorFor(scheme.primary)
-              : scheme.onSurface,
-        ),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        ),
-        side: WidgetStateProperty.resolveWith(
-          (states) => BorderSide(
-            color: states.contains(WidgetState.selected)
-                ? scheme.primary
-                : scheme.outlineVariant,
-          ),
         ),
         side: WidgetStateProperty.resolveWith(
           (states) => BorderSide(
@@ -550,9 +515,6 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
 /// Публичная фабрика светлой темы (если потребуется интеграция с ThemeData)
 ThemeData get lightTheme =>
     _buildTheme(_buildLightColorScheme(), isDark: false);
-ThemeData get lightTheme =>
-    _buildTheme(_buildLightColorScheme(), isDark: false);
-
 // Расширение API для удобного доступа: context.colors / context.textStyles
 class AppColors {
   const AppColors();
