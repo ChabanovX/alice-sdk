@@ -20,9 +20,9 @@ class AppSettings extends StatelessWidget {
               title: 'Настройки',
               icon: AppIcons.settings2Outline,
               onTap: () {
-                Navigator.pushNamed(
-                  context,
+                NavigationManager.pushNamed(
                   Routes.settings,
+                  navigator: NavigationManager.profileNavigator,
                 );
               },
             ),

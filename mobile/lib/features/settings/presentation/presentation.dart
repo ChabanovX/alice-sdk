@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/navigation/routes.dart';
+import '../../../core/navigation/manager.dart';
 import '../../../core/utils/icons.dart';
 import '../../components/components.dart';
 

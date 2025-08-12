@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../theme.dart';
-import '../paints/paints.dart';
 
 class RoadTracker extends StatelessWidget {
   final String timeWhenEnd;

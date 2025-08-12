@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../../theme.dart';
-import '../orders/order_button.dart';
+part of 'navigation.dart';
 
 enum BottomNavigationItem { orders, money, chat, profile }
 
@@ -55,12 +52,51 @@ class CustomBottomNavigationBar extends StatelessWidget {
               ),
             ),
             // Кнопка "Профиль" - 1/4 ширины экрана
-            Expanded(
-              child: _buildProfileButton(
-                context,
-                isSelected: selectedItem == BottomNavigationItem.profile,
-                onTap: () => onItemSelected(BottomNavigationItem.profile),
-              ),
+            BlocBuilder<ProfileBloc, ProfileState>(
+              builder: (context, state) {
+                return Expanded(
+                  child: GestureDetector(
+                    onTap: () => onItemSelected(BottomNavigationItem.profile),
+                    child: SizedBox(
+                      height: 48,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                maxWidth: 24,
+                                maxHeight: 24,
+                              ),
+                              child: UserAvatar(
+                                avatarUrl: state is ProfileUserState
+                                    ? state.user.urlAvatar
+                                    : '',
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'Профиль',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    color: _getTextColor(
+                                      context,
+                                      selectedItem ==
+                                          BottomNavigationItem.profile,
+                                    ),
+                                    fontSize: 9.5,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -96,47 +132,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
               Text(
                 label,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: _getTextColor(context, isSelected),
-                  fontSize: 9.5,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildProfileButton(
-    BuildContext context, {
-    required bool isSelected,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: SizedBox(
-        height: 48,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Opacity(
-                opacity: isSelected ? 1.0 : 0.3,
-                child: Image.asset(
-                  'assets/icons/user_avatar.png',
-                  width: 24,
-                  height: 24,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                'Профиль',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: _getTextColor(context, isSelected),
-                  fontSize: 9.5,
-                  fontWeight: FontWeight.w500,
-                ),
+                      color: _getTextColor(context, isSelected),
+                      fontSize: 9.5,
+                      fontWeight: FontWeight.w500,
+                    ),
               ),
             ],
           ),

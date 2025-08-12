@@ -58,28 +58,28 @@ class AliceWidget extends StatefulWidget {
   // TTS Configuration
   /// Yandex SpeechKit API Key
   final String? ttsApiKey;
-  
+
   /// Yandex SpeechKit OAuth Token
   final String? ttsOauthToken;
-  
+
   /// Yandex Cloud Folder ID
   final String? ttsFolderId;
-  
+
   /// Voice for TTS synthesis (default: 'alena')
   final String ttsVoice;
-  
+
   /// Audio format (default: 'mp3')
   final String ttsFormat;
-  
+
   /// Sample rate in Hz (default: 48000)
   final int ttsSampleRateHz;
-  
+
   /// API timeout (default: 10 seconds)
   final Duration ttsTimeout;
-  
+
   /// Auto-speak message when tapped (default: true)
   final bool autoSpeak;
-  
+
   /// Show playback indicator (default: true)
   final bool showPlaybackIndicator;
 
@@ -87,11 +87,12 @@ class AliceWidget extends StatefulWidget {
   State<AliceWidget> createState() => _AliceWidgetState();
 }
 
-class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin {
+class _AliceWidgetState extends State<AliceWidget>
+    with TickerProviderStateMixin {
   bool _isHover = false;
   bool _isPlaying = false;
   bool _isTtsInitialized = false;
-  
+
   late final AnimationController _messageController;
   late final AnimationController _scaleController;
   late final Animation<double> _messageFade;
@@ -99,10 +100,10 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
   late final Animation<double> _scaleAnimation;
   Timer? _messageTimer;
   bool _messageShouldShow = false;
-  
+
   YandexSpeechKitTts? _ttsService;
   AudioPlayer? _audioPlayer;
-  
+
   AudioPlayer? _soundPlayer;
 
   @override
@@ -112,7 +113,7 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
     _ttsService = YandexSpeechKitTts();
     _audioPlayer = AudioPlayer();
     _soundPlayer = AudioPlayer();
-    
+
     _initializeTtsIfPossible();
 
     _messageController = AnimationController(
@@ -159,14 +160,16 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
   }
 
   Future<void> _initializeTtsIfPossible() async {
-    if ((widget.ttsApiKey != null && widget.ttsApiKey!.isNotEmpty) || 
+    if ((widget.ttsApiKey != null && widget.ttsApiKey!.isNotEmpty) ||
         (widget.ttsOauthToken != null && widget.ttsOauthToken!.isNotEmpty)) {
       try {
         final apiKey = widget.ttsApiKey ?? '';
-        if (apiKey.isEmpty || apiKey == 'api' || apiKey == 'speech-kit-apik-key') {
+        if (apiKey.isEmpty ||
+            apiKey == 'api' ||
+            apiKey == 'speech-kit-apik-key') {
           return;
         }
-        
+
         await _ttsService?.init(
           apiKey: apiKey,
           oauthToken: widget.ttsOauthToken,
@@ -176,11 +179,11 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
           sampleRateHz: widget.ttsSampleRateHz,
           timeout: widget.ttsTimeout,
         );
-        
+
         setState(() {
           _isTtsInitialized = true;
         });
-        
+
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -241,16 +244,19 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
       });
 
       await _playActivationSound();
-      if (widget.autoSpeak && _isTtsInitialized && widget.messageText.isNotEmpty) {
+      if (widget.autoSpeak &&
+          _isTtsInitialized &&
+          widget.messageText.isNotEmpty) {
         try {
           setState(() => _isPlaying = true);
-          
-          final audioBytes = await _ttsService?.synthesizeBytes(widget.messageText);
+
+          final audioBytes =
+              await _ttsService?.synthesizeBytes(widget.messageText);
           if (audioBytes != null && _audioPlayer != null) {
             final audioSource = BytesAudioSource(audioBytes);
             await _audioPlayer!.setAudioSource(audioSource);
             await _audioPlayer!.play();
-            
+
             _audioPlayer!.playerStateStream.listen((state) {
               if (state.processingState == ProcessingState.completed) {
                 if (mounted) {
@@ -275,7 +281,7 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
       // Stop recording/playback
       setState(() => _isHover = false);
       _scaleController.stop();
-      _scaleController.reset();   
+      _scaleController.reset();
       _messageTimer?.cancel();
       _messageController.reverse().then((_) {
         if (mounted) {
@@ -315,8 +321,9 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
             ? constraints.maxWidth
             : widget.size * 6;
 
-        final double bubbleMaxWidth = (containerWidth - widget.size - widget.messageGap)
-            .clamp(0, double.infinity);
+        final double bubbleMaxWidth =
+            (containerWidth - widget.size - widget.messageGap)
+                .clamp(0, double.infinity);
 
         return SizedBox(
           height: widget.size,
@@ -365,8 +372,10 @@ class _AliceWidgetState extends State<AliceWidget> with TickerProviderStateMixin
                               crossFadeState: _isHover
                                   ? CrossFadeState.showSecond
                                   : CrossFadeState.showFirst,
-                              firstChild: _buildIcon(widget.iconDefaultAssetPath),
-                              secondChild: _buildIcon(widget.iconHoverAssetPath),
+                              firstChild:
+                                  _buildIcon(widget.iconDefaultAssetPath),
+                              secondChild:
+                                  _buildIcon(widget.iconHoverAssetPath),
                             ),
                             // Playback indicator
                             if (_isPlaying && widget.showPlaybackIndicator)
@@ -426,7 +435,7 @@ class BytesAudioSource extends StreamAudioSource {
   Future<StreamAudioResponse> request([int? start, int? end]) async {
     start ??= 0;
     end ??= _audioBytes.length;
-    
+
     return StreamAudioResponse(
       sourceLength: _audioBytes.length,
       contentLength: end - start,
@@ -436,5 +445,3 @@ class BytesAudioSource extends StreamAudioSource {
     );
   }
 }
-
-

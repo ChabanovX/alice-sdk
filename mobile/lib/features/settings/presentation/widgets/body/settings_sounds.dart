@@ -12,9 +12,9 @@ class SettingsSounds extends StatelessWidget {
           icon: AppIcons.sound1Outline,
           type: SettingType.button,
           onTap: () {
-            Navigator.pushNamed(
-              context,
+            NavigationManager.pushNamed(
               Routes.detailedVoiceSettings,
+              navigator: NavigationManager.profileNavigator,
             );
           },
         ),

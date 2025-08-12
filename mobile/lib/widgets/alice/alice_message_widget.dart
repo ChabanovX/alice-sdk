@@ -126,7 +126,7 @@ class _AliceMessageWidgetState extends State<AliceMessageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = const TextStyle(
+    const textStyle = TextStyle(
       fontFamily: 'YandexSansText',
       fontWeight: FontWeight.w500,
       fontSize: 20,
@@ -198,5 +198,3 @@ class BytesAudioSource extends StreamAudioSource {
     );
   }
 }
-
-
