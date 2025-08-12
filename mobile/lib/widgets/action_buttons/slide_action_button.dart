@@ -174,7 +174,7 @@ class _SlideActionButtonState extends State<SlideActionButton>
 
   void _handlePanEnd(DragEndDetails details) {
     // Если виджет заблокирован в состоянии 3, ничего не делаем
-    if (_currentState == SlideActionState.stretchedState) return;
+    //if (_currentState == SlideActionState.stretchedState) return;
     if (!_isDragging) return;
 
     setState(() {

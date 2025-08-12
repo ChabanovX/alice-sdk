@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:voice_assistant/widgets/buttons/buttons.dart';
+import 'package:voice_assistant/widgets/message_notification/message_notification.dart';
 import 'package:voice_assistant/widgets/orders/order_button.dart';
+import 'package:voice_assistant/widgets/road_tracker/road_tracker.dart';
 import 'widgets/action_buttons/slide_action_button.dart';
 import 'package:voice_assistant/widgets/widgets.dart';
 import 'theme.dart';
@@ -29,12 +33,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final GlobalKey _slideButtonKey = GlobalKey();
-
-  void _resetSlideButton() {
-    SlideActionButton.reset(_slideButtonKey);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,28 +42,15 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 16),
-
-            // OrderBadge с масштабом 5
-            Center(
-              child: Transform.scale(
-                scale: 3.0,
-                child: const OrderButton(
-                  state: OrderButtonState.withBadge,
-                  countBadge: 1,
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 16),
-          ],
-        ),
+      body: Column(
+        children: [
+          MessageNotification(message: 'Message Notification pressed', onTap: () {}),
+          EndTaxiRideButton(onSlideComplete: () {print('SlideAnim completed');},),
+          SizedBox(height: 20,),
+          EndTaxiRideButtonWithoutAnim(onSlideComplete: (){print('SlideNoAnim completed');},),
+          SizedBox(height: 20,),
+          RoadTracker(timeWhenEnd: '17:12', timeRemain: '12 мин', roadLength: '1,5 км',),
+        ],
       ),
     );
   }
