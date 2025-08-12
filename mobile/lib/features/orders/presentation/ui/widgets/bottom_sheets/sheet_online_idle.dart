@@ -6,8 +6,6 @@ class SheetOnlineIdle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PanelContainer(
-      collapsedFraction: 0.22,
-      expandedFraction: 0.86,
       overlay: _JustRight(
         right: SvgPicture.asset('assets/random/r_alice.svg'),
       ),
@@ -21,16 +19,16 @@ Widget _buildSheetOnline() {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           height: 64,
           child: SvgPicture.asset(
             'assets/random/r_prioritet_orders.svg',
             fit: BoxFit.fill,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           height: 64,
           child: SvgPicture.asset(
             'assets/random/r_good_to_know.svg',
@@ -43,7 +41,6 @@ Widget _buildSheetOnline() {
 
 class _JustRight extends StatelessWidget {
   const _JustRight({
-    super.key,
     required this.right,
     this.height = 52,
     this.padding = const EdgeInsets.symmetric(horizontal: 16),

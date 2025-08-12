@@ -31,10 +31,11 @@ class PanelContainer extends StatefulWidget {
     this.overlay,
     this.overlayGap = 14,
   }) : assert(
-         collapsedFraction > 0 &&
-             expandedFraction <= 1 &&
-             collapsedFraction < expandedFraction,
-       );
+          collapsedFraction > 0 &&
+              expandedFraction <= 1 &&
+              collapsedFraction < expandedFraction,
+          'collapsedFraction < expandedFraction',
+        );
 
   @override
   State<StatefulWidget> createState() => _PanelContainerState();
@@ -77,7 +78,6 @@ class _PanelContainerState extends State<PanelContainer> {
         return Stack(
           fit: StackFit.expand,
           clipBehavior: Clip.none,
-
           children: [
             DraggableScrollableSheet(
               controller: _dss,
@@ -99,7 +99,6 @@ class _PanelContainerState extends State<PanelContainer> {
                 );
               },
             ),
-
             if (widget.overlay != null)
               Positioned(
                 left: 0,
@@ -133,7 +132,6 @@ class _PanelChrome extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(0, 4, 0, bottom),
           decoration: BoxDecoration(color: context.colors.semanticBackground),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
             children: [
               const _GrabHandle(),
               const SizedBox(height: 8),
