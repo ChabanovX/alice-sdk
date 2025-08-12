@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../core/navigation/routes.dart';
+import '../../../core/navigation/manager.dart';
 import '../../../core/utils/icons.dart';
 import '../../../core/utils/images.dart';
 import '../../components/components.dart';
 import '../domain/entities/profile_user.dart';
+import 'bloc/profile_bloc.dart';
 import 'widgets/profile_header.dart';
 
 part 'profile_page.dart';

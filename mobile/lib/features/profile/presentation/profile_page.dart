@@ -3,10 +3,7 @@ part of 'presentation.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
     super.key,
-    required this.user,
   });
-
-  final ProfileUserEntity user;
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +11,14 @@ class ProfilePage extends StatelessWidget {
       backgroundColor: const Color(0xFFF5F4F2),
       body: CustomScrollView(
         slivers: [
-          ProfileHeader(
-            userName: user.name,
-            avatarUrl: user.urlAvatar,
+          BlocBuilder<ProfileBloc, ProfileState>(
+            builder: (context, state) {
+              final user = state is ProfileUserState ? state.user : null;
+              return ProfileHeader(
+                userName: user?.name ?? '',
+                avatarUrl: user?.urlAvatar ?? '',
+              );
+            },
           ),
           const ProfileBody(),
           const SliverPadding(
