@@ -1,0 +1,23 @@
+// Экспорт всех виджетов для удобного импорта
+export 'passenger_stop/passenger_stop_widget1.dart';
+export 'passenger_stop/passenger_stop_widget2.dart';
+export 'passenger_stop/passenger_stop_widget3.dart';
+export 'control/control_offline_widget.dart';
+export 'control/control_online_widget.dart';
+export 'speed/current_speed_widget.dart';
+export 'speed/current_speed_limit_widget.dart';
+export 'turn/turn_with_distance_widget.dart';
+export 'alice/alice_widget.dart';
+export 'action_buttons/slide_action_button.dart';
+export 'action_buttons/slide_action_button_stateless.dart';
+export 'orders/order_badge.dart';
+export 'orders/order_button.dart';
+export 'orders/order_button_example.dart';
+export 'priority and orders/priority_widget.dart';
+export 'priority and orders/priority_and_orders_widget.dart';
+export 'priority and orders/orders_widget.dart';
+export 'icons/turn_right_icon_widget.dart';
+export 'icons/bookmark_icon_widget.dart';
+export 'skip/skip_widget.dart';
+export 'skip/skip_widget_activity.dart';
+export 'navigation/bottom_navigation_bar.dart';

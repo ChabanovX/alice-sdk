@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // =====================
 // Main colors
+// Main colors
 // =====================
 class MainColors {
   // Semantic/Text
@@ -108,27 +109,45 @@ TextTheme _textTheme(Brightness brightness) {
   final applied = base.apply(fontFamily: 'YandexSansText');
 
   return applied.copyWith(
-    displayLarge: applied.displayLarge
-        ?.copyWith(letterSpacing: -0.25, fontWeight: FontWeight.w400),
-    displayMedium: applied.displayMedium
-        ?.copyWith(letterSpacing: -0.25, fontWeight: FontWeight.w400),
-    displaySmall: applied.displaySmall
-        ?.copyWith(letterSpacing: -0.15, fontWeight: FontWeight.w400),
-    headlineLarge: applied.headlineLarge
-        ?.copyWith(letterSpacing: -0.15, fontWeight: FontWeight.w400),
-    headlineMedium: applied.headlineMedium
-        ?.copyWith(letterSpacing: -0.15, fontWeight: FontWeight.w400),
-    headlineSmall: applied.headlineSmall
-        ?.copyWith(letterSpacing: -0.1, fontWeight: FontWeight.w400),
+    displayLarge: applied.displayLarge?.copyWith(
+      letterSpacing: -0.25,
+      fontWeight: FontWeight.w400,
+    ),
+    displayMedium: applied.displayMedium?.copyWith(
+      letterSpacing: -0.25,
+      fontWeight: FontWeight.w400,
+    ),
+    displaySmall: applied.displaySmall?.copyWith(
+      letterSpacing: -0.15,
+      fontWeight: FontWeight.w400,
+    ),
+    headlineLarge: applied.headlineLarge?.copyWith(
+      letterSpacing: -0.15,
+      fontWeight: FontWeight.w400,
+    ),
+    headlineMedium: applied.headlineMedium?.copyWith(
+      letterSpacing: -0.15,
+      fontWeight: FontWeight.w400,
+    ),
+    headlineSmall: applied.headlineSmall?.copyWith(
+      letterSpacing: -0.1,
+      fontWeight: FontWeight.w400,
+    ),
     titleLarge: applied.titleLarge?.copyWith(fontWeight: FontWeight.w400),
     titleMedium: applied.titleMedium?.copyWith(fontWeight: FontWeight.w400),
     titleSmall: applied.titleSmall?.copyWith(fontWeight: FontWeight.w400),
-    bodyLarge:
-        applied.bodyLarge?.copyWith(height: 1.25, fontWeight: FontWeight.w400),
-    bodyMedium:
-        applied.bodyMedium?.copyWith(height: 1.25, fontWeight: FontWeight.w400),
-    bodySmall:
-        applied.bodySmall?.copyWith(height: 1.25, fontWeight: FontWeight.w400),
+    bodyLarge: applied.bodyLarge?.copyWith(
+      height: 1.25,
+      fontWeight: FontWeight.w400,
+    ),
+    bodyMedium: applied.bodyMedium?.copyWith(
+      height: 1.25,
+      fontWeight: FontWeight.w400,
+    ),
+    bodySmall: applied.bodySmall?.copyWith(
+      height: 1.25,
+      fontWeight: FontWeight.w400,
+    ),
     labelLarge: applied.labelLarge?.copyWith(fontWeight: FontWeight.w400),
     labelMedium: applied.labelMedium?.copyWith(fontWeight: FontWeight.w400),
     labelSmall: applied.labelSmall?.copyWith(fontWeight: FontWeight.w400),
@@ -168,8 +187,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       elevation: 0,
       centerTitle: false,
       surfaceTintColor: scheme.surfaceTint,
-      titleTextStyle:
-          base.textTheme.titleLarge?.copyWith(color: scheme.onSurface),
+      titleTextStyle: base.textTheme.titleLarge?.copyWith(
+        color: scheme.onSurface,
+      ),
     ),
     bottomAppBarTheme: BottomAppBarTheme(
       color: scheme.surface,
@@ -192,15 +212,17 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       backgroundColor: scheme.surface,
       indicatorColor: scheme.primary.withValues(alpha: 0.2),
       selectedIconTheme: IconThemeData(color: scheme.primary),
-      unselectedIconTheme:
-          IconThemeData(color: scheme.onSurface.withValues(alpha: 0.74)),
+      unselectedIconTheme: IconThemeData(
+        color: scheme.onSurface.withValues(alpha: 0.74),
+      ),
     ),
     tabBarTheme: TabBarThemeData(
       indicatorSize: TabBarIndicatorSize.label,
       labelColor: scheme.onSurface,
       unselectedLabelColor: scheme.onSurface.withValues(alpha: 0.74),
-      overlayColor:
-          WidgetStateProperty.all(scheme.onSurface.withValues(alpha: 0.04)),
+      overlayColor: WidgetStateProperty.all(
+        scheme.onSurface.withValues(alpha: 0.04),
+      ),
       indicator: UnderlineTabIndicator(
         borderSide: BorderSide(color: scheme.primary, width: 2),
       ),
@@ -235,8 +257,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
     ),
     cardTheme: CardThemeData(
       color: scheme.surface,
-      shadowColor:
-          (isDark ? Colors.black : Colors.black).withValues(alpha: 0.12),
+      shadowColor: (isDark ? Colors.black : Colors.black).withValues(
+        alpha: 0.12,
+      ),
       elevation: 1,
       surfaceTintColor: scheme.surfaceTint,
       shape: roundedShape,
@@ -246,23 +269,28 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       backgroundColor: scheme.surface,
       surfaceTintColor: scheme.surfaceTint,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      titleTextStyle:
-          base.textTheme.titleLarge?.copyWith(color: scheme.onSurface),
-      contentTextStyle:
-          base.textTheme.bodyMedium?.copyWith(color: scheme.onSurface),
+      titleTextStyle: base.textTheme.titleLarge?.copyWith(
+        color: scheme.onSurface,
+      ),
+      contentTextStyle: base.textTheme.bodyMedium?.copyWith(
+        color: scheme.onSurface,
+      ),
     ),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: scheme.inverseSurface,
-      contentTextStyle:
-          base.textTheme.bodyMedium?.copyWith(color: scheme.onInverseSurface),
+      contentTextStyle: base.textTheme.bodyMedium?.copyWith(
+        color: scheme.onInverseSurface,
+      ),
       actionTextColor: scheme.inversePrimary,
       behavior: SnackBarBehavior.floating,
-      shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusS)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(radiusS),
+      ),
     ),
     tooltipTheme: TooltipThemeData(
-      textStyle:
-          base.textTheme.labelMedium?.copyWith(color: scheme.onInverseSurface),
+      textStyle: base.textTheme.labelMedium?.copyWith(
+        color: scheme.onInverseSurface,
+      ),
       decoration: ShapeDecoration(
         color: scheme.inverseSurface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
@@ -311,30 +339,31 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       checkmarkColor: scheme.onPrimary,
       disabledColor: scheme.surfaceContainerLow.withValues(alpha: 0.5),
       labelStyle: base.textTheme.labelLarge,
-      shadowColor:
-          (isDark ? Colors.black : Colors.black).withValues(alpha: 0.12),
+      shadowColor: (isDark ? Colors.black : Colors.black).withValues(
+        alpha: 0.12,
+      ),
       side: BorderSide(color: scheme.outlineVariant),
-      shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(radiusS)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(radiusS),
+      ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: scheme.primary,
       foregroundColor: _onColorFor(scheme.primary),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      extendedPadding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 8,
-      ),
+      extendedPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         shape: WidgetStateProperty.all(roundedShape),
         elevation: WidgetStateProperty.all(1),
-        backgroundColor:
-            WidgetStateProperty.all(scheme.surfaceContainerHighest),
+        backgroundColor: WidgetStateProperty.all(
+          scheme.surfaceContainerHighest,
+        ),
         foregroundColor: WidgetStateProperty.all(scheme.onSurface),
-        overlayColor:
-            WidgetStateProperty.all(scheme.onSurface.withValues(alpha: 0.08)),
+        overlayColor: WidgetStateProperty.all(
+          scheme.onSurface.withValues(alpha: 0.08),
+        ),
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         ),
@@ -358,8 +387,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         shape: WidgetStateProperty.all(roundedShape),
         side: WidgetStateProperty.all(BorderSide(color: scheme.outline)),
         foregroundColor: WidgetStateProperty.all(scheme.onSurface),
-        overlayColor:
-            WidgetStateProperty.all(scheme.onSurface.withValues(alpha: 0.04)),
+        overlayColor: WidgetStateProperty.all(
+          scheme.onSurface.withValues(alpha: 0.04),
+        ),
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         ),
@@ -368,8 +398,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         foregroundColor: WidgetStateProperty.all(scheme.primary),
-        overlayColor:
-            WidgetStateProperty.all(scheme.primary.withValues(alpha: 0.08)),
+        overlayColor: WidgetStateProperty.all(
+          scheme.primary.withValues(alpha: 0.08),
+        ),
         shape: WidgetStateProperty.all(roundedShape),
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -379,10 +410,12 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: scheme.surfaceContainerHighest,
-      hintStyle: base.textTheme.bodyMedium
-          ?.copyWith(color: scheme.onSurface.withValues(alpha: 0.6)),
-      labelStyle: base.textTheme.bodyMedium
-          ?.copyWith(color: scheme.onSurface.withValues(alpha: 0.8)),
+      hintStyle: base.textTheme.bodyMedium?.copyWith(
+        color: scheme.onSurface.withValues(alpha: 0.6),
+      ),
+      labelStyle: base.textTheme.bodyMedium?.copyWith(
+        color: scheme.onSurface.withValues(alpha: 0.8),
+      ),
       prefixIconColor: scheme.onSurfaceVariant,
       suffixIconColor: scheme.onSurfaceVariant,
       border: OutlineInputBorder(
@@ -405,10 +438,7 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide(color: scheme.error, width: 2),
       ),
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 12,
-      ),
+      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     ),
     menuTheme: MenuThemeData(
       style: MenuStyle(
@@ -466,8 +496,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       headerBackgroundColor: scheme.surface,
       headerForegroundColor: scheme.onSurface,
       dayForegroundColor: WidgetStateProperty.all(scheme.onSurface),
-      todayBackgroundColor:
-          WidgetStateProperty.all(scheme.primary.withValues(alpha: 0.16)),
+      todayBackgroundColor: WidgetStateProperty.all(
+        scheme.primary.withValues(alpha: 0.16),
+      ),
       todayForegroundColor: WidgetStateProperty.all(scheme.onSurface),
       rangePickerHeaderForegroundColor: scheme.onSurface,
     ),
@@ -484,7 +515,6 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
 /// Публичная фабрика светлой темы (если потребуется интеграция с ThemeData)
 ThemeData get lightTheme =>
     _buildTheme(_buildLightColorScheme(), isDark: false);
-
 // Расширение API для удобного доступа: context.colors / context.textStyles
 class AppColors {
   const AppColors();
@@ -509,22 +539,54 @@ class AppTextStyles {
   const AppTextStyles();
 
   TextStyle get title => const TextStyle(
-        fontFamily: 'YandexSansText',
-        fontSize: 20,
-        fontWeight: FontWeight.w400,
-      );
+    fontFamily: 'YandexSansText',
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+  );
 
   TextStyle get body => const TextStyle(
-        fontFamily: 'YandexSansText',
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-      );
+    fontFamily: 'YandexSansText',
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
 
   TextStyle get caption => const TextStyle(
-        fontFamily: 'YandexSansText',
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-      );
+    fontFamily: 'YandexSansText',
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get medium => const TextStyle(
+    fontFamily: 'YandexSansText',
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    letterSpacing: -0.5,
+    height: 1.0625,
+  );
+
+  TextStyle get mediumBig => const TextStyle(
+    fontFamily: 'YandexSansText',
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    letterSpacing: -1,
+    height: 1.15,
+  );
+
+  TextStyle get regular => const TextStyle(
+    fontFamily: 'YandexSansText',
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    letterSpacing: -0.5,
+    height: 1.0625,
+  );
+
+  TextStyle get bold => const TextStyle(
+    fontFamily: 'YandexSansText',
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    letterSpacing: -0.5,
+    height: 1.0625,
+  );
 }
 
 extension AppThemeContext on BuildContext {
