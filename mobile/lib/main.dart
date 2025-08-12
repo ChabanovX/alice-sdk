@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voice_assistant/widgets/message_notification/message_notification.dart';
 import 'package:voice_assistant/widgets/orders/order_button.dart';
 import 'widgets/action_buttons/slide_action_button.dart';
 import 'widgets/orders/order_badge.dart';
@@ -40,32 +41,20 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text('Slide Action Button Demo'),
+        title: const Text('Some Big Elements Demo'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 16),
-
-            // OrderBadge с масштабом 5
-            Center(
-              child: Transform.scale(
-                scale: 3.0,
-                child: const OrderButton(
-                  state: OrderButtonState.withBadge,
-                  countBadge: 1,
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 16),
-          ],
-        ),
+      body: Column(
+        children: [
+          MessageNotification(
+            message: 'Стою у Макдональдса',
+            onTap: () {
+              print('Message Notification pressed');
+            },
+            sender: Sender.passenger,
+          ),
+        ],
       ),
     );
   }
