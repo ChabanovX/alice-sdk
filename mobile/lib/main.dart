@@ -4,6 +4,7 @@ import 'package:voice_assistant/widgets/priority%20and%20orders/orders_widget.da
 import 'widgets/action_buttons/slide_action_button_stateless.dart';
 import 'widgets/orders/order_badge.dart';
 import 'widgets/priority and orders/priority_widget.dart';
+import 'widgets/priority and orders/priority_and_orders_widget.dart';
 import 'theme.dart';
 
 void main() {
@@ -47,16 +48,18 @@ class _MainScreenState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              'Демонстрация PriorityWidget',
+              'Демонстрация PriorityAndOrdersWidget',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 40),
-            // Демонстрация с дефолтным значением (52)
-            Transform.scale(scale: 2, child: const PriorityWidget()),
-            const SizedBox(height: 40),
-            Transform.scale(
-              scale: 2,
-              child: const OrdersWidget(ordersValue: 2, ordersAmount: 150),
+            const SizedBox(height: 20),
+            // Демонстрация объединенного виджета с дефолтными значениями
+            const PriorityAndOrdersWidget(),
+            const SizedBox(height: 20),
+            // Демонстрация с кастомными значениями
+            const PriorityAndOrdersWidget(
+              priorityValue: 85,
+              ordersValue: 12,
+              ordersAmount: 2500,
             ),
           ],
         ),

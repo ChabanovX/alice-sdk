@@ -15,4 +15,5 @@ export 'orders/order_badge.dart';
 export 'orders/order_button.dart';
 export 'orders/order_button_example.dart';
 export 'priority and orders/priority_widget.dart';
+export 'priority and orders/priority_and_orders_widget.dart';
 export 'priority and orders/orders_widget.dart';

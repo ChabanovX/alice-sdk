@@ -34,7 +34,6 @@ class OrdersWidget extends StatelessWidget {
             width: 88,
             height: 56,
             child: Column(
-              spacing: -2,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
