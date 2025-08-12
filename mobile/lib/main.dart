@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voice_assistant/widgets/orders/order_button.dart';
-import 'widgets/action_buttons/slide_action_button.dart';
+import 'widgets/action_buttons/slide_action_button_stateless.dart';
 import 'widgets/orders/order_badge.dart';
 import 'theme.dart';
 
@@ -29,18 +29,12 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final GlobalKey _slideButtonKey = GlobalKey();
-
-  void _resetSlideButton() {
-    SlideActionButton.reset(_slideButtonKey);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text('Slide Action Button Demo'),
+        title: const Text('Slide Action Button States Demo'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
       ),
@@ -50,20 +44,26 @@ class _MainScreenState extends State<MainScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 16),
-
-            // OrderBadge с масштабом 5
-            Center(
-              child: Transform.scale(
-                scale: 3.0,
-                child: const OrderButton(
-                  state: OrderButtonState.withBadge,
-                  countBadge: 1,
-                ),
-              ),
+            // Заголовок для состояний слайд-кнопки
+            const Text(
+              'Состояния слайд-кнопки:',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 16),
+
+            // DefaultStateButton - дефолтное состояние
+            const SlideButtonDefaultState(),
+
+            const SizedBox(height: 16),
+
+            // PressedStateButton - состояние при зажатии
+            const SlideButtonPressedState(),
+
+            const SizedBox(height: 16),
+
+            // StretchedStateButton - растянутое состояние
+            Center(child: const SlideButtonStretchedState()),
           ],
         ),
       ),
