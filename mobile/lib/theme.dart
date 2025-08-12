@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 // =====================
 // Main colors
+// Main colors
 // =====================
 class MainColors {
   // Semantic/Text
@@ -53,14 +54,14 @@ Color _onColorFor(Color background) {
 // ColorSchemes
 // =====================
 ColorScheme _buildLightColorScheme() {
-  final primary = MainColors.controlMain; // taxi yellow
-  final secondary = MainColors.aliceMain;
-  final tertiary = MainColors.cash;
+  const primary = MainColors.controlMain; // taxi yellow
+  const secondary = MainColors.aliceMain;
+  const tertiary = MainColors.cash;
   return ColorScheme(
     brightness: Brightness.light,
     primary: primary,
     onPrimary: _onColorFor(primary),
-    primaryContainer: Color(0xFFFFF170),
+    primaryContainer: const Color(0xFFFFF170),
     onPrimaryContainer: Colors.black,
     secondary: secondary,
     onSecondary: _onColorFor(secondary),
@@ -101,8 +102,8 @@ ColorScheme _buildLightColorScheme() {
 // =====================
 TextTheme _textTheme(Brightness brightness) {
   final base = brightness == Brightness.dark
-      ? Typography.material2021(platform: TargetPlatform.android).white
-      : Typography.material2021(platform: TargetPlatform.android).black;
+      ? Typography.material2021().white
+      : Typography.material2021().black;
 
   // Apply YandexSansText family to all styles
   final applied = base.apply(fontFamily: 'YandexSansText');
@@ -201,6 +202,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       labelTextStyle: WidgetStateProperty.resolveWith((states) {
         final selected = states.contains(WidgetState.selected);
         return base.textTheme.labelMedium?.copyWith(
+          color: selected
+              ? scheme.onSurface
+              : scheme.onSurface.withValues(alpha: 0.74),
           color: selected
               ? scheme.onSurface
               : scheme.onSurface.withValues(alpha: 0.74),
@@ -332,6 +336,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
     sliderTheme: const SliderThemeData(
       showValueIndicator: ShowValueIndicator.onlyForDiscrete,
     ),
+    sliderTheme: const SliderThemeData(
+      showValueIndicator: ShowValueIndicator.onlyForDiscrete,
+    ),
     chipTheme: base.chipTheme.copyWith(
       backgroundColor: scheme.surfaceContainerLow,
       selectedColor: scheme.primary.withValues(alpha: 0.16),
@@ -379,6 +386,12 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         ),
+        overlayColor: WidgetStateProperty.all(
+          _onColorFor(scheme.primary).withValues(alpha: 0.08),
+        ),
+        padding: WidgetStateProperty.all(
+          const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        ),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -404,6 +417,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         ),
+        padding: WidgetStateProperty.all(
+          const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        ),
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
@@ -419,11 +435,11 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       suffixIconColor: scheme.onSurfaceVariant,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: scheme.outlineVariant, width: 1),
+        borderSide: BorderSide(color: scheme.outlineVariant),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: scheme.outlineVariant, width: 1),
+        borderSide: BorderSide(color: scheme.outlineVariant),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
@@ -431,7 +447,7 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
-        borderSide: BorderSide(color: scheme.error, width: 1),
+        borderSide: BorderSide(color: scheme.error),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
@@ -458,6 +474,9 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
     iconTheme: IconThemeData(
       color: isDark ? scheme.onSurface : MainColors.semanticText,
     ),
+    iconTheme: IconThemeData(
+      color: isDark ? scheme.onSurface : MainColors.semanticText,
+    ),
     badgeTheme: BadgeThemeData(
       backgroundColor: MainColors.badge,
       textColor: _onColorFor(MainColors.badge),
@@ -477,8 +496,25 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
               ? _onColorFor(scheme.primary)
               : scheme.onSurface,
         ),
+        backgroundColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected)
+              ? scheme.primary
+              : scheme.surfaceContainerLow,
+        ),
+        foregroundColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected)
+              ? _onColorFor(scheme.primary)
+              : scheme.onSurface,
+        ),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        ),
+        side: WidgetStateProperty.resolveWith(
+          (states) => BorderSide(
+            color: states.contains(WidgetState.selected)
+                ? scheme.primary
+                : scheme.outlineVariant,
+          ),
         ),
         side: WidgetStateProperty.resolveWith(
           (states) => BorderSide(
@@ -512,6 +548,8 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
 }
 
 /// Публичная фабрика светлой темы (если потребуется интеграция с ThemeData)
+ThemeData get lightTheme =>
+    _buildTheme(_buildLightColorScheme(), isDark: false);
 ThemeData get lightTheme =>
     _buildTheme(_buildLightColorScheme(), isDark: false);
 

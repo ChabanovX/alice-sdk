@@ -1,0 +1,9 @@
+#include <userver/utest/utest.hpp>
+
+UTEST(SayHelloTo, Basic) {
+    // EXPECT_EQ(classifier_service::SayHelloTo("Developer", UserType::kFirstTime), "Hello, Developer!\n");
+    // EXPECT_EQ(classifier_service::SayHelloTo({}, UserType::kFirstTime), "Hello, unknown user!\n");
+
+    // EXPECT_EQ(classifier_service::SayHelloTo("Developer", UserType::kKnown), "Hi again, Developer!\n");
+    // EXPECT_EQ(classifier_service::SayHelloTo({}, UserType::kKnown), "Hi again, unknown user!\n");
+}
