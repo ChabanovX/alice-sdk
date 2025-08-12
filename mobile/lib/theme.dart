@@ -556,7 +556,7 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
   );
 
-  TextStyle get mediumSmall => const TextStyle(
+  TextStyle get medium => const TextStyle(
     fontFamily: 'YandexSansText',
     fontSize: 16,
     fontWeight: FontWeight.w500,
@@ -564,12 +564,28 @@ class AppTextStyles {
     height: 1.0625,
   );
 
-  TextStyle get medium => const TextStyle(
+  TextStyle get mediumBig => const TextStyle(
     fontFamily: 'YandexSansText',
     fontSize: 20,
     fontWeight: FontWeight.w500,
     letterSpacing: -1,
     height: 1.15,
+  );
+
+  TextStyle get regular => const TextStyle(
+    fontFamily: 'YandexSansText',
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    letterSpacing: -0.5,
+    height: 1.0625,
+  );
+
+  TextStyle get bold => const TextStyle(
+    fontFamily: 'YandexSansText',
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    letterSpacing: -0.5,
+    height: 1.0625,
   );
 }
 
