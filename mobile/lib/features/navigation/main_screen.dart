@@ -64,36 +64,10 @@ class UiComponentsDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      body: SafeArea(
-        child: Column(
-          children: [
-            MessageNotification(
-                message: 'Message Notification pressed', onTap: () {}),
-            EndTaxiRideButton(
-              onSlideComplete: () {
-                print('SlideAnim completed');
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            EndTaxiRideButtonWithoutAnim(
-              onSlideComplete: () {
-                print('SlideNoAnim completed');
-              },
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            RoadTracker(
-              timeWhenEnd: '17:12',
-              timeRemain: '12 мин',
-              roadLength: '1,5 км',
-            ),
-          ],
-        ),
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: CloseServeStarTag(),
       ),
     );
   }
