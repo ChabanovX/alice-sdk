@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../core/navigation/manager.dart';
 import '../../theme.dart';
+import '../../widgets/alice/alice_need_to_know_widget.dart';
+import '../../widgets/alice/alice_onboarding.dart';
 import '../../widgets/buttons/buttons.dart';
 import '../../widgets/message_notification/message_notification.dart';
 import '../../widgets/orders/order_button.dart';

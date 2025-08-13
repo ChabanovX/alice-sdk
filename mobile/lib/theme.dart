@@ -29,6 +29,8 @@ class MainColors {
   static const Color badge = Color(0xFFFC5230);
   // Cash (Tertiary)
   static const Color cash = Color(0xFFC81EFA);
+  // Border
+  static const Color border = Color(0xFFF1F1F1);
 
   // Effects Badge / Notification / Button (all white surfaces)
   static const Color effectsBadge = Color(0xFFFFFFFF);
@@ -533,6 +535,7 @@ class AppColors {
   Color get effectsBadge => MainColors.effectsBadge;
   Color get effectsNotification => MainColors.effectsNotification;
   Color get effectsButton => MainColors.effectsButton;
+  Color get border => MainColors.border;
 }
 
 class AppTextStyles {

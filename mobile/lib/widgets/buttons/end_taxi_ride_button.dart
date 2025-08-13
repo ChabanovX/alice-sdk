@@ -12,7 +12,7 @@ class EndTaxiRideButton extends StatelessWidget {
         padding: const EdgeInsetsGeometry.all(0),
         backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(34),
+          borderRadius: BorderRadius.circular(37),
         ),
       ),
       onPressed: () {},
@@ -65,7 +65,7 @@ class _EndTaxiRideButtonWithoutAnimState
         padding: const EdgeInsetsGeometry.all(0),
         backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(34),
+          borderRadius: BorderRadius.circular(37),
         ),
       ),
       onPressed: () {
