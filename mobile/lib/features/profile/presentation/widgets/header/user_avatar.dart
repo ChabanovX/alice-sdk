@@ -18,12 +18,16 @@ class UserAvatar extends StatelessWidget {
         border: Border.all(),
       ),
       child: ClipOval(
-        child: CachedNetworkImage(
-          imageUrl: avatarUrl,
-          placeholder: (context, url) => const SizedBox.shrink(),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-          fit: BoxFit.contain,
-        ),
+        child: avatarUrl.isEmpty
+            ? const Icon(Icons.person, size: 32)
+            : CachedNetworkImage(
+                imageUrl: avatarUrl,
+                placeholder: (context, url) =>
+                    const Icon(Icons.person, size: 32),
+                errorWidget: (context, url, error) =>
+                    const Icon(Icons.person, size: 32),
+                fit: BoxFit.contain,
+              ),
       ),
     );
   }
