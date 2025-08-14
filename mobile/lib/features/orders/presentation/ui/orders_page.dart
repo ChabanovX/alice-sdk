@@ -1,6 +1,6 @@
 part of 'ui.dart';
 
-
+/// This page is still trash. Should be refactored later.
 class OrdersPage extends StatelessWidget {
   const OrdersPage({super.key});
 
@@ -11,18 +11,21 @@ class OrdersPage extends StatelessWidget {
         BlocProvider(create: (context) => OrdersBloc()),
       ],
       child: Scaffold(
-        bottomNavigationBar: const _AppBottomNavBar(),
         body: Stack(
           children: [
             BlocBuilder<OrdersBloc, OrdersState>(
               builder: (context, state) {
-                if (state is Offline) {
-                  return const MapOffline();
-                }
-                if (state is OnlineIdle) {
-                  return const MapOnline();
-                }
-                return const MapOffline();
+                final map = switch (state) {
+                  // Offline() => const MapOffline(),
+                  // OnlineIdle() => const MapOnline(),
+                  _ => const MapOffline()
+                  // OfferArrived() => const SheetOffer(),
+                  // InRouteToPickup() => const SheetToPickup(),
+                  // AtPickup() => const SheetAtPickup(),
+                  // OrdersError() => const SheetError(),
+                };
+                
+                return map;
               },
             ),
             Align(
@@ -31,12 +34,13 @@ class OrdersPage extends StatelessWidget {
                 builder: (context, state) {
                   final bloc = context.read<OrdersBloc>();
                   final sheet = switch (state) {
-                    Offline() => SheetOffline(bloc: bloc),
-                    OnlineIdle() => const SheetOnlineIdle(),
-                    OfferArrived() => const SheetOffer(),
-                    InRouteToPickup() => const SheetToPickup(),
-                    AtPickup() => const SheetAtPickup(),
-                    OrdersError() => const SheetError(),
+                    _ => SheetAtPickup()
+                    // Offline() => SheetOffline(bloc: bloc),
+                    // OnlineIdle() => const SheetOnlineIdle(),
+                    // OfferArrived() => const SheetOffer(),
+                    // InRouteToPickup() => const SheetToPickup(),
+                    // AtPickup() => const SheetAtPickup(),
+                    // OrdersError() => const SheetError(),
                   };
 
                   return sheet;
@@ -46,52 +50,6 @@ class OrdersPage extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _AppBottomNavBar extends StatelessWidget {
-  const _AppBottomNavBar();
-
-  static const _orders = 'assets/images/icon.png';
-  static const _money = 'assets/images/icon2.png';
-  static const _chat = 'assets/images/icon3.png';
-  static const _profile = 'assets/images/icon4.png';
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      onTap: (_) {}, // no real navigation
-      backgroundColor: context.colors.semanticBackground,
-      showUnselectedLabels: true,
-      selectedLabelStyle: context.textStyles.caption,
-      selectedItemColor: context.colors.text,
-      unselectedItemColor: Theme.of(
-        context,
-      ).colorScheme.onSurface.withValues(alpha: .5),
-      items: [
-        _item(label: 'Заказы', asset: _orders),
-        _item(label: 'Деньги', asset: _money),
-        _item(label: 'Общение', asset: _chat),
-        _item(label: 'Профиль', asset: _profile),
-      ],
-    );
-  }
-
-  BottomNavigationBarItem _item({
-    required String label,
-    required String asset,
-  }) {
-    return BottomNavigationBarItem(
-      label: label,
-      // Unselected
-      icon: Opacity(
-        opacity: 0.5,
-        child: Image.asset(asset, width: 24, height: 24),
-      ),
-      // Selected
-      activeIcon: Image.asset(asset, width: 24, height: 24),
     );
   }
 }

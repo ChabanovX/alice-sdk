@@ -12,7 +12,6 @@ class RoadTracker extends StatelessWidget {
     this.roadLength = '1,5 км',
     this.timeWhenEnd = '14:19',
     this.timeRemain = '12 мин',
-    re,
   });
 
   @override
@@ -20,7 +19,7 @@ class RoadTracker extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 7.5),
       child: Container(
         height: 60,
         decoration: BoxDecoration(
@@ -49,9 +48,11 @@ class RoadTracker extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsetsGeometry.only(top: 0, left: 16, right: 16),
-              child: SvgPicture.asset('assets/icons/track.svg', height: 30,)
-              ),
+                padding: EdgeInsetsGeometry.only(top: 0, left: 16, right: 16),
+                child: SvgPicture.asset(
+                  'assets/icons/track.svg',
+                  height: 30,
+                )),
           ],
         ),
       ),

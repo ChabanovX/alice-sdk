@@ -14,91 +14,55 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 82,
-      color: context.colors.semanticBackground,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
-        child: Row(
-          children: [
-            // Кнопка "Заказы" - 1/4 ширины экрана
-            Expanded(
-              child: OrderButton(
-                state: selectedItem == BottomNavigationItem.orders
-                    ? OrderButtonState.active
-                    : OrderButtonState.inactive,
-                onTap: () => onItemSelected(BottomNavigationItem.orders),
+    return SafeArea(
+      child: Container(
+        width: double.infinity,
+        height: 82,
+        color: context.colors.semanticBackground,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: OrderButton(
+                  state: selectedItem == BottomNavigationItem.orders
+                      ? OrderButtonState.active
+                      : OrderButtonState.inactive,
+                  onTap: () => onItemSelected(BottomNavigationItem.orders),
+                ),
               ),
-            ),
-            // Кнопка "Деньги" - 1/4 ширины экрана
-            Expanded(
-              child: _buildNavigationButton(
-                context,
-                iconPath: 'assets/icons/wallet_filled.svg',
-                label: 'Деньги',
-                isSelected: selectedItem == BottomNavigationItem.money,
-                onTap: () => onItemSelected(BottomNavigationItem.money),
+              Expanded(
+                child: _buildNavigationButton(
+                  context,
+                  iconPath: 'assets/icons/wallet_filled.svg',
+                  label: 'Деньги',
+                  isSelected: selectedItem == BottomNavigationItem.money,
+                  onTap: () => onItemSelected(BottomNavigationItem.money),
+                ),
               ),
-            ),
-            // Кнопка "Общение" - 1/4 ширины экрана
-            Expanded(
-              child: _buildNavigationButton(
-                context,
-                iconPath: 'assets/icons/chat_bubble_filled.svg',
-                label: 'Общение',
-                isSelected: selectedItem == BottomNavigationItem.chat,
-                onTap: () => onItemSelected(BottomNavigationItem.chat),
+              Expanded(
+                child: _buildNavigationButton(
+                  context,
+                  iconPath: 'assets/icons/chat_bubble_filled.svg',
+                  label: 'Общение',
+                  isSelected: selectedItem == BottomNavigationItem.chat,
+                  onTap: () => onItemSelected(BottomNavigationItem.chat),
+                ),
               ),
-            ),
-            // Кнопка "Профиль" - 1/4 ширины экрана
-            BlocBuilder<ProfileBloc, ProfileState>(
-              builder: (context, state) {
-                return Expanded(
-                  child: GestureDetector(
-                    onTap: () => onItemSelected(BottomNavigationItem.profile),
-                    child: SizedBox(
-                      height: 48,
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ConstrainedBox(
-                              constraints: const BoxConstraints(
-                                maxWidth: 24,
-                                maxHeight: 24,
-                              ),
-                              child: UserAvatar(
-                                avatarUrl: state is ProfileUserState
-                                    ? state.user.urlAvatar
-                                    : '',
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              'Профиль',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(
-                                    color: _getTextColor(
-                                      context,
-                                      selectedItem ==
-                                          BottomNavigationItem.profile,
-                                    ),
-                                    fontSize: 9.5,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
+              BlocBuilder<ProfileBloc, ProfileState>(
+                builder: (context, state) {
+                  return Expanded(
+                    child: _buildProfileButton(
+                      context,
+                      state,
+                      isSelected: selectedItem == BottomNavigationItem.profile,
+                      onTap: () => onItemSelected(BottomNavigationItem.profile),
                     ),
-                  ),
-                );
-              },
-            ),
-          ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -111,10 +75,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
     required bool isSelected,
     required VoidCallback onTap,
   }) {
-    return GestureDetector(
+    return _AnimatedNavigationButton(
       onTap: onTap,
-      child: SizedBox(
+      child: Container(
         height: 48,
+        width: double.infinity, 
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -144,6 +113,53 @@ class CustomBottomNavigationBar extends StatelessWidget {
     );
   }
 
+  Widget _buildProfileButton(
+    BuildContext context,
+    ProfileState state, {
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    return _AnimatedNavigationButton(
+      onTap: onTap,
+      child: Container(
+        height: 48,
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 24,
+                  maxHeight: 24,
+                ),
+                child: UserAvatar(
+                  avatarUrl: state is ProfileUserState
+                      ? state.user.urlAvatar
+                      : '',
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Профиль',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: _getTextColor(context, isSelected),
+                      fontSize: 9.5,
+                      fontWeight: FontWeight.w500,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   Color _getIconColor(BuildContext context, bool isSelected) {
     return isSelected
         ? context.colors.text
@@ -154,5 +170,80 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return isSelected
         ? context.colors.text
         : context.colors.text.withValues(alpha: 0.3);
+  }
+}
+
+class _AnimatedNavigationButton extends StatefulWidget {
+  final Widget child;
+  final VoidCallback onTap;
+
+  const _AnimatedNavigationButton({
+    required this.child,
+    required this.onTap,
+  });
+
+  @override
+  State<_AnimatedNavigationButton> createState() => _AnimatedNavigationButtonState();
+}
+
+class _AnimatedNavigationButtonState extends State<_AnimatedNavigationButton>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 150),
+      vsync: this,
+    );
+    
+    _scaleAnimation = Tween<double>(
+      begin: 1.0,
+      end: 0.88,
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeOut,
+    ));
+
+
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _handleTapDown(TapDownDetails details) {
+    _animationController.forward();
+  }
+
+  void _handleTapUp(TapUpDetails details) {
+    _animationController.reverse();
+    widget.onTap();
+  }
+
+  void _handleTapCancel() {
+    _animationController.reverse();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTapDown: _handleTapDown,
+      onTapUp: _handleTapUp,
+      onTapCancel: _handleTapCancel,
+      child: AnimatedBuilder(
+        animation: _scaleAnimation,
+        builder: (context, child) {
+          return Transform.scale(
+            scale: _scaleAnimation.value,
+            child: widget.child,
+          );
+        },
+      ),
+    );
   }
 }

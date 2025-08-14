@@ -9,13 +9,14 @@ codereview:
       reviewers:
         usernames: 
           - chabanovx
-          # - gilmutdinoff-rinat2016
-          # - kto-vyzival-doctora
-          # - sergeitetov
-          # - thedevlord
-        assign: 1 
+          - gilmutdinoff-rinat2016
+          - kto-vyzival-doctora
+          - sergeitetov
+          - thedevlord
+          - aausachova-mail-ru
+        assign: 2 
         need_ships: 1
-        ignore_self_ship: true
+        ignore_self_ship: false
 
     - patterns:
         - 'tests/**'
@@ -34,7 +35,7 @@ codereview:
           - awesome-erytw
         assign: 1 # Назначить 1 ревьюера из группы аналитиков
         need_ships: 1
-        ignore_self_ship: true
+        ignore_self_ship: false
 
     # Правило для бэкенда
     - patterns:
