@@ -29,8 +29,9 @@ class EndTaxiRideButton extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
+          Container(
             padding: const EdgeInsetsGeometry.all(6),
+          
             child: SlideActionButton(
               onSlideComplete: () {
                 onSlideComplete?.call();

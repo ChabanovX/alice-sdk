@@ -5,7 +5,7 @@ import 'order_badge.dart';
 
 enum OrderButtonState { active, inactive, withBadge }
 
-class OrderButton extends StatelessWidget {
+class OrderButton extends StatefulWidget {
   final OrderButtonState state;
   final int countBadge;
   final VoidCallback? onTap;
@@ -18,54 +18,115 @@ class OrderButton extends StatelessWidget {
   });
 
   @override
+  State<OrderButton> createState() => _OrderButtonState();
+}
+
+class _OrderButtonState extends State<OrderButton>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 150),
+      vsync: this,
+    );
+    
+    _scaleAnimation = Tween<double>(
+      begin: 1.0,
+      end: 0.88, 
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeOut,
+    ));
+
+
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _handleTapDown(TapDownDetails details) {
+    _animationController.forward();
+  }
+
+  void _handleTapUp(TapUpDetails details) {
+    _animationController.reverse();
+    widget.onTap?.call();
+  }
+
+  void _handleTapCancel() {
+    _animationController.reverse();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
-      child: SizedBox(
-        height: 48,
-        child: Stack(
-          children: [
-            // Основной контент
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+      onTapDown: _handleTapDown,
+      onTapUp: _handleTapUp,
+      onTapCancel: _handleTapCancel,
+      child: AnimatedBuilder(
+        animation: _scaleAnimation,
+        builder: (context, child) {
+          return Transform.scale(
+            scale: _scaleAnimation.value,
+            child: Container(
+              height: 48,
+              width: double.infinity, 
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+             
+              decoration: const BoxDecoration(
+                color: Colors.transparent, 
+              ),
+              child: Stack(
                 children: [
-                  SvgPicture.asset(
-                    'assets/icons/location_fill.svg',
-                    width: 24,
-                    height: 24,
-                    colorFilter: ColorFilter.mode(
-                      _getIconColor(context),
-                      BlendMode.srcIn,
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icons/location_fill.svg',
+                          width: 24,
+                          height: 24,
+                          colorFilter: ColorFilter.mode(
+                            _getIconColor(context),
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Заказы',
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: _getTextColor(context),
+                            fontSize: 9.5,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'Заказы',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: _getTextColor(context),
-                      fontSize: 9.5,
-                      fontWeight: FontWeight.w500,
+                  if (widget.state == OrderButtonState.withBadge)
+                    Positioned(
+                      right: 8,
+                      top: 4,
+                      child: OrderBadge(count: widget.countBadge),
                     ),
-                  ),
                 ],
               ),
             ),
-            // Badge (если нужно)
-            if (state == OrderButtonState.withBadge)
-              Positioned(
-                right: 8,
-                top: 4,
-                child: OrderBadge(count: countBadge),
-              ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
 
   Color _getIconColor(BuildContext context) {
-    switch (state) {
+    switch (widget.state) {
       case OrderButtonState.active:
         return context.colors.text;
       case OrderButtonState.inactive:
@@ -75,7 +136,7 @@ class OrderButton extends StatelessWidget {
   }
 
   Color _getTextColor(BuildContext context) {
-    switch (state) {
+    switch (widget.state) {
       case OrderButtonState.active:
         return context.colors.text;
       case OrderButtonState.inactive:
