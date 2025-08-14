@@ -1,5 +1,9 @@
 part of 'buttons.dart';
 
+/// TODO: must refactor it to use parent's width
+/// 
+/// It might be hard, use LayoutBuilder to calculate width.
+/// But without it code smells.
 class EndTaxiRideButton extends StatelessWidget {
   const EndTaxiRideButton({super.key, required this.onSlideComplete});
 

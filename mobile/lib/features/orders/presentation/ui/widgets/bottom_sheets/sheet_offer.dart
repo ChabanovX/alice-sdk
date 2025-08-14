@@ -113,9 +113,7 @@ class SheetOffer extends StatelessWidget {
             Text('Платная подача', style: context.textStyles.regular),
           ],
         ),
-        const SizedBox(
-          height: 2,
-        ),
+        const SizedBox(height: 2),
         Row(
           children: [
             Padding(
@@ -137,7 +135,9 @@ class SheetOffer extends StatelessWidget {
 
     final acceptButton = Column(
       children: [
-        const SizedBox(height: 12.0,),
+        const SizedBox(
+          height: 12.0,
+        ),
         AcceptButton(
           buttonStyle: AcceptButtonStyle.highlighted,
           onPressed: () {},

@@ -7,7 +7,7 @@ class KidsChairTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 182,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
       height: 32,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceDim,
@@ -16,6 +16,7 @@ class KidsChairTag extends StatelessWidget {
       child: Center(
         child: Text(
           'Детское кресло,  от 9 мес',
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             color: Theme.of(context).colorScheme.onSurface,
             fontWeight: FontWeight.w500,

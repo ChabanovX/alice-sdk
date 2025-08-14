@@ -9,17 +9,23 @@ class DraggableWindow extends StatefulWidget {
   const DraggableWindow({
     super.key,
     required this.innerWidgetBuilder,
+    this.childPinned,
     this.minVisibleHeight = 100,
     this.maxVisibleHeight = 200,
     this.overlayGap = 14,
+    this.snap = true,
     this.overlayWidget,
   });
 
+  final Widget Function(BuildContext, ScrollController) innerWidgetBuilder;
+
+  final Widget? childPinned;
+
+  /// Whether to snap instantly after dragging.
+  final bool snap;
+
   /// Gap between overlay and panel top.
   final double overlayGap;
-
-  /// Builder for widget inside the window.
-  final Widget Function(BuildContext, ScrollController) innerWidgetBuilder;
 
   /// Specify minExpansion beforehand if minHeight in pixels is known.
   final double minVisibleHeight;
@@ -107,11 +113,12 @@ class _DraggableWindowState extends State<DraggableWindow> {
               initialChildSize: _currentSizeFraction,
               minChildSize: min,
               maxChildSize: max,
-              snap: true,
+              snap: widget.snap,
               snapSizes: _snapSizes,
               builder: (ctx, scrollController) {
                 return _ScrollableSheet(
                   controller: scrollController,
+                  childPinned: widget.childPinned,
                   child: widget.innerWidgetBuilder(ctx, scrollController),
                 );
               },
@@ -131,10 +138,16 @@ class _DraggableWindowState extends State<DraggableWindow> {
 }
 
 class _ScrollableSheet extends StatelessWidget {
-  const _ScrollableSheet({required this.child, required this.controller});
+  const _ScrollableSheet({
+    required this.child,
+    required this.controller,
+    this.childPinned,
+  });
 
   /// Widget to render below grabber.
   final Widget child;
+
+  final Widget? childPinned;
 
   /// Allows to sync inner and outer scrolls.
   final ScrollController controller;
@@ -159,11 +172,25 @@ class _ScrollableSheet extends StatelessWidget {
       ),
     );
 
-    return CustomScrollView(
-      controller: controller,
-      physics: const ClampingScrollPhysics(),
-      slivers: [
-        SliverFillRemaining(hasScrollBody: false, child: box),
+    return Column(
+      children: [
+        Expanded(
+          child: CustomScrollView(
+            controller: controller,
+            physics: const ClampingScrollPhysics(),
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: box,
+              ),
+            ],
+          ),
+        ),
+        if (childPinned != null)
+          SafeArea(
+            top: false,
+            child: childPinned!,
+          ),
       ],
     );
   }
