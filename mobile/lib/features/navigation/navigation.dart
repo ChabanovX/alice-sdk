@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/navigation/manager.dart';
+import '../../core/services/alice_command_recognize_service.dart';
 import '../../theme.dart';
 import '../../widgets/buttons/buttons.dart';
 import '../../widgets/message_notification/message_notification.dart';

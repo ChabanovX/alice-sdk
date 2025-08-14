@@ -59,8 +59,55 @@ class _ProfileTabNavigator extends StatelessWidget {
 }
 
 /// Для демонстрации компонентов
-class UiComponentsDemo extends StatelessWidget {
-  const UiComponentsDemo();
+class UiComponentsDemo extends StatefulWidget {
+  const UiComponentsDemo({super.key});
+
+  @override
+  State<UiComponentsDemo> createState() => _UiComponentsDemoState();
+}
+
+class _UiComponentsDemoState extends State<UiComponentsDemo> {
+  final AliceCommandRecognizeService _aliceService =
+      AliceCommandRecognizeService();
+  bool _isListening = false;
+  String _status = 'Остановлен';
+
+  @override
+  void initState() {
+    super.initState();
+    _initAlice();
+  }
+
+  Future<void> _initAlice() async {
+    await _aliceService.init();
+    _aliceService.testStream.listen((command) {
+      setState(() {
+        _status = 'Отправлено: ${command.length} символов';
+      });
+    });
+  }
+
+  void _toggleListening() {
+    if (_isListening) {
+      _aliceService.stopListening();
+      setState(() {
+        _isListening = false;
+        _status = 'Остановлен';
+      });
+    } else {
+      _aliceService.startListening();
+      setState(() {
+        _isListening = true;
+        _status = 'Слушаю...';
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _aliceService.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +116,31 @@ class UiComponentsDemo extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
+            Container(
+              margin: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                children: [
+                  const Text('Alice Voice Demo',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 8),
+                  Text('Статус: $_status'),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: _toggleListening,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: _isListening ? Colors.red : Colors.green,
+                    ),
+                    child: Text(_isListening ? 'Остановить' : 'Начать слушать'),
+                  ),
+                ],
+              ),
+            ),
             MessageNotification(
                 message: 'Message Notification pressed', onTap: () {}),
             EndTaxiRideButton(
@@ -76,7 +148,7 @@ class UiComponentsDemo extends StatelessWidget {
                 print('SlideAnim completed');
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             EndTaxiRideButtonWithoutAnim(
@@ -84,10 +156,10 @@ class UiComponentsDemo extends StatelessWidget {
                 print('SlideNoAnim completed');
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            RoadTracker(
+            const RoadTracker(
               timeWhenEnd: '17:12',
               timeRemain: '12 мин',
               roadLength: '1,5 км',
