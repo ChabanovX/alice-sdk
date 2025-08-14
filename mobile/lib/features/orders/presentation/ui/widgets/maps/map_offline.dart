@@ -23,16 +23,19 @@ class MapOffline extends StatelessWidget {
               child: SizedBox(
                 height: 360,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Image.asset('assets/images/offline_control.png'),
-                        const Spacer(),
                         Image.asset('assets/images/speed_60.png'),
                       ],
                     ),
-                    const Spacer(),
-                    Align(alignment: Alignment.bottomRight ,child: Image.asset('assets/images/map_controllers.png')),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Image.asset('assets/images/map_controllers.png'),
+                    ),
                   ],
                 ),
               ),

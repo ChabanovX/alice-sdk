@@ -19,23 +19,17 @@ class PointAWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 12),
-            child: SizedBox(
-              width: 48,
-              height: 48,
-              child: Center(
-                child: SvgPicture.asset(
-                  'assets/icons/point_a.svg',
-                  width: 32,
-                  height: 32,
-                ),
-              ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: SvgPicture.asset(
+              'assets/icons/point_a.svg',
+              width: 32,
+              height: 32,
             ),
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(left: 4, right: 16),
+              padding: const EdgeInsets.only(left: 8, right: 16),
               child: Text(
                 pointAddress,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(

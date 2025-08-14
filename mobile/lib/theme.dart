@@ -559,11 +559,19 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  TextStyle get mediumSmall => const TextStyle(
+    fontFamily: 'YandexSansText',
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0,
+    height: 1.0625,
+  );
+
   TextStyle get medium => const TextStyle(
     fontFamily: 'YandexSansText',
     fontSize: 16,
     fontWeight: FontWeight.w500,
-    letterSpacing: -0.5,
+    letterSpacing: -0.16,
     height: 1.0625,
   );
 
@@ -579,16 +587,32 @@ class AppTextStyles {
     fontFamily: 'YandexSansText',
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    letterSpacing: -0.5,
+    letterSpacing: 0,
     height: 1.0625,
   );
 
-  TextStyle get bold => const TextStyle(
+  TextStyle get boldSmall => const TextStyle(
     fontFamily: 'YandexSansText',
     fontSize: 16,
     fontWeight: FontWeight.w700,
     letterSpacing: -0.5,
     height: 1.0625,
+  );
+  
+  TextStyle get boldMedium => const TextStyle(
+    fontFamily: 'YandexSansText',
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    letterSpacing: -0.24,
+    height: 1.0625,
+  );
+
+  TextStyle get boldBig => const TextStyle(
+    fontFamily: 'YandexSansText',
+    fontSize: 28,
+    fontWeight: FontWeight.w700,
+    letterSpacing: -0.42,
+    height: 1.1072,
   );
 }
 

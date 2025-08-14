@@ -17,7 +17,7 @@ class AliceNeedToKnowWidget extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 7.5),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Container(
         height: 56,
         child: ElevatedButton(

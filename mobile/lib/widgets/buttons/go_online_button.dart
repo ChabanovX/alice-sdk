@@ -21,7 +21,7 @@ class GoOnlineButton extends StatelessWidget {
     final borderRadius = BorderRadius.circular(40);
 
     final textStyle1 = context.textStyles.regular;
-    final textStyle2 = context.textStyles.bold;
+    final textStyle2 = context.textStyles.boldSmall;
 
     final textColor = context.colors.text;
 
