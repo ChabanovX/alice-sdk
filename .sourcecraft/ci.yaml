@@ -86,9 +86,10 @@ workflows:
 
           - name: docker-build-push
             script:
-              - docker build -f infra/Dockerfiles/Dockerfile.backend --tag $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME --platform linux/amd64 .
-              - docker push $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME:$(date +%s)
-        
+              - export TIMESTAMP=$(date +%s)
+              - docker build -f infra/Dockerfiles/Dockerfile.backend --tag $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME:$TIMESTAMP --platform linux/amd64 .
+              - docker push $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME:$TIMESTAMP
+
           - name: docker-logout
             script:
               - docker logout $YC_DOCKER_REGISTRY_URI
