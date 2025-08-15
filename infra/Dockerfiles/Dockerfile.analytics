@@ -1,0 +1,37 @@
+# Этап загрузки моделей
+FROM python:3.11-slim as model-downloader
+
+WORKDIR /tmp
+COPY ./infra/Dockerfiles/requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir transformers pymorphy3
+
+
+RUN pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+RUN mkdir -p app/trained_models
+
+COPY ./infra/Dockerfiles/download_models.py .
+RUN python download_models.py
+
+# Основной этап
+FROM python:3.11-slim
+
+WORKDIR /analytics-service
+
+COPY ./infra/Dockerfiles/requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+
+RUN pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+# Копируем предзагруженные модели
+COPY --from=model-downloader /root/.cache /root/.cache
+COPY --from=model-downloader /tmp/app/trained_models ./app/trained_models
+
+COPY ./analytics/app/ ./app
+
+EXPOSE 8000
+
+CMD ["fastapi", "run", "app/main.py", "--port", "8000"]
