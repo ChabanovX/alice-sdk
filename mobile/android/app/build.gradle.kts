@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.voice_assistant"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = "27.0.12077973"
 
     compileOptions {
@@ -41,4 +41,9 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
+    implementation("com.yandex.android:maps.mobile:4.4.0-full")
 }
