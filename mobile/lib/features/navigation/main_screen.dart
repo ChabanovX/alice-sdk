@@ -57,13 +57,3 @@ class _ProfileTabNavigator extends StatelessWidget {
     );
   }
 }
-
-/// Для демонстрации компонентов
-class UiComponentsDemo extends StatelessWidget {
-  const UiComponentsDemo();
-
-  @override
-  Widget build(BuildContext context) {
-    return const OrdersPage();
-  }
-}
