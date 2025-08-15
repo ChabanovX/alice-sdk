@@ -16,7 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   cached_network_image: ^3.4.1
   equatable: ^2.0.7
-  yandex_mapkit: 3.4.0
+  yandex_mapkit: 4.1.0
   flutter_bloc: ^9.1.1
   flutter_svg: ^2.2.0
   just_audio: ^0.10.4
