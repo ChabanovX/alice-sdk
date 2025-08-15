@@ -29,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
       body: IndexedStack(
         index: _selectedItem.index,
         children: const [
-          UiComponentsDemo(),
+          OrdersPage(),
           MoneyPage(),
           ChatPage(),
           _ProfileTabNavigator(),
