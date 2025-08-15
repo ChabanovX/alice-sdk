@@ -30,6 +30,19 @@ CREATE TABLE IF NOT EXISTS voice_statistics.words_count_by_type (
     count BIGINT NOT NULL DEFAULT 0,
     PRIMARY KEY(type)
 );
+INSERT INTO voice_statistics.words_count_by_type(type)
+VALUES
+    ('accept'),
+    ('cancel'),
+    ('voice_message'),
+    ('voice_wish'),
+    ('call_passenger'),
+    ('create_route'),
+    ('choose_route'),
+    ('business'),
+    ('home'),
+    ('find'),
+    ('change_rate');
 
 CREATE OR REPLACE PROCEDURE voice_statistics.update_statistics(
     p_words TEXT[],
@@ -58,10 +71,9 @@ BEGIN
 
     -- Update words_count_by_type with a single operation
     -- (We multiply by the count of filtered words to do this in one operation)
-    INSERT INTO voice_statistics.words_count_by_type (type, count)
-    VALUES (p_request_type, array_length(filtered_words, 1))
-    ON CONFLICT (type) DO UPDATE
-    SET count = words_count_by_type.count + EXCLUDED.count;
+    UPDATE voice_statistics.words_count_by_type
+    SET count = words_count_by_type.count + array_length(filtered_words, 1)
+    WHERE words_count_by_type.type = p_request_type;
 END;
 $$ LANGUAGE plpgsql;
 
