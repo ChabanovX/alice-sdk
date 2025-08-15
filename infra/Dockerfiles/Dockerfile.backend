@@ -1,0 +1,86 @@
+FROM ghcr.io/userver-framework/ubuntu-22.04-userver-base:latest AS builder
+
+WORKDIR /src
+
+# 1) Копируем "медленно меняющиеся" части (CMake, конфиги) чтобы кешировать configure/userver fetch
+COPY ../../backend/Makefile ../../backend/CMakeLists.txt ../../backend/CMakePresets.json ../../backend/requirements.txt /src/
+COPY ../../backend/cmake /src/cmake
+COPY ../../backend/configs /src/configs
+
+# Включаем ccache и параллелизм
+ENV CCACHE_DIR=/root/.ccache
+RUN echo "CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)" >> /etc/environment
+
+# Префикс установки (используется в CMakeLists при configure через ENV{PREFIX})
+ENV PREFIX=/opt/app
+
+# Подготовка минимальных исходников для успешного configure:
+#  - main.cpp нужен для add_executable
+#  - Создаем структуру каталогов и заглушки для всех модулей
+COPY ../../backend/src/main.cpp /src/src/main.cpp
+RUN mkdir -p /src/src/{handlers,integrations,models} && \
+    echo '// placeholder for initial configure' > /src/src/placeholder.cpp
+
+# 3) Копирование всех исходников и тестов сразу
+COPY ../../backend/src/ /src/src/
+COPY ../../backend/unittests/ /src/unittests/
+
+# 4) Запуск configure после копирования всех файлов
+RUN --mount=type=cache,target=/root/.ccache \
+	--mount=type=cache,target=/src/build-release \
+	export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) && \
+	make cmake-release
+
+# 5) Финальная сборка и установка
+RUN --mount=type=cache,target=/root/.ccache \
+	--mount=type=cache,target=/root/.cache/pip \
+	--mount=type=cache,target=/src/build-release \
+	export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc) && \
+	make build-release && \
+	make install-release && \
+	strip /opt/app/bin/classifier_service || true
+
+# 6) Сбор зависимостей runtime (копируем только реально используемые so)
+RUN set -e; \
+	mkdir -p /opt/app/lib; \
+	ldd /opt/app/bin/classifier_service | awk '{if (match($3,"/")) {print $3}}' | sort -u > /tmp/req_libs && \
+	while read -r lib; do cp -v "$lib" /opt/app/lib/; done < /tmp/req_libs; \
+	for extra in libstdc++.so.6 libgcc_s.so.1; do \
+		path=$(ldconfig -p | grep -m1 "$extra" | awk '{print $4}'); \
+		if [ -f "$path" ] && [ ! -f "/opt/app/lib/$extra" ]; then cp -v "$path" /opt/app/lib/ || true; fi; \
+	done; \
+	find /opt/app/lib -type f -name '*.so*' -exec sh -c 'strip --strip-unneeded "$0" || true' {} \; ; \
+	du -sh /opt/app /opt/app/lib; \
+	echo '== Sanity check classifier_service binary =='; \
+	file /opt/app/bin/classifier_service || true; \
+	ldd /opt/app/bin/classifier_service || true
+
+###############################
+# Stage 2: Runtime
+###############################
+# Минимальная Ubuntu: только базовая система + сертификаты
+FROM ubuntu:22.04 AS runtime
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update -y && \
+	apt-get install -y --no-install-recommends ca-certificates tzdata && \
+	rm -rf /var/lib/apt/lists/*
+
+# Копируем установленный сервис и нужные so
+COPY --from=builder /opt/app /opt/app
+
+WORKDIR /opt/app/bin
+ENV LD_LIBRARY_PATH=/opt/app/lib
+
+# Значения по умолчанию; могут быть переопределены через docker run args / env
+ENTRYPOINT ["/opt/app/bin/classifier_service","--config","/opt/app/etc/classifier_service/static_config.yaml","--config_vars","/opt/app/etc/classifier_service/config_vars.yaml"]
+
+# Документация:
+#  - Образ собирает бинарник classifier_service в heavy builder-слое, затем формирует облегчённый runtime (~в разы меньше)
+#  - КЭШИРОВАНИЕ:
+#    * CMake конфигурация и userver загружаются отдельно для кэширования
+#    * Весь исходный код копируется одним блоком, так как изменяется равновероятно
+#    * ccache используется для кэширования компиляции между сборками
+#    * Для CI/CD добавьте: --cache-from/--cache-to с registry
+#  - Если требуется доп. системная библиотека (ошибка при старте: 'error while loading shared libraries'),
+#    можно либо добавить её в apt-get install, либо расширить список копируемых so.
