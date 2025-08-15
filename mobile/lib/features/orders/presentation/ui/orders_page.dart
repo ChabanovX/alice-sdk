@@ -18,7 +18,7 @@ class OrdersPage extends StatelessWidget {
                 final map = switch (state) {
                   // Offline() => const MapOffline(),
                   // OnlineIdle() => const MapOnline(),
-                  _ => const MapOffline()
+                  _ => const YandexMap()
                   // OfferArrived() => const SheetOffer(),
                   // InRouteToPickup() => const SheetToPickup(),
                   // AtPickup() => const SheetAtPickup(),

@@ -2,6 +2,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/ysdk/maven")
     }
 }
 
@@ -18,4 +19,21 @@ subprojects {
 
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
+}
+
+repositories {
+    google()
+    mavenCentral()
+    maven { url = uri("https://maven.pkg.jetbrains.space/public/p/ysdk/maven") }
+}   
+
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.google.gms:google-services:4.4.0")
+    }
 }
