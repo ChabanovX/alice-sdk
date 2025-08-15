@@ -11,6 +11,11 @@ enum DirectionOpeningPage {
   const DirectionOpeningPage(this.begin, this.end);
 }
 
+class StoriesArgs {
+  StoriesArgs({required this.startIndex});
+  final int startIndex;
+}
+
 class AppRouter {
   AppRouter._();
 
@@ -34,6 +39,10 @@ class AppRouter {
         break;
       case Routes.detailedVoiceSettings:
         widget = const DetailedVoiceSettingsPage();
+        break;
+      case Routes.stories:
+        final arg = settings.arguments as StoriesArgs?;
+        widget = StoriesPage(slideCount: 4, startIndex: arg?.startIndex ?? 0,);
         break;
 
       /// Ошибка

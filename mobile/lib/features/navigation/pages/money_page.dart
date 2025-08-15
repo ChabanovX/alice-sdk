@@ -19,6 +19,15 @@ class MoneyPage extends StatelessWidget {
             size: 64,
             color: Colors.green,
           ),
+          RateByStars(
+            onChanged: print,
+          ),
+          SizedBox(
+              height: 400,
+              child: RateDetails(
+                onChanged: print,
+              )
+          )
         ],
       ),
     );

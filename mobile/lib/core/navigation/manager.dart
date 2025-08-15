@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/chat_page/presentation/presentation.dart';
 import '../../features/detailed_voice_settings/presentation/presentation.dart';
 import '../../features/navigation/navigation.dart';
 import '../../features/profile/presentation/presentation.dart';
@@ -23,6 +24,10 @@ class NavigationManager {
   static final GlobalKey<NavigatorState> navigatorKeyProfilePage =
       GlobalKey<NavigatorState>();
 
+  /// Ключи навигаторов приложения
+  static final GlobalKey<NavigatorState> navigatorKeyChatPage =
+      GlobalKey<NavigatorState>();
+
   static final scaffoldKeyProfilePage = GlobalKey();
 
   /// Состояние главного навигатора
@@ -31,6 +36,9 @@ class NavigationManager {
   /// Состояние навигатора страницы профиля
   static NavigatorState? get profileNavigator =>
       navigatorKeyProfilePage.currentState;
+
+  static NavigatorState? get chatNavigator =>
+      navigatorKeyChatPage.currentState;
 
   /// Контекст главного навигатора
   static BuildContext get context => rootNavigator!.context;

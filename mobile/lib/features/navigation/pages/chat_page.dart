@@ -1,4 +1,4 @@
-part of '../navigation.dart';
+/*part of '../navigation.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
@@ -20,3 +20,4 @@ class ChatPage extends StatelessWidget {
     );
   }
 }
+*/

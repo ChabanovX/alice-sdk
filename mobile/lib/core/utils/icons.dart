@@ -10,6 +10,14 @@ class AppIcons {
   static const String year1 = '$iconPrefix/year_1.svg';
   static const String chevronRightRounded =
       '$iconPrefix/chevron_right_rounded.svg';
+  static const String check = '$iconPrefix/check.svg';
+  static const String like = '$iconPrefix/like.svg';
+  static const String dislike = '$iconPrefix/dislike.svg';
+  static const String chevronRightBubble = '$iconPrefix/chevron_right_bubble.svg';
+  static const String taxiChecker = '$iconPrefix/taxi_checker.svg';
+  static const String promo = '$iconPrefix/promo.svg';
+  static const String xStar = '$iconPrefix/x_star.svg';
+  static const String gosuslugi = '$iconPrefix/gosuslugi.svg';
   static const String carExample = '$iconPrefix/car_example.svg';
   static const String cam = '$iconPrefix/cam.svg';
   static const String chevronRight = '$iconPrefix/chevron_right.svg';

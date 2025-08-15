@@ -31,6 +31,8 @@ class MainColors {
   static const Color cash = Color(0xFFC81EFA);
   // Border
   static const Color border = Color(0xFFF1F1F1);
+  // Star Yellow
+  static const Color starYellow = Color(0xFFFCB900);
 
   // Effects Badge / Notification / Button (all white surfaces)
   static const Color effectsBadge = Color(0xFFFFFFFF);
@@ -530,6 +532,7 @@ class AppColors {
   Color get semanticLine => MainColors.semanticLine;
   Color get controlMain => MainColors.controlMain;
   Color get aliceMain => MainColors.aliceMain;
+  Color get starYellow => MainColors.starYellow;
   Color get badge => MainColors.badge;
   Color get cash => MainColors.cash;
   Color get effectsBadge => MainColors.effectsBadge;
