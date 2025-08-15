@@ -10,3 +10,4 @@ part 'settings_header.dart';
 part 'settings_item.dart';
 part 'rate_by_stars.dart';
 part 'rate_details.dart';
+part 'end_order_info_widget.dart';
