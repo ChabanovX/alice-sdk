@@ -5,7 +5,8 @@ class RawText(BaseModel):
     text: str
 
 class ProcessedText(BaseModel):
-    scenario: str
-    address: str
-    route_number: Optional[int] = None
-    fare: str
+    intention: str
+    addresses: Optional[str] = None
+    route_choice: Optional[list[int]] = None
+    tariff: Optional[str] = None
+    places: Optional[str] = None
