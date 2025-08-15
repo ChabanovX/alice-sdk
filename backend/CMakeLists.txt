@@ -6,7 +6,7 @@ include(DownloadUserver)
 
 find_package(
     userver
-    COMPONENTS core #
+    COMPONENTS core postgresql
     QUIET
 )
 if(NOT userver_FOUND)
@@ -27,10 +27,14 @@ add_library(
 
     src/integrations/analytics-service/analytics-client.hpp
     src/integrations/analytics-service/analytics-client.cpp
+
+    src/db/voice_statistics/models.hpp
+    src/db/voice_statistics/repository.hpp
+    src/db/voice_statistics/repository.cpp
 )
 target_link_libraries(
-    ${PROJECT_NAME}_objs
-    PUBLIC userver::core
+    ${PROJECT_NAME}_objs PUBLIC 
+    userver::core userver::postgresql
 )
 
 

@@ -12,3 +12,5 @@ allowed-url-prefixes:
   - "http://localhost:8000/"
 
 analytics-url: http://host.docker.internal:8000/cluster
+
+dbconnection: 'postgresql://user:password@db:5432/voice_assistant'

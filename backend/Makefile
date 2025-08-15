@@ -76,3 +76,7 @@ $(addprefix docker-cmake-, $(PRESETS)) $(addprefix docker-build-, $(PRESETS)) $(
 		env CCACHE_DIR=$$PWD/.ccache \
 		    HOME=$$HOME \
 		    $$PWD/run_as_user.sh $(shell /bin/id -u) $(shell /bin/id -g) make $*
+
+.PHONY: migrate-db
+migrate-db:
+	pgmigrate -c 'user=user password=password host=db dbname=voice_assistant' -d postgres/voice_statistics -t latest migrate
