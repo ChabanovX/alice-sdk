@@ -24,7 +24,7 @@ class OrdersPage extends StatelessWidget {
                   // AtPickup() => const SheetAtPickup(),
                   // OrdersError() => const SheetError(),
                 };
-                
+
                 return map;
               },
             ),

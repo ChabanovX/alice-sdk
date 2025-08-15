@@ -1,7 +1,7 @@
 part of 'buttons.dart';
 
 /// TODO: must refactor it to use parent's width
-/// 
+///
 /// It might be hard, use LayoutBuilder to calculate width.
 /// But without it code smells.
 class EndTaxiRideButton extends StatelessWidget {
@@ -11,38 +11,16 @@ class EndTaxiRideButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsetsGeometry.all(0),
-        backgroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(37),
-        ),
+    return Container(
+      padding: const EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.circular(46),
       ),
-      onPressed: () {},
-      child: Stack(
-        children: [
-          Positioned.fill(
-            child: Center(
-              child: Text(
-                'На месте',
-                style: context.textStyles.title.copyWith(
-                  color: context.colors.controlMain,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsetsGeometry.all(6),
-          
-            child: SlideActionButton(
-              onSlideComplete: () {
-                onSlideComplete?.call();
-              },
-            ),
-          ),
-        ],
+      child: SlideActionButton(
+        onSlideComplete: () {
+          onSlideComplete?.call();
+        },
       ),
     );
   }
