@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS voice_statistics.words_count_by_word_and_type (
     PRIMARY KEY(word, type)
 );
 
+
 CREATE TABLE IF NOT EXISTS voice_statistics.words_count_by_type (
     type voice_statistics.request_type NOT NULL,
     count BIGINT NOT NULL DEFAULT 0,
@@ -42,7 +43,9 @@ VALUES
     ('business'),
     ('home'),
     ('find'),
-    ('change_rate');
+    ('change_rate')
+ON CONFLICT DO NOTHING;
+
 
 CREATE OR REPLACE PROCEDURE voice_statistics.update_statistics(
     p_words TEXT[],
@@ -67,7 +70,7 @@ BEGIN
     SELECT word, update_statistics.p_request_type, 1
     FROM unnest(filtered_words) AS word
     ON CONFLICT (word, type) DO UPDATE
-    SET count = words_count_by_word_and_type.count + EXCLUDED.count;
+    SET count = words_count_by_word_and_type.count + 1;
 
     -- Update words_count_by_type with a single operation
     -- (We multiply by the count of filtered words to do this in one operation)
