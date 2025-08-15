@@ -62,42 +62,10 @@ workflows:
     settings:
       max_cube_duration: 20m
     tasks:
-      # - name: build-and-load-YCR-backend
-      #   env:
-      #     YC_DOCKER_REGISTRY_URI: cr.yandex/crpkn074ct7t36pe5t60
-      #     IMAGE_NAME: backend-image
-      #     YC_SERVICE_ACCOUNT_ID: aje0nk8qumod351tq14j
-      #     YC_AUTHORIZED_KEY_JSON: ${{ secrets.key_json }}
-      #     YC_FOLDER_ID: b1g5v665mv41es8qv40o
-      #   cubes:
-      #     - name: install-yc
-      #       script:
-      #         - curl -o ./yc-install.sh -L https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash -s -- -a
-      #         - echo 'source /root/yandex-cloud/completion.zsh.inc' >>  ~/.zshrc
-      #         - chmod +x ./yc-install.sh && ./yc-install.sh -i /tmp/yc -n && mv /tmp/yc/bin/yc /usr/bin/yc
-      #         - echo "$YC_AUTHORIZED_KEY_JSON" > key.json
-      #         - yc config profile create sa-profile
-      #         - yc config set service-account-key key.json
-      #         - yc config set format json
-      #         - yc config set folder-id $YC_FOLDER_ID
-      #     - name: docker-login
-      #       script:
-      #         - yc container registry configure-docker --profile sa-profile
-
-      #     - name: docker-build-push
-      #       script:
-      #         - export TIMESTAMP=$(date +%s)
-      #         - docker build -f infra/Dockerfiles/Dockerfile.backend --tag $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME:$TIMESTAMP --platform linux/amd64 .
-      #         - docker push $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME:$TIMESTAMP
-
-      #     - name: docker-logout
-      #       script:
-      #         - docker logout $YC_DOCKER_REGISTRY_URI
-
-      - name: build-and-load-YCR-analytics
+      - name: build-and-load-YCR-backend
         env:
           YC_DOCKER_REGISTRY_URI: cr.yandex/crpkn074ct7t36pe5t60
-          IMAGE_NAME: analytics-image
+          IMAGE_NAME: backend-image
           YC_SERVICE_ACCOUNT_ID: aje0nk8qumod351tq14j
           YC_AUTHORIZED_KEY_JSON: ${{ secrets.key_json }}
           YC_FOLDER_ID: b1g5v665mv41es8qv40o
@@ -119,12 +87,44 @@ workflows:
           - name: docker-build-push
             script:
               - export TIMESTAMP=$(date +%s)
-              - docker build -f infra/Dockerfiles/Dockerfile.analytics --tag $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME:$TIMESTAMP --platform linux/amd64 .
+              - docker build -f infra/Dockerfiles/Dockerfile.backend --tag $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME:$TIMESTAMP --platform linux/amd64 .
               - docker push $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME:$TIMESTAMP
 
           - name: docker-logout
             script:
               - docker logout $YC_DOCKER_REGISTRY_URI
+
+      # - name: build-and-load-YCR-analytics
+      #   env:
+      #     YC_DOCKER_REGISTRY_URI: cr.yandex/crpkn074ct7t36pe5t60
+      #     IMAGE_NAME: analytics-image
+      #     YC_SERVICE_ACCOUNT_ID: aje0nk8qumod351tq14j
+      #     YC_AUTHORIZED_KEY_JSON: ${{ secrets.key_json }}
+      #     YC_FOLDER_ID: b1g5v665mv41es8qv40o
+      #   cubes:
+      #     - name: install-yc
+      #       script:
+      #         - curl -o ./yc-install.sh -L https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash -s -- -a
+      #         - echo 'source /root/yandex-cloud/completion.zsh.inc' >>  ~/.zshrc
+      #         - chmod +x ./yc-install.sh && ./yc-install.sh -i /tmp/yc -n && mv /tmp/yc/bin/yc /usr/bin/yc
+      #         - echo "$YC_AUTHORIZED_KEY_JSON" > key.json
+      #         - yc config profile create sa-profile
+      #         - yc config set service-account-key key.json
+      #         - yc config set format json
+      #         - yc config set folder-id $YC_FOLDER_ID
+      #     - name: docker-login
+      #       script:
+      #         - yc container registry configure-docker --profile sa-profile
+
+      #     - name: docker-build-push
+      #       script:
+      #         - export TIMESTAMP=$(date +%s)
+      #         - docker build -f infra/Dockerfiles/Dockerfile.analytics --tag $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME:$TIMESTAMP --platform linux/amd64 .
+      #         - docker push $YC_DOCKER_REGISTRY_URI/$IMAGE_NAME:$TIMESTAMP
+
+      #     - name: docker-logout
+      #       script:
+      #         - docker logout $YC_DOCKER_REGISTRY_URI
 
       # - name: build-mobile-android
       #   cubes:
