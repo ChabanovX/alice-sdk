@@ -56,6 +56,9 @@ components_manager:
         analytics-client:
             analytics-url: $analytics-url
 
+        speech-kit-tts-client:
+            speech-kit-tts-service-url: $speech-kit-tts-service-url
+
         handler-ping:
             path: /ping
             method: GET
@@ -68,8 +71,13 @@ components_manager:
             method: GET,POST              # It will only reply to GET (HEAD) and POST requests.
             task_processor: main-task-processor  # Run it on CPU bound task processor
 
-        # postgres-db-1:
-        #     dbconnection: $dbconnection
-        #     blocking_task_processor: fs-task-processor
-        #     dns_resolver: async
-        #     sync-start: true
+        postgres-db-1:
+            dbconnection: $dbconnection
+            blocking_task_processor: fs-task-processor
+            dns_resolver: async
+            sync-start: true
+
+        handler-v1-text-to-speech:      # Finally! Our handler.
+            path: /text-to-speech       # Registering handler by URL '/get-raw-message'.
+            method: POST              # It will only reply to GET (HEAD) and POST requests.
+            task_processor: main-task-processor  # Run it on CPU bound task processor

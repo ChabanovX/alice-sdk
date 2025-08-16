@@ -40,6 +40,13 @@ add_library(
     src/classifier/classifier.cpp
     src/classifier/classifier.cpp
     src/classifier/string_converter.hpp
+
+    src/handlers/v1/text-to-speech/view.cpp
+    src/handlers/v1/text-to-speech/view.hpp
+
+    src/integrations/speech-kit-tts-service/speech-kit-tts-client.hpp
+    src/integrations/speech-kit-tts-service/speech-kit-tts-client.cpp
+
 )
 target_link_libraries(
     ${PROJECT_NAME}_objs PUBLIC 
