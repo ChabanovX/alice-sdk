@@ -15,3 +15,7 @@ export API_KEY=...
 ```bash
 docker compose up
 ```
+
+## OpenApi
+
+Посмотреть [тут](openapi.yaml)
