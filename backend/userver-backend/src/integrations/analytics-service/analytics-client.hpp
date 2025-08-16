@@ -13,7 +13,7 @@
 namespace voice_assistant::analytics_service {
 
 class AnalyticsClient : public userver::components::ComponentBase {
-public:
+   public:
     static constexpr std::string_view kName = "analytics-client";
 
     AnalyticsClient(const userver::components::ComponentConfig& config,
@@ -23,7 +23,7 @@ public:
 
     static userver::yaml_config::Schema GetStaticConfigSchema();
 
-private:
+   private:
     const std::string service_url_;
     userver::clients::http::Client& http_client_;
 };

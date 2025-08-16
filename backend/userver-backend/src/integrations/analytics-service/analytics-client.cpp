@@ -9,16 +9,15 @@
 #include "analytics-client.hpp"
 
 namespace voice_assistant::analytics_service {
- 
-AnalyticsClient::AnalyticsClient(const userver::components::ComponentConfig& config, const userver::components::ComponentContext& context)
+
+AnalyticsClient::AnalyticsClient(const userver::components::ComponentConfig& config,
+                                 const userver::components::ComponentContext& context)
     : ComponentBase{config, context},
-    service_url_(config["analytics-url"].As<std::string>()),
-    http_client_(context.FindComponent<userver::components::HttpClient>().GetHttpClient()) {}
+      service_url_(config["analytics-url"].As<std::string>()),
+      http_client_(context.FindComponent<userver::components::HttpClient>().GetHttpClient()) {}
 
 std::string AnalyticsClient::SendHttpRequest(const std::string& body) const {
-    userver::clients::http::Headers headers = {
-        {"Content-Type", "application/json"}
-    };
+    userver::clients::http::Headers headers = {{"Content-Type", "application/json"}};
     auto response = http_client_.CreateRequest().post(service_url_).headers(headers).data(body).perform();
 
     if (response->IsError()) {

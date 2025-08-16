@@ -2,9 +2,16 @@ version: '3.9'
 
 services:
   userver-service:
-    build: .
+    build: userver-backend
     ports:
       - "8080:8080"
+
+  speech-kit-service:
+    build: py-backend
+    ports:
+      - "8081:8081"
+    environment:
+      - API_KEY=${API_KEY}
 
   analytics-service:
     build: ../analytics
@@ -18,5 +25,5 @@ services:
     ports:
       - "5432"
     volumes:
-      - ./postgresql:/docker-entrypoint-initdb.d
-      - ./.pgdata:/var/lib/postgresql/data
+      - ./userver-backend/postgresql:/docker-entrypoint-initdb.d
+      - ./userver-backend/.pgdata:/var/lib/postgresql/data

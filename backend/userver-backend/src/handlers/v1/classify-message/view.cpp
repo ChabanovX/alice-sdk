@@ -18,9 +18,9 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
     static constexpr std::string_view kName = "handler-v1-classify-message";  // NOLINT(*unused*)
 
     ClassifyMessage(const userver::components::ComponentConfig& config,
-                  const userver::components::ComponentContext& context)
-      : HttpHandlerBase(config, context),
-        analytics_client_(context.FindComponent<analytics_service::AnalyticsClient>()) {}
+                    const userver::components::ComponentContext& context)
+        : HttpHandlerBase(config, context),
+          analytics_client_(context.FindComponent<analytics_service::AnalyticsClient>()) {}
 
     std::string HandleRequestThrow(const userver::server::http::HttpRequest& request,
                                    userver::server::request::RequestContext& /*context*/) const override {
@@ -50,6 +50,7 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
             return std::string("Cluster service error: ") + e.what();
         }
     }
+
    private:
     const analytics_service::AnalyticsClient& analytics_client_;
 };

@@ -19,16 +19,19 @@ async def test_basic(service_client, mockserver):
     assert response.status == 200
 
     got = response.json()
-    expected = {"scenario": "ACCEPT_ORDER", "address": "", "address_number": None, "fare": ""}
+    expected = {"scenario": "ACCEPT_ORDER",
+                "address": "", "address_number": None, "fare": ""}
     assert got == expected
 
     # опциональная проверка, что внешний сервис был вызван ровно 1 раз
     assert len(calls) == 1
 
+
 async def test_error_empty_request(service_client):
     response = await service_client.post('/classify-message')
     assert response.status == 400
 
+
 async def test_error_request_without_text(service_client):
-    response = await service_client.post('/classify-message',json={'name': 'Sus'})
+    response = await service_client.post('/classify-message', json={'name': 'Sus'})
     assert response.status == 400
