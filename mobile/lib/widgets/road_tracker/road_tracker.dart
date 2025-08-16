@@ -6,12 +6,14 @@ class RoadTracker extends StatelessWidget {
   final String timeWhenEnd;
   final String timeRemain;
   final String roadLength;
+  final bool isEnding;
 
   const RoadTracker({
     super.key,
     this.roadLength = '1,5 км',
     this.timeWhenEnd = '14:19',
     this.timeRemain = '12 мин',
+    this.isEnding = false,
   });
 
   @override
@@ -48,11 +50,14 @@ class RoadTracker extends StatelessWidget {
               ),
             ),
             Padding(
-                padding: EdgeInsetsGeometry.only(top: 0, left: 16, right: 16),
-                child: SvgPicture.asset(
-                  'assets/icons/track.svg',
-                  height: 30,
-                )),
+              padding: EdgeInsetsGeometry.only(top: 0, left: 16, right: 16),
+              child: SvgPicture.asset(
+                isEnding
+                    ? 'assets/icons/track_end.svg'
+                    : 'assets/icons/track.svg',
+                height: 30,
+              ),
+            ),
           ],
         ),
       ),

@@ -9,20 +9,32 @@ class DraggableWindow extends StatefulWidget {
   const DraggableWindow({
     super.key,
     required this.innerWidgetBuilder,
-    this.childPinned,
     this.minVisibleHeight = 100,
     this.maxVisibleHeight = 200,
     this.overlayGap = 14,
     this.snap = true,
+    this.paintGrabber = true,
+    this.childPinned,
     this.overlayWidget,
+    this.shitWidget,
   });
 
   final Widget Function(BuildContext, ScrollController) innerWidgetBuilder;
 
+  /// Widget pinned at the bottom.
   final Widget? childPinned;
+
+  /// Widget that renders above the window.
+  final Widget? overlayWidget;
+
+  /// Widget that hides in expanded state.
+  final Widget? shitWidget;
 
   /// Whether to snap instantly after dragging.
   final bool snap;
+
+  /// Whether to paint [GrabHandle].
+  final bool paintGrabber;
 
   /// Gap between overlay and panel top.
   final double overlayGap;
@@ -32,9 +44,6 @@ class DraggableWindow extends StatefulWidget {
 
   /// Specify maxExpansion beforehand if maxHeight in pixels is known.
   final double maxVisibleHeight;
-
-  /// Widget that renders above the window.
-  final Widget? overlayWidget;
 
   @override
   State<StatefulWidget> createState() => _DraggableWindowState();
@@ -54,6 +63,9 @@ class _DraggableWindowState extends State<DraggableWindow> {
   /// `0` - means uninitialized, which is logical, since snap could not be `0`.
   final List<double> _snapSizes = [0, 0];
 
+  double? collapsedH;
+  double? expandedH;
+
   @override
   void initState() {
     super.initState();
@@ -71,6 +83,53 @@ class _DraggableWindowState extends State<DraggableWindow> {
   void dispose() {
     _dss.dispose();
     super.dispose();
+  }
+
+  Widget _buildScrollableSheet(
+    ScrollController controller,
+  ) {
+    const borderRadius = BorderRadiusDirectional.vertical(
+      top: Radius.circular(24),
+    );
+
+    final box = DecoratedBox(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: borderRadius,
+      ),
+      child: Column(
+        children: [
+          const SizedBox(height: 4),
+          if (widget.paintGrabber)
+            const GrabHandle()
+          else
+            const SizedBox(height: 10),
+          widget.innerWidgetBuilder(context, controller),
+        ],
+      ),
+    );
+
+    return Column(
+      children: [
+        Expanded(
+          child: CustomScrollView(
+            controller: controller,
+            physics: const ClampingScrollPhysics(),
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: box,
+              ),
+            ],
+          ),
+        ),
+        if (widget.childPinned != null)
+          SafeArea(
+            top: false,
+            child: widget.childPinned!,
+          ),
+      ],
+    );
   }
 
   @override
@@ -104,9 +163,8 @@ class _DraggableWindowState extends State<DraggableWindow> {
         final panelH = parentH * _currentSizeFraction;
 
         return Stack(
-          // Allows registering clicks outside non-positioned.
           fit: StackFit.expand,
-          clipBehavior: Clip.none, // Shows positioned outside.
+          clipBehavior: Clip.none,
           children: [
             DraggableScrollableSheet(
               controller: _dss,
@@ -116,11 +174,7 @@ class _DraggableWindowState extends State<DraggableWindow> {
               snap: widget.snap,
               snapSizes: _snapSizes,
               builder: (ctx, scrollController) {
-                return _ScrollableSheet(
-                  controller: scrollController,
-                  childPinned: widget.childPinned,
-                  child: widget.innerWidgetBuilder(ctx, scrollController),
-                );
+                return _buildScrollableSheet(scrollController);
               },
             ),
             if (widget.overlayWidget != null)
@@ -137,61 +191,36 @@ class _DraggableWindowState extends State<DraggableWindow> {
   }
 }
 
-class _ScrollableSheet extends StatelessWidget {
-  const _ScrollableSheet({
-    required this.child,
-    required this.controller,
-    this.childPinned,
-  });
+typedef SizeChanged = void Function(Size size);
 
-  /// Widget to render below grabber.
-  final Widget child;
-
-  final Widget? childPinned;
-
-  /// Allows to sync inner and outer scrolls.
-  final ScrollController controller;
+class MeasureSize extends SingleChildRenderObjectWidget {
+  const MeasureSize({super.key, required this.onChange, required super.child});
+  final SizeChanged onChange;
 
   @override
-  Widget build(BuildContext context) {
-    const borderRadius = BorderRadiusDirectional.vertical(
-      top: Radius.circular(24),
-    );
+  RenderObject createRenderObject(BuildContext context) =>
+      _RenderMeasureSize(onChange);
 
-    final box = DecoratedBox(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: borderRadius,
-      ),
-      child: Column(
-        children: [
-          const SizedBox(height: 4),
-          const GrabHandle(),
-          child,
-        ],
-      ),
-    );
+  @override
+  void updateRenderObject(
+    BuildContext context,
+    covariant _RenderMeasureSize renderObject,
+  ) {
+    renderObject.onChange = onChange;
+  }
+}
 
-    return Column(
-      children: [
-        Expanded(
-          child: CustomScrollView(
-            controller: controller,
-            physics: const ClampingScrollPhysics(),
-            slivers: [
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: box,
-              ),
-            ],
-          ),
-        ),
-        if (childPinned != null)
-          SafeArea(
-            top: false,
-            child: childPinned!,
-          ),
-      ],
-    );
+class _RenderMeasureSize extends RenderProxyBox {
+  _RenderMeasureSize(this.onChange);
+  SizeChanged onChange;
+  Size? _oldSize;
+
+  @override
+  void performLayout() {
+    super.performLayout();
+    if (size != _oldSize) {
+      _oldSize = size;
+      WidgetsBinding.instance.addPostFrameCallback((_) => onChange(size));
+    }
   }
 }
