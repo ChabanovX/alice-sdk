@@ -34,6 +34,12 @@ add_library(
     src/db/metrics/models.hpp
     src/db/metrics/repository.hpp
     src/db/metrics/repository.cpp
+
+    src/classifier/classifier_fabric.cpp
+    src/classifier/classifier_fabric.hpp
+    src/classifier/classifier.cpp
+    src/classifier/classifier.cpp
+    src/classifier/string_converter.hpp
 )
 target_link_libraries(
     ${PROJECT_NAME}_objs PUBLIC 
@@ -46,7 +52,7 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}_objs)
 
 # Unit Tests
-add_executable(${PROJECT_NAME}_unittest unittests/basic.cpp)
+add_executable(${PROJECT_NAME}_unittest unittests/basic.cpp unittests/tests_classifier.cpp)
 target_link_libraries(${PROJECT_NAME}_unittest PRIVATE ${PROJECT_NAME}_objs userver::utest)
 add_google_tests(${PROJECT_NAME}_unittest)
 
