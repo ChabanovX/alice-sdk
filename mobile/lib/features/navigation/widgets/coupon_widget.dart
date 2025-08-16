@@ -26,8 +26,6 @@ class CouponWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final isTablet = constraints.maxWidth > 600;
-        
         return Container(
           width: double.infinity,
           padding: const EdgeInsets.fromLTRB(16, 10, 16, 16),
