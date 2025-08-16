@@ -29,7 +29,7 @@ enum class RequestType : char {
     BUSINESS,
     HOME,
     FIND,
-    СHANGE_FARE,
+    CHANGE_FARE,
 };
 
 }  // namespace db_internal
@@ -51,7 +51,7 @@ struct userver::storages::postgres::io::CppToUserPg<db_internal::RequestType> {
             .Case("business", db_internal::RequestType::BUSINESS)
             .Case("home", db_internal::RequestType::HOME)
             .Case("find", db_internal::RequestType::FIND)
-            .Case("change_rate", db_internal::RequestType::СHANGE_FARE);
+            .Case("change_rate", db_internal::RequestType::CHANGE_FARE);
     };
 };
 
