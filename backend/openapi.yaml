@@ -1,0 +1,91 @@
+openapi: 3.0.3
+info:
+  title: Voice Assistant Classifier API
+  version: 1.0.0
+
+paths:
+  /v1/classify/message:
+    post:
+      summary: Classify input text
+      description: >
+        Classify Message by test. 
+        Proxyng request to analytics-service.
+      operationId: classifyMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - text
+              properties:
+                text:
+                  type: string
+                  description: Input message to classify
+            example:
+              text: "Принять заказ"
+      responses:
+        "200":
+          description: Successful classification
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Response from analytics-service
+                additionalProperties: true
+        "400":
+          description: Invalid request (empty body or missing text)
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "No member text in json"
+        "401":
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "Unauthorized"
+        "502":
+          description: Analytics service error
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "Cluster service error: timeout"
+  /ws:
+    get:
+      summary: WebSocket for real-time speech-to-text
+      description: |
+        Accepts audio chunks over WebSocket and streams recognized text using Yandex STT gRPC API.
+
+        Audio format:
+        - LPCM (LINEAR16_PCM)
+        - Sample rate: 8000 Hz
+        - Channels: 1 (mono)
+
+        Send messages in JSON:
+        - {"bytes": <audio_chunk_bytes>} for audio chunks
+        - {"text": "EOS"} to finish streaming
+
+        Responses:
+        - {"raw_text": "<recognized_text>"} — final recognized text after end of stream
+      responses:
+        "101":
+          description: WebSocket upgrade
+        "500":
+          description: Internal server error
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "gRPC error or websocket close error"
+        "503":
+          description: missing API key on server
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: "API_KEY not found"
