@@ -31,6 +31,9 @@ add_library(
     src/db/voice_statistics/models.hpp
     src/db/voice_statistics/repository.hpp
     src/db/voice_statistics/repository.cpp
+    src/db/metrics/models.hpp
+    src/db/metrics/repository.hpp
+    src/db/metrics/repository.cpp
 )
 target_link_libraries(
     ${PROJECT_NAME}_objs PUBLIC 

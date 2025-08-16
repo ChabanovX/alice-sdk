@@ -1,6 +1,6 @@
 #pragma once
 
-#include "db/voice_statistics/models.hpp"
+#include "models.hpp"
 #include "models/scenarios.hpp"
 
 #include <userver/storages/postgres/postgres_fwd.hpp>
