@@ -79,4 +79,4 @@ $(addprefix docker-cmake-, $(PRESETS)) $(addprefix docker-build-, $(PRESETS)) $(
 
 .PHONY: migrate-db
 migrate-db:
-	pgmigrate -c 'user=user password=password host=db dbname=voice_assistant' -d postgres/voice_statistics -t latest migrate
+	pgmigrate -c 'user=user password=password host=db dbname=voice_assistant' -d postgresql -t latest migrate

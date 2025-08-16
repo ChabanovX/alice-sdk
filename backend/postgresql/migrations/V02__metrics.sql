@@ -80,17 +80,19 @@ ON CONFLICT DO NOTHING;
 CREATE TABLE IF NOT EXISTS metrics.requests_count_by_session (
     session_id TEXT,
     type metrics.request_type,
+    user_id TEXT,
     count INTEGER NOT NULL DEFAULT 0,
     PRIMARY KEY(session_id, type)
 );
 CREATE OR REPLACE PROCEDURE metrics.update_requests_stats(
     p_session_id TEXT,
+    p_user_id TEXT,
     p_request_type metrics.request_type
 ) AS $$
 BEGIN
     INSERT INTO metrics.requests_count_by_session AS rcbs
-        (session_id, type, count)
-    VALUES (p_session_id, p_request_type, 1)
+        (session_id, type, user_id, count)
+    VALUES (p_session_id, p_request_type, p_user_id, 1)
     ON CONFLICT (session_id, type) DO UPDATE SET
         count = rcbs.count + 1;
 END;
@@ -105,7 +107,7 @@ CREATE OR REPLACE PROCEDURE metrics.register_request(
     p_duration_s DOUBLE PRECISION
 ) AS $$
 DECLARE
-    request_timing metrics.timing_category NULL;
+    request_timing metrics.timing_category;
 BEGIN
     IF p_request_type IS NULL THEN
         RETURN;
@@ -113,26 +115,26 @@ BEGIN
 
     INSERT INTO metrics.last_requests AS lr (user_id, type, request_ts)
     VALUES (p_user_id, p_request_type, p_now)
-    ON CONFLICT (user_id) DO SET
+    ON CONFLICT (user_id) DO UPDATE SET
         type = EXCLUDED.type,
-        request_ts = EXCLUDED.type;
+        request_ts = EXCLUDED.request_ts;
 
     CALL metrics.update_retention_stats(p_user_id, p_now);
 
     SELECT CASE
-        WHEN p_request_type = 'create_route' THEN 'create_route'::metrics.timings
-        WHEN p_request_type = 'business' THEN 'business'::metrics.timings
-        WHEN p_request_type = 'accept' THEN 'order_deciding'::metrics.timings
-        WHEN p_request_type = 'cancel' THEN 'order_deciding'::metrics.timings
+        WHEN p_request_type = 'create_route' THEN 'create_route'::metrics.timing_category
+        WHEN p_request_type = 'business' THEN 'business'::metrics.timing_category
+        WHEN p_request_type = 'accept' THEN 'order_deciding'::metrics.timing_category
+        WHEN p_request_type = 'cancel' THEN 'order_deciding'::metrics.timing_category
         ELSE NULL END
     INTO request_timing;
     IF request_timing IS NOT NULL THEN
         UPDATE metrics.timings SET
             sum_s = sum_s + p_duration_s,
             count = count + 1
-        WHERE category = request_timing
+        WHERE category = request_timing;
     END IF;
 
-    CALL metrics.update_requests_stats(p_session_id, p_request_type);
+    CALL metrics.update_requests_stats(p_session_id, p_user_id, p_request_type);
 END;
 $$ LANGUAGE plpgsql;
