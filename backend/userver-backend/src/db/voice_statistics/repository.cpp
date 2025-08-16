@@ -91,6 +91,7 @@ std::vector<std::string> Repository::GetStopWords() const {
 }
 
 void Repository::UpdateStatistics(TypeRequest request_type, const std::vector<std::string>& words) const {
+    if (request_type == TypeRequest::OTHER) return;
     pg_->Execute(userver::storages::postgres::ClusterHostType::kMaster,
                  "CALL voice_statistics.update_statistics($1, $2)",
                  words,

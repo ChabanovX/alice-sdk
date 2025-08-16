@@ -23,17 +23,13 @@
 #include <userver/storages/postgres/component.hpp>
 #include <userver/utils/datetime_light.hpp>
 
+#include <cctype>
 #include <chrono>
+#include <cstddef>
 #include <optional>
 #include <string>
 #include <string_view>
 #include <vector>
-
-namespace voice_assistant {
-
-Classifier CreateClassifierFromSave() { return Classifier{{}}; }
-
-}  // namespace voice_assistant
 
 namespace voice_assistant::classifier {
 
@@ -142,6 +138,20 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
         // }
     }
 
+    void UpdateWordStatistics(std::string_view text, TypeRequest request_type) const {
+        if (request_type == TypeRequest::OTHER) return;
+        std::vector<std::string> words;
+        for (std::size_t start = 0, i = 0; i <= text.size(); ++i) {
+            if (i == text.size() || std::ispunct(text[i]) != 0 || std::isspace(text[i]) != 0) {
+                if (start != i) {
+                    words.emplace_back(text.substr(start, i - start));
+                }
+                start = i + 1;
+            }
+        }
+        statistics_repo_.UpdateStatistics(request_type, words);
+    }
+
     std::string HandleRequestThrow(const userver::server::http::HttpRequest& request,
                                    userver::server::request::RequestContext& /*context*/) const override {
         auto& response = request.GetHttpResponse();
@@ -171,6 +181,7 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
             response.intention = request_name ? *request_name : "";
 
             UpdateMetrics(body, *local_decision);
+            UpdateWordStatistics(body.request_text, *local_decision);
 
             userver::formats::json::ValueBuilder json{response};
             return userver::formats::json::ToString(json.ExtractValue());
@@ -180,12 +191,13 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
         try {
             auto cluster_body = analytics_client_.SendHttpRequest(body.request_text);
             auto response = userver::formats::json::FromString(cluster_body).As<Response>();
-
             auto request_type = request_names.TryFindByFirst(response.intention);
             if (!request_type) {
                 throw std::runtime_error{"Unknown request_type"};
             }
+
             UpdateMetrics(body, *request_type);
+            UpdateWordStatistics(body.request_text, *request_type);
 
             return cluster_body;
         } catch (const std::exception& e) {

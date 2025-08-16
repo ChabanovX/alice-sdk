@@ -86,6 +86,7 @@ void Repository::RegisterRequest(std::string_view session_id,
                                  TypeRequest type,
                                  std::chrono::system_clock::time_point now,
                                  double request_duration_seconds) const {
+    if (type == TypeRequest::OTHER) return;
     pg_cluster_->Execute(userver::storages::postgres::ClusterHostType::kMaster,
                          "CALL metrics.register_request($1, $2, $3, $4, $5) ",
                          session_id,
