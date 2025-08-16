@@ -6,7 +6,7 @@
 #include "../models/scenarios.hpp"
 #include "classifier.hpp"
 
-using namespace voice_assistant;
+namespace voice_assistant {
 
 Classifier CreateClassifierFromSave() {
   InfoClassifier fix_info;
@@ -11979,3 +11979,5 @@ Classifier CreateClassifierFromSave() {
 
   return Classifier(std::move(fix_info));
 }
+
+} // namespace voice_assistant
