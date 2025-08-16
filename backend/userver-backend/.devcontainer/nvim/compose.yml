@@ -17,9 +17,21 @@ services:
           - MAKE_OPTS
         volumes:
           - ../..:/app:rw
-          - ${TC_CORES_DIR:-./.cores}:/cores:rw
+          - ${TC_CORES_DIR:-../../.cores}:/cores:rw
         ports:
           - 8080:8080
         working_dir: /app
         entrypoint:
           - .devcontainer/nvim/run_as_user.sh
+
+    db:
+        image: postgres:17-alpine
+        environment:
+          - POSTGRES_DB=voice_assistant
+          - POSTGRES_USER=user
+          - POSTGRES_PASSWORD=password
+        ports:
+          - "5432"
+        volumes:
+          - ../../postgresql:/docker-entrypoint-initdb.d
+          - ../../.pgdata:/var/lib/postgresql/data

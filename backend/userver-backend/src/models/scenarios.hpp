@@ -1,6 +1,8 @@
 #pragma once
 
-enum class TypeRequest {
+namespace voice_assistant {
+
+enum class TypeRequest : char {
     ACCEPT_ORDER,
     CANCEL_ORDER,
     VOICE_MESSAGE,
@@ -14,3 +16,5 @@ enum class TypeRequest {
     СHANGE_FARE,
     COUNT_  // count elements in enum
 };
+
+}  // namespace voice_assistant
