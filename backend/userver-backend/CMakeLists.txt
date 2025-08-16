@@ -46,7 +46,6 @@ add_library(
 
     src/integrations/speech-kit-tts-service/speech-kit-tts-client.hpp
     src/integrations/speech-kit-tts-service/speech-kit-tts-client.cpp
-
 )
 target_link_libraries(
     ${PROJECT_NAME}_objs PUBLIC 
