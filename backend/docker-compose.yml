@@ -4,14 +4,14 @@ services:
   userver-service:
     build: userver-backend
     ports:
-      - "8082:8080"
+      - "8080:8080"
     depends_on:
       - db
 
   speech-kit-service:
     build: py-backend
     ports:
-      - "8083:8081"
+      - "8081:8081"
     environment:
       - API_KEY=${API_KEY}
 
