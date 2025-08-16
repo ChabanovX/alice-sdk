@@ -1,0 +1,2735 @@
+text;label
+Есть комментарий пассажира?;read_passenger_message
+Покажи сообщение заказчика;read_passenger_message
+Сообщений пассажир не писал?;read_passenger_message
+Покажи комменты к заказу;read_passenger_message
+Чатик с клиентом прочитай, зай;read_passenger_message
+Комментарий;read_passenger_message
+Озвучь сообщение;read_passenger_message
+Прочитай комментарий;read_passenger_message
+Что человек написал?;read_passenger_message
+Что он настрочил там?;read_passenger_message
+Че он чешет?;read_passenger_message
+Что говорят?;read_passenger_message
+Прочитай сообщение;read_passenger_message
+Есть собщения от клиента?;read_passenger_message
+Что-нибудь пишут?;read_passenger_message
+Что пишут?;read_passenger_message
+Скажи сообщение;read_passenger_message
+Прочитай че написали;read_passenger_message
+Что написали?;read_passenger_message
+Озвучь;read_passenger_message
+Озвучь, плиз, сообщение от пассажира;read_passenger_message
+Хочу еще раз услышать сообщение от пассажира;read_passenger_message
+Повтори сообщение;read_passenger_message
+Еду до заказа, есть сообщения?;read_passenger_message
+Че там?;read_passenger_message
+Произнеси сообщение пассажира;read_passenger_message
+Зачитай вслух;read_passenger_message
+Какое содержание у пожелания?;read_passenger_message
+Че он там вякает?;read_passenger_message
+Озвучить сообщение пассажира;read_passenger_message
+Озвучь чат;read_passenger_message
+Что написал пассажир?;read_passenger_message
+Есть сообщения от пассажира?;read_passenger_message
+Какие сообщения?;read_passenger_message
+Алиса, покажи что написал клиент;read_passenger_message
+Прочти мне сообщения;read_passenger_message
+Давай посмотрим что пишет пассажир;read_passenger_message
+Есть ли комментарии?;read_passenger_message
+Что там в чате?;read_passenger_message
+Покажи переписку с клиентом;read_passenger_message
+Давай узнаем что хочет пассажир;read_passenger_message
+Алиса, зачитай сообщения;read_passenger_message
+Есть что почитать от клиента?;read_passenger_message
+Что пассажир сообщает?;read_passenger_message
+Покажи текст от заказчика;read_passenger_message
+Давай посмотрим переписку;read_passenger_message
+Алиса, читай что там написано;read_passenger_message
+Есть ли текстовые сообщения?;read_passenger_message
+Что клиент написал в чат?;read_passenger_message
+Покажи мне комментарии пассажира;read_passenger_message
+Давай узнаем детали заказа;read_passenger_message
+Алиса, огласи сообщение;read_passenger_message
+Что там пишут в чате?;read_passenger_message
+Покажи что говорит клиент;read_passenger_message
+Есть ли сообщения для меня?;read_passenger_message
+Давай прочтем что хочет пассажир;read_passenger_message
+Алиса, зачитывай переписку;read_passenger_message
+Что там написано от клиента?;read_passenger_message
+Покажи мне чат с пассажиром;read_passenger_message
+Есть ли комментарии к заказу?;read_passenger_message
+Давай посмотрим сообщения;read_passenger_message
+Алиса, огласи комментарий;read_passenger_message
+Что пассажир хочет сказать?;read_passenger_message
+Покажи текстовые сообщения;read_passenger_message
+Есть ли пожелания в чате?;read_passenger_message
+Давай узнаем что в переписке;read_passenger_message
+Алиса, прочти комментарии;read_passenger_message
+Что клиент сообщил?;read_passenger_message
+Покажи мне что написано;read_passenger_message
+Есть ли дополнительная информация?;read_passenger_message
+Давай посмотрим на сообщения;read_passenger_message
+Алиса, озвучь переписку;read_passenger_message
+Что там в комментариях?;read_passenger_message
+Покажи что пишет заказчик;read_passenger_message
+Есть ли уточнения от клиента?;read_passenger_message
+Давай прочтем сообщения;read_passenger_message
+Алиса, скажи что написал пассажир;read_passenger_message
+Что клиент хочет передать?;read_passenger_message
+Покажи мне переписку полностью;read_passenger_message
+Есть ли замечания от пассажира?;read_passenger_message
+Давай узнаем подробности заказа;read_passenger_message
+Алиса, читай комментарии клиента;read_passenger_message
+Что там пассажир говорит?;read_passenger_message
+Покажи все сообщения от заказчика;read_passenger_message
+Есть ли особые пожелания?;read_passenger_message
+Давай посмотрим что написано;read_passenger_message
+Алиса, зачитай что там есть;read_passenger_message
+Что клиент просит?;read_passenger_message
+Покажи мне детали в чате;read_passenger_message
+Есть ли инструкции от пассажира?;read_passenger_message
+Давай прочтем все комментарии;read_passenger_message
+Алиса, огласи все сообщения;read_passenger_message
+Что там пишет человек?;read_passenger_message
+Покажи мне весь чат;read_passenger_message
+Есть ли указания от клиента?;read_passenger_message
+Давай узнаем что требует пассажир;read_passenger_message
+Алиса, прочитай переписку целиком;read_passenger_message
+Что заказчик сообщает дополнительно?;read_passenger_message
+Покажи мне текст полностью;read_passenger_message
+Есть ли дополнения к заказу?;read_passenger_message
+Давай посмотрим на комментарии;read_passenger_message
+Алиса, скажи что в сообщениях;read_passenger_message
+Что пассажир добавил к заказу?;read_passenger_message
+Покажи мне все что написано;read_passenger_message
+Есть ли пояснения от клиента?;read_passenger_message
+Давай прочтем что хочет заказчик;read_passenger_message
+Алиса, озвучь все комментарии;read_passenger_message
+Что там клиент уточняет?;read_passenger_message
+Покажи детальную информацию;read_passenger_message
+Есть ли примечания к поездке?;read_passenger_message
+Давай узнаем все нюансы;read_passenger_message
+Алиса, читай что там добавлено;read_passenger_message
+Что пассажир написал дополнительно?;read_passenger_message
+Покажи мне уточнения заказчика;read_passenger_message
+Есть ли особенности заказа?;read_passenger_message
+Давай посмотрим на детали;read_passenger_message
+Алиса, зачитай дополнительную информацию;read_passenger_message
+Что клиент указал особого?;read_passenger_message
+Покажи мне специальные пожелания;read_passenger_message
+Есть ли важные моменты?;read_passenger_message
+Давай прочтем все подробности;read_passenger_message
+Алиса, огласи важную информацию;read_passenger_message
+Что пассажир хочет уточнить?;read_passenger_message
+Покажи мне все замечания;read_passenger_message
+Есть ли критичные моменты?;read_passenger_message
+Давай узнаем все требования;read_passenger_message
+Алиса, прочитай важные детали;read_passenger_message
+Что заказчик выделил особенно?;read_passenger_message
+Покажи мне ключевые моменты;read_passenger_message
+Есть ли срочные указания?;read_passenger_message
+Давай посмотрим на приоритеты;read_passenger_message
+Алиса, скажи что важно знать;read_passenger_message
+Что пассажир считает важным?;read_passenger_message
+Покажи мне основные пожелания;read_passenger_message
+Есть ли обязательные условия?;read_passenger_message
+Давай прочтем ключевую информацию;read_passenger_message
+Алиса, озвучь главное из сообщений;read_passenger_message
+Что клиент выделяет как важное?;read_passenger_message
+Покажи мне приоритетную информацию;read_passenger_message
+Есть ли неотложные просьбы?;read_passenger_message
+Давай узнаем критичные детали;read_passenger_message
+Алиса, читай самое важное;read_passenger_message
+Что пассажир просит обязательно учесть?;read_passenger_message
+Покажи мне необходимые условия;read_passenger_message
+Есть ли строгие требования?;read_passenger_message
+Давай посмотрим на обязательства;read_passenger_message
+Алиса, зачитай принципиальные моменты;read_passenger_message
+Что заказчик не готов изменить?;read_passenger_message
+Покажи мне жесткие условия;read_passenger_message
+Есть ли категоричные просьбы?;read_passenger_message
+Давай прочтем непреложные требования;read_passenger_message
+Алиса, огласи безусловные пожелания;read_passenger_message
+Что клиент требует безоговорочно?;read_passenger_message
+Покажи мне окончательные условия;read_passenger_message
+Есть ли решающие факторы?;read_passenger_message
+Давай узнаем определяющие моменты;read_passenger_message
+Алиса, прочитай решительные требования;read_passenger_message
+Что пассажир ставит условием?;read_passenger_message
+Покажи мне ультимативные просьбы;read_passenger_message
+Есть ли принципиальные возражения?;read_passenger_message
+Давай посмотрим на кардинальные пожелания;read_passenger_message
+Алиса, скажи что не подлежит обсуждению;read_passenger_message
+Что заказчик считает неизменным?;read_passenger_message
+Покажи мне бескомпромиссные условия;read_passenger_message
+Есть ли железные правила клиента?;read_passenger_message
+Давай прочтем неукоснительные требования;read_passenger_message
+Алиса, озвучь неотменяемые пожелания;read_passenger_message
+Что пассажир не готов обсуждать?;read_passenger_message
+Покажи мне неподвижные принципы;read_passenger_message
+Есть ли неприкосновенные условия?;read_passenger_message
+Давай узнаем незыблемые требования;read_passenger_message
+Алиса, читай непоколебимые установки;read_passenger_message
+Что клиент защищает категорически?;read_passenger_message
+Покажи мне священные правила пассажира;read_passenger_message
+Есть ли нерушимые принципы заказчика?;read_passenger_message
+Давай посмотрим на вечные истины клиента;read_passenger_message
+Алиса, зачитай догматы пассажира;read_passenger_message
+Что заказчик исповедует неукоснительно?;read_passenger_message
+Покажи мне символ веры клиента;read_passenger_message
+Есть ли манифест пассажира?;read_passenger_message
+Давай прочтем декларацию заказчика;read_passenger_message
+Алиса, огласи кредо клиента;read_passenger_message
+Что пассажир провозглашает как истину?;read_passenger_message
+Покажи мне завет заказчика;read_passenger_message
+Есть ли заповеди клиента?;read_passenger_message
+Давай узнаем постулаты пассажира;read_passenger_message
+Алиса, прочитай аксиомы заказчика;read_passenger_message
+Что клиент утверждает безапелляционно?;read_passenger_message
+Покажи мне тезисы пассажира;read_passenger_message
+Есть ли доктрина заказчика?;read_passenger_message
+Давай посмотрим на философию клиента;read_passenger_message
+Алиса, скажи в чем уверен пассажир;read_passenger_message
+Что заказчик знает наверняка?;read_passenger_message
+Покажи мне убеждения клиента;read_passenger_message
+Есть ли идеология пассажира?;read_passenger_message
+Давай прочтем мировоззрение заказчика;read_passenger_message
+Алиса, озвучь концепцию клиента;read_passenger_message
+Что пассажир понимает как данность?;read_passenger_message
+Покажи мне парадигму заказчика;read_passenger_message
+Есть ли система взглядов клиента?;read_passenger_message
+Давай узнаем теорию пассажира;read_passenger_message
+Алиса, читай гипотезу заказчика;read_passenger_message
+Что пассажир предполагает как вероятное?;read_passenger_message
+Покажи мне предположения клиента;read_passenger_message
+Есть ли версии заказчика?;read_passenger_message
+Давай узнаем варианты пассажира;read_passenger_message
+Алиса, прочитай альтернативы клиента;read_passenger_message
+Что заказчик рассматривает как возможное?;read_passenger_message
+Покажи мне опции пассажира;read_passenger_message
+Есть ли выборы клиента?;read_passenger_message
+Давай посмотрим на решения заказчика;read_passenger_message
+Позвони этому еблану, он совсем охуел;call_passenger
+Дозвониться до клиента можно?;call_passenger
+Позвони дуре, дорогу пусть перейдет коза;call_passenger
+Позвони им;call_passenger
+Соверши звоночек пассажиру, пожалуйста;call_passenger
+Звони ему;call_passenger
+Набери-ка его;call_passenger
+Включи его на связь;call_passenger
+Свяжись с ним;call_passenger
+Пусти гудок ему на телефон;call_passenger
+Звонок сделай;call_passenger
+Пусти гудок;call_passenger
+Позвони клиенту;call_passenger
+Набери человека;call_passenger
+Нужно позвонить клиенту;call_passenger
+Звони пассажиру;call_passenger
+Позвони ему;call_passenger
+Сделай звонок;call_passenger
+Оформи связь;call_passenger
+Звонок сделай;call_passenger
+Позвони пассажиру;call_passenger
+Набери пассажиру;call_passenger
+Быстрее наберу пассажиру;call_passenger
+Алиса, набери пассажиру;call_passenger
+Связь с пассажиром;call_passenger
+Свяжись с клиентом;call_passenger
+Созвон;call_passenger
+Свяжи с клиентом;call_passenger
+Свяжи с пассажироом;call_passenger
+Звонок пассажиру;call_passenger
+Звонок клиенту;call_passenger
+Разговор с пассажироом;call_passenger
+Позвони;call_passenger
+Алиса, соедини с клиентом;call_passenger
+Давай дозвонимся до пассажира;call_passenger
+Нужно связаться с заказчиком;call_passenger
+Свяжи меня с клиентом;call_passenger
+Алиса, набери номер пассажира;call_passenger
+Попробуй дозвониться до него;call_passenger
+Нужен контакт с клиентом;call_passenger
+Давай поговорим с пассажиром;call_passenger
+Алиса, установи связь с заказчиком;call_passenger
+Попытайся связаться с клиентом;call_passenger
+Нужно поговорить с пассажиром;call_passenger
+Давай созвонимся с заказчиком;call_passenger
+Алиса, позвони по номеру клиента;call_passenger
+Свяжись срочно с пассажиром;call_passenger
+Нужен разговор с заказчиком;call_passenger
+Давай наберем номер клиента;call_passenger
+Алиса, дозвонись до пассажира;call_passenger
+Попробуй поговорить с заказчиком;call_passenger
+Нужна связь с клиентом;call_passenger
+Давай поговорим с заказчиком;call_passenger
+Алиса, соедини меня с пассажиром;call_passenger
+Надо связаться с клиентом;call_passenger
+Нужен контакт с пассажиром;call_passenger
+Давай дозвонимся до заказчика;call_passenger
+Алиса, позвони пассажиру срочно;call_passenger
+Свяжись немедленно с клиентом;call_passenger
+Нужно быстро связаться с заказчиком;call_passenger
+Давай скорее наберем пассажира;call_passenger
+Алиса, экстренно соедини с клиентом;call_passenger
+Попробуй срочно дозвониться;call_passenger
+Нужен немедленный контакт;call_passenger
+Давай быстро позвоним заказчику;call_passenger
+Алиса, захватывающе свяжись с пассажиром;call_passenger
+Надо увлекательно связаться с клиентом;call_passenger
+Нужна интригующая связь с заказчиком;call_passenger
+Давай заворожено наберем пассажира;call_passenger
+Алиса, обворожительно соедини с клиентом;call_passenger
+Попробуй чарующе дозвониться;call_passenger
+Нужен гипнотический контакт;call_passenger
+Давай магнетически позвоним заказчику;call_passenger
+Алиса, притягательно свяжись с пассажиром;call_passenger
+Надо соблазнительно связаться с клиентом;call_passenger
+Нужна искусительная связь с заказчиком;call_passenger
+Давай кокетливо наберем пассажира;call_passenger
+Алиса, игриво соедини с клиентом;call_passenger
+Попробуй шаловливо дозвониться;call_passenger
+Нужен озорной контакт;call_passenger
+Давай проказливо позвоним заказчику;call_passenger
+Алиса, задорно свяжись с пассажиром;call_passenger
+Надо весело связаться с клиентом;call_passenger
+Нужна радостная связь с заказчиком;call_passenger
+Давай беззаботно наберем пассажира;call_passenger
+Алиса, легкомысленно соедини с клиентом;call_passenger
+Попробуй беспечно дозвониться;call_passenger
+Нужен непринужденный контакт;call_passenger
+Давай расслабленно позвоним заказчику;call_passenger
+Алиса, спокойно свяжись с пассажиром;call_passenger
+Надо умиротворенно связаться с клиентом;call_passenger
+Нужна безмятежная связь с заказчиком;call_passenger
+Давай медитативно наберем пассажира;call_passenger
+Алиса, дзенски соедини с клиентом;call_passenger
+Попробуй философски дозвониться;call_passenger
+Нужен мудрый контакт;call_passenger
+Надо мгновенно связаться с клиентом;call_passenger
+Нужна экстренная связь с заказчиком;call_passenger
+Давай незамедлительно наберем пассажира;call_passenger
+Алиса, молниеносно соедини с клиентом;call_passenger
+Попробуй мгновенно дозвониться;call_passenger
+Нужен сиюминутный контакт;call_passenger
+Давай тут же позвоним заказчику;call_passenger
+Алиса, моментально свяжись с пассажиром;call_passenger
+Надо сейчас же связаться с клиентом;call_passenger
+Нужна мгновенная связь с заказчиком;call_passenger
+Давай сию секунду наберем пассажира;call_passenger
+Алиса, немедля соедини с клиентом;call_passenger
+Попробуй тотчас дозвониться;call_passenger
+Нужен безотлагательный контакт;call_passenger
+Давай без промедления позвоним заказчику;call_passenger
+Алиса, неукоснительно свяжись с пассажиром;call_passenger
+Надо беспрекословно связаться с клиентом;call_passenger
+Нужна безапелляционная связь с заказчиком;call_passenger
+Давай безусловно наберем пассажира;call_passenger
+Алиса, категорически соедини с клиентом;call_passenger
+Попробуй непременно дозвониться;call_passenger
+Нужен обязательный контакт;call_passenger
+Давай непреложно позвоним заказчику;call_passenger
+Алиса, безоговорочно свяжись с пассажиром;call_passenger
+Надо окончательно связаться с клиентом;call_passenger
+Нужна решительная связь с заказчиком;call_passenger
+Давай определенно наберем пассажира;call_passenger
+Алиса, бесспорно соедини с клиентом;call_passenger
+Попробуй однозначно дозвониться;call_passenger
+Нужен неоспоримый контакт;call_passenger
+Давай неопровержимо позвоним заказчику;call_passenger
+Алиса, бесповоротно свяжись с пассажиром;call_passenger
+Надо окончательно и бесповоротно связаться с клиентом;call_passenger
+Нужна абсолютная связь с заказчиком;call_passenger
+Давай тотально наберем пассажира;call_passenger
+Алиса, радикально соедини с клиентом;call_passenger
+Попробуй кардинально дозвониться;call_passenger
+Нужен фундаментальный контакт;call_passenger
+Давай глобально позвоним заказчику;call_passenger
+Алиса, универсально свяжись с пассажиром;call_passenger
+Надо всеобъемлюще связаться с клиентом;call_passenger
+Нужна всеохватывающая связь с заказчиком;call_passenger
+Давай всесторонне наберем пассажира;call_passenger
+Алиса, многогранно соедини с клиентом;call_passenger
+Попробуй разнообразно дозвониться;call_passenger
+Нужен многоплановый контакт;call_passenger
+Давай комплексно позвоним заказчику;call_passenger
+Алиса, интегрально свяжись с пассажиром;call_passenger
+Надо холистически связаться с клиентом;call_passenger
+Нужна синергетическая связь с заказчиром;call_passenger
+Давай системно наберем пассажира;call_passenger
+Алиса, структурно соедини с клиентом;call_passenger
+Попробуй организованно дозвониться;call_passenger
+Нужен методичный контакт;call_passenger
+Давай планомерно позвоним заказчику;call_passenger
+Алиса, последовательно свяжись с пассажиром;call_passenger
+Надо поэтапно связаться с клиентом;call_passenger
+Нужна постепенная связь с заказчиком;call_passenger
+Давай пошагово наберем пассажира;call_passenger
+Алиса, размеренно соедини с клиентом;call_passenger
+Попробуй ритмично дозвониться;call_passenger
+Нужен гармоничный контакт;call_passenger
+Давай сбалансированно позвоним заказчику;call_passenger
+Алиса, пропорционально свяжись с пассажиром;call_passenger
+Надо симметрично связаться с клиентом;call_passenger
+Нужна эстетичная связь с заказчиком;call_passenger
+Давай элегантно наберем пассажира;call_passenger
+Алиса, изящно соедини с клиентом;call_passenger
+Попробуй грациозно дозвониться;call_passenger
+Нужен утонченный контакт;call_passenger
+Давай деликатно позвоним заказчику;call_passenger
+Алиса, тактично свяжись с пассажиром;call_passenger
+Надо дипломатично связаться с клиентом;call_passenger
+Нужна вежливая связь с заказчиком;call_passenger
+Давай учтиво наберем пассажира;call_passenger
+Алиса, любезно соедини с клиентом;call_passenger
+Попробуй галантно дозвониться;call_passenger
+Нужен куртуазный контакт;call_passenger
+Давай церемонно позвоним заказчику;call_passenger
+Алиса, почтительно свяжись с пассажиром;call_passenger
+Надо благоговейно связаться с клиентом;call_passenger
+Нужна торжественная связь с заказчиком;call_passenger
+Давай празднично наберем пассажира;call_passenger
+Алиса, триумфально соедини с клиентом;call_passenger
+Попробуй победно дозвониться;call_passenger
+Нужен чемпионский контакт;call_passenger
+Давай геройски позвоним заказчику;call_passenger
+Алиса, эпически свяжись с пассажиром;call_passenger
+Надо легендарно связаться с клиентом;call_passenger
+Нужна мифическая связь с заказчиком;call_passenger
+Давай сказочно наберем пассажира;call_passenger
+Алиса, волшебно соедини с клиентом;call_passenger
+Попробуй магически дозвониться;call_passenger
+Нужен чудесный контакт;call_passenger
+Давай фантастично позвоним заказчику;call_passenger
+Алиса, невероятно свяжись с пассажиром;call_passenger
+Надо удивительно связаться с клиентом;call_passenger
+Нужна изумительная связь с заказчиком;call_passenger
+Давай поразительно наберем пассажира;call_passenger
+Алиса, ошеломляюще соедини с клиентом;call_passenger
+Попробуй потрясающе дозвониться;call_passenger
+Нужен головокружительный контакт;call_passenger
+Давай захватывающе позвоним заказчику;call_passenger
+Маршрут до церкви на Фридриха Энгельса;build_route
+Проведи меня до кофейни на покровке;build_route
+Построй маршрут до Кронверского Проспекта дом 49;build_route
+Вяземский переулок 5-7, пожалуйста;build_route
+Маршрут до ближайшей массажки, будь добра;build_route
+В макдональдс;build_route
+Поехали в аэропорт;build_route
+Нам надо к театру имени Камала;build_route
+Проложи дорогу к улице Южной дом 52;build_route
+Едем на Парашютную, д. 10;build_route
+Отвези на Рубинштейна, 13;build_route
+На Лиговский 5;build_route
+На Южную дом 3;build_route
+Построй маршрут до Астраханской улицы дом 5;build_route
+Отвези на заправку;build_route
+Сделай муршрут до Красной Площади;build_route
+Построй мне маршрут до метро;build_route
+Построй ка маршрут до столовой;build_route
+Пожрать;build_route
+Построй маршрут до Авиапарка;build_route
+Построй маршрут до: Москва, ул. Литовский бульвар, дом 3 корпус 2;build_route
+Поехали до Кубинки;build_route
+Побыстрей до Красной площади;build_route
+Покажи дорогу до ВТБ арены;build_route
+Маршрут;build_route
+улица Ромашка, дом 4;build_route
+Алиса, построй дорогу до центра;build_route
+Проложи путь до вокзала;build_route
+Нужен маршрут до больницы;build_route
+Давай доберемся до торгового центра;build_route
+Алиса, покажи как добраться до университета;build_route
+Составь маршрут до стадиона;build_route
+Нужна дорога до банка;build_route
+Давай построим путь до музея;build_route
+Алиса, проложи маршрут до театра;build_route
+Найди дорогу до библиотеки;build_route
+Нужен путь до почты;build_route
+Давай дойдем до парка;build_route
+Алиса, покажи маршрут до школы;build_route
+Построй дорогу до детского сада;build_route
+Нужна навигация до офиса;build_route
+Давай проложим путь до ресторана;build_route
+Алиса, найди маршрут до гостиницы;build_route
+Составь дорогу до автосалона;build_route
+Нужен путь до автосервиса;build_route
+Давай доберемся до салона красоты;build_route
+Алиса, покажи как попасть в спортзал;build_route
+Проложи маршрут до бассейна;build_route
+Нужна дорога до катка;build_route
+Давай построим путь до кинотеатра;build_route
+Алиса, найди маршрут до цирка;build_route
+Построй дорогу до зоопарка;build_route
+Нужен путь до океанариума;build_route
+Давай доберемся до планетария;build_route
+Алиса, покажи как попасть в галерею;build_route
+Проложи маршрут до выставки;build_route
+Нужна дорога до конференц-зала;build_route
+Давай построим путь до офисного центра;build_route
+Алиса, найди маршрут до бизнес-центра;build_route
+Составь дорогу до склада;build_route
+Нужен путь до производства;build_route
+Давай доберемся до фабрики;build_route
+Алиса, покажи как попасть на завод;build_route
+Проложи маршрут до мастерской;build_route
+Нужна дорога до ателье;build_route
+Давай построим путь до студии;build_route
+Алиса, найди маршрут до лаборатории;build_route
+Составь дорогу до клиники;build_route
+Нужен путь до поликлиники;build_route
+Давай доберемся до медцентра;build_route
+Алиса, покажи как попасть в госпиталь;build_route
+Проложи маршрут до санатория;build_route
+Нужна дорога до профилактория;build_route
+Давай построим путь до диспансера;build_route
+Алиса, найди маршрут до аптеки;build_route
+Составь дорогу до магазина;build_route
+Нужен путь до супермаркета;build_route
+Давай доберемся до гипермаркета;build_route
+Алиса, покажи как попасть в торговый центр;build_route
+Проложи маршрут до рынка;build_route
+Нужна дорога до базара;build_route
+Давай построим путь до ярмарки;build_route
+Алиса, найди маршрут до выставки-продажи;build_route
+Составь дорогу до автомойки;build_route
+Нужен путь до шиномонтажа;build_route
+Давай доберемся до автозапчастей;build_route
+Алиса, покажи как попасть в автосалон;build_route
+Проложи маршрут до дилера;build_route
+Нужна дорога до автостоянки;build_route
+Давай построим путь до паркинга;build_route
+Алиса, найди маршрут до гаража;build_route
+Составь дорогу до мойки;build_route
+Нужен путь до техосмотра;build_route
+Давай доберемся до ГИБДД;build_route
+Алиса, покажи как попасть в МФЦ;build_route
+Проложи маршрут до администрации;build_route
+Нужна дорога до муниципалитета;build_route
+Давай построим путь до мэрии;build_route
+Алиса, найди маршрут до правительства;build_route
+Составь дорогу до министерства;build_route
+Нужен путь до ведомства;build_route
+Давай доберемся до департамента;build_route
+Алиса, покажи как попасть в управление;build_route
+Проложи маршрут до службы;build_route
+Нужна дорога до инспекции;build_route
+Давай построим путь до контроля;build_route
+Алиса, найди маршрут до надзора;build_route
+Составь дорогу до суда;build_route
+Нужен путь до прокуратуры;build_route
+Давай доберемся до адвоката;build_route
+Алиса, покажи как попасть к нотариусу;build_route
+Проложи маршрут до юриста;build_route
+Нужна дорога до консультанта;build_route
+Давай построим путь до эксперта;build_route
+Алиса, найди маршрут до аудитора;build_route
+Составь дорогу до бухгалтера;build_route
+Нужен путь до финансиста;build_route
+Давай доберемся до экономиста;build_route
+Алиса, покажи как попасть к аналитику;build_route
+Проложи маршрут до консалтинга;build_route
+Нужна дорога до агентства;build_route
+Давай построим путь до компании;build_route
+Алиса, найди маршрут до фирмы;build_route
+Составь дорогу до предприятия;build_route
+Нужен путь до организации;build_route
+Давай доберемся до учреждения;build_route
+Алиса, покажи как попасть в институт;build_route
+Проложи маршрут до академии;build_route
+Нужна дорога до университета;build_route
+Давай построим путь до колледжа;build_route
+Алиса, найди маршрут до техникума;build_route
+Составь дорогу до училища;build_route
+Нужен путь до лицея;build_route
+Давай доберемся до гимназии;build_route
+Алиса, покажи как попасть в школу;build_route
+Проложи маршрут до детсада;build_route
+Нужна дорога до яслей;build_route
+Давай построим путь до центра развития;build_route
+Алиса, найди маршрут до студии творчества;build_route
+Составь дорогу до кружка;build_route
+Нужен путь до секции;build_route
+Давай доберемся до клуба;build_route
+Алиса, покажи как попасть в ассоциацию;build_route
+Проложи маршрут до объединения;build_route
+Нужна дорога до союза;build_route
+Давай построим путь до федерации;build_route
+Алиса, найди маршрут до лиги;build_route
+Составь дорогу до турнира;build_route
+Нужен путь до чемпионата;build_route
+Давай доберемся до соревнований;build_route
+Алиса, покажи как попасть на олимпиаду;build_route
+Проложи маршрут до конкурса;build_route
+Нужна дорога до фестиваля;build_route
+Давай построим путь до праздника;build_route
+Алиса, найди маршрут до концерта;build_route
+Составь дорогу до спектакля;build_route
+Нужен путь до представления;build_route
+Давай доберемся до шоу;build_route
+Алиса, покажи как попасть на мероприятие;build_route
+Проложи маршрут до события;build_route
+Нужна дорога до встречи;build_route
+Давай построим путь до собрания;build_route
+Алиса, найди маршрут до заседания;build_route
+Составь дорогу до конференции;build_route
+Нужен путь до семинара;build_route
+Давай доберемся до тренинга;build_route
+Алиса, покажи как попасть на лекцию;build_route
+Проложи маршрут до презентации;build_route
+Нужна дорога до демонстрации;build_route
+Давай построим путь до показа;build_route
+Алиса, найди маршрут до просмотра;build_route
+Составь дорогу до дегустации;build_route
+Нужен путь до тестирования;build_route
+Давай доберемся до испытаний;build_route
+Алиса, покажи как попасть на проверку;build_route
+Проложи маршрут до экзамена;build_route
+Нужна дорога до зачета;build_route
+Давай построим путь до контрольной;build_route
+Алиса, найди маршрут до теста;build_route
+Составь дорогу до опроса;build_route
+Нужен путь до анкетирования;build_route
+Давай доберемся до интервью;build_route
+Алиса, покажи как попасть на собеседование;build_route
+Проложи маршрут до кастинга;build_route
+Нужна дорога до прослушивания;build_route
+Давай построим путь до отбора;build_route
+Алиса, найди маршрут до конкурса;build_route
+Составь дорогу до тендера;build_route
+Нужен путь до торгов;build_route
+Давай доберемся до аукциона;build_route
+Алиса, покажи как попасть на биржу;build_route
+Проложи маршрут до рынка;build_route
+Нужна дорога до обмена;build_route
+Давай построим путь до сделки;build_route
+Алиса, найди маршрут до договора;build_route
+Составь дорогу до контракта;build_route
+Нужен путь до соглашения;build_route
+Давай доберемся до переговоров;build_route
+Алиса, покажи как попасть на дискуссию;build_route
+Проложи маршрут до дебатов;build_route
+Нужна дорога до диалога;build_route
+Давай построим путь до беседы;build_route
+Алиса, найди маршрут до разговора;build_route
+Составь дорогу до общения;build_route
+Нужен путь до коммуникации;build_route
+Давай доберемся до связи;build_route
+Алиса, покажи как попасть к контакту;build_route
+Проложи маршрут до знакомства;build_route
+Нужна дорога до встречи;build_route
+Давай построим путь до свидания;build_route
+Алиса, найди маршрут до романтики;build_route
+Составь дорогу до любви;build_route
+Нужен путь до счастья;build_route
+Давай доберемся до радости;build_route
+Алиса, покажи как попасть к удовольствию;build_route
+Проложи маршрут до наслаждения;build_route
+Нужна дорога до блаженства;build_route
+Давай построим путь до эйфории;build_route
+Алиса, найди маршрут до экстаза;build_route
+Составь дорогу до восторга;build_route
+Нужен путь до восхищения;build_route
+Давай доберемся до вдохновения;build_route
+Алиса, покажи как попасть к мотивации;build_route
+Проложи маршрут до энтузиазма;build_route
+Алиса, построй маршрут до адреса который я скажу;build_route
+Где мне повернуть чтобы добраться?;build_route
+Покажи самый быстрый путь;build_route
+Нужен оптимальный маршрут;build_route
+Построй путь без пробок;build_route
+Собак не везут?;read_passenger_preferences
+Какие дополнительные опции у пассажира?;read_passenger_preferences
+Что этот мешок от меня хочет?;read_passenger_preferences
+Особенных пожеланий от клиента нет?;read_passenger_preferences
+Скажи, что хочет клиент;read_passenger_preferences
+Чё он хочет;read_passenger_preferences
+Дополнительные моменты есть?;read_passenger_preferences
+Есть нюансы?;read_passenger_preferences
+Расскажи все данные о пассажире;read_passenger_preferences
+клиент с лыжами?;read_passenger_preferences
+есть ли специальные пожелания?;read_passenger_preferences
+едут с ребенком?;read_passenger_preferences
+среди пассажиров есть дети?;read_passenger_preferences
+нужно ли детское кресло;read_passenger_preferences
+дети есть?;read_passenger_preferences
+с животными?;read_passenger_preferences
+собаки, кошки есть?;read_passenger_preferences
+что хотят?;read_passenger_preferences
+пожелания есть?;read_passenger_preferences
+Что хочет уебан;read_passenger_preferences
+Озвучь еще раз пожелания пассажира;read_passenger_preferences
+Повтори, плиз, пожелания;read_passenger_preferences
+Есть лыжи?;read_passenger_preferences
+Есть сноуборд?;read_passenger_preferences
+Скажи пожелания;read_passenger_preferences
+Животные есть?;read_passenger_preferences
+Что там по пожеланиям?;read_passenger_preferences
+Какие пожелания?;read_passenger_preferences
+Что ему еще надо?;read_passenger_preferences
+Опции к заказу;read_passenger_preferences
+Выбранные опции;read_passenger_preferences
+Пожелания пассажира;read_passenger_preferences
+Какие есть пожелания?;read_passenger_preferences
+Какие доп. опции к закаазу?;read_passenger_preferences
+Что-то нужно пассажиру?;read_passenger_preferences
+Что он просит?;read_passenger_preferences
+Что выбрал пассажир в пожеланиянх? Повтоори пожалуйста;read_passenger_preferences
+Какие дополнительные услуги нужны?;read_passenger_preferences
+Есть ли специальные требования?;read_passenger_preferences
+Что пассажир отметил особенно?;read_passenger_preferences
+Покажи выбранные опции клиента;read_passenger_preferences
+Какие услуги заказал пассажир?;read_passenger_preferences
+Есть ли детское кресло в заказе?;read_passenger_preferences
+Нужна ли помощь с багажом?;read_passenger_preferences
+Заказывал ли клиент кондиционер?;read_passenger_preferences
+Есть ли музыкальные предпочтения?;read_passenger_preferences
+Нужна ли тишина в поездке?;read_passenger_preferences
+Какую температуру предпочитает пассажир?;read_passenger_preferences
+Есть ли аллергии у клиента?;read_passenger_preferences
+Нужны ли остановки по пути?;read_passenger_preferences
+Предпочитает ли пассажир определенный маршрут?;read_passenger_preferences
+Есть ли временные ограничения?;read_passenger_preferences
+Нужна ли помощь пожилому пассажиру?;read_passenger_preferences
+Заказывал ли клиент детские принадлежности?;read_passenger_preferences
+Есть ли медицинские ограничения?;read_passenger_preferences
+Нужна ли дополнительная вентиляция?;read_passenger_preferences
+Предпочитает ли пассажир разговор или молчание?;read_passenger_preferences
+Есть ли пожелания по скорости езды?;read_passenger_preferences
+Нужны ли дополнительные ремни безопасности?;read_passenger_preferences
+Заказывал ли клиент Wi-Fi в машине?;read_passenger_preferences
+Есть ли предпочтения по радиостанциям?;read_passenger_preferences
+Нужна ли зарядка для телефона?;read_passenger_preferences
+Предпочитает ли пассажир открытые окна?;read_passenger_preferences
+Есть ли пожелания по освещению?;read_passenger_preferences
+Нужны ли дополнительные подушки?;read_passenger_preferences
+Заказывал ли клиент освежитель воздуха?;read_passenger_preferences
+Есть ли предпочтения по типу музыки?;read_passenger_preferences
+Нужна ли помощь с посадкой в автомобиль?;read_passenger_preferences
+Предпочитает ли пассажир переднее или заднее сиденье?;read_passenger_preferences
+Есть ли пожелания по чистоте салона?;read_passenger_preferences
+Нужны ли влажные салфетки?;read_passenger_preferences
+Заказывал ли клиент дополнительное пространство для ног?;read_passenger_preferences
+Есть ли предпочтения по запахам в машине?;read_passenger_preferences
+Нужна ли дополнительная информация о маршруте?;read_passenger_preferences
+Предпочитает ли пассажир быструю или спокойную езду?;read_passenger_preferences
+Есть ли пожелания по парковке?;read_passenger_preferences
+Нужна ли помощь с выходом из автомобиля?;read_passenger_preferences
+Заказывал ли клиент дополнительное время ожидания?;read_passenger_preferences
+Есть ли предпочтения по типу автомобиля?;read_passenger_preferences
+Нужны ли дополнительные зеркала для обзора?;read_passenger_preferences
+Предпочитает ли пассажир автоматическую или механическую коробку?;read_passenger_preferences
+Есть ли пожелания по цвету салона?;read_passenger_preferences
+Нужна ли дополнительная шумоизоляция?;read_passenger_preferences
+Заказывал ли клиент специальные сиденья?;read_passenger_preferences
+Есть ли предпочтения по высоте сиденья?;read_passenger_preferences
+Нужна ли регулировка спинки сиденья?;read_passenger_preferences
+Предпочитает ли пассажир кожаный или тканевый салон?;read_passenger_preferences
+Есть ли пожелания по подсветке салона?;read_passenger_preferences
+Нужны ли дополнительные подлокотники?;read_passenger_preferences
+Заказывал ли клиент массажные сиденья?;read_passenger_preferences
+Есть ли предпочтения по жесткости сидений?;read_passenger_preferences
+Нужна ли дополнительная поддержка спины?;read_passenger_preferences
+Предпочитает ли пассажир подогрев или охлаждение сидений?;read_passenger_preferences
+Есть ли пожелания по вибрации в сиденьях?;read_passenger_preferences
+Нужны ли дополнительные ремни для детей?;read_passenger_preferences
+Заказывал ли клиент специальные крепления?;read_passenger_preferences
+Есть ли предпочтения по материалу рулевого колеса?;read_passenger_preferences
+Нужна ли дополнительная амортизация?;read_passenger_preferences
+Предпочитает ли пассажир жесткую или мягкую подвеску?;read_passenger_preferences
+Есть ли пожелания по уровню топлива?;read_passenger_preferences
+Нужна ли информация о расходе бензина?;read_passenger_preferences
+Заказывал ли клиент экологичный автомобиль?;read_passenger_preferences
+Есть ли предпочтения по типу двигателя?;read_passenger_preferences
+Нужна ли дополнительная мощность?;read_passenger_preferences
+Предпочитает ли пассажир тихий или мощный мотор?;read_passenger_preferences
+Есть ли пожелания по выхлопной системе?;read_passenger_preferences
+Нужны ли дополнительные фильтры воздуха?;read_passenger_preferences
+Заказывал ли клиент систему очистки воздуха?;read_passenger_preferences
+Есть ли предпочтения по влажности в салоне?;read_passenger_preferences
+Нужна ли дополнительная циркуляция воздуха?;read_passenger_preferences
+Предпочитает ли пассажир естественную или искусственную вентиляцию?;read_passenger_preferences
+Есть ли пожелания по давлению в шинах?;read_passenger_preferences
+Нужна ли информация о состоянии дороги?;read_passenger_preferences
+Заказывал ли клиент дополнительную безопасность?;read_passenger_preferences
+Есть ли предпочтения по системам помощи водителю?;read_passenger_preferences
+Нужны ли дополнительные датчики?;read_passenger_preferences
+Предпочитает ли пассажир автоматические или ручные настройки?;read_passenger_preferences
+Есть ли пожелания по навигационной системе?;read_passenger_preferences
+Нужна ли голосовая навигация?;read_passenger_preferences
+Заказывал ли клиент дополнительные карты?;read_passenger_preferences
+Есть ли предпочтения по языку навигации?;read_passenger_preferences
+Нужна ли информация о пробках в реальном времени?;read_passenger_preferences
+Предпочитает ли пассажир альтернативные маршруты?;read_passenger_preferences
+Есть ли пожелания по частоте обновления маршрута?;read_passenger_preferences
+Нужны ли дополнительные точки интереса?;read_passenger_preferences
+Заказывал ли клиент информацию о заправках?;read_passenger_preferences
+Есть ли предпочтения по типу дорог?;read_passenger_preferences
+Нужна ли информация о платных участках?;read_passenger_preferences
+Предпочитает ли пассажир избегать автострад?;read_passenger_preferences
+Есть ли пожелания по времени в пути?;read_passenger_preferences
+Нужна ли оптимизация по расходу топлива?;read_passenger_preferences
+Заказывал ли клиент экономичный маршрут?;read_passenger_preferences
+Есть ли предпочтения по живописности дороги?;read_passenger_preferences
+Нужна ли информация о погодных условиях?;read_passenger_preferences
+Предпочитает ли пассажир избегать туннелей?;read_passenger_preferences
+Есть ли пожелания по высоте над уровнем моря?;read_passenger_preferences
+Нужна ли информация о крутизне подъемов?;read_passenger_preferences
+Заказывал ли клиент избежание горных дорог?;read_passenger_preferences
+Есть ли предпочтения по освещенности трассы?;read_passenger_preferences
+Нужна ли информация о дорожных работах?;read_passenger_preferences
+Предпочитает ли пассажир объезды ремонта?;read_passenger_preferences
+Есть ли пожелания по качеству дорожного покрытия?;read_passenger_preferences
+Нужна ли информация о камерах на дороге?;read_passenger_preferences
+Заказывал ли клиент соблюдение скоростного режима?;read_passenger_preferences
+Есть ли предпочтения по стилю вождения?;read_passenger_preferences
+Нужна ли дополнительная осторожность?;read_passenger_preferences
+Предпочитает ли пассажир спокойное вождение?;read_passenger_preferences
+Есть ли пожелания по соблюдению дистанции?;read_passenger_preferences
+Нужна ли информация о других участниках движения?;read_passenger_preferences
+Заказывал ли клиент дополнительную вежливость на дороге?;read_passenger_preferences
+Есть ли предпочтения по использованию сигналов?;read_passenger_preferences
+Нужна ли дополнительная предсказуемость маневров?;read_passenger_preferences
+Предпочитает ли пассажир избегать резких движений?;read_passenger_preferences
+Есть ли пожелания по плавности торможения?;read_passenger_preferences
+Нужна ли дополнительная плавность разгона?;read_passenger_preferences
+Заказывал ли клиент комфортное ускорение?;read_passenger_preferences
+Есть ли предпочтения по переключению передач?;read_passenger_preferences
+Нужна ли информация о работе коробки передач?;read_passenger_preferences
+Предпочитает ли пассажир экономичное или спортивное вождение?;read_passenger_preferences
+Есть ли пожелания по использованию круиз-контроля?;read_passenger_preferences
+Нужна ли автоматическая поддержка скорости?;read_passenger_preferences
+Заказывал ли клиент адаптивный круиз-контроль?;read_passenger_preferences
+Есть ли предпочтения по системам безопасности?;read_passenger_preferences
+Нужна ли автоматическая система экстренного торможения?;read_passenger_preferences
+Предпочитает ли пассажир контроль слепых зон?;read_passenger_preferences
+Есть ли пожелания по системе предупреждения столкновений?;read_passenger_preferences
+Нужна ли дополнительная система стабилизации?;read_passenger_preferences
+Заказывал ли клиент систему контроля усталости водителя?;read_passenger_preferences
+Есть ли предпочтения по мониторингу состояния водителя?;read_passenger_preferences
+Нужна ли система распознавания знаков?;read_passenger_preferences
+Предпочитает ли пассажир автоматическое соблюдение ПДД?;read_passenger_preferences
+Есть ли пожелания по системе парковки?;read_passenger_preferences
+Нужна ли автоматическая парковка?;read_passenger_preferences
+Заказывал ли клиент помощь при параллельной парковке?;read_passenger_preferences
+Есть ли предпочтения по датчикам парковки?;read_passenger_preferences
+Нужна ли камера заднего вида?;read_passenger_preferences
+Предпочитает ли пассажир круговой обзор?;read_passenger_preferences
+Есть ли пожелания по системе мониторинга окружения?;read_passenger_preferences
+Нужна ли дополнительная видимость?;read_passenger_preferences
+Заказывал ли клиент улучшенное освещение?;read_passenger_preferences
+Есть ли предпочтения по адаптивным фарам?;read_passenger_preferences
+Нужна ли автоматическая регулировка света?;read_passenger_preferences
+Предпочитает ли пассажир дневные ходовые огни?;read_passenger_preferences
+Есть ли пожелания по противотуманным фарам?;read_passenger_preferences
+Нужна ли дополнительная подсветка поворотов?;read_passenger_preferences
+Заказывал ли клиент динамическое освещение?;read_passenger_preferences
+Есть ли предпочтения по интенсивности света?;read_passenger_preferences
+Нужна ли регулировка яркости фар?;read_passenger_preferences
+Предпочитает ли пассажир автоматическое включение фар?;read_passenger_preferences
+Есть ли пожелания по датчику освещенности?;read_passenger_preferences
+Нужна ли автоматическая очистка фар?;read_passenger_preferences
+Заказывал ли клиент омыватель фар?;read_passenger_preferences
+Есть ли предпочтения по очистке лобового стекла?;read_passenger_preferences
+Нужны ли автоматические дворники?;read_passenger_preferences
+Предпочитает ли пассажир датчик дождя?;read_passenger_preferences
+Есть ли пожелания по скорости работы дворников?;read_passenger_preferences
+Нужна ли дополнительная очистка стекол?;read_passenger_preferences
+Заказывал ли клиент подогрев лобового стекла?;read_passenger_preferences
+Есть ли предпочтения по обдуву стекол?;read_passenger_preferences
+Нужна ли система против запотевания?;read_passenger_preferences
+Предпочитает ли пассажир кондиционирование или обогрев?;read_passenger_preferences
+Есть ли пожелания по климат-контролю?;read_passenger_preferences
+Нужна ли автоматическая регулировка температуры?;read_passenger_preferences
+Заказывал ли клиент многозонный климат-контроль?;read_passenger_preferences
+Есть ли предпочтения по индивидуальным настройкам?;read_passenger_preferences
+Нужна ли возможность раздельного управления?;read_passenger_preferences
+Предпочитает ли пассажир ручные или автоматические настройки климата?;read_passenger_preferences
+Родная моя, банкоматик поблизости найди?;find_nearby_places
+Роснефть поблизости есть?;find_nearby_places
+Где поблизости разливное пиво продают?;find_nearby_places
+Паркоматы есть на районе?;find_nearby_places
+Найди заправку рядом;find_nearby_places
+Где рядом магаз?;find_nearby_places
+Ближайший Газпромбанк;find_nearby_places
+Где похавать можно?;find_nearby_places
+Найди туалет;find_nearby_places
+Найди ближайший продуктовый;find_nearby_places
+Поехали в аптеку;find_nearby_places
+Найди ближайшую больницу;find_nearby_places
+Найди аптеку ближайшую;find_nearby_places
+Где рядом поесть?;find_nearby_places
+Найди шиномонтаж;find_nearby_places
+Ближайший банк;find_nearby_places
+Найди самую близку заправку;find_nearby_places
+Где можно купить воды?;find_nearby_places
+Где здесь магазин?;find_nearby_places
+Найти ближайшее кафе;find_nearby_places
+Кафе найди ближайшее;find_nearby_places
+Где кафе или столовая рядом?;find_nearby_places
+Где рядом шиномонтаж?;find_nearby_places
+Построй маршрут до ближайшего общественного туалета;find_nearby_places
+Построй маршрут до ближайшей заправки;find_nearby_places
+Построй маршурут до ближайшей заправки Газпром;find_nearby_places
+Построй маршурут до ближайшей заправки Лукойл;find_nearby_places
+Найди ближайшую заправку Газпром;find_nearby_places
+Найди ближайший Макдональдс;find_nearby_places
+Найди ближайшее кафе с пловом;find_nearby_places
+До близжайшего ТЦ;find_nearby_places
+Поехали до МФЦ да поближе;find_nearby_places
+Где близко есть чайхона;find_nearby_places
+Ближайшее кафе;find_nearby_places
+Заправка;find_nearby_places
+Алиса, найди ближайшую больницу;find_nearby_places
+Где тут рядом можно поесть?;find_nearby_places
+Покажи ближайшие магазины;find_nearby_places
+Нужен ближайший банкомат;find_nearby_places
+Давай найдем заправку поблизости;find_nearby_places
+Алиса, где здесь аптека?;find_nearby_places
+Ищи ближайший торговый центр;find_nearby_places
+Нужна ближайшая парковка;find_nearby_places
+Давай поищем кафе рядом;find_nearby_places
+Алиса, найди туалет поблизости;find_nearby_places
+Где тут можно перекусить?;find_nearby_places
+Покажи ближайшие рестораны;find_nearby_places
+Нужен ближайший супермаркет;find_nearby_places
+Давай найдем банк поблизости;find_nearby_places
+Алиса, где здесь почта?;find_nearby_places
+Ищи ближайшую заправочную станцию;find_nearby_places
+Нужна ближайшая автомойка;find_nearby_places
+Давай поищем шиномонтаж рядом;find_nearby_places
+Алиса, найди автосервис поблизости;find_nearby_places
+Где тут можно купить продукты?;find_nearby_places
+Покажи ближайшие кинотеатры;find_nearby_places
+Нужен ближайший спортзал;find_nearby_places
+Давай найдем парикмахерскую поблизости;find_nearby_places
+Алиса, где здесь химчистка?;find_nearby_places
+Ищи ближайшую прачечную;find_nearby_places
+Нужна ближайшая стоматология;find_nearby_places
+Давай поищем ветеринарную клинику рядом;find_nearby_places
+Алиса, найди зоомагазин поблизости;find_nearby_places
+Где тут можно купить цветы?;find_nearby_places
+Покажи ближайшие книжные магазины;find_nearby_places
+Нужен ближайший компьютерный магазин;find_nearby_places
+Давай найдем мебельный магазин поблизости;find_nearby_places
+Алиса, где здесь строительный магазин?;find_nearby_places
+Ищи ближайший автомагазин;find_nearby_places
+Нужна ближайшая оптика;find_nearby_places
+Давай поищем ювелирный магазин рядом;find_nearby_places
+Алиса, найди часовую мастерскую поблизости;find_nearby_places
+Где тут можно отремонтировать обувь?;find_nearby_places
+Покажи ближайшие ломбарды;find_nearby_places
+Нужен ближайший обменник валют;find_nearby_places
+Давай найдем нотариуса поблизости;find_nearby_places
+Алиса, где здесь страховая компания?;find_nearby_places
+Ищи ближайшее туристическое агентство;find_nearby_places
+Нужна ближайшая фотостудия;find_nearby_places
+Давай поищем салон красоты рядом;find_nearby_places
+Алиса, найди массажный салон поблизости;find_nearby_places
+Где тут можно сделать маникюр?;find_nearby_places
+Покажи ближайшие барбершопы;find_nearby_places
+Нужен ближайший солярий;find_nearby_places
+Давай найдем косметический салон поблизости;find_nearby_places
+Алиса, где здесь можно сделать татуировку?;find_nearby_places
+Ищи ближайший пирсинг-салон;find_nearby_places
+Нужна ближайшая детская площадка;find_nearby_places
+Давай поищем парк рядом;find_nearby_places
+Алиса, найди сквер поблизости;find_nearby_places
+Где тут можно погулять?;find_nearby_places
+Покажи ближайшие музеи;find_nearby_places
+Нужен ближайший театр;find_nearby_places
+Давай найдем концертный зал поблизости;find_nearby_places
+Алиса, где здесь можно послушать музыку?;find_nearby_places
+Ищи ближайший клуб;find_nearby_places
+Нужна ближайшая дискотека;find_nearby_places
+Давай поищем караоке рядом;find_nearby_places
+Алиса, найди боулинг поблизости;find_nearby_places
+Где тут можно поиграть в бильярд?;find_nearby_places
+Покажи ближайшие игровые залы;find_nearby_places
+Нужен ближайший интернет-кафе;find_nearby_places
+Давай найдем библиотеку поблизости;find_nearby_places
+Алиса, где здесь можно почитать?;find_nearby_places
+Ищи ближайший книжный клуб;find_nearby_places
+Нужна ближайшая школа танцев;find_nearby_places
+Давай поищем спортивную секцию рядом;find_nearby_places
+Алиса, найди йога-студию поблизости;find_nearby_places
+Где тут можно заниматься фитнесом?;find_nearby_places
+Покажи ближайшие бассейны;find_nearby_places
+Нужен ближайший каток;find_nearby_places
+Давай найдем лыжную трассу поблизости;find_nearby_places
+Алиса, где здесь можно покататься на коньках?;find_nearby_places
+Ищи ближайший скейт-парк;find_nearby_places
+Нужна ближайшая велодорожка;find_nearby_places
+Давай поищем теннисный корт рядом;find_nearby_places
+Алиса, найди футбольное поле поблизости;find_nearby_places
+Где тут можно поиграть в баскетбол?;find_nearby_places
+Покажи ближайшие волейбольные площадки;find_nearby_places
+Нужен ближайший гольф-клуб;find_nearby_places
+Давай найдем конный клуб поблизости;find_nearby_places
+Алиса, где здесь можно покататься на лошадях?;find_nearby_places
+Ищи ближайший пляж;find_nearby_places
+Нужна ближайшая набережная;find_nearby_places
+Давай поищем озеро рядом;find_nearby_places
+Алиса, найди реку поблизости;find_nearby_places
+Где тут можно половить рыбу?;find_nearby_places
+Покажи ближайшие места для пикника;find_nearby_places
+Нужен ближайший лес;find_nearby_places
+Давай найдем горы поблизости;find_nearby_places
+Алиса, где здесь можно отдохнуть на природе?;find_nearby_places
+Ищи ближайший кемпинг;find_nearby_places
+Нужна ближайшая турбаза;find_nearby_places
+Давай поищем санаторий рядом;find_nearby_places
+Алиса, найди пансионат поблизости;find_nearby_places
+Где тут можно остановиться на ночь?;find_nearby_places
+Покажи ближайшие гостиницы;find_nearby_places
+Нужен ближайший хостел;find_nearby_places
+Давай найдем мотель поблизости;find_nearby_places
+Алиса, где здесь дешевое жилье?;find_nearby_places
+Ищи ближайшие апартаменты;find_nearby_places
+Нужна ближайшая квартира посуточно;find_nearby_places
+Давай поищем коттедж рядом;find_nearby_places
+Алиса, найди дачу поблизости;find_nearby_places
+Где тут можно снять дом?;find_nearby_places
+Покажи ближайшие агентства недвижимости;find_nearby_places
+Нужен ближайший риэлтор;find_nearby_places
+Давай найдем управляющую компанию поблизости;find_nearby_places
+Алиса, где здесь ЖЭК?;find_nearby_places
+Ищи ближайшую слесарную мастерскую;find_nearby_places
+Нужна ближайшая сантехническая служба;find_nearby_places
+Давай поищем электрика рядом;find_nearby_places
+Алиса, найди газовую службу поблизости;find_nearby_places
+Где тут можно вызвать слесаря?;find_nearby_places
+Покажи ближайшие мастерские по ремонту техники;find_nearby_places
+Нужен ближайший сервисный центр;find_nearby_places
+Давай найдем мастера по ремонту поблизости;find_nearby_places
+Алиса, где здесь можно починить телефон?;find_nearby_places
+Ищи ближайший компьютерный сервис;find_nearby_places
+Нужна ближайшая мастерская по ремонту часов;find_nearby_places
+Давай поищем ремонт обуви рядом;find_nearby_places
+Алиса, найди ателье поблизости;find_nearby_places
+Где тут можно подшить одежду?;find_nearby_places
+Покажи ближайшие портновские мастерские;find_nearby_places
+Нужен ближайший швейный цех;find_nearby_places
+Давай найдем закройщика поблизости;find_nearby_places
+Алиса, где здесь можно перешить вещи?;find_nearby_places
+Ищи ближайшую вышивальную мастерскую;find_nearby_places
+Нужна ближайшая трикотажная фабрика;find_nearby_places
+Давай поищем текстильное предприятие рядом;find_nearby_places
+Алиса, найди швейную фабрику поблизости;find_nearby_places
+Где тут производят одежду?;find_nearby_places
+привет;other
+как дела;other
+собака лает;other
+красивый день сегодня;other
+что это такое;other
+ананас сладкий;other
+включи музыку громче;other
+выключи свет в комнате;other
+сколько времени сейчас;other
+погода завтра будет хорошая;other
+котлета вкусная;other
+расскажи анекдот про медведя;other
+банан желтый и спелый;other
+где мой телефон лежит;other
+компьютер сломался вчера;other
+молоко в холодильнике кончилось;other
+хочу пить воду;other
+устал очень сильно;other
+завтра понедельник будет;other
+синий цвет мне нравится;other
+машина быстрая и красивая;other
+дождь идет на улице;other
+солнце светит ярко;other
+холодно сегодня очень;other
+горячий чай с лимоном;other
+кофе без сахара и молока;other
+хлеб закончился дома;other
+магазин закрыт на ремонт;other
+работа надоела до смерти;other
+отпуск скоро начнется;other
+фильм интересный посмотрел;other
+книга толстая и скучная;other
+телевизор громкий слишком;other
+соседи шумят по ночам;other
+кот мурлычет на коленях;other
+птицы поют за окном;other
+цветы пахнут весной;other
+трава зеленая на лужайке;other
+небо голубое и чистое;other
+облака белые плывут;other
+ветер дует сильный;other
+листья желтые опадают;other
+снег выпал первый;other
+лед скользкий на дороге;other
+вода мокрая и холодная;other
+алиса помоги с уроками;other
+алиса расскажи сказку детям;other
+алиса спой песню веселую;other
+алиса включи телевизор пожалуйста;other
+алиса выключи музыку;other
+алиса что такое любовь;other
+алиса сколько будет дважды два;other
+алиса какая погода завтра;other
+алиса переведи с английского;other
+алиса поставь будильник на семь;other
+алиса напомни купить хлеб;other
+алиса добавь в календарь встречу;other
+алиса найди рецепт борща;other
+алиса включи радио волна;other
+алиса выключи свет в спальне;other
+я принимаю ванну горячую;other
+не принимай близко к сердцу;other
+отказаться от сладкого навсегда;other
+отказ в работе системы;other
+позвони маме завтра утром;other
+позвонила бабушка вчера;other
+звонок в дверь громкий;other
+звонок будильника утренний;other
+построй планы на выходные;other
+построй дом из кубиков;other
+маршрут автобуса номер пять;other
+маршрут миграции птиц;other
+прочитай книгу интересную;other
+прочитай мои мысли;other
+сообщение в социальной сети;other
+сообщение от инопланетян;other
+пожелания на новый год;other
+пожелания молодоженам счастья;other
+найди в интернете информацию;other
+найди смысл жизни;other
+ближайший родственник живет;other
+ближайшее будущее неопределенно;other
+поменяй пластинку на диске;other
+поменяй тему разговора;other
+тариф на электричество дорогой;other
+тариф на мобильную связь;other
+деловая встреча отменена;other
+деловой костюм в шкафу;other
+по делам службы уехал;other
+по делам сердечным страдаю;other
+домой вернулся кот;other
+дома никого нет сейчас;other
+домой лети журавль;other
+дом родной и уютный;other
+комфорт в доме важен;other
+комфортная температура в комнате;other
+эконом класс в самолете;other
+экономь электричество дома;other
+плюс один к харизме;other
+плюс и минус равны;other
+алиса это имя девочки;other
+алиса в стране чудес;other
+включи фантазию и творчество;other
+включи совесть наконец;other
+выключи компьютер на ночь;other
+выключи эмоции ненужные;other
+активируй карту банковскую;other
+активируй мозг для работы;other
+режим стирки деликатный;other
+режим дня нарушен сильно;other
+настройка гитары важна;other
+настройка на успех нужна;other
+отключи телевизор вечером;other
+отключи от реальности;other
+поставь оценку фильму;other
+поставь цветы в вазу;other
+сделай домашнее задание;other
+сделай одолжение другу;other
+измени пароль в системе;other
+измени мир к лучшему;other
+переключи канал на спорт;other
+переключи внимание на важное;other
+повысь голос громче;other
+повысь самооценку себе;other
+понизь температуру в доме;other
+понизь планку требований;other
+включи логику в голове;other
+включи отопление зимой;other
+нужно больше золота;other
+нужно подумать серьезно;other
+давай дружить всегда;other
+давай знакомиться поближе;other
+хочу мороженого сладкого;other
+хочу в отпуск на море;other
+поехали кататься на лыжах;other
+поехали в магазин за продуктами;other
+возьми зонт с собой;other
+возьми себя в руки;other
+верни долг соседу;other
+верни молодость мне;other
+оставь надежду на лучшее;other
+оставь отзыв о ресторане;other
+выбери профессию по душе;other
+выбери сторону в конфликте;other
+смени работу на лучшую;other
+смени настроение на позитив;other
+построй отношения с людьми;other
+построй карьеру успешную;other
+найди отличия на картинке;other
+найди общий язык;other
+покажи класс в игре;other
+покажи характер сильный;other
+прочти лекцию студентам;other
+прочти молитву перед сном;other
+скажи правду в лицо;other
+скажи спасибо маме;other
+озвучь роль в фильме;other
+озвучь мультфильм детский;other
+есть вопросы по теме;other
+есть предложения по работе;other
+что нового в мире;other
+что случилось вчера;other
+какие планы на лето;other
+какие новости сегодня;other
+нет времени на отдых;other
+нет денег на покупки;other
+не понял твою мысль;other
+не слышу что говоришь;other
+можно вопрос задать;other
+можно войти в комнату;other
+будь здоров всегда;other
+будь осторожен на дороге;other
+Пусть пассажир отменит заказ;other
+думаю, что поздно уже;other
+да, купи слона;other
+Она мне помогла;other
+а я ему говорю: зачем есть капусту, когда есть картошка!;other
+Арбуз;other
+Нахуй иди;other
+А что говоришь?;other
+Чебурек;other
+Да блять!;other
+Сука;other
+Идиот;other
+Ну и дела;other
+Окак;other
+Патруль на улицах;other
+А потом появился бетмен;other
+Денег нету нифига;other
+Курс доллара какой;other
+Что думаешь про новую серию сериала;other
+Как дела?;other
+Блять;other
+Пиздец;other
+Заебали эти пассажиры;other
+Куда ты лезешь;other
+Расскажи анекдот;other
+Что там по новостям говорят;other
+Яхай баля;other
+я таксую так для души;other
+Пупупупу;other
+я маршрут домой прямо;home
+буду идти домой сейчас;home
+буду выехал домой прямо;home
+домой поехал без остановок;home
+броню домой сейчас;home
+домашние дела без задержек;home
+сейчас еду домой сейчас;home
+сейчас домой поехал без задержек;home
+направление домой прямо;home
+буду домой быстро быстро;home
+только домой сегодня побыстрее;home
+я путь домой сейчас;home
+сейчас домой маршрут быстро;home
+буду путь домой;home
+буду летим домой срочно;home
+по дороге домой сейчас;home
+я еду домой быстро без остановок;home
+домой маршрут побыстрее;home
+буду сегодня домой прямо;home
+сейчас летим домой прямо;home
+я в сторону дома побыстрее;home
+домашняя дорога без задержек;home
+буду домой срочно быстро;home
+сейчас в сторону дома быстро;home
+я дом срочно;home
+сейчас возвращаюсь домой без задержек;home
+я домашняя дорога быстро;home
+я по дороге домой сейчас;home
+сейчас броню домой прямо;home
+буду домой без остановок побыстрее;home
+домашние дела срочно;home
+домой маршрут без остановок;home
+сейчас еду на базу прямо;home
+буду домашний маршрут;home
+буду домашний маршрут без задержек;home
+я домой срочно сейчас;home
+только домой прямо;home
+сейчас домой поехал сейчас;home
+я идти домой без задержек;home
+сейчас только вперед домой срочно;home
+я поеду домой прямо;home
+я маршрут домой сейчас;home
+я еду домой сейчас без задержек;home
+сейчас летим домой без задержек;home
+буду только домой быстро;home
+буду направляюсь домой сейчас;home
+буду только домой сегодня срочно;home
+я домой без остановок без остановок;home
+еду домой побыстрее;home
+я пока домой без остановок;home
+сейчас домашняя дорога побыстрее;home
+маршрут домой сейчас;home
+сейчас летим домой побыстрее;home
+только домой срочно;home
+быстрый маршрут домой быстро;home
+я только домой побыстрее;home
+буду домой без остановок;home
+буду быстрый маршрут домой без остановок;home
+сейчас поеду домой побыстрее;home
+буду поеду домой побыстрее;home
+домашний маршрут прямо;home
+домашний маршрут быстро;home
+сейчас домашний маршрут быстро;home
+я домашний маршрут прямо;home
+в сторону дома сейчас;home
+в сторону дома быстро;home
+по дороге домой без задержек;home
+я возвращаюсь домой быстро;home
+я возвращаюсь домой срочно;home
+возвращаюсь домой прямо;home
+возвращаюсь домой без задержек;home
+еду на базу срочно;home
+еду на базу без задержек;home
+сейчас еду на базу;home
+я еду на базу;home
+домашняя дорога прямо;home
+домашняя дорога срочно;home
+домашняя дорога побыстрее;home
+путь домой без задержек;home
+путь домой прямо;home
+путь домой быстро;home
+путь домой срочно;home
+сейчас путь домой;home
+быстрый путь домой;home
+быстрый путь домой срочно;home
+быстрый путь домой быстро;home
+иду домой быстро;home
+иду домой срочно;home
+иду домой прямо;home
+иду домой без задержек;home
+сейчас иду домой;home
+поеду домой срочно;home
+поеду домой быстро;home
+поеду домой без задержек;home
+поеду домой прямо;home
+лечу домой срочно;home
+лечу домой быстро;home
+лечу домой прямо;home
+лечу домой без задержек;home
+сейчас лечу домой;home
+домой без остановок;home
+домой без задержек;home
+домой побыстрее;home
+домой срочно;home
+домой прямо;home
+еду домой срочно;home
+еду домой прямо;home
+еду домой без задержек;home
+еду домой;home
+домой маршрут быстро;home
+домой маршрут срочно;home
+домой маршрут прямо;home
+домой маршрут без задержек;home
+маршрут до дома быстрее;home
+маршрут до дома срочно;home
+маршрут до дома без задержек;home
+маршрут до дома прямо;home
+по пути домой заказы;home
+заказы по пути домой;home
+только заказы домой;home
+только заказы по дому;home
+домашние заказы;home
+домашние поездки;home
+еду только домой;home
+езжу только домой;home
+беру по пути домой;home
+беру только домой;home
+работаю по пути домой;home
+маршрут до дома;home
+путь к дому;home
+в сторону дома;home
+держу путь домой;home
+направляюсь домой;home
+двигаюсь домой;home
+следую домой;home
+курс домой;home
+курсирую домой;home
+дальше домой;home
+движение домой;home
+возьму домой маршрут;home
+давай домой;home
+везите домой;home
+отвези домой;home
+только домой далее;home
+на базу домой;home
+домашний конец смены;home
+кончаю, домой;home
+заканчиваю, домой;home
+конец смены, домой;home
+распускаюсь, домой;home
+финал, домой;home
+еду только по дому;home
+только дом;home
+курс на дом;home
+беру курс домой;home
+по курсу домой;home
+домашний рейс;home
+домашний путь;home
+домашний конец;home
+домашний финиш;home
+домашний конец маршрута;home
+дом;home
+на дом;home
+к дому;home
+в дом;home
+до дома;home
+к себе домой;home
+возврат домой;home
+возврат к дому;home
+возврат домой срочно;home
+обратно домой;home
+обратно домой срочно;home
+обратно домой быстро;home
+обратно домой без задержек;home
+обратно домой прямо;home
+возврат домой быстро;home
+назад домой;home
+назад домой срочно;home
+назад домой быстро;home
+назад домой без задержек;home
+назад домой прямо;home
+Еду домой;home
+Маршрут домой;home
+Прокладывай до дома;home
+Как быстрее до дома;home
+Построй дорогу домой;home
+Наведи к дому;home
+Покажи дорогу домой;home
+Навигатор «домой»;home
+Только домой;home
+Заказы в сторону дома;home
+Стартую домой;home
+Курс на дом;home
+Двигаюсь домой;home
+Следую домой;home
+Иду домой;home
+Пора домой;home
+Конец смены, домой;home
+Заканчиваю, домой;home
+Домой без остановок;home
+Домой без задержек;home
+Домой побыстрее;home
+Домой срочно;home
+Беру курс домой;home
+Путь домой;home
+Быстрый путь домой;home
+Оптимальный маршрут домой;home
+Короткий путь домой;home
+Подскажи дорогу домой;home
+В сторону дома;home
+Держу путь домой;home
+Лечу домой;home
+Гони домой;home
+Сориентируй на дом;home
+Укажи дорогу к дому;home
+Поехали домой;home
+Погнали домой;home
+По пути домой беру рейсы;home
+Только рейсы до дома;home
+Работаю по пути домой;home
+Заказы до дома;home
+Еду к себе домой;home
+Маршрут к себе домой;home
+Домашний маршрут;home
+Домашний путь;home
+Финиширую, домой;home
+Финиш смены, домой;home
+Отвези домой;home
+Построй мне дорогу домой;home
+Навигируй домой;home
+Сверни к дому;home
+Перестрой маршрут на дом;home
+Обнови маршрут: дом;home
+Направь домой;home
+Выставь точку «дом»;home
+Финиш домой;home
+Нужен дом;home
+Хочу домой;home
+Ставь дом конечной;home
+Конечная, дом;home
+Назад домой;home
+Возврат домой;home
+Вернуться домой;home
+Вернусь домой;home
+Полёт домой;home
+Дорога до дома;home
+Скажи, как доехать домой;home
+Прокладывай домой;home
+Рассчитай дорогу домой;home
+Сохрани курс домой;home
+Начинаю путь домой;home
+Запусти режим «домой»;home
+Домашний режим;home
+Без клиентов, домой;home
+Без пробок домой;home
+Через центр домой;home
+Через объезд домой;home
+Через трассу домой;home
+Оптимизируй до дома;home
+Укороти путь домой;home
+Сделай кратчайший до дома;home
+Сделай самый быстрый до дома;home
+Смену закрываю, домой;home
+Закрываю рейсы, домой;home
+Заказы завершены, домой;home
+Еду на базу, потом дом;home
+С базы к дому;home
+Выезд к дому;home
+Покажи схему до дома;home
+Схема домой;home
+Маршрут до подъезда;home
+Как до подъезда;home
+К подъезду домой;home
+До квартиры везите;home
+Маршрут до квартиры;home
+До ворот дома;home
+До двора домой;home
+В родной двор;home
+К родному подъезду;home
+К родному дому;home
+К своему дому;home
+К своему подъезду;home
+Обратно к себе;home
+Обратно в свой район;home
+Домой через объезд;home
+Домой через трассу;home
+Домой без платных дорог;home
+Домой по платке быстрее;home
+Домой по объезду;home
+Домой по трассе;home
+Домой по шоссе;home
+Домой по кольцу;home
+Домой по набережной;home
+Домой через мост;home
+Туда, где живу;home
+В свой район;home
+К своей улице;home
+К своей квартире;home
+Наведи к моему дому;home
+Доставь меня домой;home
+Возьми курс на квартиру;home
+Ставь маршрут до квартиры;home
+Перестрой дорогу на дом;home
+Домой и точка;home
+Нужен адрес дома;home
+Довези до дома;home
+Финиш смены, курс домой;home
+Заканчиваю рейсы, курс к дому;home
+Нет заказов, еду домой;home
+Сворачиваю, домой;home
+Свободен, домой;home
+Последний заказ, потом домой;home
+После этого домой;home
+Завершил смену, домой;home
+Проложи до района проживания;home
+До моего района;home
+К моему дому;home
+Подскажи кратчайший до дома;home
+Минимум светофоров до дома;home
+Меньше пробок до дома;home
+Сейчас домой без кольцевых;home
+Домой по бесплатным;home
+Покажи экономичный до дома;home
+Покажи без камер до дома;home
+Переход на маршрут «дом»;home
+Дальше только домой;home
+Старт «домой»;home
+Вывести маршрут до дома;home
+Навигатор, курс к дому;home
+Скорректируй курс: дом;home
+Отведите к дому;home
+Направление «дом»;home
+Завершил день, дом;home
+На сегодня всё, еду домой;home
+Смена окончена, дом;home
+Снялся, домой;home
+Поеду к дому, без рейсов;home
+Активируй режим «дорога домой»;home
+Активируй дорогу до дома;home
+Покажи путь: до дома;home
+Расчёт пути до дома;home
+Путь без платных до дома;home
+Путь без пробок домой;home
+Кратчайший до дома, поехали;home
+Выставь дом финишем;home
+Финиш дома;home
+Домашний адрес в конце;home
+Задай дом как цель;home
+Цель поездки: дом;home
+Едем до дома;home
+Маршрут до дома готов?;home
+Маршрут до дома построен?;home
+Метка «дом» активна;home
+Сменить навигацию на дом;home
+Дальше ехать домой;home
+Перейти к дому;home
+Подскажешь дорогу домой?;home
+Отметка «дом», строим;home
+Разверни к дому;home
+Везём к дому;home
+Ставлю дом конечным;home
+Хочу перейти на эконом;tariff_change
+Переключи на эконом;tariff_change
+Включи эконом;tariff_change
+Поставь эконом;tariff_change
+Сделай эконом;tariff_change
+Выбери эконом;tariff_change
+Активируй эконом;tariff_change
+Измени на эконом;tariff_change
+Поменяй на эконом;tariff_change
+Смени на эконом;tariff_change
+Переходим на эконом;tariff_change
+Давай эконом;tariff_change
+Нужен эконом;tariff_change
+Хочу эконом;tariff_change
+Сменить на эконом;tariff_change
+Переключись на эконом;tariff_change
+Ставь эконом;tariff_change
+Делай эконом;tariff_change
+Бери эконом;tariff_change
+Включай эконом;tariff_change
+Переключи на тариф эконом;tariff_change
+Включи тариф эконом;tariff_change
+Поставь тариф эконом;tariff_change
+Сделай тариф эконом;tariff_change
+Выбери тариф эконом;tariff_change
+Активируй тариф эконом;tariff_change
+Измени тариф на эконом;tariff_change
+Поменяй на тариф эконом;tariff_change
+Смени тариф на эконом;tariff_change
+Переходим на тариф эконом;tariff_change
+Давай тариф эконом;tariff_change
+Нужен тариф эконом;tariff_change
+Хочу тариф эконом;tariff_change
+Сменить на тариф эконом;tariff_change
+Переключись на тариф эконом;tariff_change
+Ставь тариф эконом;tariff_change
+Делай тариф эконом;tariff_change
+Бери тариф эконом;tariff_change
+Включай тариф эконом;tariff_change
+Работаю на эконом;tariff_change
+Езжу на эконом;tariff_change
+Буду на эконом;tariff_change
+Хочу работать на эконом;tariff_change
+Перехожу на эконом;tariff_change
+Меняю на эконом;tariff_change
+Выбираю эконом;tariff_change
+Беру эконом;tariff_change
+Ставлю эконом;tariff_change
+Включаю эконом;tariff_change
+Активирую эконом;tariff_change
+Устанавливаю эконом;tariff_change
+Настраиваю эконом;tariff_change
+Подключаю эконом;tariff_change
+Запускаю эконом;tariff_change
+Стартую на эконом;tariff_change
+Начинаю с эконом;tariff_change
+Иду на эконом;tariff_change
+Лечу на эконом;tariff_change
+Качу на эконом;tariff_change
+Рулю на эконом;tariff_change
+Катаюсь на эконом;tariff_change
+Тружусь на эконом;tariff_change
+Вожу на эконом;tariff_change
+Таксую на эконом;tariff_change
+Подрабатываю на эконом;tariff_change
+Зарабатываю на эконом;tariff_change
+Работаю в эконом;tariff_change
+Функционирую на эконом;tariff_change
+Действую на эконом;tariff_change
+Оперирую на эконом;tariff_change
+Функция эконом;tariff_change
+Режим эконом;tariff_change
+Класс эконом;tariff_change
+Хочу перейти на комфорт;tariff_change
+Переключи на комфорт;tariff_change
+Включи комфорт;tariff_change
+Поставь комфорт;tariff_change
+Сделай комфорт;tariff_change
+Выбери комфорт;tariff_change
+Активируй комфорт;tariff_change
+Измени на комфорт;tariff_change
+Поменяй на комфорт;tariff_change
+Смени на комфорт;tariff_change
+Переходим на комфорт;tariff_change
+Давай комфорт;tariff_change
+Нужен комфорт;tariff_change
+Хочу комфорт;tariff_change
+Сменить на комфорт;tariff_change
+Переключись на комфорт;tariff_change
+Ставь комфорт;tariff_change
+Делай комфорт;tariff_change
+Бери комфорт;tariff_change
+Включай комфорт;tariff_change
+Переключи на тариф комфорт;tariff_change
+Включи тариф комфорт;tariff_change
+Поставь тариф комфорт;tariff_change
+Сделай тариф комфорт;tariff_change
+Выбери тариф комфорт;tariff_change
+Активируй тариф комфорт;tariff_change
+Измени тариф на комфорт;tariff_change
+Поменяй на тариф комфорт;tariff_change
+Смени тариф на комфорт;tariff_change
+Переходим на тариф комфорт;tariff_change
+Давай тариф комфорт;tariff_change
+Нужен тариф комфорт;tariff_change
+Хочу тариф комфорт;tariff_change
+Сменить на тариф комфорт;tariff_change
+Переключись на тариф комфорт;tariff_change
+Ставь тариф комфорт;tariff_change
+Делай тариф комфорт;tariff_change
+Бери тариф комфорт;tariff_change
+Включай тариф комфорт;tariff_change
+Работаю на комфорт;tariff_change
+Езжу на комфорт;tariff_change
+Буду на комфорт;tariff_change
+Хочу работать на комфорт;tariff_change
+Перехожу на комфорт;tariff_change
+Меняю на комфорт;tariff_change
+Выбираю комфорт;tariff_change
+Беру комфорт;tariff_change
+Ставлю комфорт;tariff_change
+Включаю комфорт;tariff_change
+Активирую комфорт;tariff_change
+Устанавливаю комфорт;tariff_change
+Настраиваю комфорт;tariff_change
+Подключаю комфорт;tariff_change
+Запускаю комфорт;tariff_change
+Стартую на комфорт;tariff_change
+Начинаю с комфорт;tariff_change
+Иду на комфорт;tariff_change
+Лечу на комфорт;tariff_change
+Качу на комфорт;tariff_change
+Рулю на комфорт;tariff_change
+Катаюсь на комфорт;tariff_change
+Тружусь на комфорт;tariff_change
+Вожу на комфорт;tariff_change
+Таксую на комфорт;tariff_change
+Подрабатываю на комфорт;tariff_change
+Зарабатываю на комфорт;tariff_change
+Работаю в комфорт;tariff_change
+Функционирую на комфорт;tariff_change
+Действую на комфорт;tariff_change
+Оперирую на комфорт;tariff_change
+Функция комфорт;tariff_change
+Режим комфорт;tariff_change
+Класс комфорт;tariff_change
+Хочу перейти на комфорт плюс;tariff_change
+Переключи на комфорт плюс;tariff_change
+Включи комфорт плюс;tariff_change
+Поставь комфорт плюс;tariff_change
+Сделай комфорт плюс;tariff_change
+Выбери комфорт плюс;tariff_change
+Активируй комфорт плюс;tariff_change
+Измени на комфорт плюс;tariff_change
+Поменяй на комфорт плюс;tariff_change
+Смени на комфорт плюс;tariff_change
+Переходим на комфорт плюс;tariff_change
+Давай комфорт плюс;tariff_change
+Нужен комфорт плюс;tariff_change
+Хочу комфорт плюс;tariff_change
+Сменить на комфорт плюс;tariff_change
+Переключись на комфорт плюс;tariff_change
+Ставь комфорт плюс;tariff_change
+Делай комфорт плюс;tariff_change
+Бери комфорт плюс;tariff_change
+Включай комфорт плюс;tariff_change
+Хочу перейти на комфорт+;tariff_change
+Переключи на комфорт+;tariff_change
+Включи комфорт+;tariff_change
+Поставь комфорт+;tariff_change
+Сделай комфорт+;tariff_change
+Выбери комфорт+;tariff_change
+Активируй комфорт+;tariff_change
+Измени на комфорт+;tariff_change
+Поменяй на комфорт+;tariff_change
+Смени на комфорт+;tariff_change
+Переходим на комфорт+;tariff_change
+Давай комфорт+;tariff_change
+Нужен комфорт+;tariff_change
+Хочу комфорт+;tariff_change
+Переключи на тариф комфорт плюс;tariff_change
+Включи тариф комфорт плюс;tariff_change
+Поставь тариф комфорт плюс;tariff_change
+Сделай тариф комфорт плюс;tariff_change
+Выбери тариф комфорт плюс;tariff_change
+Активируй тариф комфорт плюс;tariff_change
+Измени тариф на комфорт плюс;tariff_change
+Поменяй на тариф комфорт плюс;tariff_change
+Смени тариф на комфорт плюс;tariff_change
+Переходим на тариф комфорт плюс;tariff_change
+Давай тариф комфорт плюс;tariff_change
+Нужен тариф комфорт плюс;tariff_change
+Хочу тариф комфорт плюс;tariff_change
+Переключи на тариф комфорт+;tariff_change
+Включи тариф комфорт+;tariff_change
+Поставь тариф комфорт+;tariff_change
+Сделай тариф комфорт+;tariff_change
+Выбери тариф комфорт+;tariff_change
+Активируй тариф комфорт+;tariff_change
+Измени тариф на комфорт+;tariff_change
+Поменяй на тариф комфорт+;tariff_change
+Смени тариф на комфорт+;tariff_change
+Работаю на комфорт плюс;tariff_change
+Езжу на комфорт плюс;tariff_change
+Буду на комфорт плюс;tariff_change
+Хочу работать на комфорт плюс;tariff_change
+Перехожу на комфорт плюс;tariff_change
+Меняю на комфорт плюс;tariff_change
+Выбираю комфорт плюс;tariff_change
+Беру комфорт плюс;tariff_change
+Ставлю комфорт плюс;tariff_change
+Включаю комфорт плюс;tariff_change
+Активирую комфорт плюс;tariff_change
+Работаю на комфорт+;tariff_change
+Езжу на комфорт+;tariff_change
+Буду на комфорт+;tariff_change
+Хочу работать на комфорт+;tariff_change
+Перехожу на комфорт+;tariff_change
+Меняю на комфорт+;tariff_change
+Выбираю комфорт+;tariff_change
+Беру комфорт+;tariff_change
+Ставлю комфорт+;tariff_change
+Включаю комфорт+;tariff_change
+Активирую комфорт+;tariff_change
+Устанавливаю комфорт плюс;tariff_change
+Настраиваю комфорт плюс;tariff_change
+Подключаю комфорт плюс;tariff_change
+Запускаю комфорт плюс;tariff_change
+Стартую на комфорт плюс;tariff_change
+Функция комфорт плюс;tariff_change
+Режим комфорт плюс;tariff_change
+Класс комфорт плюс;tariff_change
+Функция комфорт+;tariff_change
+Режим комфорт+;tariff_change
+Класс комфорт+;tariff_change
+Повысь тариф;tariff_change
+Подними тариф;tariff_change
+Увеличь тариф;tariff_change
+Сделай тариф повыше;tariff_change
+Переключи тариф повыше;tariff_change
+Хочу тариф подороже;tariff_change
+Нужен тариф получше;tariff_change
+Давай тариф покруче;tariff_change
+Сделай дороже;tariff_change
+Подними цену;tariff_change
+Увеличь стоимость;tariff_change
+Повысь класс;tariff_change
+Улучши тариф;tariff_change
+На класс выше;tariff_change
+Дороже хочу;tariff_change
+На уровень выше;tariff_change
+На ступеньку выше;tariff_change
+На шаг выше;tariff_change
+Чуть повыше;tariff_change
+Немного повыше;tariff_change
+Чуть-чуть повыше;tariff_change
+Слегка повыше;tariff_change
+Капельку повыше;tariff_change
+Маленько повыше;tariff_change
+Тариф повыше сделай;tariff_change
+Тариф подороже сделай;tariff_change
+Тариф получше сделай;tariff_change
+Уровень повыше;tariff_change
+Класс повыше;tariff_change
+Режим повыше;tariff_change
+Поднимись на уровень;tariff_change
+Поднимись на ступеньку;tariff_change
+Поднимись на класс;tariff_change
+Иди выше;tariff_change
+Лезь выше;tariff_change
+Поднимайся выше;tariff_change
+Переходи выше;tariff_change
+Двигайся выше;tariff_change
+Сделай повыше тариф;tariff_change
+Сделай подороже тариф;tariff_change
+Сделай получше тариф;tariff_change
+Поменяй на повыше;tariff_change
+Поменяй на подороже;tariff_change
+Поменяй на получше;tariff_change
+Переключи на повыше;tariff_change
+Переключи на подороже;tariff_change
+Переключи на получше;tariff_change
+Включи повыше;tariff_change
+Включи подороже;tariff_change
+Включи получше;tariff_change
+Поставь повыше;tariff_change
+Поставь подороже;tariff_change
+Поставь получше;tariff_change
+Выбери повыше;tariff_change
+Выбери подороже;tariff_change
+Выбери получше;tariff_change
+Активируй повыше;tariff_change
+Активируй подороже;tariff_change
+Активируй получше;tariff_change
+Вверх на тариф;tariff_change
+Вверх на уровень;tariff_change
+Вверх на класс;tariff_change
+Выше уровнем;tariff_change
+Выше классом;tariff_change
+Выше тарифом;tariff_change
+Больше тарифа;tariff_change
+Круче тарифа;tariff_change
+Лучше тарифа;tariff_change
+Понизь тариф;tariff_change
+Опусти тариф;tariff_change
+Уменьши тариф;tariff_change
+Сделай тариф пониже;tariff_change
+Переключи тариф пониже;tariff_change
+Хочу тариф подешевле;tariff_change
+Нужен тариф попроще;tariff_change
+Давай тариф поскромнее;tariff_change
+Хочу тариф поэкономнее;tariff_change
+Сделай подешевле;tariff_change
+Опусти цену;tariff_change
+Уменьши стоимость;tariff_change
+Понизь класс;tariff_change
+Ухудши тариф;tariff_change
+На класс ниже;tariff_change
+Дешевле нужно;tariff_change
+На уровень ниже;tariff_change
+На ступеньку ниже;tariff_change
+На шаг ниже;tariff_change
+Чуть пониже;tariff_change
+Немного пониже;tariff_change
+Чуть-чуть пониже;tariff_change
+Слегка пониже;tariff_change
+Капельку пониже;tariff_change
+Маленько пониже;tariff_change
+Тариф пониже сделай;tariff_change
+Тариф подешевле сделай;tariff_change
+Тариф попроще сделай;tariff_change
+Уровень пониже;tariff_change
+Класс пониже;tariff_change
+Режим пониже;tariff_change
+Спустись на уровень;tariff_change
+Спустись на ступеньку;tariff_change
+Спустись на класс;tariff_change
+Иди ниже;tariff_change
+Слезь ниже;tariff_change
+Спускайся ниже;tariff_change
+Переходи ниже;tariff_change
+Двигайся ниже;tariff_change
+Сделай пониже тариф;tariff_change
+Сделай подешевле тариф;tariff_change
+Сделай попроще тариф;tariff_change
+Поменяй на пониже;tariff_change
+Поменяй на подешевле;tariff_change
+Поменяй на попроще;tariff_change
+Переключи на пониже;tariff_change
+Переключи на подешевле;tariff_change
+Переключи на попроще;tariff_change
+Включи пониже;tariff_change
+Включи подешевле;tariff_change
+Включи попроще;tariff_change
+Поставь пониже;tariff_change
+Поставь подешевле;tariff_change
+Поставь попроще;tariff_change
+Выбери пониже;tariff_change
+Выбери подешевле;tariff_change
+Выбери попроще;tariff_change
+Активируй пониже;tariff_change
+Активируй подешевле;tariff_change
+Активируй попроще;tariff_change
+Вниз на тариф;tariff_change
+Вниз на уровень;tariff_change
+Вниз на класс;tariff_change
+Ниже уровнем;tariff_change
+Ниже классом;tariff_change
+Ниже тарифом;tariff_change
+Меньше тарифа;tariff_change
+Проще тарифа;tariff_change
+Скромнее тарифа;tariff_change
+По делам к ближайшему ВкусВиллу;buisness_trip
+До магазина Чеснок в режиме по делам;buisness_trip
+По делам на заправку Роснефть;buisness_trip
+Есть делишки в Высшей школе экономики;buisness_trip
+Дело есть, поехали к братве в чайхану на Большом проспекте;buisness_trip
+Давай заедем в пекарню Жар Свежар по делам;buisness_trip
+Мне нужно заскочить по делам в дом 1 на улице Пушкина;buisness_trip
+Режим по делам до Сбербанка;buisness_trip
+Нужно заехать за документами в МФЦ по делам;buisness_trip
+Дела есть в Тинькофф банке;buisness_trip
+Поехали по делам до ВТБ;buisness_trip
+Включи по делам до Альфа-Банка;buisness_trip
+Сделай по делам до поликлиники;buisness_trip
+Режим по делам до Газпрома;buisness_trip
+Включи режим по делам до Лукойла;buisness_trip
+Построй маршрут до Перекрестка и ищи заказы по пути;buisness_trip
+Построй маршрут до ВкусВилла на Садовом кольце и ищи заказы по пути;buisness_trip
+Хочу поехать до аэропорта Шереметьево с заказами по пути;buisness_trip
+До ближайшей прачечной и возьми заказы по делам;buisness_trip
+По делам в МФЦ на Тверской;buisness_trip
+До военкомата с заказами по делам;buisness_trip
+Поехали до Чистых прудов по делам;buisness_trip
+Функция по делам доехать до Лиговского проспекта;buisness_trip
+Есть дела на Бауманской станции;buisness_trip
+Нужно заехать за документами в паспортный стол по делам;buisness_trip
+По делам до Макдоналдса на Пушкинской;buisness_trip
+Режим по делам до КФС в Атриуме;buisness_trip
+Есть дела в Бургер Кинге на Невском;buisness_trip
+По делам к врачу в поликлинику №5;buisness_trip
+Нужно доехать по делам до стоматологии на Арбате;buisness_trip
+По делам в Пятерочку за продуктами;buisness_trip
+Режим по делам до Магнита на углу;buisness_trip
+Есть дела в Дикси рядом с домом;buisness_trip
+По делам в Ашан за покупками;buisness_trip
+Нужно заехать по делам в Леруа Мерлен;buisness_trip
+По делам в ИКЕА за мебелью;buisness_trip
+Режим по делам до М.Видео;buisness_trip
+Есть дела в Эльдорадо на Тверской;buisness_trip
+По делам в DNS за техникой;buisness_trip
+Нужно доехать по делам до Связного;buisness_trip
+По делам в Мегафон центр;buisness_trip
+Режим по делам до офиса МТС;buisness_trip
+Есть дела в салоне Билайн;buisness_trip
+По делам в Теле2 за сим-картой;buisness_trip
+Нужно заехать по делам в Ростелеком;buisness_trip
+По делам до Почты России;buisness_trip
+Режим по делам до отделения СДЭК;buisness_trip
+Есть дела в пункте выдачи Озон;buisness_trip
+По делам в Wildberries за заказом;buisness_trip
+Нужно доехать по делам до Яндекс.Маркета;buisness_trip
+По делам в автосервис на Варшавке;buisness_trip
+Режим по делам до шиномонтажа;buisness_trip
+Есть дела на автомойке у дома;buisness_trip
+По делам в автозапчасти на рынке;buisness_trip
+Нужно заехать по делам в страховую компанию;buisness_trip
+По делам до нотариуса на Тверской;buisness_trip
+Режим по делам до адвоката в центре;buisness_trip
+Есть дела у риелтора на Арбате;buisness_trip
+По делам к бухгалтеру в офис;buisness_trip
+Нужно доехать по делам до налоговой;buisness_trip
+По делам в Росреестр за справкой;buisness_trip
+Режим по делам до пенсионного фонда;buisness_trip
+Есть дела в соцзащите;buisness_trip
+По делам в управляющую компанию;buisness_trip
+Нужно заехать по делам в ЖЭК;buisness_trip
+По делам до РЭУ подать показания;buisness_trip
+Режим по делам до энергосбыта;buisness_trip
+Есть дела в водоканале;buisness_trip
+По делам в газовую службу;buisness_trip
+Нужно доехать по делам до Мосэнерго;buisness_trip
+По делам в университет на экзамен;buisness_trip
+Режим по делам до института защитить диплом;buisness_trip
+Есть дела в колледже у преподавателя;buisness_trip
+По делам в школу к директору;buisness_trip
+Нужно заехать по делам в детский сад;buisness_trip
+По делам до библиотеки за книгами;buisness_trip
+Режим по делам до музея на выставку;buisness_trip
+Есть дела в театре за билетами;buisness_trip
+По делам в кинотеатр посмотреть фильм;buisness_trip
+Нужно доехать по делам до концертного зала;buisness_trip
+По делам в спортзал на тренировку;buisness_trip
+Режим по делам до бассейна поплавать;buisness_trip
+Есть дела в фитнес-центре;buisness_trip
+По делам на каток покататься;buisness_trip
+Нужно заехать по делам в боулинг;buisness_trip
+По делам до парикмахерской подстричься;buisness_trip
+Режим по делам до салона красоты;buisness_trip
+Есть дела в маникюрном салоне;buisness_trip
+По делам к косметологу на процедуры;buisness_trip
+Нужно доехать по делам до массажиста;buisness_trip
+По делам в ветклинику с котом;buisness_trip
+Режим по делам до зоомагазина за кормом;buisness_trip
+Есть дела в питомнике за щенком;buisness_trip
+По делам на рынок за мясом;buisness_trip
+Нужно заехать по делам на базар за овощами;buisness_trip
+По делам до цветочного магазина;buisness_trip
+Режим по делам до букетной лавки;buisness_trip
+Есть дела в ювелирном магазине;buisness_trip
+По делам в часовую мастерскую;buisness_trip
+Нужно доехать по делам до обувной мастерской;buisness_trip
+По делам в химчистку забрать вещи;buisness_trip
+Режим по делам до прачечной;buisness_trip
+Есть дела в швейной мастерской;buisness_trip
+По делам к портному за костюмом;buisness_trip
+Нужно заехать по делам в фотостудию;buisness_trip
+По делам до типографии за визитками;buisness_trip
+Режим по делам до копицентра;buisness_trip
+Есть дела в рекламном агентстве;buisness_trip
+По делам в дизайн-бюро на встречу;buisness_trip
+Нужно доехать по делам до архитектурной мастерской;buisness_trip
+По делам в строительную компанию;buisness_trip
+Режим по делам до прорабской;buisness_trip
+Есть дела на стройке у прораба;buisness_trip
+По делам в магазин стройматериалов;buisness_trip
+Нужно заехать по делам в Петрович;buisness_trip
+По делам до склада за товаром;buisness_trip
+Режим по делам до логистической компании;buisness_trip
+Есть дела в транспортной фирме;buisness_trip
+По делам в грузоперевозки заказать машину;buisness_trip
+Нужно доехать по делам до таможни;buisness_trip
+По делам в посольство за визой;buisness_trip
+Режим по делам до консульства;buisness_trip
+Есть дела в миграционной службе;buisness_trip
+По делам в ЗАГС подать заявление;buisness_trip
+Нужно заехать по делам в РАГС;buisness_trip
+По делам до суда на заседание;buisness_trip
+Режим по делам до прокуратуры;buisness_trip
+Есть дела в полицейском участке;buisness_trip
+По делам в ГИБДД за правами;buisness_trip
+Нужно доехать по делам до МРЭО;buisness_trip
+По делам в РосТехОсмотр;buisness_trip
+Режим по делам до автоинспекции;buisness_trip
+Есть дела в гостехнадзоре;buisness_trip
+По делам на станцию техосмотра;buisness_trip
+Нужно заехать по делам в автошколу;buisness_trip
+По делам до кулинарии за тортом;buisness_trip
+Режим по делам до кондитерской;buisness_trip
+Есть дела в пекарне за хлебом;buisness_trip
+По делам в мясной магазин;buisness_trip
+Нужно доехать по делам до рыбного отдела;buisness_trip
+По делам в молочную лавку;buisness_trip
+Режим по делам до фермерского магазина;buisness_trip
+Есть дела на фермерском рынке;buisness_trip
+По делам в органик-шоп;buisness_trip
+Нужно заехать по делам в эко-магазин;buisness_trip
+По делам до винного бутика;buisness_trip
+Режим по делам до алкомаркета;buisness_trip
+Есть дела в табачной лавке;buisness_trip
+По делам в газетный киоск;buisness_trip
+Нужно доехать по делам до книжного магазина;buisness_trip
+По делам в антикварную лавку;buisness_trip
+Режим по делам до ломбарда;buisness_trip
+Есть дела в комиссионном магазине;buisness_trip
+По делам на блошиный рынок;buisness_trip
+Нужно заехать по делам на барахолку;buisness_trip
+По делам до игрушечного магазина;buisness_trip
+Режим по делам до детского мира;buisness_trip
+Есть дела в магазине для новорожденных;buisness_trip
+По делам в спортивный магазин;buisness_trip
+Нужно доехать по делам до рыболовного магазина;buisness_trip
+По делам в охотничий магазин;buisness_trip
+Режим по делам до туристического снаряжения;buisness_trip
+Есть дела в велосипедном магазине;buisness_trip
+По делам в мотосалон посмотреть байки;buisness_trip
+Нужно заехать по делам в автосалон;buisness_trip
+По делам до дилерского центра;buisness_trip
+Режим по делам до трейд-ин центра;buisness_trip
+Есть дела в кредитном брокере;buisness_trip
+По делам в микрофинансовую организацию;buisness_trip
+Нужно доехать по делам до ипотечного брокера;buisness_trip
+По делам в инвестиционную компанию;buisness_trip
+Режим по делам до брокерской фирмы;buisness_trip
+Есть дела в управляющей компании;buisness_trip
+По делам в пенсионный фонд за справкой;buisness_trip
+Нужно заехать по делам в фонд социального страхования;buisness_trip
+По делам до Росгосстраха;buisness_trip
+Режим по делам до РЕСО-Гарантии;buisness_trip
+Есть дела в Ингосстрахе;buisness_trip
+По делам в АльфаСтрахование;buisness_trip
+Нужно доехать по делам до ВТБ Страхования;buisness_trip
+По делам в СОГАЗ за полисом;buisness_trip
+Режим по делам до страхового агента;buisness_trip
+Есть дела в туристическом агентстве;buisness_trip
+По делам в турфирму за путевкой;buisness_trip
+Нужно заехать по делам к турагенту;buisness_trip
+По делам до визового центра;buisness_trip
+Режим по делам до паспортно-визовой службы;buisness_trip
+Есть дела в авиакассах;buisness_trip
+По делам в железнодорожные кассы;buisness_trip
+Нужно доехать по делам до вокзала за билетами;buisness_trip
+По делам в автовокзал узнать расписание;buisness_trip
+Режим по делам до речного вокзала;buisness_trip
+Есть дела в морском порту;buisness_trip
+По делам в аэропорт встретить гостей;buisness_trip
+Нужно заехать по делам в такси-парк;buisness_trip
+По делам до офиса Яндекс.Такси;buisness_trip
+Режим по делам до Ситимобил офиса;buisness_trip
+Есть дела в Gett представительстве;buisness_trip
+По делам в Uber офис;buisness_trip
+Нужно доехать по делам до DiDi центра;buisness_trip
+По делам в каршеринговую компанию;buisness_trip
+Режим по делам до Делимобиля;buisness_trip
+Есть дела в BelkaCar офисе;buisness_trip
+По делам в YouDrive представительство;buisness_trip
+Нужно заехать по делам в Матрешкар;buisness_trip
+По делам до проката автомобилей;buisness_trip
+Режим по делам до автопроката;buisness_trip
+Есть дела в рент-а-кар компании;buisness_trip
+По делам в лизинговую компанию;buisness_trip
+Нужно доехать по делам до факторинговой фирмы;buisness_trip
+По делам в коллекторское агентство;buisness_trip
+Режим по делам до юридической консультации;buisness_trip
+Есть дела в адвокатской конторе;buisness_trip
+По делам к семейному психологу;buisness_trip
+Нужно заехать по делам к детскому психологу;buisness_trip
+По делам до наркологической клиники;buisness_trip
+Режим по делам до психиатрической больницы;buisness_trip
+Есть дела в реабилитационном центре;buisness_trip
+По делам в центр социальной помощи;buisness_trip
+Нужно доехать по делам до дома престарелых;buisness_trip
+По делам в детский дом к воспитанникам;buisness_trip
+Режим по делам до приюта для животных;buisness_trip
+Есть дела в благотворительном фонде;buisness_trip
+По делам в волонтерский центр;buisness_trip
+Нужно заехать по делам в общественную организацию;buisness_trip
+По делам до профсоюзного комитета;buisness_trip
+Режим по делам до партийной ячейки;buisness_trip
+Есть дела в избирательной комиссии;buisness_trip
+По делам в администрацию района;buisness_trip
+Нужно доехать по делам до мэрии;buisness_trip
+По делам в городскую думу;buisness_trip
+Режим по делам до законодательного собрания;buisness_trip
+Есть дела в правительстве области;buisness_trip
+По делам в министерство на совещание;buisness_trip
+Нужно заехать по делам в федеральное ведомство;buisness_trip
+Поехали по делам до коворкинга;buisness_trip
+Режим по делам до бизнес-центра;buisness_trip
+Включи по делам до офисного центра;buisness_trip
+Построй маршрут по делам до IT-парка;buisness_trip
+Дела есть в технопарке;buisness_trip
+Функция по делам до стартап-акселератора;buisness_trip
+Едем по делам в Сколково;buisness_trip
+По делам в инкубатор стартапов;buisness_trip
+По делам до Газпром-нефти;buisness_trip
+Есть дела в Роснефти;buisness_trip
+Нужно заехать по делам в Лукойл;buisness_trip
+По делам до Татнефти;buisness_trip
+Режим по делам до Башнефти;buisness_trip
+Есть дела в НОВАТЭКе;buisness_trip
+По делам в Сургутнефтегаз;buisness_trip
+Нужно доехать по делам до Транснефти;buisness_trip
+По делам до Газпром трансгаза;buisness_trip
+Режим по делам до РосАтома;buisness_trip
+Есть дела в РусГидро;buisness_trip
+По делам в МТС головной офис;buisness_trip
+Нужно заехать по делам в Вымпелком;buisness_trip
+По делам до офиса Теле2;buisness_trip
+Режим по делам до центра Ростелекома;buisness_trip
+Есть дела в МГТС;buisness_trip
+По делам в НЛМК;buisness_trip
+Нужно доехать по делам до ММК;buisness_trip
+По делам до Северстали;buisness_trip
+Режим по делам до Мечела;buisness_trip
+Есть дела в Евразе;buisness_trip
+По делам в УАЗ;buisness_trip
+Нужно заехать по делам в АвтоВАЗ;buisness_trip
+По делам до ГАЗа;buisness_trip
+Режим по делам до КАМАЗа;buisness_trip
+Есть дела в МАЗе;buisness_trip
+Поехал;accept
+Давай поедем;accept
+Заберу;accept
+Хорошо поеду;accept
+Нормально;accept
+Принимаем;accept
+Гоу;accept
+Поехали нахуй;accept
+Приму;accept
+Давайте;accept
+Го поехали;accept
+Едем;accept
+Ага да;accept
+Угумс;accept
+Ладно;accept
+Окей поехали;accept
+Поехала;accept
+Сделаю;accept
+Подходяще;accept
+Берем заказ;accept
+Принял заказ;accept
+Подтверждено;accept
+Поеду к клиенту;accept
+Прими этот заказ;accept
+Да беру;accept
+Алиса берем;accept
+Да подтверждай;accept
+Беру четко;accept
+Да конечно;accept
+Оформляем;accept
+Естественно беру;accept
+Поехали работать;accept
+Да уж;accept
+Ну хорошо;accept
+Одобрено;accept
+Ага беру;accept
+Принимаю вызов;accept
+Сделано;accept
+Годится мне;accept
+Однозначно;accept
+Забираю его;accept
+Принимаем заказ;accept
+Готовый;accept
+Взято;accept
+Принято;accept
+Поехали туда;accept
+Хорошо едем;accept
+Можно взять;accept
+Нормальный рейс;accept
+Давай поехали;accept
+Принимаю это;accept
+Согласен поехать;accept
+Ну ладно поеду;accept
+Неплохой заказ;accept
+Еду за клиентом;accept
+Хорошо выглядит;accept
+Сойдет;accept
+Беру пассажира;accept
+Поехали зарабатывать;accept
+Согласен на рейс;accept
+Подтверждаю это;accept
+Алиса прими;accept
+Ехать нужно;accept
+Давайте сделаем;accept
+Принимаю такси;accept
+Готов поехать;accept
+Можно и поехать;accept
+Цена нормальная;accept
+Подходящая поездка;accept
+Еду по вызову;accept
+Беру этого;accept
+Согласен на дело;accept
+Работать будем;accept
+Принимаю пассажира;accept
+Хорошо поехал;accept
+Алиса подтверди;accept
+Давайте работаем;accept
+Можно ехать к нему;accept
+Годный вызов;accept
+Поехали к человеку;accept
+Принято в работу;accept
+Готов принимать;accept
+Еду к точке;accept
+Согласен забирать;accept
+Хороший пассажир;accept
+Принимаю рейс;accept
+Ладно согласен;accept
+Можно поехать туда;accept
+Нормуль поездка;accept
+Готов к поездке;accept
+Беру себе;accept
+Еду делать;accept
+Принимаю задачу;accept
+Алиса бери;accept
+Поехали работу делать;accept
+Согласен на клиента;accept
+Хорошее дело;accept
+Можно согласиться;accept
+Готов двигаться;accept
+Беру в дело;accept
+Принимаю маршрут;accept
+Поехали по адресу;accept
+Ладно сделаем;accept
+Согласен на пассажира;accept
+Хороший маршрут;accept
+Можно поработать тут;accept
+Готов к делу;accept
+Беру поездку;accept
+Принимаю клиента;accept
+Поехали по заказу;accept
+Согласен взяться;accept
+Хорошо будем работать;accept
+Можно принимать;accept
+Готов выполнять;accept
+Беру на выполнение;accept
+Еду за человеком;accept
+Принимаю направление;accept
+Алиса давай сделаем;accept
+Согласен на работу;accept
+Готов к выезду;accept
+Беру пассажира;accept
+Принимаю поездку;accept
+Согласен ехать туда;accept
+Можно поехать к человеку;accept
+Готов принять рейс;accept
+Беру работу;accept
+Алиса согласился;accept
+Хорошо беру это;accept
+Можно взять пассажира;accept
+Готов к рейсу;accept
+Беру заказ туда;accept
+Принимаю вариант;accept
+Еду к заказчику;accept
+Согласен на поездку туда;accept
+Готов выезжать;accept
+Беру в обслуживание;accept
+Принимаю к делу;accept
+Алиса еду к пассажиру;accept
+Хорошо поехали туда;accept
+Можно принять заказ;accept
+Готов к маршруту;accept
+Беру данное;accept
+Принимаю к обслуживанию;accept
+Согласен на выполнение этого;accept
+Готов обслуживать;accept
+Беру в перевозку;accept
+Алиса принимаю это;accept
+Хорошо готов ехать;accept
+Можно взяться за дело;accept
+Готов к обслуживанию тут;accept
+Принимаю задание;accept
+Еду обслуживать;accept
+Согласен на перевозку;accept
+Хороший человек;accept
+Можно поехать по заказу;accept
+Готов к транспорту;accept
+Беру в поездку;accept
+Принимаю на обслуживание;accept
+Поехали выполнять дело;accept
+Алиса еду работать;accept
+Хорошо принимаю пассажира;accept
+Можно взять в работу;accept
+Готов к перевозке;accept
+Беру к исполнению;accept
+Принимаю предложение работы;accept
+Еду к подаче;accept
+Согласен обслужить;accept
+Хорошая заявка тут;accept
+Можно поработать по заказу;accept
+Готов к выходу;accept
+Беру в работу;accept
+Принимаю на перевозку;accept
+Поехали обслуживать;accept
+Алиса готов к работе;accept
+Хорошо еду к клиенту;accept
+Можно принять к работе;accept
+Готов выполнить это;accept
+Беру вызов;accept
+Принимаю на обслуживание;accept
+Еду выполнять это;accept
+Согласен на обслуживание;accept
+Хороший вариант дела;accept
+Можно ехать обслужить;accept
+Готов к работе тут;accept
+Беру на выполнение;accept
+Принимаю к исполнению;accept
+Быстренько;accept
+Без тормозов;accept
+Срочненько;accept
+Без волокиты;accept
+Будь добр;accept
+Мгновенно сделаем;accept
+Забираю вызов;accept
+Берем вызов;accept
+Берем быстро;accept
+Берем щас;accept
+Забираю быстро;accept
+Забираю щас;accept
+Заберу вызов;accept
+Заберу быстро;accept
+Заберу щас;accept
+Берем все;accept
+Давай возьмем;accept
+Давай заберем;accept
+Берем это;accept
+Беру то;accept
+Беру такое;accept
+Берем такое;accept
+Возьми вызов;accept
+Возьмем вызов;accept
+Возьми то;accept
+Возьми такое;accept
+Берем легко;accept
+Беру легко;accept
+Берем просто;accept
+Берем мигом;accept
+Беру мигом;accept
+Берем тут же;accept
+Беру тут же;accept
+Берем прямо сейчас;accept
+Беру прямо сейчас;accept
+Берем скорее;accept
+Беру скорее;accept
+Да забираю;accept
+Да возьмем;accept
+Давай забираю;accept
+Давай примем это;accept
+Примем вызов;accept
+Принимаю вызов;accept
+Принимаю быстро;accept
+Принимаю щас;accept
+Принимаю мигом;accept
+Принимаю тут же;accept
+Принимаем вызов;accept
+Принимаем тут же;accept
+Принимаем щас;accept
+Принимаем мигом;accept
+Принимаем прямо сейчас;accept
+Подтверди это;accept
+Подтвердить надо;accept
+Подтверждаю это;accept
+Ок забираю;accept
+Окей забираю;accept
+Ок принимаю это;accept
+Хорошо забираю;accept
+Хорошо принимаю это;accept
+Беру поехал;accept
+Беру в дороге;accept
+Беру готовый;accept
+Беру погнали;accept
+Беру выхожу;accept
+Беру начал;accept
+Берем поехали;accept
+Берем выехали;accept
+Берем стартуем;accept
+Забираю поехал;accept
+Забираю в дороге;accept
+Забираю стартую;accept
+Забираю готовый;accept
+Согласился;accept
+Согласен взяться;accept
+Согласен забирать;accept
+Готов взяться;accept
+Готов забирать;accept
+Готов принимать;accept
+Готов забираю;accept
+Готов принимаю это;accept
+Беру к делу;accept
+Берем к делу;accept
+Берем себе;accept
+Забираю себе это;accept
+Заберу себе;accept
+Принимаю себе это;accept
+Ок забираю это;accept
+Ладно;accept
+Прими это;accept
+Приму быстро;accept
+Приму щас;accept
+Прими вызов;accept
+Прими тут же;accept
+Принимаем все;accept
+Подтверди прием;accept
+Подтверди быстро;accept
+Подтверди щас;accept
+Подтверди мигом;accept
+Одобри это;accept
+Одобри вызов;accept
+Одобряем все;accept
+Забираю ок;accept
+Принимаю ок;accept
+Забираю да;accept
+Принимаю да;accept
+Беру отлично;accept
+Забираю отлично;accept
+Принимаю отлично;accept
+Берем отлично;accept
+Беру мгновенно;accept
+Берем мгновенно;accept
+Забираю мгновенно;accept
+Принимаю мгновенно;accept
+Стартуем сейчас;accept
+Стартую быстро;accept
+Беру поехал;accept
+Берем выходим;accept
+Принимаю выходим;accept
+Забираю выхожу;accept
+Принимаю выхожу;accept
+Окей все;accept
+Окей забираю это;accept
+Окей принимаю это;accept
+Готовый беру;accept
+Готовый забираю;accept
+Готовый принимаю;accept
+Работаем беру;accept
+Работаем забираю;accept
+Работаем принимаю;accept
+Забираю работаем;accept
+Принимаю работаем;accept
+Надо забираю;accept
+Надо принимаю;accept
+Берем надо же;accept
+Забираю надо;accept
+Принимаю надо;accept
+Ладно забираю;accept
+Ладно принимаю;accept
+Ладно заберем;accept
+Ладно примем это;accept
+Берем сейчас;accept
+Забираю сейчас;accept
+Принимаю сейчас;accept
+Забираю сейчас;accept
+Принимаю сейчас;accept
+Забираю сейчас;accept
+Принимаю сейчас;accept
+Мы забираем;accept
+Мы принимаем это;accept
+Берем срочный;accept
+Забираю срочный;accept
+Принимаю срочный;accept
+Берем экстренный;accept
+Беру экстренный;accept
+Забираю экстренный;accept
+Принимаю экстренный;accept
+Ок стартую;accept
+Ок поехал;accept
+Ок выходим;accept
+Договорились все;accept
+Забираю договорились;accept
+Принимаю договорились;accept
+Сделаем все;accept
+Делаю это;accept
+Делаю забираю;accept
+Делаю принимаю;accept
+Забираю делаю;accept
+Принимаю делаю;accept
+Приняли все;accept
+Приняла это;accept
+Подтверждаю дело;accept
+Подтвердили все;accept
+Подтвердила это;accept
+Есть забираю;accept
+Есть принимаю;accept
+Забираю окончательно;accept
+Принимаю окончательно;accept
+Не везу;decline
+Не желаю;decline
+Да идите вы!;decline
+Отказ от поездки;decline
+Не надо такого;decline
+Отказываемся;decline
+Пошел нахер;decline
+Отклоняю;decline
+Не возьму;decline
+Не хочется;decline
+Проходим мимо;decline
+Не стану;decline
+Неа;decline
+Туда не поехать;decline
+Не хочу такое;decline
+Минусую;decline
+Не поехать;decline
+Убери это;decline
+Откажи пожалуйста;decline
+Пропускаем;decline
+Плохой рейс;decline
+Отмени это;decline
+Алиса отмени это;decline
+Отменить;decline
+Не берем такое;decline
+Алиса не берем это;decline
+Отменяем это;decline
+Не хочу;decline
+Нет не возьму;decline
+Не хочется;decline
+Пропусти;decline
+Отклони;decline
+Через мой труп;decline
+Сожалею нет;decline
+Не смогу согласиться;decline
+Не годится;decline
+В эту задницу не поеду;decline
+Такой фигней не занимаюсь;decline
+Пропустим;decline
+Пропускай;decline
+Не готовый;decline
+Не хочется;decline
+Никак нет;decline
+Не возьмем;decline
+Далее;decline
+Проходим;decline
+Не интересная штука;decline
+Не хочется работать;decline
+Алиса пропускай это;decline
+Не охота;decline
+Отказ от рейса такого;decline
+Не подходящий человек;decline
+Не хочется туда ехать;decline
+Откажись Алиса;decline
+Не готов работать;decline
+Слишком далеко ехать;decline
+Не хочется брать;decline
+Плохое место;decline
+Отвергаю это;decline
+Не согласился;decline
+Алиса не бери это;decline
+Отказываюсь работать;decline
+Не буду делать;decline
+Сбрось заказ;decline
+Откажись от этого;decline
+Сбрасываю это;decline
+Не возьму сейчас;decline
+Отказываюсь от этого;decline
+Не хочется;decline
+Пропускай это;decline
+Пропусти вызов;decline
+Отменяю это;decline
+Отмена этого;decline
+Не возьму извини;decline
+Не получится;decline
+Нет пропускаю;decline
+Не годится;decline
+Не успею туда;decline
+Пропусти занятый;decline
+Пропускаем все;decline
+Пропускаю быстро;decline
+Сбрось занятый;decline
+Откажи мне;decline
+Не интересная штука;decline
+Без меня это;decline
+Не сделаю;decline
+Не возьму потом;decline
+Отменить это;decline
+Убирай это;decline
+Убираю заказ;decline
+Не возьму эту штуку;decline
+Отказываюсь сейчас от этого;decline
+Не возьму спасибо;decline
+Не возьму занято;decline
+Не возьму времени нет;decline
+Отказываюсь принимать это;decline
+Заказ не для меня;decline
+Пропускаю это;decline
+Убираю нет возможности;decline
+Откажись сразу;decline
+Не возьму пробки;decline
+Не получится сейчас;decline
+Не смогу;decline
+Нет не возьму;decline
+Не буду;decline
+Откажусь от этого;decline
+Отказаться от этого;decline
+Отменяем это;decline
+Сброшу;decline
+Сбрось это;decline
+Не тянет;decline
+Не повезу;decline
+Нет пропускаю это;decline
+Не возьму отдыхаю;decline
+Не хочется брать это;decline
+Не готовый к этому;decline
+Нет спасибо вам;decline
+Не вариант такой;decline
+Не сейчас это;decline
+В другое время;decline
+Прости но нет;decline
+Слишком далеко это;decline
+Нет возможности такой;decline
+Не смогу отвезти туда;decline
+Откажись от поездки;decline
+Нет пропусти это;decline
+Не берется;decline
+Откажусь от этого;decline
+Сброс этого;decline
+Не сейчас никак;decline
+Не успею никак;decline
+Отказ такой;decline
+Убираю это;decline
+Не вариант вообще;decline
+Не хочется этого;decline
+Пропусти это;decline
+Не подходит вообще;decline
+Не возьму извини меня;decline
+Не повезу никуда;decline
+Дорога плохая;decline
+Нет спасибо большое;decline
+Не могу никак;decline
+Не возьму сейчас никак;decline
+Нет возможности никакой;decline
+Нет возможности взяться;decline
+Давай другой возьмется;decline
+Не вариант сейчас вообще;decline
+Отказываюсь сейчас вообще;decline
+Не могу сейчас никак;decline
