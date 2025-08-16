@@ -3,6 +3,68 @@ part of '../../ui.dart';
 class SheetAtPickup extends StatelessWidget {
   const SheetAtPickup({super.key});
 
+  void _openChat(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Stack(
+        children: [
+          // Close button
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.15 - 28,
+            right: 16,
+            child: GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: context.colors.semanticBackground,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Icon(
+                  Icons.close,
+                  size: 24,
+                  color: context.colors.semanticText,
+                ),
+              ),
+            ),
+          ),
+          // Chat screen
+          DraggableScrollableSheet(
+            initialChildSize: 0.8,
+            minChildSize: 0.5,
+            maxChildSize: 1.0,
+            builder: (context, scrollController) => Container(
+              decoration: BoxDecoration(
+                color: context.colors.semanticBackground,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 10,
+                    spreadRadius: 5,
+                  ),
+                ],
+              ),
+              child: const ChatScreen(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // Since we exactly know the height min/max visible.
@@ -117,7 +179,7 @@ class SheetAtPickup extends StatelessWidget {
             context,
             'Сообщение',
             'assets/icons/msg_icon.svg',
-            onPressed: () {},
+            onPressed: () => _openChat(context),
           ),
           const SizedBox(width: 8),
           _buildWeirdButton(

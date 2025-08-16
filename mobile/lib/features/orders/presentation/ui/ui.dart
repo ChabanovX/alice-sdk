@@ -14,6 +14,7 @@ import '../../../../widgets/widgets.dart';
 import '../../../components/components.dart';
 import '../bloc/orders_bloc.dart';
 import 'widgets/maps/map_offline.dart';
+import '../../../chat/view/chat_screen.dart';
 
 
 part 'orders_page.dart';
