@@ -18,4 +18,8 @@ RUN make build-release
 
 EXPOSE 8080
 
+RUN useradd app && chown app build-release -R
+USER app
+
 CMD ["./build-release/classifier_service", "-c", "configs/static_config.yaml"]
+# CMD ["make", "start-release"]

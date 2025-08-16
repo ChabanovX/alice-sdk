@@ -10,7 +10,8 @@ allowed-url-prefixes:
   - "http://localhost:8083/"
   - "http://localhost:8084/"
   - "http://localhost:8000/"
+  - "http://analytics-service:8000/"
 
-analytics-url: http://host.docker.internal:8000/cluster
+analytics-url: http://analytics-service:8000/cluster
 
 dbconnection: 'postgresql://user:password@db:5432/voice_assistant'
