@@ -9,4 +9,4 @@ COPY app/ ./app
 
 EXPOSE 8081
 
-CMD ["fastapi", "run", "app/server.py", "--port", "8081"]
+CMD ["fastapi", "run", "app/server.py", "--port", "8081", "--workers", "4"]
