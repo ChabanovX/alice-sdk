@@ -10,7 +10,12 @@
 curl -i \
 -X POST "http://localhost:8080/classify-message" \
 -H "Content-Type: application/json" \
--d '{"text": "Прими заказ"}'
+-d '{"user_id": "u", "voice_start_time": "2025-08-16T22:55:00+0300", "request_text": "где рядом дом 1 пушкина"}'
+```
+
+Пример ответа:
+```
+{"intention":"home","addresses":null,"route_choice":null,"tariff":null,"places":null}
 ```
 
 ## Работа с приложением
@@ -72,13 +77,6 @@ make docker-test-release
 docker compose up
 ```
 
-И попробуйте постучаться в сервер:
-
-```bash
-curl -i \
--X POST "http://localhost:8080/classify-message" \
--H "Content-Type: application/json" \
--d '{"text": "Прими заказ"}'
-```
+И попробуйте постучаться в сервер (команда выше)
 
 В ответ придет `json`
