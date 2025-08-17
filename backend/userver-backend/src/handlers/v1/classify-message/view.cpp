@@ -72,7 +72,7 @@ struct Response {
     std::optional<std::string> addresses;
     std::optional<std::vector<int>> route_choice;
     std::optional<std::string> tariff;
-    std::optional<std::string> places;
+    std::optional<std::vector<std::string>> places;
 
     friend Response Parse(const userver::formats::json::Value& json, userver::formats::parse::To<Response> /*tag*/) {
         return {

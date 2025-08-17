@@ -4,6 +4,8 @@
 
 На данный момент сервис имеет одну единственную ручку `/classify-message` в которую дается текст из голосового сообщения, а на выход выдается `json` со сценарием + доп. информация.
 
+Подробное описание API лежит в [openapi.yaml](./openapi.yaml)
+
 Пример команды:
 
 ```bash
@@ -15,7 +17,7 @@ curl -i \
 
 Пример ответа:
 ```
-{"intention":"home","addresses":null,"route_choice":null,"tariff":null,"places":null}
+{"intention":"find_nearby_places","addresses":null,"route_choice":null,"tariff":null,"places":["дом 1 пушкина"]}
 ```
 
 ## Работа с приложением

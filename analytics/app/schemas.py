@@ -9,4 +9,4 @@ class ProcessedText(BaseModel):
     addresses: Optional[str] = None
     route_choice: Optional[list[int]] = None
     tariff: Optional[str] = None
-    places: Optional[str] = None
+    places: Optional[list[str]] = None

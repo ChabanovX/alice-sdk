@@ -66,15 +66,17 @@ components:
           description: Optional addresses related to the response
         route_choice:
           type: array
-          nullable: true
           items:
             type: integer
+          nullable: true
           description: Optional route choices
         tariff:
           type: string
           nullable: true
           description: Optional tariff information
         places:
-          type: string
+          type: array
+          items:
+            type: string
           nullable: true
           description: Optional places information
