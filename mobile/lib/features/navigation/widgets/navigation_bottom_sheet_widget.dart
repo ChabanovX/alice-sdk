@@ -7,7 +7,7 @@ import 'control_button_widget.dart';
 import 'route_card_widget.dart';
 import 'coupon_widget.dart';
 
-class NavigationBottomSheetWidget extends StatelessWidget {
+class NavigationBottomSheetWidget extends StatefulWidget {
   const NavigationBottomSheetWidget({
     super.key,
     required this.title,
@@ -19,6 +19,9 @@ class NavigationBottomSheetWidget extends StatelessWidget {
     this.onButtonTap,
     this.isSecondState = false,
     this.isThirdState = false,
+    this.routes,
+    this.selectedRouteIndex,
+    this.onRouteSelected,
   });
 
   final String title;
@@ -30,10 +33,51 @@ class NavigationBottomSheetWidget extends StatelessWidget {
   final VoidCallback? onButtonTap;
   final bool isSecondState;
   final bool isThirdState;
+  final List<RouteOption>? routes;
+  final int? selectedRouteIndex;
+  final Function(int)? onRouteSelected;
+
+  @override
+  State<NavigationBottomSheetWidget> createState() => _NavigationBottomSheetWidgetState();
+}
+
+class _NavigationBottomSheetWidgetState extends State<NavigationBottomSheetWidget> {
+  int _selectedRouteIndex = 0;
+  bool _couponEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedRouteIndex = widget.selectedRouteIndex ?? 0;
+  }
+
+  @override
+  void didUpdateWidget(NavigationBottomSheetWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.selectedRouteIndex != oldWidget.selectedRouteIndex) {
+      setState(() {
+        _selectedRouteIndex = widget.selectedRouteIndex ?? 0;
+      });
+    }
+  }
+
+  void _onRouteSelected(int index) {
+    setState(() {
+      _selectedRouteIndex = index;
+    });
+    widget.onRouteSelected?.call(index);
+  }
+
+  void _onCouponToggle(bool value) {
+    setState(() {
+      _couponEnabled = value;
+    });
+    print('Купон ${value ? 'включен' : 'выключен'}');
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (isSecondState) {
+    if (widget.isSecondState) {
       return SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -62,12 +106,12 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                     ),
                     const SizedBox(width: 12),
                     Expanded(
-                      child: Text(
-                        address,
-                        style: context.textStyles.medium.copyWith(
-                          color: context.colors.text,
+                      child:                         Text(
+                          widget.address,
+                          style: context.textStyles.medium.copyWith(
+                            color: context.colors.text,
+                          ),
                         ),
-                      ),
                     ),
                   ],
                 ),
@@ -77,7 +121,7 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: AspectsWidget(
-                    aspects: aspects,
+                    aspects: widget.aspects,
                     showDivider: false,
                   ),
                 ),
@@ -85,13 +129,13 @@ class NavigationBottomSheetWidget extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: RouteCardWidget(
-                  routes: const [
+                  routes: widget.routes ?? const [
                     RouteOption(duration: '15 мин', distance: '14 км'),
                     RouteOption(duration: '17 мин', distance: '12,6 км'),
                     RouteOption(duration: '18 мин', distance: '16 км'),
                   ],
-                  selectedIndex: 0,
-                  onRouteSelected: (index) => print('Выбран маршрут $index'),
+                  selectedIndex: _selectedRouteIndex,
+                  onRouteSelected: _onRouteSelected,
                 ),
               ),
               const SizedBox(height: 16),
@@ -100,8 +144,8 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   child: ControlButtonWidget(
-                    text: buttonText,
-                    onTap: onButtonTap,
+                    text: widget.buttonText,
+                    onTap: widget.onButtonTap,
                   ),
                 ),
               ),
@@ -111,7 +155,7 @@ class NavigationBottomSheetWidget extends StatelessWidget {
       );
     }
 
-    if (isThirdState) {
+    if (widget.isThirdState) {
       return SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -140,14 +184,14 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                title,
+                                widget.title,
                                 style: context.textStyles.boldMedium.copyWith(
                                   color: context.colors.text,
                                 ),
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                address,
+                                widget.address,
                                 style: context.textStyles.regular.copyWith(
                                   color: context.colors.text,
                                 ),
@@ -166,7 +210,7 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                               BlendMode.srcIn,
                             ),
                           ),
-                          onTap: onNavigateTap,
+                          onTap: widget.onNavigateTap,
                         ),
                         const SizedBox(width: 8),
                         IconSpotWidget(
@@ -179,7 +223,7 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                               BlendMode.srcIn,
                             ),
                           ),
-                          onTap: onBookmarkTap,
+                          onTap: widget.onBookmarkTap,
                         ),
                       ],
                     ),
@@ -197,7 +241,7 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: AspectsWidget(
-                    aspects: aspects,
+                    aspects: widget.aspects,
                     showDivider: false,
                   ),
                 ),
@@ -207,8 +251,8 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                 child: CouponWidget(
                   title: 'Домой без доп. комиссии',
                   description: 'Осталось 1 из 2 применений, обновляется раз в сутки',
-                  isEnabled: false,
-                  onToggle: (value) => print('Купон ${value ? 'включен' : 'выключен'}'),
+                  isEnabled: _couponEnabled,
+                  onToggle: _onCouponToggle,
                   remainingUses: 1,
                   totalUses: 2,
                   updateFrequency: 'обновляется раз в сутки',
@@ -219,8 +263,8 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   child: ControlButtonWidget(
-                    text: buttonText,
-                    onTap: onButtonTap,
+                    text: widget.buttonText,
+                    onTap: widget.onButtonTap,
                   ),
                 ),
               ),
@@ -258,14 +302,14 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                title,
+                                widget.title,
                                 style: context.textStyles.boldMedium.copyWith(
                                   color: context.colors.text,
                                 ),
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                address,
+                                widget.address,
                                 style: context.textStyles.regular.copyWith(
                                   color: context.colors.text,
                                 ),
@@ -284,7 +328,7 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                               BlendMode.srcIn,
                             ),
                           ),
-                          onTap: onNavigateTap,
+                          onTap: widget.onNavigateTap,
                         ),
                         const SizedBox(width: 8),
                         IconSpotWidget(
@@ -297,7 +341,7 @@ class NavigationBottomSheetWidget extends StatelessWidget {
                               BlendMode.srcIn,
                             ),
                           ),
-                          onTap: onBookmarkTap,
+                          onTap: widget.onBookmarkTap,
                         ),
                       ],
                     ),
@@ -314,20 +358,20 @@ class NavigationBottomSheetWidget extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 16, left: 24, right: 24),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: AspectsWidget(
-                  aspects: aspects,
-                  showDivider: false,
-                ),
+                                  child: AspectsWidget(
+                    aspects: widget.aspects,
+                    showDivider: false,
+                  ),
               ),
             ),
             Container(
               padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
               child: Container(
                 width: double.infinity,
-                child: ControlButtonWidget(
-                  text: buttonText,
-                  onTap: onButtonTap,
-                ),
+                                  child: ControlButtonWidget(
+                    text: widget.buttonText,
+                    onTap: widget.onButtonTap,
+                  ),
               ),
             ),
           ],

@@ -91,6 +91,18 @@ class _RouteCardState extends State<_RouteCard>
   }
 
   @override
+  void didUpdateWidget(_RouteCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isSelected != oldWidget.isSelected) {
+      if (widget.isSelected) {
+        _fadeController.forward();
+      } else {
+        _fadeController.reverse();
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: (_) {
