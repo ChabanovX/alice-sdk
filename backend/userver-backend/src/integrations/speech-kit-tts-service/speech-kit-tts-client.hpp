@@ -21,7 +21,7 @@ public:
     SpeechKitTTSClient(const userver::components::ComponentConfig& config,
                     const userver::components::ComponentContext& context);
 
-    std::string SendHttpRequest(userver::server::websocket::WebSocketConnection& ws, std::string& text);
+    void SendHttpRequest(userver::server::websocket::WebSocketConnection& ws, std::string& text) const;
 
     static userver::yaml_config::Schema GetStaticConfigSchema();
 

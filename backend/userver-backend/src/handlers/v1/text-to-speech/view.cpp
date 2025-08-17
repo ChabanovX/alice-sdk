@@ -23,18 +23,11 @@ public:
         userver::server::websocket::Message msg;
         ws.Recv(msg);
         std::string resp;
-        resp = speechkit_tts_service_.SendHttpRequest(ws, msg.data);
-        /*if (msg.is_text) {
-            resp = speechkit_tts_service_.SendHttpRequest(ws, msg.data);
-        } else {
-            ws.Close(userver::server::websocket::CloseStatus::kBadMessageData);
-            return;
-        }*/
-        //LOG_INFO() << resp << '\n';
+        speechkit_tts_service_.SendHttpRequest(ws, msg.data);
         ws.Close(userver::server::websocket::CloseStatus::kNormal);
     }
 private:
-    speechkit_tts_service::SpeechKitTTSClient& speechkit_tts_service_;
+    const speechkit_tts_service::SpeechKitTTSClient& speechkit_tts_service_;
 };
 
 } // namespace 
