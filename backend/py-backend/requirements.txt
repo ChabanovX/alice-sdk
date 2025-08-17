@@ -2,6 +2,7 @@ grpcio-tools
 websockets
 fastapi[standard]==0.113.0
 pytest
+aiohttp
 asyncio
 pytest-asyncio
 numpy
