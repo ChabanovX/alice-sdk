@@ -173,7 +173,7 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
         // Local decision
         auto local_decision = local_classifier_.GetTypeRequest(utf8ToUtf32(body.request_text));
         // If can respond early
-        if (local_decision &&
+        if (local_decision && *local_decision != TypeRequest::OTHER &&
             boost::range::find(kRequestTypesWithParams, *local_decision) == kRequestTypesWithParams.end()) {
             Response response{};
 
