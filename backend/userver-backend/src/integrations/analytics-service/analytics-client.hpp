@@ -19,7 +19,7 @@ class AnalyticsClient : public userver::components::ComponentBase {
     AnalyticsClient(const userver::components::ComponentConfig& config,
                     const userver::components::ComponentContext& context);
 
-    [[nodiscard]] std::string SendHttpRequest(const std::string& body) const;
+    [[nodiscard]] std::string SendHttpRequest(std::string_view text) const;
 
     static userver::yaml_config::Schema GetStaticConfigSchema();
 

@@ -29,7 +29,7 @@ enum class RequestType : char {
     BUSINESS,
     HOME,
     FIND,
-    СHANGE_FARE,
+    CHANGE_FARE,
 };
 
 }  // namespace db_internal
@@ -51,7 +51,7 @@ struct userver::storages::postgres::io::CppToUserPg<db_internal::RequestType> {
             .Case("business", db_internal::RequestType::BUSINESS)
             .Case("home", db_internal::RequestType::HOME)
             .Case("find", db_internal::RequestType::FIND)
-            .Case("change_rate", db_internal::RequestType::СHANGE_FARE);
+            .Case("change_rate", db_internal::RequestType::CHANGE_FARE);
     };
 };
 
@@ -86,6 +86,7 @@ void Repository::RegisterRequest(std::string_view session_id,
                                  TypeRequest type,
                                  std::chrono::system_clock::time_point now,
                                  double request_duration_seconds) const {
+    if (type == TypeRequest::OTHER) return;
     pg_cluster_->Execute(userver::storages::postgres::ClusterHostType::kMaster,
                          "CALL metrics.register_request($1, $2, $3, $4, $5) ",
                          session_id,

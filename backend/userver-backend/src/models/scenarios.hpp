@@ -2,7 +2,7 @@
 
 namespace voice_assistant {
 
-enum class TypeRequest {
+enum class TypeRequest : char {
   ACCEPT_ORDER,
   CANCEL_ORDER,
   VOICE_MESSAGE,

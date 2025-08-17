@@ -4,13 +4,20 @@
 
 На данный момент сервис имеет одну единственную ручку `/classify-message` в которую дается текст из голосового сообщения, а на выход выдается `json` со сценарием + доп. информация.
 
+Подробное описание API лежит в [openapi.yaml](./openapi.yaml)
+
 Пример команды:
 
 ```bash
 curl -i \
 -X POST "http://localhost:8080/classify-message" \
 -H "Content-Type: application/json" \
--d '{"text": "Прими заказ"}'
+-d '{"user_id": "u", "voice_start_time": "2025-08-16T22:55:00+0300", "request_text": "где рядом дом 1 пушкина"}'
+```
+
+Пример ответа:
+```
+{"intention":"find_nearby_places","addresses":"дом 1 пушкина","route_choice":null,"tariff":null,"places":[]}
 ```
 
 ## Работа с приложением
@@ -72,13 +79,6 @@ make docker-test-release
 docker compose up
 ```
 
-И попробуйте постучаться в сервер:
-
-```bash
-curl -i \
--X POST "http://localhost:8080/classify-message" \
--H "Content-Type: application/json" \
--d '{"text": "Прими заказ"}'
-```
+И попробуйте постучаться в сервер (команда выше)
 
 В ответ придет `json`

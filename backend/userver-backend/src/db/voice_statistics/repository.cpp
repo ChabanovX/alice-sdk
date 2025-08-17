@@ -32,7 +32,7 @@ enum class RequestType : char {
     BUSINESS,
     HOME,
     FIND,
-    СHANGE_FARE,
+    CHANGE_FARE,
 };
 
 struct CountInRequestType {
@@ -64,7 +64,7 @@ struct userver::storages::postgres::io::CppToUserPg<db_internal::RequestType> {
             .Case("business", db_internal::RequestType::BUSINESS)
             .Case("home", db_internal::RequestType::HOME)
             .Case("find", db_internal::RequestType::FIND)
-            .Case("change_rate", db_internal::RequestType::СHANGE_FARE);
+            .Case("change_rate", db_internal::RequestType::CHANGE_FARE);
     };
 };
 
@@ -91,6 +91,7 @@ std::vector<std::string> Repository::GetStopWords() const {
 }
 
 void Repository::UpdateStatistics(TypeRequest request_type, const std::vector<std::string>& words) const {
+    if (request_type == TypeRequest::OTHER) return;
     pg_->Execute(userver::storages::postgres::ClusterHostType::kMaster,
                  "CALL voice_statistics.update_statistics($1, $2)",
                  words,

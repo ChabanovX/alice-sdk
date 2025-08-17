@@ -19,3 +19,4 @@ RUN make build-release
 EXPOSE 8080
 
 CMD ["./build-release/classifier_service", "-c", "configs/static_config.yaml"]
+# CMD ["make", "start-release"]
