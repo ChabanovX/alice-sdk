@@ -231,16 +231,7 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         borderSide: BorderSide(color: scheme.primary, width: 2),
       ),
     ),
-    bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: scheme.surface,
-      surfaceTintColor: scheme.surfaceTint,
-      modalBackgroundColor: scheme.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-      ),
-      showDragHandle: true,
-      dragHandleColor: scheme.outline,
-    ),
+
     drawerTheme: DrawerThemeData(
       backgroundColor: scheme.surface,
       surfaceTintColor: scheme.surfaceTint,
