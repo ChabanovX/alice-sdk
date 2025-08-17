@@ -17,7 +17,7 @@ curl -i \
 
 Пример ответа:
 ```
-{"intention":"find_nearby_places","addresses":null,"route_choice":null,"tariff":null,"places":["дом 1 пушкина"]}
+{"intention":"find_nearby_places","addresses":"дом 1 пушкина","route_choice":null,"tariff":null,"places":[]}
 ```
 
 ## Работа с приложением
