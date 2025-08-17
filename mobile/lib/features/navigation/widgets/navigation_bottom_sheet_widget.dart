@@ -22,6 +22,7 @@ class NavigationBottomSheetWidget extends StatefulWidget {
     this.routes,
     this.selectedRouteIndex,
     this.onRouteSelected,
+    this.onCouponSelected,
   });
 
   final String title;
@@ -36,6 +37,7 @@ class NavigationBottomSheetWidget extends StatefulWidget {
   final List<RouteOption>? routes;
   final int? selectedRouteIndex;
   final Function(int)? onRouteSelected;
+  final Function(bool)? onCouponSelected;
 
   @override
   State<NavigationBottomSheetWidget> createState() => _NavigationBottomSheetWidgetState();
@@ -72,7 +74,7 @@ class _NavigationBottomSheetWidgetState extends State<NavigationBottomSheetWidge
     setState(() {
       _couponEnabled = value;
     });
-    print('Купон ${value ? 'включен' : 'выключен'}');
+    widget.onCouponSelected?.call(value);
   }
 
   @override
@@ -85,10 +87,9 @@ class _NavigationBottomSheetWidgetState extends State<NavigationBottomSheetWidge
             borderRadius: const BorderRadius.vertical(top: Radius.circular(26)),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.12),
+                color: Colors.black.withValues(alpha: 0.12),
                 offset: const Offset(0, -4),
                 blurRadius: 20,
-                spreadRadius: 0,
               ),
             ],
           ),
@@ -163,7 +164,7 @@ class _NavigationBottomSheetWidgetState extends State<NavigationBottomSheetWidge
             borderRadius: const BorderRadius.vertical(top: Radius.circular(26)),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.12),
+                color: Colors.black.withValues(alpha: 0.12),
                 offset: const Offset(0, -4),
                 blurRadius: 20,
                 spreadRadius: 0,
@@ -281,7 +282,7 @@ class _NavigationBottomSheetWidgetState extends State<NavigationBottomSheetWidge
           borderRadius: const BorderRadius.vertical(top: Radius.circular(26)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.12),
+              color: Colors.black.withValues(alpha: 0.12),
               offset: const Offset(0, -4),
               blurRadius: 20,
               spreadRadius: 0,
