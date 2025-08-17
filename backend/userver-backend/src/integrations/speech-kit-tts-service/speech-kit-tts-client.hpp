@@ -9,25 +9,28 @@
 #include <userver/components/component_context.hpp>
 #include <userver/components/component_list.hpp>
 #include <userver/yaml_config/merge_schemas.hpp>
+#include <userver/server/websocket/server.hpp>
+#include <userver/server/websocket/websocket_handler.hpp>
 
 namespace voice_assistant::speechkit_tts_service {
 
 class SpeechKitTTSClient : public userver::components::ComponentBase {
-   public:
+public:
     static constexpr std::string_view kName = "speech-kit-tts-client";
 
     SpeechKitTTSClient(const userver::components::ComponentConfig& config,
                     const userver::components::ComponentContext& context);
 
-    [[nodiscard]] std::string SendHttpRequest(const std::string& body) const;
+    std::string SendHttpRequest(userver::server::websocket::WebSocketConnection& ws, std::string& text);
 
     static userver::yaml_config::Schema GetStaticConfigSchema();
 
-   private:
+private:
+
     const std::string service_url_;
     userver::clients::http::Client& http_client_;
 };
 
 void AppendSpeechKitTTSClient(userver::components::ComponentList& component_list);
 
-}  // namespace voice_assistant::analytics_service
+}  // namespace voice_assistant::speechkit_tts_service

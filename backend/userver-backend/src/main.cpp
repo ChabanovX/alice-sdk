@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
 
     classifier::AppendClassifyMessage(component_list);
     analytics_service::AppendAnalyticsService(component_list);
-    text_to_speech::AppendTextToSpeech(component_list);
+    websocket_tts::AppendTextHandler(component_list);
     speechkit_tts_service::AppendSpeechKitTTSClient(component_list);
 
     return userver::utils::DaemonMain(argc, argv, component_list);

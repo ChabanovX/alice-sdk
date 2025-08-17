@@ -2,8 +2,8 @@
 
 #include <userver/components/component_list.hpp>
 
-namespace voice_assistant::text_to_speech {
+namespace voice_assistant::websocket_tts {
 
-void AppendTextToSpeech(userver::components::ComponentList& component_list);
+void AppendTextHandler(userver::components::ComponentList& component_list);
 
-}  // namespace voice_assistant::text_to_speech
+}  // namespace voice_assistant::websocket_tts
