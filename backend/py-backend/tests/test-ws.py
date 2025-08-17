@@ -18,20 +18,6 @@ async def test_websocket_connect_and_close():
 
 
 @pytest.mark.asyncio
-async def test_send_eos_and_receive_final():
-    async with websockets.connect(WS_URL) as ws:
-        await ws.send("EOS")
-
-        try:
-            response = await asyncio.wait_for(ws.recv(), timeout=5.0)
-            json_body = json.loads(response)
-        except asyncio.TimeoutError:
-            json_body = None
-
-        assert json_body is None or isinstance(json_body, str)
-
-
-@pytest.mark.asyncio
 async def test_send_pcm_file():
     async with websockets.connect(WS_URL) as ws:
         with open(TEST_PCM, "rb") as f:

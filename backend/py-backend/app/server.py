@@ -1,27 +1,98 @@
 import os
+import time
 import asyncio
-import grpc
 import logging
+from typing import Optional
+import aiohttp
+import grpc
 from fastapi import FastAPI, WebSocket
 
-# модули gRPC
+# gRPC modules
 import yandex.cloud.ai.stt.v3.stt_pb2 as stt_pb2
 import yandex.cloud.ai.stt.v3.stt_service_pb2_grpc as stt_srv
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+
+METADATA_TOKEN_URL = "http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token"
+METADATA_HEADER = {"Metadata-Flavor": "Google"}
+REFRESH_INTERVAL = 3600  # 1 hour
 
 app = FastAPI()
+
+
+class IAMTokenManager:
+    def __init__(self, session: aiohttp.ClientSession):
+        self._session = session
+        self.token: str | None = None
+        self.expires_at: float = 0.0
+        self._lock = asyncio.Lock()
+
+    async def fetch_token_once(self) -> None:
+        try:
+            async with self._session.get(METADATA_TOKEN_URL, headers=METADATA_HEADER, timeout=5) as resp:
+                if resp.status != 200:
+                    text = await resp.text()
+                    logging.warning(f"Metadata token request returned {resp.status}: {text}")
+                    return
+                data = await resp.json()
+                access_token = data.get("access_token")
+                expires_in = int(data.get("expires_in", 0))
+                if access_token:
+                    async with self._lock:
+                        self.token = access_token
+                        self.expires_at = time.time() + expires_in
+                    logging.info(f"Fetched IAM token from metadata (expires in {expires_in}s).")
+        except Exception as e:
+            logging.warning(f"Failed to fetch IAM token from metadata: {e}")
+
+    async def get_token(self) -> Optional[str]:
+        async with self._lock:
+            return self.token
+
+
+async def _background_token_refresher(app: FastAPI):
+    token_manager: IAMTokenManager = app.state.iam_token_manager
+    await token_manager.fetch_token_once()
+
+    try:
+        while True:
+            await asyncio.sleep(REFRESH_INTERVAL)
+            await token_manager.fetch_token_once()
+    except asyncio.CancelledError:
+        logging.info("Token refresher cancelled, exiting background task.")
+        raise
+
+
+@app.on_event("startup")
+async def startup():
+    app.state.aiohttp_session = aiohttp.ClientSession()
+    app.state.iam_token_manager = IAMTokenManager(app.state.aiohttp_session)
+    app.state.token_refresher_task = asyncio.create_task(_background_token_refresher(app))
+    logging.info("Started aiohttp session and token refresher task.")
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    task = app.state.token_refresher_task
+    task.cancel()
+    try:
+        await task
+    except asyncio.CancelledError:
+        pass
+    await app.state.aiohttp_session.close()
+    logging.info("Shutdown: token refresher stopped and aiohttp session closed.")
 
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
+
+    token_manager: IAMTokenManager = websocket.app.state.iam_token_manager
     api_key = os.getenv("API_KEY")
-    if not api_key:
-        logging.error("API_KEY not found")
+
+    iam_token = await token_manager.get_token()
+    if not iam_token and not api_key:
+        logging.error("No IAM token available and no API_KEY fallback set — refusing connection.")
         await websocket.close(code=1008)
         return
 
@@ -64,7 +135,7 @@ async def websocket_endpoint(websocket: WebSocket):
             try:
                 msg = await websocket.receive()
             except Exception as e:
-                logging.warning(f"Can't recieve message from WebSocket: {e}")
+                logging.warning(f"Can't receive message from WebSocket: {e}")
                 break
 
             if 'bytes' in msg:
@@ -78,12 +149,16 @@ async def websocket_endpoint(websocket: WebSocket):
                 if text == "EOS":
                     logging.info("got EOS, finishing")
                     yield stt_pb2.StreamingRequest(eou=stt_pb2.Eou())
+                    break
+
+    iam_token = await token_manager.get_token()
+    if iam_token:
+        metadata = (('authorization', f'Bearer {iam_token}'),)
+    else:
+        metadata = (('authorization', f'Api-Key {api_key}'),)
 
     try:
-        responses = stub.RecognizeStreaming(
-            request_generator(),
-            metadata=(('authorization', f'Api-Key {api_key}'),)
-        )
+        responses = stub.RecognizeStreaming(request_generator(), metadata=metadata)
         async for response in responses:
             event = response.WhichOneof('Event')
             if event == 'partial' and response.partial.alternatives:
@@ -99,8 +174,9 @@ async def websocket_endpoint(websocket: WebSocket):
                 break
     except grpc.RpcError as err:
         logging.error(f"gRPC error: {err}")
-
-    try:
-        await websocket.close()
-    except Exception as e:
-        logging.warning(f"Error closing WebSocket: {e}")
+    finally:
+        try:
+            await websocket.close()
+        except Exception as e:
+            logging.warning(f"Error closing WebSocket: {e}")
+        await channel.close()
