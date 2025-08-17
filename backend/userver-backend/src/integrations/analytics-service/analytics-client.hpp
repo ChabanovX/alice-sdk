@@ -20,11 +20,13 @@ class AnalyticsClient : public userver::components::ComponentBase {
                     const userver::components::ComponentContext& context);
 
     [[nodiscard]] std::string SendHttpRequest(std::string_view text) const;
+    [[nodiscard]] std::string SendHttpRequestWithType(std::string_view text, std::string_view request_type) const;
 
     static userver::yaml_config::Schema GetStaticConfigSchema();
 
    private:
     const std::string service_url_;
+    const std::string service_url_with_type_;
     userver::clients::http::Client& http_client_;
 };
 

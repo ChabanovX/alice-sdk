@@ -13,5 +13,6 @@ allowed-url-prefixes:
   - "http://analytics-service:8000/"
 
 analytics-url: http://analytics-service:8000/cluster
+analytics-url-with-type: http://analytics-service:8000/details-by-type
 
 dbconnection: 'postgresql://user:password@db:5432/voice_assistant'
