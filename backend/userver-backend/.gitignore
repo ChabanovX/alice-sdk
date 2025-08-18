@@ -15,4 +15,3 @@ cmake-build-*
 Testing/
 .DS_Store
 Makefile.local
-.pgdata/
