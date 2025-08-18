@@ -43,7 +43,7 @@ constexpr userver::utils::TrivialBiMap request_names = [](auto selector) {  // N
         .Case("read_passenger_preferences", TypeRequest::VOICE_WISH)
         .Case("call_passenger", TypeRequest::CALL_PASSENGER)
         .Case("route", TypeRequest::CREATE_ROUTE)
-        .Case("route", TypeRequest::CHOOSE_ROUTE)
+        .Case("route_choice", TypeRequest::CHOOSE_ROUTE)
         .Case("business", TypeRequest::BUSINESS)
         .Case("home", TypeRequest::HOME)
         .Case("find_nearby_places", TypeRequest::FIND)

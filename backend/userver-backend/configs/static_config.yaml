@@ -55,6 +55,7 @@ components_manager:
 
         analytics-client:
             analytics-url: $analytics-url
+            analytics-url-with-type: $analytics-url-with-type
 
         speech-kit-tts-client:
             speech-kit-tts-service-url: $speech-kit-tts-service-url
