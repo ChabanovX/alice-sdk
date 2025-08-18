@@ -4,8 +4,8 @@
 #include "classifier/classifier_fabric.hpp"
 #include "classifier/string_converter.hpp"
 #include "db/metrics/models.hpp"
-#include "db/metrics/repository.hpp"
-#include "db/voice_statistics/repository.hpp"
+// #include "db/metrics/repository.hpp"
+// #include "db/voice_statistics/repository.hpp"
 #include "integrations/analytics-service/analytics-client.hpp"
 #include "models/scenarios.hpp"
 
@@ -113,44 +113,44 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
                     const userver::components::ComponentContext& context)
         : HttpHandlerBase(config, context),
           analytics_client_(context.FindComponent<analytics_service::AnalyticsClient>()),
-          metrics_repo_{context.FindComponent<userver::components::Postgres>("postgres-db-1").GetCluster()},
-          statistics_repo_{context.FindComponent<userver::components::Postgres>("postgres-db-1").GetCluster()},
+        //   metrics_repo_{context.FindComponent<userver::components::Postgres>("postgres-db-1").GetCluster()},
+        //   statistics_repo_{context.FindComponent<userver::components::Postgres>("postgres-db-1").GetCluster()},
           local_classifier_{CreateClassifierFromSave()} {}
 
-    void UpdateMetrics(const Body& body, TypeRequest request_type) const {
-        auto now = userver::utils::datetime::Now();
-        double duration = std::chrono::duration<double>{now - body.voice_start_time}.count();
-        metrics_repo_.RegisterRequest(body.user_id, body.user_id, request_type, now, duration);
+    // void UpdateMetrics(const Body& body, TypeRequest request_type) const {
+    //     auto now = userver::utils::datetime::Now();
+    //     double duration = std::chrono::duration<double>{now - body.voice_start_time}.count();
+    //     metrics_repo_.RegisterRequest(body.user_id, body.user_id, request_type, now, duration);
 
-        auto last_request = metrics_repo_.GetLastRequest(body.user_id);
-        if (last_request && last_request->type == request_type && request_type != TypeRequest::OTHER) {
-            metrics_repo_.IncrementCounter(db::metrics::CounterCategory::kRepetitions);
-        }
+    //     auto last_request = metrics_repo_.GetLastRequest(body.user_id);
+    //     if (last_request && last_request->type == request_type && request_type != TypeRequest::OTHER) {
+    //         metrics_repo_.IncrementCounter(db::metrics::CounterCategory::kRepetitions);
+    //     }
 
-        // Find the best condition from analytics
-        // if (request_type == TypeRequest::OTHER) {
-        //     metrics_repo_.IncrementCounter(db::metrics::CounterCategory::kFallbacks);
-        // }
+    //     // Find the best condition from analytics
+    //     // if (request_type == TypeRequest::OTHER) {
+    //     //     metrics_repo_.IncrementCounter(db::metrics::CounterCategory::kFallbacks);
+    //     // }
 
-        // Find a way to detect cancellations
-        // if (request_type == TypeRequest::OTHER) {
-        //     metrics_repo_.IncrementCounter(db::metrics::CounterCategory::kCancellations);
-        // }
-    }
+    //     // Find a way to detect cancellations
+    //     // if (request_type == TypeRequest::OTHER) {
+    //     //     metrics_repo_.IncrementCounter(db::metrics::CounterCategory::kCancellations);
+    //     // }
+    // }
 
-    void UpdateWordStatistics(std::string_view text, TypeRequest request_type) const {
-        if (request_type == TypeRequest::OTHER) return;
-        std::vector<std::string> words;
-        for (std::size_t start = 0, i = 0; i <= text.size(); ++i) {
-            if (i == text.size() || std::ispunct(text[i]) != 0 || std::isspace(text[i]) != 0) {
-                if (start != i) {
-                    words.emplace_back(text.substr(start, i - start));
-                }
-                start = i + 1;
-            }
-        }
-        statistics_repo_.UpdateStatistics(request_type, words);
-    }
+    // void UpdateWordStatistics(std::string_view text, TypeRequest request_type) const {
+    //     if (request_type == TypeRequest::OTHER) return;
+    //     std::vector<std::string> words;
+    //     for (std::size_t start = 0, i = 0; i <= text.size(); ++i) {
+    //         if (i == text.size() || std::ispunct(text[i]) != 0 || std::isspace(text[i]) != 0) {
+    //             if (start != i) {
+    //                 words.emplace_back(text.substr(start, i - start));
+    //             }
+    //             start = i + 1;
+    //         }
+    //     }
+    //     statistics_repo_.UpdateStatistics(request_type, words);
+    // }
 
     std::string HandleRequestThrow(const userver::server::http::HttpRequest& request,
                                    userver::server::request::RequestContext& /*context*/) const override {
@@ -180,8 +180,8 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
             auto request_name = request_names.TryFind(*local_decision);
             response.intention = request_name ? *request_name : "";
 
-            UpdateMetrics(body, *local_decision);
-            UpdateWordStatistics(body.request_text, *local_decision);
+            // UpdateMetrics(body, *local_decision);
+            // UpdateWordStatistics(body.request_text, *local_decision);
 
             userver::formats::json::ValueBuilder json{response};
             return userver::formats::json::ToString(json.ExtractValue());
@@ -196,8 +196,8 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
                 throw std::runtime_error{"Unknown request_type"};
             }
 
-            UpdateMetrics(body, *request_type);
-            UpdateWordStatistics(body.request_text, *request_type);
+            // UpdateMetrics(body, *request_type);
+            // UpdateWordStatistics(body.request_text, *request_type);
 
             return cluster_body;
         } catch (const std::exception& e) {
@@ -208,8 +208,8 @@ class ClassifyMessage final : public userver::server::handlers::HttpHandlerBase 
 
    private:
     const analytics_service::AnalyticsClient& analytics_client_;
-    db::metrics::Repository metrics_repo_;
-    db::voice_statistics::Repository statistics_repo_;
+    // db::metrics::Repository metrics_repo_;
+    // db::voice_statistics::Repository statistics_repo_;
     Classifier local_classifier_;
 };
 

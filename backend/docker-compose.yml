@@ -5,9 +5,9 @@ services:
     build: userver-backend
     ports:
       - "8080:8080"
-    depends_on:
-      db:
-        condition: service_healthy
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
 
   speech-kit-service:
     build: py-backend
@@ -21,19 +21,19 @@ services:
       - "8000"
     build: ../analytics
 
-  db:
-    image: postgres:17-alpine
-    environment:
-      - POSTGRES_DB=voice_assistant
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-    ports:
-      - "5432"
-    volumes:
-      - ./userver-backend/postgresql/migrations:/docker-entrypoint-initdb.d
-      - ./userver-backend/.pgdata:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U user -d voice_assistant"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+  # db:
+  #   image: postgres:17-alpine
+  #   environment:
+  #     - POSTGRES_DB=voice_assistant
+  #     - POSTGRES_USER=user
+  #     - POSTGRES_PASSWORD=password
+  #   ports:
+  #     - "5432"
+  #   volumes:
+  #     - ./userver-backend/postgresql/migrations:/docker-entrypoint-initdb.d
+  #     - ./userver-backend/.pgdata:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U user -d voice_assistant"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5

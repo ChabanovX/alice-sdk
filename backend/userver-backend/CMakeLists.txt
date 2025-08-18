@@ -28,12 +28,12 @@ add_library(
     src/integrations/analytics-service/analytics-client.hpp
     src/integrations/analytics-service/analytics-client.cpp
 
-    src/db/voice_statistics/models.hpp
-    src/db/voice_statistics/repository.hpp
-    src/db/voice_statistics/repository.cpp
-    src/db/metrics/models.hpp
-    src/db/metrics/repository.hpp
-    src/db/metrics/repository.cpp
+    # src/db/voice_statistics/models.hpp
+    # src/db/voice_statistics/repository.hpp
+    # src/db/voice_statistics/repository.cpp
+    # src/db/metrics/models.hpp
+    # src/db/metrics/repository.hpp
+    # src/db/metrics/repository.cpp
 
     src/classifier/classifier_fabric.cpp
     src/classifier/classifier_fabric.hpp

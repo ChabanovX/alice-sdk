@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
                               .Append<userver::clients::dns::Component>()
                               .Append<userver::components::TestsuiteSupport>()
                               .Append<userver::server::handlers::TestsControl>()
-                              .Append<userver::components::Postgres>("postgres-db-1");
+                              /*.Append<userver::components::Postgres>("postgres-db-1")*/;
 
     classifier::AppendClassifyMessage(component_list);
     analytics_service::AppendAnalyticsService(component_list);
