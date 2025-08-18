@@ -29,6 +29,7 @@ class SheetLeaveLine extends StatelessWidget {
     final textStyle2 = context.textStyles.regular;
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: padding1,

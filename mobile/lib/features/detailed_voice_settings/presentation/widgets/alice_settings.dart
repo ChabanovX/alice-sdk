@@ -8,18 +8,18 @@ class AliceSettings extends StatelessWidget {
     return const Column(
       children: [
         SettingsItem(
-          title: 'Умный асистент',
+          title: 'Умный ассистент',
           type: SettingType.switcher,
         ),
-         SettingsItem(
+        SettingsItem(
           title: 'Голосовая активация',
           type: SettingType.switcher,
         ),
-         SettingsItem(
+        SettingsItem(
           title: 'Озвучка деталей заказа',
           type: SettingType.switcher,
         ),
-         SettingsItem(
+        SettingsItem(
           title: 'Ограничения по времени остановки',
           type: SettingType.switcher,
         ),

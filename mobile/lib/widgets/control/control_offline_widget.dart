@@ -19,7 +19,7 @@ class ControlOfflineWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: theme.colorScheme.shadow,
-            offset: Offset(0, 8),
+            offset: const Offset(0, 8),
             blurRadius: 20,
           ),
         ],
@@ -33,7 +33,6 @@ class ControlOfflineWidget extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(
               color: colorScheme.outline.withAlpha(200),
-              width: 1,
             ),
           ),
           child: Center(
@@ -45,7 +44,6 @@ class ControlOfflineWidget extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(
                   color: colorScheme.outline.withAlpha(200),
-                  width: 1,
                 ),
               ),
               child: Center(

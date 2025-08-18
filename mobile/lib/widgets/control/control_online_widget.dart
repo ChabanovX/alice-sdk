@@ -12,8 +12,6 @@ class ControlOnlineWidget extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     return SizedBox(
-      width: 56,
-      height: 79,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -36,7 +34,7 @@ class ControlOnlineWidget extends StatelessWidget {
                   boxShadow: [
                     BoxShadow(
                       color: theme.colorScheme.shadow,
-                      offset: Offset(0, 8),
+                      offset: const Offset(0, 8),
                       blurRadius: 20,
                     ),
                   ],

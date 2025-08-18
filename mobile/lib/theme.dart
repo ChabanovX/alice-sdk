@@ -33,6 +33,8 @@ class MainColors {
   static const Color border = Color(0xFFF1F1F1);
   // Star Yellow
   static const Color starYellow = Color(0xFFFCB900);
+  // Green Minor (успешные/позитивные элементы UI)
+  static const Color greenMinor = Color(0xFF22C55E);
 
   // Effects Badge / Notification / Button (all white surfaces)
   static const Color effectsBadge = Color(0xFFFFFFFF);
@@ -231,7 +233,16 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
         borderSide: BorderSide(color: scheme.primary, width: 2),
       ),
     ),
-
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: Colors.transparent,
+      surfaceTintColor: scheme.surfaceTint,
+      modalBackgroundColor: scheme.surface,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      showDragHandle: true,
+      dragHandleColor: scheme.outline,
+    ),
     drawerTheme: DrawerThemeData(
       backgroundColor: scheme.surface,
       surfaceTintColor: scheme.surfaceTint,
@@ -510,6 +521,7 @@ ThemeData _buildTheme(ColorScheme scheme, {required bool isDark}) {
 /// Публичная фабрика светлой темы (если потребуется интеграция с ThemeData)
 ThemeData get lightTheme =>
     _buildTheme(_buildLightColorScheme(), isDark: false);
+
 // Расширение API для удобного доступа: context.colors / context.textStyles
 class AppColors {
   const AppColors();
@@ -530,84 +542,85 @@ class AppColors {
   Color get effectsNotification => MainColors.effectsNotification;
   Color get effectsButton => MainColors.effectsButton;
   Color get border => MainColors.border;
+  Color get greenMinor => MainColors.greenMinor;
 }
 
 class AppTextStyles {
   const AppTextStyles();
 
   TextStyle get title => const TextStyle(
-    fontFamily: 'YandexSansText',
-    fontSize: 20,
-    fontWeight: FontWeight.w400,
-  );
+        fontFamily: 'YandexSansText',
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+      );
 
   TextStyle get body => const TextStyle(
-    fontFamily: 'YandexSansText',
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-  );
+        fontFamily: 'YandexSansText',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+      );
 
   TextStyle get caption => const TextStyle(
-    fontFamily: 'YandexSansText',
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-  );
+        fontFamily: 'YandexSansText',
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+      );
 
   TextStyle get mediumSmall => const TextStyle(
-    fontFamily: 'YandexSansText',
-    fontSize: 13,
-    fontWeight: FontWeight.w500,
-    letterSpacing: 0,
-    height: 1.0625,
-  );
+        fontFamily: 'YandexSansText',
+        fontSize: 13,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0,
+        height: 1.0625,
+      );
 
   TextStyle get medium => const TextStyle(
-    fontFamily: 'YandexSansText',
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-    letterSpacing: -0.16,
-    height: 1.0625,
-  );
+        fontFamily: 'YandexSansText',
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        letterSpacing: -0.16,
+        height: 1.0625,
+      );
 
   TextStyle get mediumBig => const TextStyle(
-    fontFamily: 'YandexSansText',
-    fontSize: 20,
-    fontWeight: FontWeight.w500,
-    letterSpacing: -1,
-    height: 1.15,
-  );
+        fontFamily: 'YandexSansText',
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        letterSpacing: -1,
+        height: 1.15,
+      );
 
   TextStyle get regular => const TextStyle(
-    fontFamily: 'YandexSansText',
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    letterSpacing: 0,
-    height: 1.0625,
-  );
+        fontFamily: 'YandexSansText',
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0,
+        height: 1.0625,
+      );
 
   TextStyle get boldSmall => const TextStyle(
-    fontFamily: 'YandexSansText',
-    fontSize: 16,
-    fontWeight: FontWeight.w700,
-    letterSpacing: -0.5,
-    height: 1.0625,
-  );
-  
+        fontFamily: 'YandexSansText',
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+        letterSpacing: -0.5,
+        height: 1.0625,
+      );
+
   TextStyle get boldMedium => const TextStyle(
-    fontFamily: 'YandexSansText',
-    fontSize: 24,
-    fontWeight: FontWeight.w700,
-    letterSpacing: -0.24,
-    height: 1.0625,
-  );
+        fontFamily: 'YandexSansText',
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        letterSpacing: -0.24,
+        height: 1.0625,
+      );
 
   TextStyle get boldBig => const TextStyle(
-    fontFamily: 'YandexSansText',
-    fontSize: 28,
-    fontWeight: FontWeight.w700,
-    letterSpacing: -0.42,
-    height: 1.1072,
-  );
+        fontFamily: 'YandexSansText',
+        fontSize: 28,
+        fontWeight: FontWeight.w700,
+        letterSpacing: -0.42,
+        height: 1.1072,
+      );
 }
 
 extension AppThemeContext on BuildContext {

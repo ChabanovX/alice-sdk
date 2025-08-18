@@ -15,7 +15,10 @@ class OnlineIdle extends OrdersState {
   const OnlineIdle();
 }
 
-class OfferArrived extends OrdersState {}
+class OfferArrived extends OrdersState {
+  const OfferArrived({required this.orderOffer});
+  final OrderOffer orderOffer;
+}
 
 class InRouteToPickup extends OrdersState {}
 

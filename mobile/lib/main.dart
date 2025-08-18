@@ -5,6 +5,7 @@ import 'bloc_observer.dart';
 import 'core/navigation/manager.dart';
 import 'features/profile/presentation/bloc/profile_bloc.dart';
 import 'theme.dart';
+import 'widgets/alice/bloc/alice_bloc.dart';
 
 void main() {
   Bloc.observer = AppBlocObserver();
@@ -16,8 +17,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ProfileBloc(const ProfileInitialState()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ProfileBloc(const ProfileInitialState()),
+        ),
+        BlocProvider(
+          create: (context) => AliceBloc(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.onGenerateRoute,

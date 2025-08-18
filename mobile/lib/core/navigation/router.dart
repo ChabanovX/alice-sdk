@@ -44,7 +44,12 @@ class AppRouter {
         final arg = settings.arguments as StoriesArgs?;
         widget = StoriesPage(slideCount: 4, startIndex: arg?.startIndex ?? 0,);
         break;
-
+      case Routes.orders:
+        widget = BlocProvider(
+            create: (context) => OrdersBloc(const Offline()),
+            child: const OrdersPage(),
+          );
+        break;
       /// Ошибка
       default:
         widget = Scaffold(

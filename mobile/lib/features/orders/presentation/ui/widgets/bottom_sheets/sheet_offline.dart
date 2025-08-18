@@ -1,9 +1,7 @@
 part of '../../ui.dart';
 
 class SheetOffline extends StatelessWidget {
-  const SheetOffline({super.key, required this.bloc});
-
-  final OrdersBloc bloc;
+  const SheetOffline({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +36,7 @@ class SheetOffline extends StatelessWidget {
     const isNeedToKnowActive = true;
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         const PriorityAndOrdersWidget(),
         const SizedBox(height: 8),

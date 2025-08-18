@@ -29,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
       body: IndexedStack(
         index: _selectedItem.index,
         children: const [
-          OrdersPage(),
+          _OrdersTabNavigator(),
           MoneyPage(),
           ChatPage(),
           _ProfileTabNavigator(),
@@ -52,6 +52,21 @@ class _ProfileTabNavigator extends StatelessWidget {
       key: NavigationManager.navigatorKeyProfilePage,
       onGenerateInitialRoutes: (navigator, initialRouteName) => [
         AppRouter.onGenerateRoute(const RouteSettings(name: Routes.profile)),
+      ],
+      onGenerateRoute: AppRouter.onGenerateRoute,
+    );
+  }
+}
+
+class _OrdersTabNavigator extends StatelessWidget {
+  const _OrdersTabNavigator();
+
+  @override
+  Widget build(BuildContext context) {
+    return Navigator(
+      key: NavigationManager.navigatorKeyOrdersPage,
+      onGenerateInitialRoutes: (navigator, initialRouteName) => [
+        AppRouter.onGenerateRoute(const RouteSettings(name: Routes.orders)),
       ],
       onGenerateRoute: AppRouter.onGenerateRoute,
     );

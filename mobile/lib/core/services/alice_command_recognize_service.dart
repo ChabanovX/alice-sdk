@@ -2,19 +2,45 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:dio/dio.dart';
 import 'package:record/record.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:web_socket_client/web_socket_client.dart';
+
+enum AliceCommand {
+  takeOrder('Take order'),
+  declineOrder('Decline order'),
+  none('');
+
+  const AliceCommand(this.value);
+  final String value;
+
+  static AliceCommand fromString(String command) {
+    for (final cmd in AliceCommand.values) {
+      if (cmd.value == command) {
+        return cmd;
+      }
+    }
+    return AliceCommand.none;
+  }
+}
 
 class AliceCommandRecognizeService {
-  WebSocketChannel? _socket;
   final SpeechToText _speechToText = SpeechToText();
   final AudioRecorder _recorder = AudioRecorder();
   final StreamController<String> _testController =
       StreamController<String>.broadcast();
+  final StreamController<void> _keywordController =
+      StreamController<void>.broadcast();
+  final StreamController<void> _stopRecordingController =
+      StreamController<void>.broadcast();
 
   Stream<String> get testStream => _testController.stream;
+  Stream<void> get keywordStream => _keywordController.stream;
+  Stream<void> get stopRecordingStream => _stopRecordingController.stream;
+  final _dio = Dio();
+  WebSocket? _socket;
 
   final List<String> _keyWords = [
     'алиса',
@@ -27,6 +53,9 @@ class AliceCommandRecognizeService {
 
   bool _isListening = false;
   bool _isRecording = false;
+
+  bool get isListening => _isListening;
+  bool get isRecording => _isRecording;
   Timer? _listeningTimer;
   StreamSubscription<Uint8List>? _recordingSubscription;
 
@@ -39,18 +68,40 @@ class AliceCommandRecognizeService {
           }
         }
       },
+      onError: (error) {
+        _startSpeechRecognition();
+      },
     );
   }
 
   /// Установить соединение с вебсокетом
   void _openConnection() {
-    //_socket = WebSocketChannel.connect(Uri.parse('ws://localhost:8080'));
+    final socket = WebSocket(
+      Uri.parse('ws://ws.158.160.191.199.nip.io:30080'),
+      headers: {'Authorization': 'Basic dGVhbTQyOnNlY3JldHBhc3M='},
+    );
+    socket.messages.listen((message) {
+      _testController.add(message.toString()); // Уведомляем о получении ответа
+      _stopRecording();
+      _dio
+          .post(
+        'http://158.160.191.199:30080/classify-message',
+        data: jsonEncode(message),
+        options: Options(
+          headers: {
+            'Authorization': 'Basic dGVhbTQyOnNlY3JldHBhc3M=',
+          },
+        ),
+      )
+          .then((value) {
+        _closeConnection();
+      });
+    });
   }
 
   /// Закрыть соединение с вебсокетом
   void _closeConnection() {
-    // _socket?.sink.close();
-    // _socket = null;
+    _socket?.close();
   }
 
   /// Начать слушать команды
@@ -75,6 +126,7 @@ class AliceCommandRecognizeService {
     final words = result.recognizedWords.toLowerCase();
 
     if (_keyWords.any(words.contains)) {
+      _keywordController.add(null); // Уведомляем о обнаружении ключевого слова
       _openConnection();
       _startRecording();
     }
@@ -104,9 +156,10 @@ class AliceCommandRecognizeService {
         cancelOnError: false,
       );
 
-      // TODO: в будущем отменять запись при получении ответа от сервера
-      // а не через 15 секунд
-      Timer(const Duration(seconds: 15), _stopRecording);
+      Timer(const Duration(seconds: 15), () {
+        _stopRecordingController.add(null); // Уведомляем о таймауте
+        _stopRecording();
+      });
     } catch (e) {
       _isRecording = false;
       _resumeListening();
@@ -115,8 +168,7 @@ class AliceCommandRecognizeService {
 
   /// Отправляем кусок аудио на сервер
   void _sendAudioChunk(Uint8List chunk) {
-    _socket?.sink.add(jsonEncode(chunk));
-    _testController.add(jsonEncode(chunk));
+    _socket?.send({'bytes': chunk});
   }
 
   /// Останавливаем запись
@@ -157,9 +209,11 @@ class AliceCommandRecognizeService {
 
   void dispose() {
     stopListening();
-    _socket?.sink.close();
+    _socket?.close();
     _recordingSubscription?.cancel();
     _recorder.dispose();
     _testController.close();
+    _keywordController.close();
+    _stopRecordingController.close();
   }
 }

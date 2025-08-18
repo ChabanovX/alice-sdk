@@ -72,7 +72,6 @@ class SheetAtPickup extends StatelessWidget {
     const maxVisibleHeight = minVisibleHeight + 98 + 64;
 
     return DraggableWindow(
-      overlayWidget: _buildOverlay(context),
       childPinned: _buildPinned(context),
       innerWidgetBuilder: _buildInnerWidget,
       minVisibleHeight: minVisibleHeight,
@@ -87,19 +86,6 @@ class SheetAtPickup extends StatelessWidget {
       color: Colors.white,
       padding: const EdgeInsetsGeometry.fromLTRB(8, 16, 8, 8),
       child: EndTaxiRideButton(onSlideComplete: () {}),
-    );
-  }
-
-  Widget _buildOverlay(BuildContext context) {
-    const aliceSize = 56.0;
-    const alicePadding = EdgeInsets.only(right: 12.0);
-
-    return const Padding(
-      padding: alicePadding,
-      child: AliceWidget(
-        messageText: 'Расскажу про детали поездки',
-        size: aliceSize,
-      ),
     );
   }
 

@@ -18,7 +18,12 @@ class CustomBottomNavigationBar extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 82,
-        color: context.colors.semanticBackground,
+        decoration: BoxDecoration(
+          color: context.colors.semanticBackground,
+          border: Border(
+            top: BorderSide(color: context.colors.border, width: 1),
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Row(
@@ -79,8 +84,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 48,
-        width: double.infinity, 
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
         decoration: const BoxDecoration(
           color: Colors.transparent,
         ),
@@ -97,7 +102,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 2),
               Text(
                 label,
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -124,8 +129,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       child: Container(
         height: 48,
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
         decoration: const BoxDecoration(
           color: Colors.transparent,
         ),
@@ -139,12 +143,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
                   maxHeight: 24,
                 ),
                 child: UserAvatar(
-                  avatarUrl: state is ProfileUserState
-                      ? state.user.urlAvatar
-                      : '',
+                  avatarUrl:
+                      state is ProfileUserState ? state.user.urlAvatar : '',
                 ),
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 2),
               Text(
                 'Профиль',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
@@ -183,7 +186,8 @@ class _AnimatedNavigationButton extends StatefulWidget {
   });
 
   @override
-  State<_AnimatedNavigationButton> createState() => _AnimatedNavigationButtonState();
+  State<_AnimatedNavigationButton> createState() =>
+      _AnimatedNavigationButtonState();
 }
 
 class _AnimatedNavigationButtonState extends State<_AnimatedNavigationButton>
@@ -198,7 +202,7 @@ class _AnimatedNavigationButtonState extends State<_AnimatedNavigationButton>
       duration: const Duration(milliseconds: 150),
       vsync: this,
     );
-    
+
     _scaleAnimation = Tween<double>(
       begin: 1.0,
       end: 0.88,
@@ -206,8 +210,6 @@ class _AnimatedNavigationButtonState extends State<_AnimatedNavigationButton>
       parent: _animationController,
       curve: Curves.easeOut,
     ));
-
-
   }
 
   @override

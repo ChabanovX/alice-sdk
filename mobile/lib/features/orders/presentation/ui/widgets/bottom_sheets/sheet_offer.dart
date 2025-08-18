@@ -1,35 +1,21 @@
 part of '../../ui.dart';
 
 class SheetOffer extends StatelessWidget {
-  const SheetOffer({super.key});
+  const SheetOffer({super.key, required this.state});
+
+  final OfferArrived state;
 
   @override
   Widget build(BuildContext context) {
-    // Since we exactly know the height min/max visible.
-    const minVisibleHeight = 376.0 + 8.0;
-    const maxVisibleHeight = minVisibleHeight + 24;
-
-    return DraggableWindow(
-      overlayWidget: _buildOverlay(context),
-      innerWidgetBuilder: _buildInnerWidget,
-      minVisibleHeight: minVisibleHeight,
-      maxVisibleHeight: maxVisibleHeight,
-    );
-  }
-
-  Widget _buildOverlay(BuildContext context) {
-    const aliceSize = 56.0;
-    const alicePadding = EdgeInsets.only(right: 12.0);
-
-    return const Padding(
-      padding: alicePadding,
-      child: AliceWidget(messageText: 'Говорите!', size: aliceSize),
-    );
-  }
-
-  Widget _buildInnerWidget(BuildContext context, ScrollController sc) {
     final textStyle1 = context.textStyles.boldBig;
     final textColor = context.colors.text;
+    final offer = state.orderOffer;
+
+    final deliveryType = switch (offer.deliveryType) {
+      DeliveryType.far => 'Дальняя подача',
+      DeliveryType.mid => 'Средняя подача',
+      DeliveryType.close => 'Ближняя подача',
+    };
 
     const divider = Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -38,13 +24,13 @@ class SheetOffer extends StatelessWidget {
 
     final distanceTextBox = DefaultTextStyle(
       style: textStyle1.copyWith(color: textColor),
-      child: const Row(
+      child: Row(
         children: [
-          Text('1,2 км'),
-          SizedBox(width: 4.0),
-          Text('·'),
-          SizedBox(width: 4.0),
-          Text('13 мин'),
+          Text(offer.roadDistance),
+          const SizedBox(width: 4.0),
+          const Text('·'),
+          const SizedBox(width: 4.0),
+          Text(offer.roadTime),
         ],
       ),
     );
@@ -55,18 +41,20 @@ class SheetOffer extends StatelessWidget {
         children: [
           distanceTextBox,
           const SizedBox(height: 8),
-          const Align(
+          Align(
             alignment: Alignment.centerLeft,
-            child: CloseServeTag(),
+            child: ServeTag(
+              text: deliveryType,
+            ),
           ),
           const SizedBox(height: 8),
         ],
       ),
     );
 
-    const addressBox = Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.5, horizontal: 12.0),
-      child: PointAWidget(pointAddress: 'улица Покровка, 45с1'),
+    final addressBox = Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.5, horizontal: 12.0),
+      child: PointAWidget(pointAddress: offer.address),
     );
 
     final passengerBox = Padding(
@@ -81,7 +69,7 @@ class SheetOffer extends StatelessWidget {
           Row(
             children: [
               Text(
-                '4.92',
+                offer.passengerRating.toString(),
                 style: context.textStyles.mediumBig.copyWith(
                   color: context.colors.textMiror,
                 ),
@@ -102,31 +90,24 @@ class SheetOffer extends StatelessWidget {
       ),
     );
 
+    final hardOptinsImages = [
+      'assets/icons/coins_outlined.svg',
+      'assets/icons/child_chair_outlined.svg'
+    ];
+
     final optionsBox = Column(
-      children: [
-        Row(
+      children: List.generate(
+        offer.options.length,
+        (index) => Row(
           children: [
             Padding(
               padding: const EdgeInsetsGeometry.fromLTRB(24, 4, 12, 4),
-              child: SvgPicture.asset('assets/icons/coins_outlined.svg'),
+              child: SvgPicture.asset(hardOptinsImages[index]),
             ),
-            Text('Платная подача', style: context.textStyles.regular),
+            Text(offer.options[index], style: context.textStyles.regular),
           ],
         ),
-        const SizedBox(height: 2),
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsetsGeometry.fromLTRB(24, 4, 12, 4),
-              child: SvgPicture.asset('assets/icons/child_chair_outlined.svg'),
-            ),
-            Text(
-              'Детское кресло,  от 9 мес',
-              style: context.textStyles.regular,
-            ),
-          ],
-        ),
-      ],
+      ),
     );
 
     final passengerInfoBox = Column(
@@ -140,21 +121,29 @@ class SheetOffer extends StatelessWidget {
         ),
         AcceptButton(
           buttonStyle: AcceptButtonStyle.highlighted,
-          onPressed: () {},
+          onPressed: () {
+            final ordersBloc = context.read<OrdersBloc>();
+            ordersBloc.add(AcceptOfferPressed());
+            Navigator.of(context).pop();
+          },
           margin: const EdgeInsets.symmetric(horizontal: 8),
         ),
       ],
     );
 
-    return Column(
-      children: [
-        routeTimeInfoBox,
-        divider,
-        addressBox,
-        divider,
-        passengerInfoBox,
-        acceptButton,
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          routeTimeInfoBox,
+          divider,
+          addressBox,
+          divider,
+          passengerInfoBox,
+          acceptButton,
+        ],
+      ),
     );
   }
 }

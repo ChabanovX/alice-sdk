@@ -33,16 +33,14 @@ class _OrderButtonState extends State<OrderButton>
       duration: const Duration(milliseconds: 150),
       vsync: this,
     );
-    
+
     _scaleAnimation = Tween<double>(
       begin: 1.0,
-      end: 0.88, 
+      end: 0.88,
     ).animate(CurvedAnimation(
       parent: _animationController,
       curve: Curves.easeOut,
     ));
-
-
   }
 
   @override
@@ -76,12 +74,11 @@ class _OrderButtonState extends State<OrderButton>
           return Transform.scale(
             scale: _scaleAnimation.value,
             child: Container(
-              height: 48,
-              width: double.infinity, 
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-             
+              height: 46,
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               decoration: const BoxDecoration(
-                color: Colors.transparent, 
+                color: Colors.transparent,
               ),
               child: Stack(
                 children: [
@@ -98,14 +95,15 @@ class _OrderButtonState extends State<OrderButton>
                             BlendMode.srcIn,
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        const SizedBox(height: 2),
                         Text(
                           'Заказы',
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: _getTextColor(context),
-                            fontSize: 9.5,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: _getTextColor(context),
+                                    fontSize: 9.5,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                         ),
                       ],
                     ),

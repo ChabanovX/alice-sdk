@@ -7,6 +7,7 @@ class Routes {
       '$settings/detailed-voice-settings';
   static const String main = '/';
   static const String communication = '$main/communication';
+  static const String orders = '$main/orders';
   static const String stories = '$communication/stories'; // TODO поправить навигацию
 
 }

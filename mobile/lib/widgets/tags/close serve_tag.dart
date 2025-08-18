@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CloseServeTag extends StatelessWidget {
-  const CloseServeTag({
+class ServeTag extends StatelessWidget {
+  const ServeTag({
+    required this.text,
     super.key,
   });
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,7 @@ class CloseServeTag extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          'Ближняя подача',
+          text,
           style: TextStyle(
             color: Theme.of(context).colorScheme.onSurface,
             fontWeight: FontWeight.w400,

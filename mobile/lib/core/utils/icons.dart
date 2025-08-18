@@ -106,4 +106,5 @@ class AppIcons {
   static const String userRoundOutlined = '$iconPrefix/user_round_outlined.svg';
   static const String walletFilled = '$iconPrefix/wallet_filled.svg';
   static const String aliceSmall = '$iconPrefix/alice_small.svg';
+  static const String controlOffline = '$iconPrefix/Control.svg';
 }
