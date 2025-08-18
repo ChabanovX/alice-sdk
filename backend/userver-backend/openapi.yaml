@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  title: API Schema
+  version: 1.0.0
+paths:
+  /classify-message:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Body'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+
+components:
+  schemas:
+    RequestType:
+      type: string
+      enum:
+        - accept
+        - decline
+        - read_passenger_message
+        - read_passenger_preferences
+        - call_passenger
+        - route
+        - route_choice
+        - business
+        - home
+        - find_nearby_places
+        - tariff_change
+        - other
+    Body:
+      type: object
+      required:
+        - user_id
+        - voice_start_time
+        - request_text
+      properties:
+        user_id:
+          type: string
+          description: User identifier
+        voice_start_time:
+          type: string
+          format: date-time
+          description: Timestamp when voice interaction started
+        request_text:
+          type: string
+          description: The text of the user's request
+        context_token:
+          type: string
+          description: Optional context token for maintaining conversation state
+    Response:
+      type: object
+      properties:
+        intention:
+          $ref: '#/components/schemas/RequestType'
+        addresses:
+          type: string
+          nullable: true
+          description: Optional addresses related to the response
+        route_choice:
+          type: array
+          items:
+            type: integer
+          nullable: true
+          description: Optional route choices
+        tariff:
+          type: string
+          nullable: true
+          description: Optional tariff information
+        places:
+          type: array
+          items:
+            type: string
+          nullable: true
+          description: Optional places information

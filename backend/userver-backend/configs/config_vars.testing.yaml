@@ -1,0 +1,20 @@
+worker-threads: 2
+worker-fs-threads: 2
+logger-level: debug
+
+is-testing: true
+
+server-port: 8080
+
+allowed-url-prefixes:
+  - "http://localhost:8083/"
+  - "http://localhost:8084/"
+  - "http://localhost:8000/"
+  - "http://analytics-service:8000/"
+
+analytics-url: http://analytics-service:8000/cluster
+analytics-url-with-type: http://analytics-service:8000/details-by-type
+
+# dbconnection: 'postgresql://user:password@db:5432/voice_assistant'
+
+speech-kit-tts-service-url: https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize

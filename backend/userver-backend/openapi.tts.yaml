@@ -1,0 +1,34 @@
+openapi: 3.0.3
+info:
+  title: Text-to-Speech WebSocket API
+  version: "1.0.0"
+  description: |
+    WebSocket endpoint для синтеза речи.
+    Клиент выполняет HTTP Upgrade (GET /text-to-speech) и после получения 101 переключается на WebSocket-протокол.
+    Вход: одно текстовое сообщение (utf-8). Выход: последовательность бинарных чанков аудио формата OggOpus.
+servers:
+  - url: ws://localhost:8080
+    description: Локальный dev сервер (пример)
+
+paths:
+  /text-to-speech:
+    get:
+      summary: WebSocket для синтеза речи (TTS)
+      description: |
+        Выполнить WebSocket handshake на пути `/text-to-speech`. После получения `101 Switching Protocols`
+        клиент должен отправить **один** текстовый фрейм с текстом для синтеза. Сервер отвечает бинарными фреймами (чанки аудио).
+        По завершении сервер может отправить текстовый фрейм `"EOS"` или корректно закрыть соединение (1000).
+      responses:
+        '101':
+          description: "Switching Protocols — WebSocket установлен"
+          headers:
+            Sec-WebSocket-Accept:
+              description: "Ответ Sec-WebSocket-Accept от сервера"
+              schema:
+                type: string
+        '401':
+          description: "Unauthorized — отсутствует/некорректен Authorization"
+        '404':
+          description: "Not Found — путь не предназначен для обычного HTTP GET (требуется WebSocket Upgrade)"
+        '500':
+          description: "Server error"

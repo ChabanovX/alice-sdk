@@ -2,9 +2,41 @@ version: '3.9'
 
 services:
   userver-service:
-    build: .
+    build: userver-backend
     ports:
       - "8080:8080"
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
+    environment:
+      - IAM_TOKEN=${IAM_TOKEN}
+      - FOLDER_ID=${FOLDER_ID}
+
+  speech-kit-service:
+    build: py-backend
+    ports:
+      - "8081:8081"
+    environment:
+      - API_KEY=${API_KEY}
 
   analytics-service:
+    expose:
+      - "8000"
     build: ../analytics
+
+  # db:
+  #   image: postgres:17-alpine
+  #   environment:
+  #     - POSTGRES_DB=voice_assistant
+  #     - POSTGRES_USER=user
+  #     - POSTGRES_PASSWORD=password
+  #   ports:
+  #     - "5432"
+  #   volumes:
+  #     - ./userver-backend/postgresql/migrations:/docker-entrypoint-initdb.d
+  #     - ./userver-backend/.pgdata:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U user -d voice_assistant"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5

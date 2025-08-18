@@ -1,84 +1,21 @@
-# classifier_service
+# Бекенд
 
-## Описание приложения
+## Поднять бекенд локально
 
-На данный момент сервис имеет одну единственную ручку `/classify-message` в которую дается текст из голосового сообщения, а на выход выдается `json` со сценарием + доп. информация.
+**Примечание**: первая сборка может занять какое-то время, и требует много места (около 10 гб на диске для образа)
 
-Пример команды:
-
-```bash
-curl -i \
--X POST "http://localhost:8080/classify-message" \
--H "Content-Type: application/json" \
--d '{"text": "Прими заказ"}'
-```
-
-## Работа с приложением
-
-### Требования
-
-Необходимо, чтобы были установлены следующие компоненты:
-
-- **Docker**
-- VSCode Dev Containers Extension (если собираетесь работать с дев. контейнерами)
-
-### Сборка
-
-Запуск сборки из дев. контейнера(рекомендуется):
+1) Внесите `API_KEY` как локальную переменную для `Yandex SpeechKit`
 
 ```bash
-make build-release
+export API_KEY=...
 ```
 
-Запуск сборки via Docker:
-
-```bash
-make docker-build-release
-```
-
-### Запуск сервиса
-
-Запуск сервиса из дев. контейнера(рекомендуется):
-
-```bash
-make start-release
-```
-
-Запуск сервиса via Docker:
-
-```bash
-make docker-start-release
-```
-
-### Тестирование
-
-Запуск тестов из дев. контейнера(рекомендуется):
-
-```bash
-make test-release
-```
-
-Запуск тестов via Docker:
-
-```bash
-make docker-test-release
-```
-
-#### Продакшн
-
-Из папки `backend` запустите:
+2) Собрать и запустить все можно по команде:
 
 ```bash
 docker compose up
 ```
 
-И попробуйте постучаться в сервер:
+## OpenApi
 
-```bash
-curl -i \
--X POST "http://localhost:8080/classify-message" \
--H "Content-Type: application/json" \
--d '{"text": "Прими заказ"}'
-```
-
-В ответ придет `json`
+Посмотреть [тут](openapi.yaml)
