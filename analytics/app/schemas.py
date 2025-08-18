@@ -10,6 +10,7 @@ class RequestType(str, Enum):
     read_passenger_preferences = "read_passenger_preferences"
     call_passenger = "call_passenger"
     route = "route"
+    route_choice = "route_choice"
     business = "business"
     home = "home"
     find_nearby_places = "find_nearby_places"
