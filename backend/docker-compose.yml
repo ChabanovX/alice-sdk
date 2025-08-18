@@ -5,9 +5,9 @@ services:
     build: userver-backend
     ports:
       - "8080:8080"
-    depends_on:
-      db:
-        condition: service_healthy
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
     environment:
       - IAM_TOKEN=${IAM_TOKEN}
       - FOLDER_ID=${FOLDER_ID}

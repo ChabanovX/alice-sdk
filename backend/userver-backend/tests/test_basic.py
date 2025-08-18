@@ -8,19 +8,13 @@ async def test_basic(service_client, mockserver):
     def _mock_cluster(request):
         calls.append(request)
         assert request.json.get('text') == 'Принять заказ'
-        return {
-            "scenario": "ACCEPT_ORDER",
-            "address": "",
-            "address_number": None,
-            "fare": ""
-        }
+        return {"intention":"acept","addresses":"null","route_choice":"null","tariff":"null","places":[]}
 
-    response = await service_client.post('/classify-message', json={'text': 'Принять заказ'})
+    response = await service_client.post('/classify-message', json={"user_id": "u", "voice_start_time": "2025-08-16T22:55:00+0300", "request_text": "Принять заказ"})
     assert response.status == 200
 
     got = response.json()
-    expected = {"scenario": "ACCEPT_ORDER",
-                "address": "", "address_number": None, "fare": ""}
+    expected = {"intention":"accept","addresses":"null","route_choice":"null","tariff":"null","places":[]}
     assert got == expected
 
     # опциональная проверка, что внешний сервис был вызван ровно 1 раз

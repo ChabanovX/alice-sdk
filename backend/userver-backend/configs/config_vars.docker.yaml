@@ -8,4 +8,4 @@ server-port: 8080
 
 analytics-url: http://analytics-service:8000/cluster
 
-dbconnection: 'postgresql://user:password@db:5432/voice_assistant'
+# dbconnection: 'postgresql://user:password@db:5432/voice_assistant'

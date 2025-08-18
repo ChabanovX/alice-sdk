@@ -9,7 +9,7 @@ server-port: 8080
 analytics-url: http://analytics-service:8000/cluster
 
 
-dbconnection: 'postgresql://user:password@db:5432/voice_assistant'
+# dbconnection: 'postgresql://user:password@db:5432/voice_assistant'
 
 speech-kit-tts-service-url: https://tts.api.cloud.yandex.net/speech/v1/tts:synthesize
 
