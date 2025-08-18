@@ -5,8 +5,11 @@ import argparse
 CHUNK_SIZE = 4000
 
 
-async def send_file(uri, path):
-    async with websockets.connect(uri, max_size=None) as ws:
+async def send_file(uri, path, auth_header):
+    headers = {}
+    if auth_header:
+        headers["Authorization"] = auth_header
+    async with websockets.connect(uri, additional_headers=headers, max_size=None) as ws:
         print("Connected to WebSocket")
         with open(path, "rb") as f:
             while True:
@@ -32,5 +35,6 @@ if __name__ == "__main__":
     parser.add_argument("--file", required=True,
                         help="Path to raw PCM file (s16le, 8kHz, mono)")
     parser.add_argument("--url", default="ws://localhost:8081/ws")
+    parser.add_argument("--auth_header", help="Authorization header, e.g. 'Basic ...'")
     args = parser.parse_args()
-    asyncio.run(send_file(args.url, args.file))
+    asyncio.run(send_file(args.url, args.file, args.auth_header))
