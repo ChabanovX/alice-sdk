@@ -1,5 +1,6 @@
 #include "view.hpp"
 
+#include <userver/logging/log.hpp>
 #include <userver/server/websocket/server.hpp>
 #include <userver/server/websocket/websocket_handler.hpp>
 #include <string>
@@ -22,7 +23,10 @@ public:
     void Handle(userver::server::websocket::WebSocketConnection& ws, userver::server::request::RequestContext& /*unused*/) const override {
         userver::server::websocket::Message msg;
         ws.Recv(msg);
-        std::string resp;
+        if (!msg.is_text) {
+            LOG_INFO() << "Msg is not text!";
+            ws.Close(userver::server::websocket::CloseStatus::kBadMessageData);
+        }
         speechkit_tts_service_.SendHttpRequest(ws, msg.data);
         ws.Close(userver::server::websocket::CloseStatus::kNormal);
     }

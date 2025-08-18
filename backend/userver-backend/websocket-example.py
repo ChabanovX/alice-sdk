@@ -1,15 +1,14 @@
 import asyncio
 import websockets
-import sys
 import logging
 
-async def text_to_speech_ws(uri, text_file, output_file="output.ogg"):
-    async with websockets.connect(uri, max_size=None) as ws:
-        print(f"Connected to {uri}")
+WS_URI = "ws://localhost:8080/text-to-speech"
 
-        # Читаем текст из файла и отправляем как текстовое сообщение
-        with open(text_file, "r", encoding="utf-8") as f:
-            text = f.read()
+async def text_to_speech_ws(output_file="output.ogg"):
+    async with websockets.connect(WS_URI, max_size=None) as ws:
+        print(f"Connected to {WS_URI}")
+
+        text = "привет привет это текст синтезированный из спич кит и это круто поки поки"
         await ws.send(text)
         print(f"Sent text: {text[:50]}...")
 
@@ -39,11 +38,4 @@ async def text_to_speech_ws(uri, text_file, output_file="output.ogg"):
         print(f"Audio saved to {output_file}")
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python tts_ws.py <websocket_uri> <text_file>")
-        sys.exit(1)
-
-    uri = sys.argv[1]
-    text_file_path = sys.argv[2]
-
-    asyncio.run(text_to_speech_ws(uri, text_file_path))
+    asyncio.run(text_to_speech_ws())
