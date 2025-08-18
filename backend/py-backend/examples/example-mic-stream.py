@@ -4,8 +4,8 @@ import numpy as np
 import websockets
 import queue
 import threading
+import argparse
 
-API_WS = "ws://localhost:8081/ws"
 SAMPLE_RATE = 8000
 CHANNELS = 1
 CHUNK_MS = 200
@@ -15,10 +15,13 @@ thread_q = queue.Queue()
 stop_event = threading.Event()
 
 
-async def websocket_sender_from_threadq():
-    print("Connecting to", API_WS)
+async def websocket_sender_from_threadq(api_ws, auth_header):
+    headers = {}
+    if auth_header:
+        headers["Authorization"] = auth_header
+    print("Connecting to", api_ws)
     try:
-        async with websockets.connect(API_WS, max_size=None) as ws:
+        async with websockets.connect(api_ws, additional_headers=headers, max_size=None) as ws:
             print("websocket connected")
             while True:
                 item = await asyncio.get_event_loop().run_in_executor(None, thread_q.get)
@@ -79,8 +82,8 @@ def audio_callback(indata, frames, time_info, status):
         print("thread_q is full — dropping audio chunk")
 
 
-async def main():
-    sender_task = asyncio.create_task(websocket_sender_from_threadq())
+async def main(api_ws, auth_header):
+    sender_task = asyncio.create_task(websocket_sender_from_threadq(api_ws, auth_header))
 
     stream = sd.InputStream(
         samplerate=SAMPLE_RATE,
@@ -101,4 +104,8 @@ async def main():
     print("Done.")
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--url", default="ws://localhost:8081/ws", help="WebSocket server URL")
+    parser.add_argument("--auth_header", help="Authorization header, e.g. 'Basic ...'")
+    args = parser.parse_args()
+    asyncio.run(main(args.url, args.auth_header))
