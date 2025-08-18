@@ -21,7 +21,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
     _messages = [
       Message(
-        text: 'Здравствуйте, сделайте пожалуйста остановку',
+        text: 'Стою у Макдональдса',
         timestamp: DateTime(2024, 1, 1, 12, 30),
         isMe: false,
         hasAction: true,
