@@ -19,6 +19,9 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
     on<AcceptOfferPressed>(_onAcceptOfferPressed);
     on<DeclineOfferPressed>(_onDeclineOfferPressed);
     on<ArrivedAtPickupPressed>(_onArrivedAtPickupPressed);
+    on<GoByWayPressed>(_onGoByWayPressed);
+    on<GoOnBusinessCalled>(_onGoOnBusinessCalled);
+    on<GoWithOrdersOnWayPressed>(_onGoWithOrdersOnWayPressed);
     add(AppStarted());
   }
   Future<void> _onAppStarted(
@@ -91,6 +94,32 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
     Emitter<OrdersState> emit,
   ) async {}
 
+  Future<void> _onGoByWayPressed(
+    GoByWayPressed event,
+    Emitter<OrdersState> emit,
+  ) async {
+    emit(const GoByWay());
+  }
+
+  Future<void> _onGoOnBusinessCalled(
+    GoOnBusinessCalled event,
+    Emitter<OrdersState> emit,
+  ) async {
+    emit(GoOnBusiness(isToHome: event.isToHome));
+  }
+
+  Future<void> _onGoWithOrdersOnWayPressed(
+    GoWithOrdersOnWayPressed event,
+    Emitter<OrdersState> emit,
+  ) async {
+    emit(const GoWithOrdersOnWay());
+  }
+
+  @override
+  Future<void> close() {
+    return super.close();
+  }
+
   void goNextState() {
     switch (state) {
       case Offline():
@@ -113,11 +142,12 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
         add(GoOfflinePressed());
       case OrdersError():
         add(GoOfflinePressed());
+      case GoOnBusiness():
+        break;
+      case GoByWay():
+        break;
+      case GoWithOrdersOnWay():
+        break;
     }
-  }
-
-  @override
-  Future<void> close() {
-    return super.close();
   }
 }

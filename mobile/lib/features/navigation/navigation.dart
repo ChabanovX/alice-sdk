@@ -14,6 +14,7 @@ import '../profile/presentation/bloc/profile_bloc.dart';
 import '../profile/presentation/presentation.dart';
 import '../chat_page/presentation/presentation.dart';
 import 'demo/ui_demo.dart';
+import 'widgets/navigation_bottom_sheet_widget.dart';
 
 part 'bottom_navigation_bar.dart';
 part 'main_screen.dart';

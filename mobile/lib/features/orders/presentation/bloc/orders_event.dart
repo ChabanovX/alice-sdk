@@ -20,3 +20,14 @@ class AcceptOfferPressed extends OrdersEvent {}
 class DeclineOfferPressed extends OrdersEvent {}
 
 class ArrivedAtPickupPressed extends OrdersEvent {}
+
+class GoByWayPressed extends OrdersEvent {}
+
+class GoWithOrdersOnWayPressed extends OrdersEvent {
+  GoWithOrdersOnWayPressed();
+}
+
+class GoOnBusinessCalled extends OrdersEvent {
+  GoOnBusinessCalled({required this.isToHome});
+  final bool isToHome;
+}

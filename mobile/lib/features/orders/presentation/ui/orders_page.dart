@@ -65,6 +65,7 @@ class _OrdersPageState extends State<OrdersPage> {
                 InRouteToPickup() => const SheetToPickupV2(),
                 AtPickup() => const SheetAtPickup(),
                 OrdersError() => SheetOffline(),
+                _ => SizedBox(),
               },
             ),
             body: LayoutBuilder(

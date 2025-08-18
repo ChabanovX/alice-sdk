@@ -21,6 +21,8 @@ import '../../../../widgets/widgets.dart';
 import '../../domain/entities/order_offer.dart';
 import '../bloc/orders_bloc.dart';
 import '../../../components/components.dart';
+import '../../../navigation/widgets/aspects_widget.dart';
+import '../../../navigation/widgets/navigation_bottom_sheet_widget.dart';
 import '../bloc/orders_bloc.dart';
 import 'widgets/maps/map_offline.dart';
 import '../../../chat/view/chat_screen.dart';

@@ -31,3 +31,17 @@ class OrdersError extends OrdersState {
   @override
   List<Object?> get props => [message];
 }
+
+class GoOnBusiness extends OrdersState {
+  const GoOnBusiness({required this.isToHome});
+  final bool isToHome;
+}
+
+class GoByWay extends OrdersState {
+  const GoByWay();
+}
+
+
+class GoWithOrdersOnWay extends OrdersState {
+  const GoWithOrdersOnWay();
+}
