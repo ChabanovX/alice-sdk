@@ -30,6 +30,7 @@ components:
         - read_passenger_preferences
         - call_passenger
         - route
+        - route_choice
         - business
         - home
         - find_nearby_places
