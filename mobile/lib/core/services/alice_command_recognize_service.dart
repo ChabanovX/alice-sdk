@@ -1,16 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:record/record.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
-import 'package:web_socket_client/web_socket_client.dart';
 
 enum AliceCommand {
-  takeOrder('Take order'),
-  declineOrder('Decline order'),
+  accept('accept'),
+  decline('decline'),
   none('');
 
   const AliceCommand(this.value);
@@ -75,28 +75,45 @@ class AliceCommandRecognizeService {
   }
 
   /// Установить соединение с вебсокетом
-  void _openConnection() {
-    final socket = WebSocket(
-      Uri.parse('ws://ws.158.160.191.199.nip.io:30080'),
-      headers: {'Authorization': 'Basic dGVhbTQyOnNlY3JldHBhc3M='},
-    );
-    socket.messages.listen((message) {
-      _testController.add(message.toString()); // Уведомляем о получении ответа
-      _stopRecording();
-      _dio
-          .post(
-        'http://158.160.191.199:30080/classify-message',
-        data: jsonEncode(message),
-        options: Options(
-          headers: {
-            'Authorization': 'Basic dGVhbTQyOnNlY3JldHBhc3M=',
-          },
-        ),
-      )
-          .then((value) {
-        _closeConnection();
-      });
-    });
+  Future<void> _openConnection() async {
+    try {
+      _socket = await WebSocket.connect(
+        'ws://ws.158.160.191.199.nip.io:30080/ws',
+        headers: {'Authorization': 'Basic dGVhbTQyOnNlY3JldHBhc3M='},
+      );
+
+      _socket!.listen(
+        (message) {
+          _testController
+              .add(message.toString());
+          _stopRecording();
+          final Map<String, dynamic> text = jsonDecode(message.toString());
+          _dio
+              .post(
+            'http://158.160.191.199:30080/classify-message',
+            data: {'text': text['raw_text']},
+            options: Options(
+              headers: {
+                'Authorization': 'Basic dGVhbTQyOnNlY3JldHBhc3M=',
+                'Content-Type': 'application/json',
+              },
+            ),
+          )
+              .then((value) {
+            _closeConnection();
+            final Map<String, dynamic> result = jsonDecode(value.toString());
+            _testController.add(result['intention']);
+          });
+        },
+        onError: (error) {
+          _stopRecording();
+        },
+        onDone: () {},
+        cancelOnError: false,
+      );
+    } catch (e) {
+      await _stopRecording();
+    }
   }
 
   /// Закрыть соединение с вебсокетом
@@ -127,8 +144,7 @@ class AliceCommandRecognizeService {
 
     if (_keyWords.any(words.contains)) {
       _keywordController.add(null); // Уведомляем о обнаружении ключевого слова
-      _openConnection();
-      _startRecording();
+      _openConnection().then((_) => _startRecording());
     }
   }
 
@@ -168,7 +184,7 @@ class AliceCommandRecognizeService {
 
   /// Отправляем кусок аудио на сервер
   void _sendAudioChunk(Uint8List chunk) {
-    _socket?.send({'bytes': chunk});
+    _socket?.add(chunk); // Отправляем бинарные данные напрямую
   }
 
   /// Останавливаем запись
@@ -181,8 +197,11 @@ class AliceCommandRecognizeService {
       if (await _recorder.isRecording()) {
         await _recorder.stop();
       }
+
+      // Отправляем сигнал окончания потока, как в test_socket.dart
+      _socket?.add('EOS');
+
       _isRecording = false;
-      _closeConnection();
       _resumeListening();
     } catch (e) {
       _isRecording = false;

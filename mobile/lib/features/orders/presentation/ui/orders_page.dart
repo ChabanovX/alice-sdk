@@ -27,10 +27,10 @@ class _OrdersPageState extends State<OrdersPage> {
       final aliceBloc = context.read<AliceBloc>();
       _commandSubscription = aliceBloc.commandStream.listen((command) {
         switch (command) {
-          case AliceCommand.takeOrder:
+          case AliceCommand.accept:
             _handleTakeOrderCommand();
             break;
-          case AliceCommand.declineOrder:
+          case AliceCommand.decline:
           case AliceCommand.none:
             break;
         }
