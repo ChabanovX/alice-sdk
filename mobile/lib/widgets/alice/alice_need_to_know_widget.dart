@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../theme.dart';
 
+/// this is sdhit.
 class AliceNeedToKnowWidget extends StatelessWidget {
   final VoidCallback? onTap;
   final bool isActive;

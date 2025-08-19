@@ -3,6 +3,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/navigation/manager.dart';
+import '../../../../core/services/alice_speaker_service.dart';
+import '../../../../di.dart';
 import '../../domain/entities/order_offer.dart';
 
 part 'orders_event.dart';
@@ -24,6 +26,9 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
     on<GoWithOrdersOnWayPressed>(_onGoWithOrdersOnWayPressed);
     add(AppStarted());
   }
+
+  final _speaker = getIt<AliceSpeakingService>();
+
   Future<void> _onAppStarted(
     AppStarted event,
     Emitter<OrdersState> emit,
@@ -32,7 +37,7 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
   }
 
   /// Получить заказ
-  Future<OrderOffer> getOrder() async {
+  OrderOffer getOrder() {
     // Просто возвращаем заказ, не добавляем события
     return OrderOffer(
       roadDistance: '1,2 км',
@@ -51,7 +56,8 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
   ) async {
     emit(const OnlineIdle());
     await Future.delayed(const Duration(seconds: 6));
-    final order = await getOrder();
+    final order = getOrder();
+    await _speaker.sayText('Вау! Повышенный коэффициент! ${order.coefficient}!');
     emit(OfferArrived(orderOffer: order));
   }
 
@@ -80,7 +86,7 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
     Emitter<OrdersState> emit,
   ) async {
     emit(InRouteToPickup());
-    await Future.delayed(const Duration(seconds: 6));
+    await Future.delayed(const Duration(seconds: 5));
     emit(AtPickup());
   }
 

@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../../../../core/navigation/bottom_sheet_manager.dart';
 import '../../../../core/navigation/manager.dart';
 import '../../../../core/services/alice_command_recognize_service.dart';
+import '../../../../core/services/alice_speaker_service.dart';
+import '../../../../di.dart';
 import '../../../../theme.dart';
 import '../../../../widgets/alice/alice_floating_widget.dart';
 import '../../../../widgets/alice/alice_need_to_know_widget.dart';

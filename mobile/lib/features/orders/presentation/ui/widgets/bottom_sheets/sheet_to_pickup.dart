@@ -6,7 +6,7 @@ class SheetToPickup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Since we exactly know the height min/max visible.
-    const minVisibleHeight = 80.0 + 8.0;
+    const minVisibleHeight = 80.0 + 6.0;
     const maxVisibleHeight = minVisibleHeight + 24;
 
     return DraggableWindow(
@@ -19,18 +19,8 @@ class SheetToPickup extends StatelessWidget {
   }
 
   Widget _buildOverlay(BuildContext context) {
-    const aliceSize = 56.0;
-    const alicePadding = EdgeInsets.only(right: 12.0);
-
     return const Column(
       children: [
-        Padding(
-          padding: alicePadding,
-          child: AliceWidget(
-            messageText: 'Расскажу про детали поездки',
-            size: aliceSize,
-          ),
-        ),
         CurrentStreetTag(currentStreet: 'ул. Маросейка'),
         SizedBox(height: 8),
         RoadTracker(),

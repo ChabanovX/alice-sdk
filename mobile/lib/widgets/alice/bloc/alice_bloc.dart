@@ -4,6 +4,8 @@ import 'package:just_audio/just_audio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/services/alice_command_recognize_service.dart';
+import '../../../core/services/alice_speaker_service.dart';
+import '../../../di.dart';
 import 'alice_event.dart';
 import 'alice_state.dart';
 
@@ -15,20 +17,17 @@ class AliceBloc extends Bloc<AliceEvent, AliceState> {
     _initializeService();
   }
 
+  final AliceSpeakingService _speaker = getIt<AliceSpeakingService>();
   final AliceCommandRecognizeService _recognizeService =
       AliceCommandRecognizeService();
-  AudioPlayer? _soundPlayer;
   StreamSubscription? _keywordSubscription;
   StreamSubscription? _responseSubscription;
 
-  Stream<AliceCommand> get commandStream => _recognizeService.testStream
-      .map(AliceCommand.fromString);
+  Stream<AliceCommand> get commandStream =>
+      _recognizeService.testStream.map(AliceCommand.fromString);
 
   Future<void> _initializeService() async {
     try {
-      // Инициализируем аудио плеер для звуков
-      _soundPlayer = AudioPlayer();
-
       // Инициализируем сервис распознавания
       await _recognizeService.init();
 
@@ -49,6 +48,9 @@ class AliceBloc extends Bloc<AliceEvent, AliceState> {
 
       // Запускаем пассивное прослушивание ключевого слова
       _recognizeService.startListening();
+
+      // await Future.delayed(Duration(seconds: 10));
+      // _recognizeService.mockCommand();
     } catch (e) {
       // Игнорируем ошибки инициализации
     }
@@ -59,8 +61,8 @@ class AliceBloc extends Bloc<AliceEvent, AliceState> {
     Emitter<AliceState> emit,
   ) async {
     try {
+      await _speaker.playActivationSound();
       emit(const AliceActive());
-      await _playActivationSound();
     } catch (e) {
       // Игнорируем ошибки звука
     }
@@ -71,26 +73,8 @@ class AliceBloc extends Bloc<AliceEvent, AliceState> {
     Emitter<AliceState> emit,
   ) async {
     try {
+      // await _speaker.playDeactivationSound();
       emit(const AliceSleeping());
-      await _playDeactivationSound();
-    } catch (e) {
-      // Игнорируем ошибки звука
-    }
-  }
-
-  Future<void> _playActivationSound() async {
-    try {
-      await _soundPlayer?.setAsset('assets/audio/alice_on.mp3');
-      await _soundPlayer?.play();
-    } catch (e) {
-      // Игнорируем ошибки звука
-    }
-  }
-
-  Future<void> _playDeactivationSound() async {
-    try {
-      await _soundPlayer?.setAsset('assets/audio/alice_off.mp3');
-      await _soundPlayer?.play();
     } catch (e) {
       // Игнорируем ошибки звука
     }
@@ -101,7 +85,6 @@ class AliceBloc extends Bloc<AliceEvent, AliceState> {
     _keywordSubscription?.cancel();
     _responseSubscription?.cancel();
     _recognizeService.dispose();
-    _soundPlayer?.dispose();
     return super.close();
   }
 }

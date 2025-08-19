@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:record/record.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
@@ -11,6 +12,7 @@ import 'package:speech_to_text/speech_to_text.dart';
 enum AliceCommand {
   accept('accept'),
   decline('decline'),
+  other('other'),
   none('');
 
   const AliceCommand(this.value);
@@ -81,17 +83,25 @@ class AliceCommandRecognizeService {
         'ws://ws.158.160.191.199.nip.io:30080/ws',
         headers: {'Authorization': 'Basic dGVhbTQyOnNlY3JldHBhc3M='},
       );
+      debugPrint('connected.');
 
       _socket!.listen(
         (message) {
-          _testController
-              .add(message.toString());
+          _testController.add(
+            message.toString(),
+          );
           _stopRecording();
           final Map<String, dynamic> text = jsonDecode(message.toString());
+
           _dio
               .post(
             'http://158.160.191.199:30080/classify-message',
-            data: {'text': text['raw_text']},
+            data: jsonEncode({
+              'text': 'hell yeah backend',
+              'user_id': '1',
+              'voice_start_time': '2025-08-19T23:51:00Z',
+              'request_text': text['raw_text'],
+            }),
             options: Options(
               headers: {
                 'Authorization': 'Basic dGVhbTQyOnNlY3JldHBhc3M=',
@@ -102,7 +112,10 @@ class AliceCommandRecognizeService {
               .then((value) {
             _closeConnection();
             final Map<String, dynamic> result = jsonDecode(value.toString());
+            debugPrint('RESULT: $result');
             _testController.add(result['intention']);
+          }).onError((e, st) {
+            debugPrint('dio err: $e');
           });
         },
         onError: (error) {
@@ -118,6 +131,7 @@ class AliceCommandRecognizeService {
 
   /// Закрыть соединение с вебсокетом
   void _closeConnection() {
+    debugPrint('closed connection');
     _socket?.close();
   }
 
@@ -141,6 +155,7 @@ class AliceCommandRecognizeService {
   /// Сюда приходят результаты распознавания
   void _resultListener(SpeechRecognitionResult result) {
     final words = result.recognizedWords.toLowerCase();
+    debugPrint(words);
 
     if (_keyWords.any(words.contains)) {
       _keywordController.add(null); // Уведомляем о обнаружении ключевого слова
@@ -153,6 +168,7 @@ class AliceCommandRecognizeService {
     if (_isRecording) return;
 
     try {
+      debugPrint('You are recorded for ws.');
       _isRecording = true;
       await _speechToText.stop();
 
@@ -173,8 +189,10 @@ class AliceCommandRecognizeService {
       );
 
       Timer(const Duration(seconds: 15), () {
+        debugPrint('closed');
         _stopRecordingController.add(null); // Уведомляем о таймауте
         _stopRecording();
+        _isRecording = false;
       });
     } catch (e) {
       _isRecording = false;
@@ -184,6 +202,9 @@ class AliceCommandRecognizeService {
 
   /// Отправляем кусок аудио на сервер
   void _sendAudioChunk(Uint8List chunk) {
+    if (chunk.any((elem) => elem != 0)) {
+      // debugPrint('object');
+    }
     _socket?.add(chunk); // Отправляем бинарные данные напрямую
   }
 

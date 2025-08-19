@@ -7,6 +7,7 @@ import 'bloc/alice_bloc.dart';
 import 'bloc/alice_event.dart';
 import 'bloc/alice_state.dart';
 
+/// Used in AliceFloatingWIdget.
 class AliceWidget extends StatelessWidget {
   const AliceWidget({
     super.key,
@@ -62,9 +63,9 @@ class AliceWidget extends StatelessWidget {
         final double bubbleMaxWidth =
             (containerWidth - size - messageGap).clamp(0, double.infinity);
 
-        final bool showMessage = _shouldShowMessage(state);
-        final bool isActive = _isActiveState(state);
-        final bool isScaling = _shouldScale(state);
+        final bool showMessage = state is AliceActive;
+        final bool isActive = state is AliceActive;
+        final bool isScaling = state is AliceActive;
         final String displayText = _getDisplayText(state);
 
         return SizedBox(
@@ -92,9 +93,6 @@ class AliceWidget extends StatelessWidget {
                           )
                         : const SizedBox.shrink(),
                   ),
-                ),
-                SizedBox(
-                  width: showMessage ? messageGap : 0,
                 ),
                 // Alice icon
                 GestureDetector(
@@ -139,18 +137,6 @@ class AliceWidget extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  bool _shouldShowMessage(AliceState state) {
-    return state is AliceActive;
-  }
-
-  bool _isActiveState(AliceState state) {
-    return state is AliceActive;
-  }
-
-  bool _shouldScale(AliceState state) {
-    return state is AliceActive;
   }
 
   String _getDisplayText(AliceState state) {

@@ -28,7 +28,7 @@ class MapOffline extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image.asset('assets/images/offline_control.png'),
+                        const SizedBox.shrink(),
                         Image.asset('assets/images/speed_60.png'),
                       ],
                     ),

@@ -3,12 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc_observer.dart';
 import 'core/navigation/manager.dart';
+import 'di.dart';
 import 'features/profile/presentation/bloc/profile_bloc.dart';
 import 'theme.dart';
 import 'widgets/alice/bloc/alice_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
+  await initDi();
+  
   runApp(const MyApp());
 }
 

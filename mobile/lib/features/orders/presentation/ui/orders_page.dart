@@ -31,7 +31,12 @@ class _OrdersPageState extends State<OrdersPage> {
             _handleTakeOrderCommand();
             break;
           case AliceCommand.decline:
+            _handleOtherCommand();
+          case AliceCommand.other:
+            _handleOtherCommand();
+            break;
           case AliceCommand.none:
+            _handleOtherCommand();
             break;
         }
       });
@@ -62,8 +67,8 @@ class _OrdersPageState extends State<OrdersPage> {
                 Offline() => const SheetOfflineV2(),
                 OnlineIdle() => const SheetOfflineV2(),
                 OfferArrived() => const SheetOfflineV2(),
-                InRouteToPickup() => const SheetToPickupV2(),
-                AtPickup() => const SheetAtPickup(),
+                InRouteToPickup() => const SheetToPickup(),
+                AtPickup() => const SheetAtArriving(),
                 OrdersError() => SheetOffline(),
                 _ => SizedBox(),
               },
@@ -72,10 +77,10 @@ class _OrdersPageState extends State<OrdersPage> {
               builder: (context, constraints) {
                 return Stack(
                   children: [
-                    const YandexMap(),
+                    const MapOffline(),
                     Positioned(
                       left: 14,
-                      top: 46,
+                      top: 46 + 16,
                       child: state is Offline
                           ? const ControlOfflineWidget()
                           : GestureDetector(
@@ -123,21 +128,25 @@ class _OrdersPageState extends State<OrdersPage> {
     );
   }
 
+  void _handleOtherCommand() {
+    final speaker = getIt<AliceSpeakingService>();
+
+    speaker.sayText('Не поняла вас.');
+  }
+
   void _handleTakeOrderCommand() {
     final ordersBloc = context.read<OrdersBloc>();
     final currentState = ordersBloc.state;
 
-    if (currentState is OfferArrived) {
-      ordersBloc.add(AcceptOfferPressed());
-      Navigator.of(context).pop();
+    final speaker = getIt<AliceSpeakingService>();
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Заказ принят по голосовой команде'),
-          duration: Duration(seconds: 2),
-        ),
-      );
+    if (currentState is OfferArrived) {
+      speaker.sayText('Приняла.');
+      ordersBloc.add(AcceptOfferPressed());
+      NavigationManager.pop();
+
     } else {
+      speaker.sayText('У вас нет доступных заказов');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Нет активных предложений заказов'),
