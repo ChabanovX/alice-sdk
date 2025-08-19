@@ -23,6 +23,8 @@ class ArrivedAtPickupPressed extends OrdersEvent {}
 
 class GoByWayPressed extends OrdersEvent {}
 
+class WentIntoRedZone extends OrdersEvent {}
+
 class GoWithOrdersOnWayPressed extends OrdersEvent {
   GoWithOrdersOnWayPressed();
 }

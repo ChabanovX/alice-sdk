@@ -12,6 +12,8 @@ import 'package:speech_to_text/speech_to_text.dart';
 enum AliceCommand {
   accept('accept'),
   decline('decline'),
+  readPassengerMessage('read_passenger_message'),
+  readPassengerPreferences('read_passenger_preferences'),
   other('other'),
   none('');
 

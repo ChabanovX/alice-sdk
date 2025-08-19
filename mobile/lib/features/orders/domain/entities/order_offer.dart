@@ -9,6 +9,7 @@ class OrderOffer {
     required this.passengerRating,
     required this.options,
     required this.coefficient,
+    this.message = 'Я с ребенком',
   });
 
   String roadDistance;
@@ -16,8 +17,9 @@ class OrderOffer {
   DeliveryType deliveryType;
   String address;
   double passengerRating;
-  List options;
+  List<String> options;
   double coefficient;
+  String? message;
 
   static OrderOffer defaultOffer() {
     return OrderOffer(

@@ -38,6 +38,10 @@ class _OrdersPageState extends State<OrdersPage> {
           case AliceCommand.none:
             _handleOtherCommand();
             break;
+          case AliceCommand.readPassengerMessage:
+            _handleReadMessage();
+          case AliceCommand.readPassengerPreferences:
+            _handleReadPreferences();
         }
       });
     });
@@ -48,6 +52,13 @@ class _OrdersPageState extends State<OrdersPage> {
     final bloc = context.read<OrdersBloc>();
     return BlocListener<OrdersBloc, OrdersState>(
       listener: (context, state) {
+        final speaker = getIt<AliceSpeakingService>();
+        if (state is InRedZone) {
+          speaker.sayText(
+            'Упс, вы в красной зоне. Покиньте ее как можно скорее',
+          );
+        }
+
         if (state is OfferArrived) {
           NavigationManager.showBottomSheet<bool>(
             BlocProvider.value(
@@ -68,6 +79,7 @@ class _OrdersPageState extends State<OrdersPage> {
                 OnlineIdle() => const SheetOfflineV2(),
                 OfferArrived() => const SheetOfflineV2(),
                 InRouteToPickup() => const SheetToPickup(),
+                InRedZone() => const SheetToPickup(),
                 AtPickup() => const SheetAtArriving(),
                 OrdersError() => SheetOffline(),
                 _ => SizedBox(),
@@ -77,7 +89,14 @@ class _OrdersPageState extends State<OrdersPage> {
               builder: (context, constraints) {
                 return Stack(
                   children: [
-                    const MapOffline(),
+                    BlocBuilder<OrdersBloc, OrdersState>(
+                      builder: (context, state) {
+                        if (state is InRedZone) {
+                          return MapInRedZone();
+                        }
+                        return const MapOffline();
+                      },
+                    ),
                     Positioned(
                       left: 14,
                       top: 46 + 16,
@@ -134,6 +153,32 @@ class _OrdersPageState extends State<OrdersPage> {
     speaker.sayText('Не поняла вас.');
   }
 
+  void _handleReadPreferences() {
+    final speaker = getIt<AliceSpeakingService>();
+
+    final bloc = context.read<OrdersBloc>();
+    final state = bloc.state;
+
+    if (state is OfferArrived) {
+      speaker.sayText('Читаю: ${state.orderOffer.options}');
+    } else {
+      speaker.sayText('Сообщение недоступно.');
+    }
+  }
+
+  void _handleReadMessage() {
+    final speaker = getIt<AliceSpeakingService>();
+
+    final bloc = context.read<OrdersBloc>();
+    final state = bloc.state;
+
+    if (state is OfferArrived && state.orderOffer.message != null) {
+      speaker.sayText('Читаю: ${state.orderOffer.message}');
+    } else {
+      speaker.sayText('Сообщение недоступно.');
+    }
+  }
+
   void _handleTakeOrderCommand() {
     final ordersBloc = context.read<OrdersBloc>();
     final currentState = ordersBloc.state;
@@ -144,7 +189,6 @@ class _OrdersPageState extends State<OrdersPage> {
       speaker.sayText('Приняла.');
       ordersBloc.add(AcceptOfferPressed());
       NavigationManager.pop();
-
     } else {
       speaker.sayText('У вас нет доступных заказов');
       ScaffoldMessenger.of(context).showSnackBar(

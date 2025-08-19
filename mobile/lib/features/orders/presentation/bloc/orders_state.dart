@@ -22,6 +22,8 @@ class OfferArrived extends OrdersState {
 
 class InRouteToPickup extends OrdersState {}
 
+class InRedZone extends OrdersState {}
+
 class AtPickup extends OrdersState {}
 
 class OrdersError extends OrdersState {

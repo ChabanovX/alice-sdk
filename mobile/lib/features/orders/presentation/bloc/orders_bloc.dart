@@ -24,6 +24,7 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
     on<GoByWayPressed>(_onGoByWayPressed);
     on<GoOnBusinessCalled>(_onGoOnBusinessCalled);
     on<GoWithOrdersOnWayPressed>(_onGoWithOrdersOnWayPressed);
+    on<WentIntoRedZone>(_onWentIntoRedZone);
     add(AppStarted());
   }
 
@@ -81,12 +82,15 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
     Emitter<OrdersState> emit,
   ) async {}
 
+  /// Main mock here.
   Future<void> _onAcceptOfferPressed(
     AcceptOfferPressed event,
     Emitter<OrdersState> emit,
   ) async {
     emit(InRouteToPickup());
     await Future.delayed(const Duration(seconds: 5));
+    emit(InRedZone());
+    await Future.delayed(const Duration(seconds: 10));
     emit(AtPickup());
   }
 
@@ -121,6 +125,13 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
     emit(const GoWithOrdersOnWay());
   }
 
+  Future<void> _onWentIntoRedZone(
+    WentIntoRedZone event,
+    Emitter<OrdersState> emit,
+  ) async {
+    emit(InRedZone());
+  }
+
   @override
   Future<void> close() {
     return super.close();
@@ -152,8 +163,11 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
         break;
       case GoByWay():
         break;
-      case GoWithOrdersOnWay():
+      case InRedZone():
         break;
+      case GoWithOrdersOnWay():
+        // TODO: Handle this case.
+        throw UnimplementedError();
     }
   }
 }
